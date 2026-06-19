@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Popups.QuestPopups.SpiritOrbDropPopup"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+             x:DataType="vm:SpiritOrbDropPopupViewModel"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             Closed="Popup_Closed" Color="Transparent"
+             Size="381, 300"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+
+       <Border StrokeShape="RoundRectangle 8"
+               Padding="10"
+               Background="{AppThemeBinding Light={StaticResource QuestProgressGradient}, Dark={StaticResource QuestProgressGradient}}"
+               Stroke="#7C3AED"
+               StrokeThickness="7">
+              <Border.Shadow>
+                     <Shadow Brush="#7C3AED"
+                            Offset="1,0"
+                            Radius="5"/>
+              </Border.Shadow>
+              <Border.GestureRecognizers>
+                     <TapGestureRecognizer Command="{Binding TapToExitCommand}"/>
+              </Border.GestureRecognizers>
+
+              <Grid Padding="5" RowDefinitions="Auto, Auto, Auto, *" RowSpacing="15">
+
+                     <Image Source="circles_overlap.png"
+                            Aspect="AspectFit"
+                            Grid.RowSpan="4"/>
+
+                     <outline:OutlinedLabel Text="{Binding CompletedText}"
+                                     Grid.Row="0"
+                                     HorizontalOptions="Center"
+                                     FontFamily="PoppinsSemiBold"
+                                     TextColor="#EDF8EA"
+                                     FontSize="20"
+                                     StrokeColor="DimGray"
+                                     StrokeWidth="2"
+                                     HasShadow="True"
+                                     ShadowBlur="4"
+                                     ShadowOffsetY="2"
+                                     ShadowColor="DarkSlateGray"/>
+
+                     <Label Text="{Binding CompletedText2}"
+                            Grid.Row="1"
+                            FontFamily="PoppinsSemiBold"
+                            TextColor="#000000"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Medium"/>
+
+                     <Grid Grid.Row="2"
+                           ColumnDefinitions="Auto, Auto"
+                           ColumnSpacing="8"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+
+                            <Image Grid.Column="0"
+                                   Source="core_icon.png"
+                                   HeightRequest="80"
+                                   WidthRequest="100"
+                                   Aspect="AspectFit"/>
+
+                            <outline:OutlinedLabel Grid.Column="1"
+                                            Text="{Binding OrbCountText}"
+                                            VerticalOptions="Center"
+                                            FontFamily="PoppinsBold"
+                                            FontSize="28"
+                                            TextColor="#EDF8EA"
+                                            StrokeColor="DimGray"
+                                            StrokeWidth="2"
+                                            HasShadow="True"
+                                            ShadowBlur="4"
+                                            ShadowOffsetY="2"
+                                            ShadowColor="DarkSlateGray"/>
+
+                            <outline:OutlinedLabel Grid.Column="1"
+                                            Text="{Binding OrbPlayerCount,StringFormat='(Total:{0})'}"
+                                            VerticalOptions="Center"
+                                            Margin="0,50,0,0"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            TextColor="#7C3AED"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="1"
+                                            HasShadow="True"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="1"
+                                            ShadowColor="#40000000"/>
+                     </Grid>
+
+                     <outline:OutlinedLabel Text="Tap to Continue"
+                                     Grid.Row="3"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Opacity="0.7"
+                                     TextColor="#7C3AED"
+                                     FontFamily="PoppinsBold"
+                                     FontSize="24"
+                                     StrokeColor="#EDF8EA"
+                                     StrokeWidth="2"
+                                     HasShadow="True"
+                                     ShadowOffsetX="0"
+                                     ShadowOffsetY="2"
+                                     ShadowBlur="2"
+                                     ShadowColor="#40000000"/>
+
+              </Grid>
+       </Border>
+
+</toolkit:Popup>

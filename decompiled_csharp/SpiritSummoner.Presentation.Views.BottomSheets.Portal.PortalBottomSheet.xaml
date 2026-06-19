@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.Portal.PortalBottomSheet"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             x:DataType="bottomsheet:PortalSheetViewModel"
+             HasBackdrop="True" 
+             HasHandle="False"
+             CornerRadius="20"
+             BackgroundColor="#00050B14">
+
+    <the49:BottomSheet.Detents>
+        <the49:FullscreenDetent />
+    </the49:BottomSheet.Detents>
+
+    <the49:BottomSheet.Resources>
+        <Style x:Key="PortalNavItem" TargetType="VerticalStackLayout">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Spacing" Value="-4"/>
+        </Style>
+
+        <!-- Portal Staple Menu Styles -->
+        <Style x:Key="PortalMenuItemStyle" TargetType="Border">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Stroke" Value="Transparent"/>
+            <Setter Property="Padding" Value="0,6"/>
+        </Style>
+
+        <Style x:Key="PortalMenuItemContentStyle" TargetType="VerticalStackLayout">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Spacing" Value="2"/>
+        </Style>
+
+        <Style x:Key="PortalMenuIconStyle" TargetType="Image">
+            <Setter Property="HeightRequest" Value="60"/>
+            <Setter Property="WidthRequest" Value="60"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <Style x:Key="PortalMenuDividerStyle" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="Color" Value="#33FFFFFF"/>
+            <Setter Property="Margin" Value="12,0"/>
+        </Style>
+    </the49:BottomSheet.Resources>
+
+    <Grid BackgroundColor="Transparent"
+          VerticalOptions="End">
+
+        <Border BackgroundColor="#53000000"
+                StrokeThickness="0"
+                StrokeShape="Rectangle 40,40,0,0"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"/>
+
+        <BoxView Color="Black"
+                 HeightRequest="2"
+                 IsVisible="false"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Start"/>
+
+        <Border WidthRequest="90"
+                IsVisible="True"
+                Padding="0,8"
+                StrokeShape="RoundRectangle 28"
+                Stroke="#4DFFFFFF"
+                BackgroundColor="#BF000000"
+                StrokeThickness="1"
+                HorizontalOptions="End">
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                        Offset="0,4"
+                        Radius="12"
+                        Opacity="0.6"/>
+            </Border.Shadow>
+
+            <!-- Menu Items -->
+            <VerticalStackLayout Spacing="0">
+                
+                <!-- Guild -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//guild"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="icon_guild.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                        <outline:OutlinedLabel Text="Guild"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="2"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Chat -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//chat"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="icon_chat_outlined.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                        <outline:OutlinedLabel Text="Chat"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="2"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Shop -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//shop"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="icon_shop_outlined.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                        <outline:OutlinedLabel Text="Shops"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="2"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Battle -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//battlehub"/>
+                    </Border.GestureRecognizers>
+                    <Grid>
+                        <!-- SP Timers -->
+							<ContentView VerticalOptions="Start"
+										 TranslationY="0"
+                                         ZIndex="1">
+                                <VerticalStackLayout Spacing="-5">
+                                    <outline:OutlinedLabel Text="{Binding PlayerInfoModel.SpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Start"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding PlayerInfoModel.SpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Start"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+                            <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="icon_battle_outlined.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                        <outline:OutlinedLabel Text="Battle"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="2"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Quests -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//quest"/>
+                    </Border.GestureRecognizers>
+                        <Grid>
+                        <!-- EP Timers -->
+							<ContentView VerticalOptions="Start"
+										 TranslationY="0"
+                                         ZIndex="1">
+                                <VerticalStackLayout Spacing="-5">
+                                    <outline:OutlinedLabel Text="{Binding PlayerInfoModel.EpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Start"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding PlayerInfoModel.EpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Start"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+
+                        <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                            <Image Source="icon_quest_outlined.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                            <outline:OutlinedLabel Text="Quest"
+                                                FontSize="12"
+                                                FontFamily="PoppinsSemiBold"
+                                                TextColor="#EDF8EA"
+                                                StrokeColor="#2E4A0F"
+                                                HasShadow="True"
+                                                ShadowColor="#40000000"
+                                                ShadowBlur="2"
+                                                ShadowOffsetY="2"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Home -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="//main"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="icon_home_outlined.png" Style="{StaticResource PortalMenuIconStyle}"/>
+                        <outline:OutlinedLabel Text="Home"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="2"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView Style="{StaticResource PortalMenuDividerStyle}"/>
+
+                <!-- Close -->
+                <Border Style="{StaticResource PortalMenuItemStyle}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DismissCommand}"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Style="{StaticResource PortalMenuItemContentStyle}">
+                        <Image Source="x" HeightRequest="50" WidthRequest="50"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</the49:BottomSheet>

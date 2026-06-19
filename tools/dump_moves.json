@@ -1,0 +1,1575 @@
+{
+  "1000 SLICES": {
+    "Name": "1000 SLICES",
+    "Type": "Neutral",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "ACID FANG": {
+    "Name": "ACID FANG",
+    "Type": "Poison",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "AIR CRASH": {
+    "Name": "AIR CRASH",
+    "Type": "Wind",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "ALLOY SLAM": {
+    "Name": "ALLOY SLAM",
+    "Type": "Metal",
+    "Power": 130,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "AQUA SLASH": {
+    "Name": "AQUA SLASH",
+    "Type": "Water",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "AQUA SMASH": {
+    "Name": "AQUA SMASH",
+    "Type": "Water",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "ASH RAIN": {
+    "Name": "ASH RAIN",
+    "Type": "Fire",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BACK HAND": {
+    "Name": "BACK HAND",
+    "Type": "Neutral",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "BEAM OF JUDGEMENT": {
+    "Name": "BEAM OF JUDGEMENT",
+    "Type": "Light",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "BILE SHOT": {
+    "Name": "BILE SHOT",
+    "Type": "Poison",
+    "Power": 200,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BLADE BASH": {
+    "Name": "BLADE BASH",
+    "Type": "Metal",
+    "Power": 170,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BLAZING CLAW": {
+    "Name": "BLAZING CLAW",
+    "Type": "Fire",
+    "Power": 190,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BODY SLAM": {
+    "Name": "BODY SLAM",
+    "Type": "Neutral",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "greenCrystal",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "BOULDER BASH": {
+    "Name": "BOULDER BASH",
+    "Type": "Ground",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BREEZE JAB": {
+    "Name": "BREEZE JAB",
+    "Type": "Wind",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BUBBLE LANCE": {
+    "Name": "BUBBLE LANCE",
+    "Type": "Water",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "BURNING CRASH": {
+    "Name": "BURNING CRASH",
+    "Type": "Fire",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "CHARGE FIST": {
+    "Name": "CHARGE FIST",
+    "Type": "Electric",
+    "Power": 110,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "CORRODE BLAST": {
+    "Name": "CORRODE BLAST",
+    "Type": "Poison",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "CRUSH CLAW": {
+    "Name": "CRUSH CLAW",
+    "Type": "Neutral",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "pearl",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "CURRENT STRIKE": {
+    "Name": "CURRENT STRIKE",
+    "Type": "Electric",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "CYCLONE SHRED": {
+    "Name": "CYCLONE SHRED",
+    "Type": "Wind",
+    "Power": 120,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "DARK RAZE": {
+    "Name": "DARK RAZE",
+    "Type": "Dark",
+    "Power": 200,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "DARK RUSH": {
+    "Name": "DARK RUSH",
+    "Type": "Dark",
+    "Power": 130,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "DRAGON CLAW": {
+    "Name": "DRAGON CLAW",
+    "Type": "Neutral",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "DREAD BOLT": {
+    "Name": "DREAD BOLT",
+    "Type": "Dark",
+    "Power": 180,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "DRILL IMPACT": {
+    "Name": "DRILL IMPACT",
+    "Type": "Ground",
+    "Power": 130,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "DUST SCREEN": {
+    "Name": "DUST SCREEN",
+    "Type": "Ground",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "DUST SMASH": {
+    "Name": "DUST SMASH",
+    "Type": "Ground",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "EARTH SPLIT": {
+    "Name": "EARTH SPLIT",
+    "Type": "Ground",
+    "Power": 200,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "ECHO FIST": {
+    "Name": "ECHO FIST",
+    "Type": "Neutral",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "pearl",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "ECLIPSE CLAW": {
+    "Name": "ECLIPSE CLAW",
+    "Type": "Dark",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "EMBER STRIKE": {
+    "Name": "EMBER STRIKE",
+    "Type": "Fire",
+    "Power": 100,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "ENERGY WAVE": {
+    "Name": "ENERGY WAVE",
+    "Type": "Neutral",
+    "Power": 100,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "pearl",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "FIRESTORM": {
+    "Name": "FIRESTORM",
+    "Type": "Fire",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "FLARE BURST": {
+    "Name": "FLARE BURST",
+    "Type": "Fire",
+    "Power": 190,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "FLOOD SHOT": {
+    "Name": "FLOOD SHOT",
+    "Type": "Water",
+    "Power": 190,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "FOREST BLAST": {
+    "Name": "FOREST BLAST",
+    "Type": "Grass",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "FORGE SLAM": {
+    "Name": "FORGE SLAM",
+    "Type": "Metal",
+    "Power": 190,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "FURY JAB": {
+    "Name": "FURY JAB",
+    "Type": "Neutral",
+    "Power": 130,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "goldCrystal",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "GALE FURY": {
+    "Name": "GALE FURY",
+    "Type": "Wind",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "GEYSER SHOT": {
+    "Name": "GEYSER SHOT",
+    "Type": "Water",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "GLARE STRIKE": {
+    "Name": "GLARE STRIKE",
+    "Type": "Light",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "GLOOM CRASH": {
+    "Name": "GLOOM CRASH",
+    "Type": "Dark",
+    "Power": 200,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "GRASS CANNON": {
+    "Name": "GRASS CANNON",
+    "Type": "Grass",
+    "Power": 140,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "GROUND SHOCK": {
+    "Name": "GROUND SHOCK",
+    "Type": "Ground",
+    "Power": 200,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "GROWTH STRIKE": {
+    "Name": "GROWTH STRIKE",
+    "Type": "Grass",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "HEADBUTT": {
+    "Name": "HEADBUTT",
+    "Type": "Neutral",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "redCrystal",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "HEAVEN CRUSH": {
+    "Name": "HEAVEN CRUSH",
+    "Type": "Light",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "HOLY STRIKE": {
+    "Name": "HOLY STRIKE",
+    "Type": "Light",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "HOWL SLASH": {
+    "Name": "HOWL SLASH",
+    "Type": "Wind",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "HYDRO BURST": {
+    "Name": "HYDRO BURST",
+    "Type": "Water",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "ILLUSION": {
+    "Name": "Illusion",
+    "Type": "Dark",
+    "Power": 100,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "INFERNAL BASH": {
+    "Name": "INFERNAL BASH",
+    "Type": "Fire",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "IRON SMASH": {
+    "Name": "IRON SMASH",
+    "Type": "Metal",
+    "Power": 190,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "IRON STORM": {
+    "Name": "IRON STORM",
+    "Type": "Metal",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "JOLT SLAM": {
+    "Name": "JOLT SLAM",
+    "Type": "Electric",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 1,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "KENDO STRIKE": {
+    "Name": "KENDO STRIKE",
+    "Type": "Neutral",
+    "Power": 140,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "LAVA LASH": {
+    "Name": "LAVA LASH",
+    "Type": "Fire",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "LEAF BLADE": {
+    "Name": "LEAF BLADE",
+    "Type": "Grass",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "LIGHT LANCE": {
+    "Name": "LIGHT LANCE",
+    "Type": "Light",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "LIGHTNING CRUSH": {
+    "Name": "LIGHTNING CRUSH",
+    "Type": "Electric",
+    "Power": 120,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "LUMIN BEAM": {
+    "Name": "LUMIN BEAM",
+    "Type": "Light",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "LUNAR LANCE": {
+    "Name": "",
+    "Type": "Dark",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "MAGMA SLAM": {
+    "Name": "MAGMA SLAM",
+    "Type": "Fire",
+    "Power": 200,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "MAGNET JAB": {
+    "Name": "MAGNET JAB",
+    "Type": "Metal",
+    "Power": 170,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "MEGA KICK": {
+    "Name": "MEGA KICK",
+    "Type": "Neutral",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "redCrystal",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "METAL CRUSH": {
+    "Name": "METAL CRUSH",
+    "Type": "Metal",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "MUD SLAM": {
+    "Name": "MUD SLAM",
+    "Type": "Ground",
+    "Power": 110,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "NATURE'S WRATH": {
+    "Name": "NATURE'S WRATH",
+    "Type": "Grass",
+    "Power": 140,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "NEURO TOXIN": {
+    "Name": "NEURO TOXIN",
+    "Type": "Poison",
+    "Power": 170,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "NIGHT PULSE": {
+    "Name": "NIGHT PULSE",
+    "Type": "Dark",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "PETAL FLURRY": {
+    "Name": "PETAL FLURRY",
+    "Type": "Grass",
+    "Power": 190,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "PHANTOM HIT": {
+    "Name": "PHANTOM HIT",
+    "Type": "Dark",
+    "Power": 150,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "PITTER PATTER": {
+    "Name": "PITTER PATTER",
+    "Type": "Water",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "PLASMA BLAST": {
+    "Name": "PLASMA BLAST",
+    "Type": "Electric",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "POISON JAB": {
+    "Name": "POISON JAB",
+    "Type": "Poison",
+    "Power": 200,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "POWER PUNCH": {
+    "Name": "POWER PUNCH",
+    "Type": "Neutral",
+    "Power": 140,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "pearl",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "QUAKE BLAST": {
+    "Name": "QUAKE BLAST",
+    "Type": "Ground",
+    "Power": 130,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "RADIANT SLASH": {
+    "Name": "RADIANT SLASH",
+    "Type": "Light",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "ROCK TUMBLE": {
+    "Name": "ROCK TUMBLE",
+    "Type": "Ground",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "ROOT CRUSH": {
+    "Name": "ROOT CRUSH",
+    "Type": "Grass",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "RUST KNUCKLE": {
+    "Name": "RUST KNUCKLE",
+    "Type": "Metal",
+    "Power": 200,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "SANDSTORM EDGE": {
+    "Name": "SANDSTORM EDGE",
+    "Type": "Ground",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "SCORCH CANNON": {
+    "Name": "SCORCH CANNON",
+    "Type": "Fire",
+    "Power": 190,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "flint",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "SHADOW SMASH": {
+    "Name": "SHADOW SMASH",
+    "Type": "Dark",
+    "Power": 100,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "SHINE BLAST": {
+    "Name": "SHINE BLAST",
+    "Type": "Light",
+    "Power": 200,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "SHOCK CRASH": {
+    "Name": "SHOCK CRASH",
+    "Type": "Electric",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "SKY TWIST": {
+    "Name": "SKY TWIST",
+    "Type": "Wind",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "SLICE": {
+    "Name": "SLICE",
+    "Type": "Neutral",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "SLUDGE SMASH": {
+    "Name": "SLUDGE SMASH",
+    "Type": "Poison",
+    "Power": 150,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "SPARK RAY": {
+    "Name": "SPARK RAY",
+    "Type": "Light",
+    "Power": 120,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "SPARK SHRED": {
+    "Name": "SPARK SHRED",
+    "Type": "Electric",
+    "Power": 160,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "SPORE SLAM": {
+    "Name": "SPORE SLAM",
+    "Type": "Grass",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "STEAM STRIKE": {
+    "Name": "STEAM STRIKE",
+    "Type": "Water",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "STEEL CLAW": {
+    "Name": "STEEL CLAW",
+    "Type": "Metal",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "STEEL STORM": {
+    "Name": "STEEL STORM",
+    "Type": "Metal",
+    "Power": 130,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "STORM RIP": {
+    "Name": "STORM RIP",
+    "Type": "Wind",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "STRIKE DOWN": {
+    "Name": "STRIKE DOWN",
+    "Type": "Neutral",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 1,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "SUN EDGE": {
+    "Name": "SUN EDGE",
+    "Type": "Light",
+    "Power": 110,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "diamond",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "TERRA SHATTER": {
+    "Name": "TERRA SHATTER",
+    "Type": "Ground",
+    "Power": 190,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "clay",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "THORN JAB": {
+    "Name": "THORN JAB",
+    "Type": "Grass",
+    "Power": 200,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "THUNDER PIERCER": {
+    "Name": "THUNDER PIERCER",
+    "Type": "Electric",
+    "Power": 180,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "TIDE SMASH": {
+    "Name": "TIDE SMASH",
+    "Type": "Water",
+    "Power": 110,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 7,
+      "SpiritLevelRequired": 5
+    }
+  },
+  "TORNADO CLAW": {
+    "Name": "TORNADO CLAW",
+    "Type": "Wind",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "TOXIC CLAW": {
+    "Name": "TOXIC CLAW",
+    "Type": "Poison",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "TOXIC SURGE": {
+    "Name": "TOXIC ARROW",
+    "Type": "Poison",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "TWIN SLAM": {
+    "Name": "TWIN SLAM",
+    "Type": "Neutral",
+    "Power": 140,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "pearl",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "VENOM RUSH": {
+    "Name": "VENOM RUSH",
+    "Type": "Poison",
+    "Power": 120,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "VENOM STRIKE": {
+    "Name": "VENOM STRIKE",
+    "Type": "Poison",
+    "Power": 100,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "mushroom",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 5,
+      "SpiritLevelRequired": 1
+    }
+  },
+  "VINE CRASH": {
+    "Name": "VINE CRASH",
+    "Type": "Grass",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seed",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "VOID BLAST": {
+    "Name": "VOID BLAST",
+    "Type": "Dark",
+    "Power": 130,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "VOLT BURST": {
+    "Name": "VOLT BURST",
+    "Type": "Electric",
+    "Power": 180,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "WATER SPIN": {
+    "Name": "WATER SPIN",
+    "Type": "Water",
+    "Power": 120,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "WATERY MAW": {
+    "Name": "WATERY MAW",
+    "Type": "Water",
+    "Power": 130,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "WAVE CRUSH": {
+    "Name": "WAVE CRUSH",
+    "Type": "Water",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "seashell",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "WIND CUTTER": {
+    "Name": "WIND CUTTER",
+    "Type": "Wind",
+    "Power": 160,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "WRAITH SLASH": {
+    "Name": "WRAITH SLASH",
+    "Type": "Dark",
+    "Power": 180,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "onyx",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 20,
+      "SpiritLevelRequired": 30
+    }
+  },
+  "X SLICE": {
+    "Name": "X SLASH",
+    "Type": "Neutral",
+    "Power": 130,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 0,
+      "SpiritLevelRequired": 25
+    }
+  },
+  "ZAP BOLT": {
+    "Name": "ZAP BOLT",
+    "Type": "Electric",
+    "Power": 120,
+    "MoveType": "Physical",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "",
+      "RequiredItemCount": 0,
+      "PlayerLevelRequired": 10,
+      "SpiritLevelRequired": 15
+    }
+  },
+  "ZEPHYR SMASH": {
+    "Name": "ZEPHYR SMASH",
+    "Type": "Wind",
+    "Power": 140,
+    "MoveType": "Special",
+    "UnlockRequirements": {
+      "IsFree": false,
+      "RequiredItem": "feather",
+      "RequiredItemCount": 1,
+      "PlayerLevelRequired": 15,
+      "SpiritLevelRequired": 25
+    }
+  }
+}

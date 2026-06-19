@@ -1,0 +1,29 @@
+{
+  "story": {
+    "Id": "story",
+    "Name": "Summoner Chapter One: First Adventure!",
+    "Order": 1,
+    "Image": "story.png",
+    "LevelRequired": 0,
+    "IsActive": true,
+    "Event": false
+  },
+  "challenge": {
+    "Id": "challenge",
+    "Name": "Champions Challenge",
+    "Order": 2,
+    "Image": "challenge.png",
+    "LevelRequired": 10,
+    "IsActive": true,
+    "Event": false
+  },
+  "dojo": {
+    "Id": "dojo",
+    "Name": "Dojo",
+    "Order": 3,
+    "Image": "dojo.png",
+    "LevelRequired": 25,
+    "IsActive": false,
+    "Event": true
+  }
+}

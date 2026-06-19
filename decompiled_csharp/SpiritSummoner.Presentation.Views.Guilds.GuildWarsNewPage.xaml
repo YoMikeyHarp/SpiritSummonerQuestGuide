@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildWarsPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:guilds="clr-namespace:SpiritSummoner.Domain.Entities.Guilds;assembly=SpiritSummoner"
+             x:DataType="vm:GuildWarsViewModel">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Gradient Brushes -->
+            <LinearGradientBrush x:Key="GreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#A8CB3F" Offset="0.0" />
+                <GradientStop Color="#7DB813" Offset="0.5" />
+                <GradientStop Color="#78B614" Offset="1.0" />
+            </LinearGradientBrush>
+
+            
+            <LinearGradientBrush x:Key="LightGreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#9AE589" Offset="0.0556" />
+                <GradientStop Color="#9EDA84" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="LevelIconBlue" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#CEE6FA" Offset="0.0" />
+                <GradientStop Color="#A0D5F4" Offset="0.2" />
+                <GradientStop Color="#77B1E7" Offset="0.8" />
+                <GradientStop Color="#5EA1E2" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="ButtonTan" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FED571" Offset="0.0" />
+                <GradientStop Color="#FEF093" Offset="0.2548" />
+                <GradientStop Color="#FEF89D" Offset="0.5" />
+                <GradientStop Color="#FEF093" Offset="0.75" />
+                <GradientStop Color="#FED571" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="BonusOrange" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FFB816" Offset="0.0" />
+                <GradientStop Color="#FFAE00" Offset="0.2" />
+                <GradientStop Color="#FFAE00" Offset="0.8" />
+                <GradientStop Color="#FFB816" Offset="1.0" />
+            </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="StarGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#EDF8EA" Offset="0.0556" />
+                <GradientStop Color="#EDF8EA1A" Offset="1.0" />
+        </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Background="{StaticResource GradientBackground}">
+        <!-- Background Pattern -->
+        <Image Source="dots_offset_8px.png" 
+               Aspect="Fill" />
+
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- Top Nav -->
+                    <RowDefinition Height="*" /> <!-- Content -->
+                    <RowDefinition Height="Auto" /> <!-- Bottom Nav -->
+                </Grid.RowDefinitions>
+
+                <!-- Top Navigation Bar -->
+                <Grid Grid.Row="0" Padding="25,5,25,0">
+
+                    <Grid ColumnDefinitions="5, *">
+                        <Grid Grid.Column="0" ZIndex="2" Grid.ColumnSpan="2" HorizontalOptions="Start" WidthRequest="62" HeightRequest="62">
+                            <!-- Outer Circle -->
+                                    <Ellipse Fill="{StaticResource LightGreenGradient}"
+                                            Stroke="#588049"
+                                            HorizontalOptions="Start"
+                                            StrokeThickness="1">
+                                        <Ellipse.Shadow>
+                                            <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25" />
+                                        </Ellipse.Shadow>
+                                    </Ellipse>
+
+                                    <!-- Inner Circle -->
+                                    <Ellipse WidthRequest="52" 
+                                            HeightRequest="52"
+                                            Fill="{StaticResource LevelIconBlue}" 
+                                            Stroke="#40000000"
+                                            StrokeThickness="1"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+
+                                    <!-- Rank Label -->
+                                    <VerticalStackLayout HorizontalOptions="Center" 
+                                                    VerticalOptions="Center"
+                                                    TranslationY="1"
+                                                    Spacing="-5">
+
+                                        <controls:OutlinedLabel 
+                                                Text="RANK"
+                                                FontSize="15"
+                                                FontFamily="PoppinsSemiBold"
+                                                TextColor="#FFE368"
+                                                StrokeColor="#BA7412"
+                                                StrokeWidth="1.75"
+                                                WidthRequest="100"
+                                                HeightRequest="30"
+                                                HorizontalOptions="Center"
+                                                HasShadow="True"
+                                                ShadowOffsetX="0"     
+                                                ShadowOffsetY="1" 
+                                                ShadowBlur="1"  
+                                                ShadowSpread="0"
+                                                ShadowColor="#40000000" />
+
+                                        <controls:OutlinedLabel 
+                                                Text="{Binding CurrentGuild.Level}"
+                                                FontSize="20"
+                                                FontFamily="Bungee"
+                                                TextColor="#C96D1E"
+                                                StrokeColor="#EDF8EA"
+                                                StrokeWidth="4"
+                                                HorizontalOptions="Center" />
+
+                                    </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- EXP Display & ProgressBar -->
+                            <Grid Grid.Column="1"
+                                Grid.Row="1"
+                                ZIndex="1"
+                                Padding="25,0,25,0"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End">
+
+                                <controls:OutlinedLabel 
+                                                Text="{Binding XPProgressText}"
+                                                FontFamily="PoppinsExtraBold"
+                                                FontSize="12"
+                                                TextColor="#EDF8EA"
+                                                StrokeColor="#2E4A0F"
+                                                StrokeWidth="2.5"
+                                                HorizontalOptions="Center"
+                                                ZIndex="2"
+                                                HasShadow="True"
+                                                ShadowOffsetX="0"
+                                                ShadowOffsetY="1"
+                                                TranslationY="3"
+                                                ShadowBlur="1"
+                                                ShadowColor="#40000000" />
+
+                                <maui:ProgressBar Progress="{Binding XPProgress,FallbackValue=0}"
+                                                HeightRequest="8"
+                                                BaseColor="#9AE589"
+                                                ProgressColor="#FFE804"
+                                                GradientColor="#FCE605"
+                                                UseGradient="True"
+                                                RoundCaps="True"
+                                                VerticalOptions="End"
+                                                ZIndex="1"/>
+                            </Grid>
+
+                            <controls:OutlinedLabel Grid.Column="1"
+                                                Grid.Row="0"
+                                                Text="{Binding CurrentGuild.Name}"
+                                                FontFamily="PoppinsSemiBold"
+                                                FontSize="18"
+                                                TextColor="#EDF8EA"
+                                                StrokeColor="#00000080"
+                                                StrokeWidth="3"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                ZIndex="2"
+                                                HasShadow="True"
+                                                ShadowOffsetX="0"
+                                                ShadowOffsetY="1"
+                                                TranslationY="-1"
+                                                ShadowBlur="1"
+                                                ShadowColor="#40000000" />
+
+                        <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 30"
+                            HeightRequest="60"
+                            Padding="0,0,5,0"
+                            Background="{StaticResource GreenGradient}">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                            RowDefinitions="*" HorizontalOptions="Fill"
+                            VerticalOptions="Center" ZIndex="2"
+                            Padding="0">
+
+                            <controls:BlendModeImage
+                                Source="infobarbackground.png"
+                                BlendMode="Multiply"
+                                OpacityValue="1"
+                                BlendBackground="{StaticResource GreenGradient}"
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="3"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+
+
+                            <!-- Guild Badge (Right Side Icon) -->
+                            <Image Source="badge_mithril.png"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    ZIndex="2"
+                                    VerticalOptions="Center"/>
+
+                                <controls:StarGlow 
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    StarSize="54"
+                                    CenterColor="#EDF8EA"
+                                    EdgeColor="#1AEDF8EA"
+                                    GlowColor="#EDF8EA"
+                                    GlowRadius="5" />
+                        </Grid>
+                    </Border>
+                        
+                    </Grid>
+
+                    
+                </Grid>
+
+                <!-- Free-for-all: rival guilds in our bucket. Tap a guild to battle a
+                                     defender (main-first) or raid its crystals if its defenders are down. -->
+                                <CollectionView ItemsSource="{Binding BucketOpponents}"
+                                    IsVisible="{Binding ShowGuildOpponents}"
+                                    Grid.Row="1"
+                                    HeightRequest="70">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:GuildWarTargetModel">
+                                            <Border StrokeShape="RoundRectangle 10"
+                                                    BackgroundColor="#1A000000"
+                                                    Padding="10,6"
+                                                    WidthRequest="150">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:GuildWarsViewModel}}, Path=AttackGuildCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                                </Border.GestureRecognizers>
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label Text="{Binding Name}"
+                                                           FontFamily="PoppinsSemiBold"
+                                                           FontSize="13"
+                                                           TextColor="#EDF8EA"
+                                                           LineBreakMode="TailTruncation"/>
+                                                    <Label Text="{Binding StatusText}"
+                                                           FontSize="10"
+                                                           TextColor="#FFE368"/>
+                                                    <Label Text="{Binding ActionText}"
+                                                           FontFamily="Bungee"
+                                                           FontSize="12"
+                                                           TextColor="#DB4C07"/>
+                                                </VerticalStackLayout>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                <!-- Main Content -->
+                <Grid Grid.Row="1"
+                      RowDefinitions="0.75*, 0.3*, 0.33*, 0.4*, Auto, 0.3*" 
+                                   Padding="16,5,16,0" 
+                                   RowSpacing="13">
+
+                    <!-- Season Info Card -->
+                    <Border Grid.Row="0"
+                            Background="{StaticResource TanGradient}"
+                            Stroke="#40000000"
+                            StrokeThickness="1"
+                            Padding="8">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" /> <!-- Header -->
+                                <RowDefinition Height="*" /> <!-- Crystals -->
+                            </Grid.RowDefinitions>
+
+                            <!-- Header with Title and Timer -->
+                            <Grid Grid.Row="0">
+
+                                <controls:OutlinedLabel Text="{Binding WarSeasonTitle}"
+                                    FontFamily="PoppinsSemiBold"
+                                       FontSize="18"
+                                       TextColor="#2E4A0F"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       StrokeColor="Transparent"
+                                       HasShadow="True"
+                                       ShadowColor="#40000000"
+                                       ShadowBlur="1"
+                                       ShadowOffsetY="1"/>
+
+                                <VerticalStackLayout HorizontalOptions="End" Spacing="4">
+                                    <!-- Season Timer: visible during active war ("War ends in:") and matched-but-not-started ("War starts in:") -->
+                                    <Border Background="#EDF8EA"
+                                            Stroke="#40000000"
+                                            StrokeThickness="1"
+                                            WidthRequest="150"
+                                            IsVisible="{Binding IsInWar}"
+                                            HeightRequest="24">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="4" />
+                                        </Border.StrokeShape>
+
+                                        <Label Text="{Binding WarTimerLabel}"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="11"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center">
+                                            <Label.Shadow>
+                                                <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25" />
+                                            </Label.Shadow>
+                                        </Label>
+                                    </Border>
+
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Border Grid.Row="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Background="#EDF8EA"
+                                    Padding="5"
+                                    StrokeShape="RoundRectangle 8"
+                                    IsVisible="{Binding IsInWar,Converter={StaticResource InverseBooleanConverter}}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleWarEnrollmentCommand}"/>
+                                    </Border.GestureRecognizers>
+
+                                <controls:OutlinedLabel
+                                    Text="{Binding EnrollButtonText,StringFormat='{0}'}"
+                                    FontFamily="Bungee"
+                                    FontSize="16"
+                                    StrokeColor="#061A4F"
+                                    StrokeWidth="1.5"
+                                    HorizontalOptions="Center"
+                                    HasShadow="True"
+                                    HasInnerShadow="True"
+                                    UseGradient="True"
+                                    GradientAngle="60"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="2"
+                                    ShadowBlur="1"
+                                    ShadowSpread="1"
+                                    InnerShadowBlur="3"
+                                    InnerShadowOffsetX="0"
+                                    InnerShadowOffsetY="3"
+                                    InnerShadowColor="#FAF9FEBF"
+                                    ShadowColor="#40000000">
+                                    <controls:OutlinedLabel.GradientStops>
+                                        <controls:GradientStopOutline Color="#CB5560"
+                                                Offset="0.0"/>
+                                        <controls:GradientStopOutline Color="#DA848D"
+                                                Offset="0.5"/>
+                                        <controls:GradientStopOutline Color="#CB5560"
+                                                Offset="1.0"/>
+                                    </controls:OutlinedLabel.GradientStops>
+                                </controls:OutlinedLabel>
+
+                        </Border>
+
+                            <!-- Crystals Collected Section -->
+                            <Border Grid.Row="1"
+                                    Background="#EDF8EA"
+                                    Stroke="#40000000"
+                                    StrokeThickness="1"
+                                    Padding="0,10,0,0"
+                                    IsVisible="{Binding IsInWar}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="4" />
+                                </Border.StrokeShape>
+
+                                <Grid ColumnSpacing="15" RowDefinitions="Auto,*">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Crystal Icon -->
+                                    <Image Grid.Column="0"
+                                           Source="icon_crystal.png"
+                                           Aspect="AspectFit"
+                                           VerticalOptions="Center">
+                                        <Image.Shadow>
+                                            <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.25" />
+                                        </Image.Shadow>
+                                    </Image>
+
+                                    <!-- Crystal Count -->
+                                    <VerticalStackLayout Grid.Column="1" 
+                                                       VerticalOptions="Center"
+                                                       Spacing="5">
+
+                                        <controls:OutlinedLabel 
+                                                Text="{Binding CurrentProgress.CrystalsStolen,FallbackValue=0}"
+                                                FontFamily="Bungee"
+                                                FontSize="40"
+                                                StrokeColor="#061A4F"
+                                                StrokeWidth="1.5"
+                                                HorizontalOptions="Center"
+                                                HasShadow="True"
+                                                HasInnerShadow="True"
+                                                UseGradient="True"
+                                                GradientAngle="60"  
+                                                ShadowOffsetX="0"     
+                                                ShadowOffsetY="2" 
+                                                ShadowBlur="1"  
+                                                ShadowSpread="1"
+                                                InnerShadowBlur="3"
+                                                InnerShadowOffsetX="0"
+                                                InnerShadowOffsetY="3"
+                                                InnerShadowColor="#FAF9FEBF"
+                                                ShadowColor="#40000000" >
+                                                <controls:OutlinedLabel.GradientStops>
+                                                    <controls:GradientStopOutline Color="#364DBD" Offset="0.0" />
+                                                    <controls:GradientStopOutline Color="#94BFFF" Offset="0.3758" />
+                                                    <controls:GradientStopOutline Color="#94BFFF" Offset="0.42" />
+                                                    <controls:GradientStopOutline Color="#9F71EC" Offset="0.75" />
+                                                    <controls:GradientStopOutline Color="#364DBD" Offset="1.0" />
+                                                </controls:OutlinedLabel.GradientStops>
+                                        </controls:OutlinedLabel>
+                                        
+                                        <controls:OutlinedLabel
+                                            Text="crystals collected"
+                                               FontFamily="PoppinsBlack"
+                                               FontSize="16"
+                                               TextColor="#DFADFF"
+                                               StrokeColor="#061A4F"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowColor="#40000000"
+                                               ShadowBlur="1"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+
+                                    <!-- Bonus Multiplier -->
+                                    <Grid Grid.Column="2" 
+                                          VerticalOptions="Center">
+                                        <Ellipse Fill="{StaticResource BonusOrange}"
+                                                 WidthRequest="90"
+                                                 HeightRequest="90">
+                                            <Ellipse.Shadow>
+                                                <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.25" />
+                                            </Ellipse.Shadow>
+                                        </Ellipse>
+
+                                        <Ellipse Fill="{StaticResource ButtonTan}"
+                                                    WidthRequest="80"
+                                                    HeightRequest="80"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center">
+                                                <Ellipse.Shadow>
+                                                    <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.25" />
+                                                </Ellipse.Shadow>
+                                        </Ellipse>
+
+                                        <VerticalStackLayout HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           Spacing="5">
+
+                                            <controls:OutlinedLabel 
+                                                Text="BONUS"
+                                                FontFamily="PoppinsSemiBold"
+                                                FontSize="14"
+                                                TextColor="#FFE368"
+                                                StrokeColor="#BA7412"
+                                                StrokeWidth="2.5"
+                                                HorizontalOptions="Center"
+                                                HasShadow="True"
+                                                ShadowOffsetX="0"     
+                                                ShadowOffsetY="1" 
+                                                ShadowBlur="1"  
+                                                ShadowSpread="0"
+                                                ShadowColor="#40000000" />
+
+                                            <controls:OutlinedLabel
+                                                    Text="1.0x"
+                                                   FontFamily="PoppinsBold"
+                                                   FontSize="32"
+                                                   TextColor="#BA7412"
+                                                   StrokeColor="#EDF8EA"
+                                                   StrokeWidth="2.5"
+                                                   ShadowBlur="2"
+                                                   ShadowOffsetX="0"
+                                                   ShadowOffsetY="2"
+                                                   ShadowColor="#40000000"/>
+
+                                        </VerticalStackLayout>
+                                    </Grid>
+
+                                    <!-- Crystal Gauge -->
+                                    <VerticalStackLayout Grid.Row="2" Spacing="4" Grid.ColumnSpan="3" Padding="5,0">
+                                        <Grid>
+                                            <Label Text="Defeat defenders to earn crystals."
+                                                FontFamily="Poppins"
+                                                FontSize="12"
+                                                TextColor="Black"
+                                                HorizontalTextAlignment="Start" />
+
+                                            <Label Text="{Binding HourlyCrystalResetText}"
+                                                FontFamily="Poppins"
+                                                FontSize="12"
+                                                TextColor="Black"
+                                                HorizontalTextAlignment="End" />
+                                        </Grid>
+
+                                        <Grid HeightRequest="26" Padding="-5,-1">
+                                            <Border Padding="0" StrokeShape="RoundRectangle 4">
+                                                <maui:ProgressBar Progress="{Binding CrystalStolenProgress,FallbackValue=0}" 
+                                                            RoundCaps="false"
+                                                            BaseColor="#B9B8B9"
+                                                            UseGradient="True"
+                                                            GradientColor="#3ADEFF"
+                                                            ProgressColor="#A4E4F1"/>
+                                            </Border>
+                                            <Label Text="{Binding CrystalsStolenProgressText,FallbackValue='0'}"
+                                                FontFamily="PoppinsSemiBold"
+                                                FontSize="14"
+                                                TextColor="#EDF8EA"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center">
+                                                <Label.Shadow>
+                                                    <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="1" />
+                                                </Label.Shadow>
+                                            </Label>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border StrokeShape="RoundRectangle 8"
+                            Grid.Row="1"
+                            Stroke="White"
+                            StrokeThickness="2"
+                            Padding="0">
+
+                        <!-- Win-Loss Ratio Section -->
+                        <Grid ColumnSpacing="0"
+                                Grid.Row="1"
+                                Padding="0"
+                                ColumnDefinitions="*,Auto, *">
+
+                            <controls:WinLossRatioBar Grid.ColumnSpan="3"
+                                                    Wins="{Binding DisplayWins}"
+                                                    BorderColor="White"
+                                                    BorderWidth="0"
+                                                    DiagonalAngle="{Binding WinLossDiagonalAngle,FallbackValue=90}"
+                                                    Losses="{Binding DisplayLosses}"/>
+
+                            <!-- Win Label -->
+                            <VerticalStackLayout Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    Spacing="5">
+                                <controls:OutlinedLabel Text="{Binding DisplayWins,FallbackValue='0'}"
+                                                        FontFamily="Bungee"
+                                                        FontSize="40"
+                                                        TextColor="#027242"
+                                                        StrokeColor="#EDF8EA"
+                                                        StrokeWidth="2"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowOffsetY="2"
+                                                        ShadowBlur="2"/>
+
+                                <controls:OutlinedLabel Text="Wins"
+                                                        FontFamily="Poppins"
+                                                        FontSize="16"
+                                                        TextColor="#EDF8EA"
+                                                        StrokeColor="#40000000"
+                                                        StrokeWidth="1.5"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowBlur="1"
+                                                        ShadowOffsetY="1">
+                                                    <controls:OutlinedLabel.Triggers>
+                                                        <DataTrigger TargetType="controls:OutlinedLabel"
+                                                                     Binding="{Binding IsInWar}"
+                                                                     Value="False">
+                                                                <Setter Property="Text"
+                                                                        Value="War Wins"/>
+
+                                                        </DataTrigger>
+                                                    </controls:OutlinedLabel.Triggers>
+                                </controls:OutlinedLabel>
+                            </VerticalStackLayout>
+
+                            <Grid Grid.Column="1"
+                                    Padding="0,15">
+                                <Border
+                                    StrokeShape="RoundRectangle 4"
+                                    Stroke="{StaticResource BonusOrange}"
+                                    Background="{StaticResource TanGradient}"
+                                    StrokeThickness="2"
+                                    Padding="3"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <VerticalStackLayout Spacing="1">
+                                        <controls:OutlinedLabel Text="WIN-LOSS RATIO"
+                                                                FontFamily="Poppins"
+                                                                FontSize="14"
+                                                                TextColor="#EDF8EA"
+                                                                StrokeColor="#BA7412"
+                                                                StrokeWidth="2.75"/>
+
+                                        <controls:OutlinedLabel Text="{Binding WinLossRatio,FallbackValue='0'}"
+                                                                FontFamily="PoppinsSemiBold"
+                                                                FontSize="20"
+                                                                TextColor="#BA7412"
+                                                                StrokeColor="#EDF8EA"
+                                                                StrokeWidth="1.5"
+                                                                HasShadow="True"
+                                                                ShadowColor="#40000000"
+                                                                ShadowBlur="2"
+                                                                ShadowOffsetY="2"/>
+
+                                    </VerticalStackLayout>
+
+                                </Border>
+
+                            </Grid>
+
+
+                            <!-- Loss Label -->
+                            <VerticalStackLayout Grid.Column="2"
+                                    VerticalOptions="Center"
+                                    Spacing="5">
+                                <controls:OutlinedLabel Text="{Binding DisplayLosses,FallbackValue='0'}"
+                                                        FontFamily="Bungee"
+                                                        FontSize="40"
+                                                        TextColor="#721502"
+                                                        StrokeColor="#EDF8EA"
+                                                        StrokeWidth="2"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowOffsetY="2"
+                                                        ShadowBlur="2"/>
+
+                                <controls:OutlinedLabel Text="Losses"
+                                                        FontFamily="Poppins"
+                                                        FontSize="16"
+                                                        TextColor="#EDF8EA"
+                                                        StrokeColor="#40000000"
+                                                        StrokeWidth="1.5"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowBlur="1"
+                                                        ShadowOffsetY="1">
+                                                    <controls:OutlinedLabel.Triggers>
+                                                        <DataTrigger TargetType="controls:OutlinedLabel"
+                                                                     Binding="{Binding IsInWar}"
+                                                                     Value="False">
+                                                                <Setter Property="Text"
+                                                                        Value="War Losses"/>
+
+                                                        </DataTrigger>
+                                                    </controls:OutlinedLabel.Triggers>
+                                </controls:OutlinedLabel>
+                            </VerticalStackLayout>
+
+
+
+                        </Grid>
+
+                </Border>
+
+
+                    
+
+                    <!-- Active Defenders Section -->
+                    <Border Background="#027242"
+                            Grid.Row="2"
+                            Stroke="#40000000"
+                            StrokeThickness="1"
+                            Padding="5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToDefenderManagementCommand}"/>
+                        </Border.GestureRecognizers>
+                            
+
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Header -->
+                            <Grid Grid.Row="0">
+                                <controls:OutlinedLabel Text="Registered Defenders"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="16"
+                                       TextColor="#EDF8EA"
+                                       HasShadow="True"
+                                       StrokeColor="#40000000"
+                                       StrokeWidth="1"
+                                       ShadowOffsetX="0"
+                                       ShadowOffsetY="1"
+                                       ShadowBlur="1"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"/>
+
+                                <Label Text="{Binding ActiveMemberRatio}"
+                                       FontFamily="Poppins"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#83CF63"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#40000000" Offset="0,1" Radius="1" Opacity="0.25" />
+                                    </Label.Shadow>
+                                </Label>
+                            </Grid>
+
+                            <!-- Defender Avatars -->
+                            <ScrollView Grid.Row="1"
+                                      Orientation="Horizontal"
+                                      HorizontalScrollBarVisibility="Never">
+                                <HorizontalStackLayout Spacing="8"
+                                                       BindableLayout.ItemsSource="{Binding Defenders}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="guilds:GuildMember">
+                                            <Grid WidthRequest="45" HeightRequest="45">
+                                                <Ellipse Fill="#EDF8EA"
+                                                         Stroke="#40000000"
+                                                         StrokeThickness="1"
+                                                         IsVisible="{Binding HasIcon, Converter={StaticResource InverseBooleanConverter}}"/>
+                                                <Image Source="{Binding PlayerIcon}"
+                                                       Aspect="AspectFit"
+                                                       IsVisible="{Binding HasIcon}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </HorizontalStackLayout>
+                            </ScrollView>
+                        </Grid>
+                    </Border>
+
+                    <!-- Defense / Registration Section -->
+                    <Border Background="#D9D9D9"
+                            Grid.Row="3"
+                            Stroke="#40000000"
+                            StrokeThickness="1"
+                            Padding="7">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+
+                        <Grid RowDefinitions="Auto, Auto, *">
+
+                            <!-- ═══ STATE 1: WAR REGISTRATION (matched, war not yet started) ═══ -->
+
+                            <!-- Registration header -->
+                            <controls:OutlinedLabel Text="WAR REGISTRATION"
+                                                    HorizontalOptions="Start"
+                                                    Grid.Row="0"
+                                                    TextColor="#FFB800"
+                                                    FontSize="20"
+                                                    FontFamily="Bungee"
+                                                    StrokeColor="#EDF8EA"
+                                                    HasShadow="True"
+                                                    ShadowColor="#40000000"
+                                                    ShadowBlur="2"
+                                                    ShadowOffsetX="0"
+                                                    ShadowOffsetY="2"
+                                                    IsVisible="{Binding ShowRegisterForWarButton}"/>
+
+                            <!-- Registration description -->
+                            <Label Grid.Row="1"
+                                   IsVisible="{Binding ShowRegisterForWarButton}"
+                                   Text="Commit to fight in the upcoming war. You can withdraw before the war starts. Registered members count toward your guild's active member score."
+                                   TextColor="#000000"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="10"
+                                   Margin="0,0,0,4"/>
+
+                            <!-- Register / Withdraw button -->
+                            <Button Grid.Row="2"
+                                    IsVisible="{Binding ShowRegisterForWarButton}"
+                                    Text="{Binding RegisterWarMemberButtonText}"
+                                    HeightRequest="34"
+                                    FontFamily="PoppinsSemiBold"
+                                    FontSize="14"
+                                    Padding="0"
+                                    Command="{Binding RegisterAsWarMemberCommand}"
+                                    BackgroundColor="#FFB800"
+                                    TextColor="White"
+                                    CornerRadius="6" />
+
+                            <!-- ═══ STATE 2: ACTIVE WAR — DEFEND CONTROLS ═══ -->
+
+                            <!-- Defend header -->
+                            <HorizontalStackLayout Grid.Row="0"
+                                                   IsVisible="{Binding ShowDefendControls}"
+                                                   Spacing="5">
+                                <controls:OutlinedLabel Text="DEFEND"
+                                                        TextColor="#C067F7"
+                                                        FontSize="20"
+                                                        FontFamily="Bungee"
+                                                        StrokeColor="#EDF8EA"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowBlur="2"
+                                                        ShadowOffsetX="0"
+                                                        ShadowOffsetY="2"/>
+                                <controls:OutlinedLabel Text="(COST: 5SP)"
+                                                        TextColor="#EDF8EA"
+                                                        FontSize="16"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        StrokeColor="#40000000"
+                                                        HasShadow="True"
+                                                        ShadowColor="#40000000"
+                                                        ShadowBlur="1"
+                                                        ShadowOffsetX="0"
+                                                        ShadowOffsetY="1"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Defense description -->
+                            <Label Grid.Row="1"
+                                   IsVisible="{Binding ShowDefendControls}"
+                                   Text="Guild defense uses your current squad and lasts 30 hours. Your squad remains until the time expires or you reset your defense."
+                                   TextColor="#000000"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="10"/>
+
+                            <!-- Defense progress bar and Defense timer (while actively defending during War) -->
+                            <Grid Grid.Row="2" IsVisible="{Binding HasMatchedButNotStarted,Converter={StaticResource InverseBooleanConverter}}"
+                                 VerticalOptions="End">
+                                <maui:ProgressBar Grid.Row="2"
+                                         IsVisible="{Binding IsDefending}"
+                                         Progress="{Binding DefenseProgress}"
+                                         ProgressColor="#FE88EA"
+                                         BaseColor="#B9B8B9"
+                                         RoundCaps="True"
+                                         UseGradient="True"
+                                         GradientColor="#D573F5"
+                                         HeightRequest="30"
+                                         Margin="0,0,0,10"/>
+
+                                <Label Grid.Row="0"
+                                   IsVisible="{Binding IsDefending}"
+                                   Text="{Binding DefenseTimeRemaining, StringFormat='Defense Active: {0:hh\\:mm\\:ss}'}"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="14"
+                                   TextColor="#EDF8EA"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Margin="0,0,0,5">
+                                   <Label.Shadow>
+                                        <Shadow Brush="#000000"
+                                                Radius="3"
+                                                Offset="0,1"/>
+                                   </Label.Shadow>
+                                </Label>
+                            </Grid>
+
+                            <!-- Show user not participating in war -->
+                            <Grid Grid.Row="0"
+                                  IsVisible="{Binding HasMatchedButNotStarted,Converter={StaticResource InverseBooleanConverter}}">
+                                  <Label Grid.Row="0"
+                                   IsVisible="{Binding IsRegisteredForWar,Converter={StaticResource InverseBooleanConverter}}"
+                                   Text="You did not register for this war season."
+                                   TextColor="#000000"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                            </Grid>
+                            
+
+                            <!-- Refresh Defense button -->
+                            <Button Grid.Row="2"
+                                    IsVisible="{Binding ShowRefreshDefenseButton}"
+                                    Text="Refresh Defense (5 SP)"
+                                    HeightRequest="30"
+                                    FontFamily="Poppins"
+                                    FontSize="14"
+                                    Padding="0"
+                                    Command="{Binding RefreshDefenseCommand}"
+                                    BackgroundColor="#027242"
+                                    TextColor="White"
+                                    CornerRadius="6" />
+
+                            <!-- ═══ STATE 3: NOT IN WAR ═══ -->
+
+                            <Label Grid.Row="0"
+                                   IsVisible="{Binding ShowNotInWarMessage}"
+                                   Text="Not in active war season"
+                                   TextColor="#000000"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+
+                        </Grid>
+                    </Border>
+
+                    <!-- Action Buttons -->
+                    <Grid ColumnSpacing="16" Grid.Row="4" HeightRequest="90">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- History Button -->
+                        <ImageButton Grid.Column="0"
+                                    Source="icon_guild_history.png"
+                                    IsVisible="false">
+                                    <ImageButton.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+
+                        <Grid Grid.Column="0">
+                            <Grid.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Grid.Behaviors>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToWarHistoryCommand}"/>
+                            </Grid.GestureRecognizers>
+
+                            <Image Source="icon_history.png"
+                                ZIndex="1"
+                                HeightRequest="70"
+                                WidthRequest="75"
+                                VerticalOptions="Start"
+                                Aspect="AspectFill"
+                                TranslationY="-20"/>
+
+                            <Border Stroke="Black"
+                                    Grid.Column="0"
+                                    StrokeThickness="0.3"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="Transparent">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="0,2" Radius="0.5" Opacity="0.25" />
+                                    </Border.Shadow>
+                                <Grid RowDefinitions="*,0.8*">
+
+                                    <Border Grid.Row="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                EndPoint="1,0">
+                                                <GradientStop Color="#1D4897"
+                                                            Offset="0.0"/>
+                                                <GradientStop Color="#48C8EC"
+                                                            Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+
+                                    <Border BackgroundColor="#E5E5E5"
+                                            Grid.Row="1">
+                                        
+                                        <controls:OutlinedLabel
+                                            Text="HISTORY"
+                                            FontFamily="Bungee"
+                                            FontSize="20"
+                                            TextColor="#1626A3"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="3"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="2"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+
+
+                        <Grid Grid.Column="1">
+                            <Grid.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Grid.Behaviors>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AttackDefenderCommand}"/>
+                            </Grid.GestureRecognizers>
+
+                            <Image Source="battle_icon.png"
+                                ZIndex="1"
+                                HeightRequest="60"
+                                WidthRequest="65"
+                                Aspect="AspectFill"
+                                TranslationY="-10"/>
+
+                            <Border Stroke="Black"
+                                    Grid.Column="0"
+                                    StrokeThickness="0.3"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="Transparent">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="0,2" Radius="0.5" Opacity="0.25" />
+                                    </Border.Shadow>
+                                <Grid RowDefinitions="*,0.8*">
+
+                                    <Border Grid.Row="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                EndPoint="1,0">
+                                                <GradientStop Color="#FFE0B2"
+                                                            Offset="0.0"/>
+                                                <GradientStop Color="#FF5722"
+                                                            Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+
+                                    <Border BackgroundColor="#E5E5E5"
+                                            Grid.Row="1">
+                                        
+                                        <controls:OutlinedLabel
+                                            Text="BATTLE"
+                                            FontFamily="Bungee"
+                                            FontSize="20"
+                                            TextColor="#DB4C07"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="3"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="2"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="5" Padding="-15,0,-15,-10">
+                        <Border Grid.Row="5"
+                            StrokeShape="RoundRectangle 2"
+                            Background="{StaticResource GreenGradient}"
+                            Padding="-5,0,-5,0">
+                        <Grid ColumnDefinitions="Auto,*" Padding="20,15">
+
+                            <!-- Back Button -->
+                            <ImageButton Source="icon_back_outlined.png"
+                                WidthRequest="70"
+                                Grid.Column="0"
+                                HeightRequest="70"
+                                HorizontalOptions="Start"
+                                Command="{Binding GoBackCommand}"
+                                VerticalOptions="Center">
+                            </ImageButton>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="10" Padding="0,5">
+                                <controls:OutlinedLabel Text="{Binding OpposingGuildTitle}"
+                                    FontFamily="PoppinsSemiBold"
+                                    FontSize="14"
+                                    TextColor="#FFE368"
+                                    StrokeColor="#BA7412"
+                                    StrokeWidth="1"
+                                    HasShadow="True"
+                                    ShadowColor="#40000000"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="1"
+                                    ShadowBlur="1"
+                                    HorizontalOptions="End"/>
+
+                                <controls:OutlinedLabel Text="{Binding OpposingGuildName}"
+                                    FontFamily="Bungee"
+                                    FontSize="20"
+                                    TextColor="#EDF8EA"
+                                    StrokeColor="#43781C"
+                                    StrokeWidth="3"
+                                    HasShadow="True"
+                                    ShadowColor="#40000000"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="1"
+                                    ShadowBlur="1"
+                                    HorizontalOptions="End"/>
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Border>
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.PlayerPopups.SelectPlayerIconPopup"
+               x:DataType="vm:SelectPlayerIconPopupViewModel"
+               Size="340,360"
+               Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+    <toolkit:Popup.Resources>
+        <LinearGradientBrush x:Key="LightGreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#9AE589" Offset="0.0556" />
+                <GradientStop Color="#9EDA84" Offset="1.0" />
+            </LinearGradientBrush>
+    </toolkit:Popup.Resources>
+
+    <Border Padding="16"
+            Background="{StaticResource GradientBackground}"
+            StrokeShape="RoundRectangle 12">
+
+        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="16">
+
+            <!-- Title -->
+            <Label Grid.Row="0"
+                   Text="Choose Your Icon"
+                   FontSize="16"
+                   FontFamily="PoppinsSemiBold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <!-- Icon Grid -->
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding Icons}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="4"
+                                     HorizontalItemSpacing="8"
+                                     VerticalItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:IconOptionModel">
+                        <Border WidthRequest="64"
+                                HeightRequest="64"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{Binding BorderColor}"
+                                StrokeThickness="2"
+                                Padding="2">
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Border.Behaviors>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding x:DataType='vm:SelectPlayerIconPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:SelectPlayerIconPopupViewModel}}, Path=SelectIconCommand}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Image Source="{Binding FileName}"
+                                   Aspect="AspectFill"/>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Buttons -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="12">
+                <Button Grid.Column="0"
+                        Text="Cancel"
+                        Command="{Binding CancelCommand}"
+                        BackgroundColor="#333333"
+                        TextColor="White"
+                        FontFamily="Poppins"
+                        CornerRadius="8"/>
+                <Button Grid.Column="1"
+                        Text="Confirm"
+                        Command="{Binding ConfirmCommand}"
+                        Background="{StaticResource LightGreenGradient}"
+                        TextColor="White"
+                        FontFamily="PoppinsSemiBold"
+                        CornerRadius="8"
+                        IsEnabled="{Binding SelectedIcon, Converter={StaticResource StringToBoolConverter}}"/>
+            </Grid>
+
+        </Grid>
+    </Border>
+</toolkit:Popup>

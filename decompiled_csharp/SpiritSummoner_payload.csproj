@@ -1,0 +1,220 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>SpiritSummoner</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>netcoreapp9.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="SpiritSummoner.App.xaml" />
+    <None Remove="SpiritSummoner.AppShell.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardCollectionView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Controls.SquadControls.SpiritSquadCardView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Controls.SquadControls.SpiritsSquadBottomCardView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.BattleHubPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.BattleListView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.BattleView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.Controls.BattleRewardsView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.Controls.BattleTasksView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Battle.Controls.GuildPerksView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.NewGuildThreadBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.SelectFriendBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.ConfirmUserNameSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.GuildWarNotificationBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.Hub.HubBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.LinkAccountSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.Portal.PortalBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.RegisterTermsSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.ShopSheets.ShopSpiritBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.AttributesEditBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditGearBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditHeldItemBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditTalentBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.LevelUpBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.MovesEditBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritHoldNavigationSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritsMoreBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.BottomSheets.Squads.SavedSquadsBottomSheet.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Chats.ChatView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Chats.DirectMessageView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Chats.GuildChatThreadView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Collection.FullCollectionNew.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildDefenderManagementPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildHubNewPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildMembersPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildShopPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildWarBattleListPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildWarHistoryPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Guilds.GuildWarsNewPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Main.MainPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.MasterPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Onboarding.OnboardingDialoguePage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Onboarding.OnboardingSpiritsRewardPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleDebugLogPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleSummaryPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.CollectionPopups.FilterCollectionPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.DailyGiftPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.GameNewsPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.GuildPopups.CreateGuildPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildInvitationsPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildSearchFilterPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.GuildPopups.InvitePlayerPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.ItemPopups.ItemPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.PlayerPopups.SelectPlayerIconPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.QuestPopups.QuestRewardsPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.QuestPopups.SpiritOrbDropPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.Shared.CustomAlertPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.Shared.CustomConfirmationPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.Shared.SearchPlayersPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.Shared.StaticDataUpdatingPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.Shared.UpdateRequiredPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Popups.ShopPopus.InsufficientFundsPopup.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Pouch.PouchView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Quests.QuestParagraphView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Quests.QuestTaskView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Quests.QuestView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Shared.ContentResources.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Shared.NavBar.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Shared.PlayerInfoBar.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Shop.ShopHubPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Spirits.EvolveRequirementsPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Spirits.EvolveView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Spirits.SpiritDetailsView.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Startup.LoadingPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Startup.LoginPage.xaml" />
+    <None Remove="SpiritSummoner.Presentation.Views.Startup.WelcomePage.xaml" />
+    <None Remove="SpiritSummoner.Resources.Styles.Colors.xaml" />
+    <None Remove="SpiritSummoner.Resources.Styles.Styles.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.App.xaml" LogicalName="SpiritSummoner.App.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.AppShell.xaml" LogicalName="SpiritSummoner.AppShell.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardCollectionView.xaml" LogicalName="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardCollectionView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardView.xaml" LogicalName="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Controls.SquadControls.SpiritSquadCardView.xaml" LogicalName="SpiritSummoner.Presentation.Controls.SquadControls.SpiritSquadCardView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Controls.SquadControls.SpiritsSquadBottomCardView.xaml" LogicalName="SpiritSummoner.Presentation.Controls.SquadControls.SpiritsSquadBottomCardView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.BattleHubPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.BattleHubPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.BattleListView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.BattleListView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.BattleView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.BattleView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.Controls.BattleRewardsView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.Controls.BattleRewardsView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.Controls.BattleTasksView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.Controls.BattleTasksView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Battle.Controls.GuildPerksView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Battle.Controls.GuildPerksView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.NewGuildThreadBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.NewGuildThreadBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.SelectFriendBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.ChatSheets.SelectFriendBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.ConfirmUserNameSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.ConfirmUserNameSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.GuildWarNotificationBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.GuildWarNotificationBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.Hub.HubBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.Hub.HubBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.LinkAccountSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.LinkAccountSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.Portal.PortalBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.Portal.PortalBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.RegisterTermsSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.RegisterTermsSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.ShopSheets.ShopSpiritBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.ShopSheets.ShopSpiritBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.AttributesEditBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.AttributesEditBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditGearBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditGearBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditHeldItemBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditHeldItemBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditTalentBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditTalentBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.LevelUpBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.LevelUpBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.MovesEditBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.MovesEditBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritHoldNavigationSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritHoldNavigationSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritsMoreBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritsMoreBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.BottomSheets.Squads.SavedSquadsBottomSheet.xaml" LogicalName="SpiritSummoner.Presentation.Views.BottomSheets.Squads.SavedSquadsBottomSheet.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Chats.ChatView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Chats.ChatView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Chats.DirectMessageView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Chats.DirectMessageView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Chats.GuildChatThreadView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Chats.GuildChatThreadView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Collection.FullCollectionNew.xaml" LogicalName="SpiritSummoner.Presentation.Views.Collection.FullCollectionNew.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildDefenderManagementPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildDefenderManagementPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildHubNewPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildHubNewPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildMembersPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildMembersPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildShopPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildShopPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildWarBattleListPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildWarBattleListPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildWarHistoryPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildWarHistoryPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Guilds.GuildWarsNewPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Guilds.GuildWarsNewPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Main.MainPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Main.MainPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.MasterPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.MasterPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Onboarding.OnboardingDialoguePage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Onboarding.OnboardingDialoguePage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Onboarding.OnboardingSpiritsRewardPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Onboarding.OnboardingSpiritsRewardPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleDebugLogPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleDebugLogPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleSummaryPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleSummaryPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.CollectionPopups.FilterCollectionPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.CollectionPopups.FilterCollectionPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.DailyGiftPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.DailyGiftPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.GameNewsPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.GameNewsPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.GuildPopups.CreateGuildPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.GuildPopups.CreateGuildPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildInvitationsPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildInvitationsPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildSearchFilterPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildSearchFilterPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.GuildPopups.InvitePlayerPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.GuildPopups.InvitePlayerPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.ItemPopups.ItemPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.ItemPopups.ItemPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.PlayerPopups.SelectPlayerIconPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.PlayerPopups.SelectPlayerIconPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.QuestPopups.QuestRewardsPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.QuestPopups.QuestRewardsPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.QuestPopups.SpiritOrbDropPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.QuestPopups.SpiritOrbDropPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.Shared.CustomAlertPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.Shared.CustomAlertPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.Shared.CustomConfirmationPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.Shared.CustomConfirmationPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.Shared.SearchPlayersPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.Shared.SearchPlayersPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.Shared.StaticDataUpdatingPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.Shared.StaticDataUpdatingPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.Shared.UpdateRequiredPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.Shared.UpdateRequiredPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Popups.ShopPopus.InsufficientFundsPopup.xaml" LogicalName="SpiritSummoner.Presentation.Views.Popups.ShopPopus.InsufficientFundsPopup.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Pouch.PouchView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Pouch.PouchView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Quests.QuestParagraphView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Quests.QuestParagraphView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Quests.QuestTaskView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Quests.QuestTaskView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Quests.QuestView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Quests.QuestView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Shared.ContentResources.xaml" LogicalName="SpiritSummoner.Presentation.Views.Shared.ContentResources.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Shared.NavBar.xaml" LogicalName="SpiritSummoner.Presentation.Views.Shared.NavBar.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Shared.PlayerInfoBar.xaml" LogicalName="SpiritSummoner.Presentation.Views.Shared.PlayerInfoBar.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Shop.ShopHubPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Shop.ShopHubPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Spirits.EvolveRequirementsPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Spirits.EvolveRequirementsPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Spirits.EvolveView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Spirits.EvolveView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Spirits.SpiritDetailsView.xaml" LogicalName="SpiritSummoner.Presentation.Views.Spirits.SpiritDetailsView.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Startup.LoadingPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Startup.LoadingPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Startup.LoginPage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Startup.LoginPage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Presentation.Views.Startup.WelcomePage.xaml" LogicalName="SpiritSummoner.Presentation.Views.Startup.WelcomePage.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Resources.Styles.Colors.xaml" LogicalName="SpiritSummoner.Resources.Styles.Colors.xaml" />
+    <EmbeddedResource Include="SpiritSummoner.Resources.Styles.Styles.xaml" LogicalName="SpiritSummoner.Resources.Styles.Styles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Maui.Controls" />
+    <Reference Include="System.ObjectModel" />
+    <Reference Include="Microsoft.Maui.Graphics" />
+    <Reference Include="Microsoft.Maui" />
+    <Reference Include="Microsoft.Maui.Controls.Xaml" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="Plugin.Firebase.Auth" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <Reference Include="MauiIcons.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Plugin.Firebase.Firestore" />
+    <Reference Include="Plugin.Firebase.Crashlytics" />
+    <Reference Include="Plugin.Firebase.Analytics" />
+    <Reference Include="_Microsoft.Android.Resource.Designer" />
+    <Reference Include="CommunityToolkit.Maui.Core" />
+    <Reference Include="CommunityToolkit.Maui" />
+    <Reference Include="Microsoft.Maui.Essentials" />
+    <Reference Include="The49.Maui.BottomSheet" />
+    <Reference Include="epj.ProgressBar.Maui" />
+    <Reference Include="CommunityToolkit.Mvvm" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.Collections.Concurrent" />
+    <Reference Include="System.Threading" />
+    <Reference Include="System.Linq" />
+    <Reference Include="SkiaSharp.Views.Maui.Controls" />
+    <Reference Include="SkiaSharp" />
+    <Reference Include="SkiaSharp.Views.Maui.Core" />
+    <Reference Include="System.Text.RegularExpressions" />
+    <Reference Include="System.ComponentModel.TypeConverter" />
+    <Reference Include="System.Diagnostics.TraceSource" />
+    <Reference Include="System.Text.Json" />
+    <Reference Include="Microsoft.Data.Sqlite" />
+    <Reference Include="Plugin.Firebase.Core" />
+    <Reference Include="System.Console" />
+    <Reference Include="MauiIcons.FontAwesome.Solid" />
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <Reference Include="Microsoft.Extensions.Logging.Debug" />
+    <Reference Include="System.Runtime.InteropServices" />
+    <Reference Include="System.ComponentModel.Primitives" />
+    <Reference Include="Plugin.Firebase.AppCheck" />
+    <Reference Include="Xamarin.Firebase.Common" />
+    <Reference Include="System.Data.Common" />
+  </ItemGroup>
+</Project>

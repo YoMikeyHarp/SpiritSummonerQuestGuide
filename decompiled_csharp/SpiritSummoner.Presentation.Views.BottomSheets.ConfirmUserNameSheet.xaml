@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheets"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.ConfirmUserNameSheet"
+             x:DataType="vm:ConfirmUserNameSheetViewModel"
+             BackgroundColor="Transparent"
+             HasBackdrop="True"
+             CornerRadius="8">
+
+    <the49:BottomSheet.Resources>
+        <!-- Level Icon Blue Gradient -->
+        <LinearGradientBrush x:Key="LevelIconBlue" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#CEE6FA" Offset="0.0" />
+            <GradientStop Color="#A0D5F4" Offset="0.2" />
+            <GradientStop Color="#77B1E7" Offset="0.8" />
+            <GradientStop Color="#5EA1E2" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Light Green Gradient -->
+        <LinearGradientBrush x:Key="LightGreenGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#9AE589" Offset="0.0556" />
+            <GradientStop Color="#9EDA84" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Star Gradient -->
+        <LinearGradientBrush x:Key="StarGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#EDF8EA" Offset="0.0556" />
+            <GradientStop Color="#EDF8EA1A" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Navigation BG Green -->
+        <LinearGradientBrush x:Key="NavigationBGGreen" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#A8CB3F" Offset="0.0" />
+            <GradientStop Color="#7DB813" Offset="0.62" />
+            <GradientStop Color="#78B614" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Summary Blue Background -->
+        <LinearGradientBrush x:Key="SummaryBlue" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#8EE0F0" Offset="0.0" />
+            <GradientStop Color="#A1E5F3" Offset="0.25" />
+            <GradientStop Color="#AEE9F5" Offset="0.5" />
+            <GradientStop Color="#8EE0F0" Offset="0.75" />
+            <GradientStop Color="#85DDEE" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Green Button Gradient -->
+        <LinearGradientBrush x:Key="GreenButtonGradient" StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="#9AE589" Offset="0.0" />
+            <GradientStop Color="#64D855" Offset="0.25" />
+            <GradientStop Color="#64D855" Offset="0.75" />
+            <GradientStop Color="#9AE589" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <!-- Red Button Gradient -->
+        <LinearGradientBrush x:Key="RedButtonGradient" StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="#EB6756" Offset="0.0" />
+            <GradientStop Color="#E53F37" Offset="0.25" />
+            <GradientStop Color="#E53F37" Offset="0.75" />
+            <GradientStop Color="#EB6756" Offset="1.0" />
+        </LinearGradientBrush>
+    </the49:BottomSheet.Resources>
+
+    <Grid BackgroundColor="#EDF8EA"
+          VerticalOptions="End"
+          RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+          Padding="0,16,0,32">
+
+        <!-- Title: Confirm Username -->
+        <VerticalStackLayout Grid.Row="0" Padding="32,0" Spacing="5">
+            <outline:OutlinedLabel Text="Confirm Username"
+                                   TextColor="#027242"
+                                   FontFamily="PoppinsBold"
+                                   FontSize="32"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowBlur="1"
+                                   ShadowOffsetY="1"/>
+
+            <Label Text="Take a minute to make sure the username you've selected is correct."
+                   TextColor="#000000"
+                   FontFamily="PoppinsMedium"
+                   FontSize="16"
+                   Margin="0,8,0,0"/>
+        </VerticalStackLayout>
+
+        <!-- Preview Area with Blue Background -->
+        <Border Grid.Row="1"
+                StrokeShape="RoundRectangle 0"
+                StrokeThickness="1"
+                Stroke="#40000000"
+                Background="{StaticResource SummaryBlue}"
+                HeightRequest="193"
+                Margin="0,24,0,0">
+
+            <Grid>
+                <!-- Circles Overlay Pattern -->
+                <Image Source="circles_overlap.png"
+                       Aspect="AspectFill"
+                       Opacity="1"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"/>
+
+                <!-- Player Info Bar Preview -->
+                <Grid Padding="25,0"
+                      VerticalOptions="Center"
+                      ColumnDefinitions="5, *">
+
+                    <!-- Player Rank Icon -->
+                    <Grid Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          ZIndex="2"
+                          HorizontalOptions="Start"
+                          WidthRequest="65"
+                          HeightRequest="65">
+
+                        <!-- Outer Circle -->
+                        <Ellipse Fill="{StaticResource LightGreenGradient}"
+                                 Stroke="#588049"
+                                 HorizontalOptions="Start"
+                                 StrokeThickness="1">
+                            <Ellipse.Shadow>
+                                <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25" />
+                            </Ellipse.Shadow>
+                        </Ellipse>
+
+                        <!-- Inner Circle -->
+                        <Ellipse WidthRequest="55"
+                                 HeightRequest="55"
+                                 Fill="{StaticResource LevelIconBlue}"
+                                 Stroke="#40000000"
+                                 StrokeThickness="0.625"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+
+                        <!-- Rank Label -->
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             TranslationY="1"
+                                             Spacing="5">
+                            <outline:OutlinedLabel
+                                Text="RANK"
+                                FontSize="12"
+                                FontFamily="PoppinsSemiBold"
+                                TextColor="#FFE368"
+                                StrokeColor="#BA7412"
+                                StrokeWidth="1.5"
+                                HorizontalOptions="Center"
+                                HasShadow="True"
+                                ShadowOffsetX="0"
+                                ShadowOffsetY="1"
+                                ShadowBlur="1"
+                                ShadowSpread="0"
+                                ShadowColor="#40000000" />
+
+                            <outline:OutlinedLabel
+                                Text="1"
+                                FontSize="20"
+                                FontFamily="Bungee"
+                                TextColor="#C96D1E"
+                                StrokeColor="#EDF8EA"
+                                StrokeWidth="4"
+                                HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- EXP Display & ProgressBar -->
+                    <Grid Grid.Column="1"
+                          ZIndex="1"
+                          Padding="25,0,25,0"
+                          HorizontalOptions="Fill"
+                          VerticalOptions="End">
+
+                        <outline:OutlinedLabel
+                            Text="EXP 0/100"
+                            FontFamily="PoppinsExtraBold"
+                            FontSize="12"
+                            TextColor="#EDF8EA"
+                            StrokeColor="#2E4A0F"
+                            StrokeWidth="2.5"
+                            HorizontalOptions="Center"
+                            ZIndex="2"
+                            HasShadow="True"
+                            ShadowOffsetX="0"
+                            ShadowOffsetY="1"
+                            TranslationY="3"
+                            ShadowBlur="1"
+                            ShadowColor="#40000000" />
+
+                        <maui:ProgressBar Progress="0"
+                                          HeightRequest="12"
+                                          BaseColor="#9AE589"
+                                          ProgressColor="#FFE804"
+                                          GradientColor="#FCE605"
+                                          UseGradient="True"
+                                          RoundCaps="True"
+                                          VerticalOptions="End"
+                                          ZIndex="1"/>
+                    </Grid>
+
+                    <!-- Main Info Bar -->
+                    <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 30"
+                            HeightRequest="60"
+                            Padding="0,0,5,0"
+                            StrokeThickness="1"
+                            Stroke="#40000000"
+                            Background="{StaticResource NavigationBGGreen}">
+
+                        <Grid ColumnDefinitions="65,*,Auto"
+                              HorizontalOptions="Fill"
+                              VerticalOptions="Center"
+                              ZIndex="2"
+                              Padding="0">
+
+                            <!-- Player Name -->
+                            <outline:OutlinedLabel Grid.Column="1"
+                                                   Text="{Binding UserName}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="14"
+                                                   TextColor="#EDF8EA"
+                                                   StrokeColor="#00000080"
+                                                   StrokeWidth="2"
+                                                   TranslationY="-2"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center"
+                                                   ZIndex="2"
+                                                   HasShadow="false"/>
+
+                            <!-- Background Pattern -->
+                            <controls:BlendModeImage
+                                Source="infobarbackground.png"
+                                BlendMode="Multiply"
+                                OpacityValue="1"
+                                BlendBackground="{StaticResource NavigationBGGreen}"
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="3"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"/>
+
+                            <!-- Player Badge -->
+                            <Image Source="badge_bronze.png"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="2"
+                                   HeightRequest="50"
+                                   HorizontalOptions="Start"
+                                   ZIndex="2"
+                                   VerticalOptions="Center"/>
+
+                            <!-- Star Background -->
+                            <Path Grid.RowSpan="2"
+                                  Grid.Column="2"
+                                  Fill="{StaticResource StarGradient}"
+                                  Aspect="Uniform"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  WidthRequest="40"
+                                  HeightRequest="40"
+                                  Scale="1.2"
+                                  Opacity="0.7"
+                                  TranslationY="-5"
+                                  Data="M 25 0 L 31 17 L 50 19 L 35 31 L 39 50 L 25 40 L 11 50 L 15 31 L 0 19 L 19 17 Z" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Notice Text -->
+        <Label Grid.Row="2"
+               Text="NOTICE: Your username can only be changed later with the use of premium currency."
+               TextColor="#EB6756"
+               FontFamily="PoppinsBold"
+               FontSize="14"
+               HorizontalTextAlignment="Center"
+               Margin="39,24,39,0"/>
+
+        <!-- Buttons Row -->
+        <Grid Grid.Row="3"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="16"
+              Padding="32,24,32,0">
+
+            <!-- Cancel Button (Red) -->
+            <Border Grid.Column="0"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="1"
+                    Stroke="#40000000"
+                    HeightRequest="48"
+                    Background="{StaticResource RedButtonGradient}">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                           DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                           PressedOpacity="0.6"
+                                           PressedScale="0.95"
+                                           TouchGestureCompleted="Cancel_TouchGestureCompleted1"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="0,2"
+                            Opacity="0.25"
+                            Radius="2"/>
+                </Border.Shadow>
+
+                <outline:OutlinedLabel Text="Cancel"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="14"
+                                       StrokeColor="#40000000"
+                                       StrokeWidth="2"
+                                       HasShadow="True"
+                                       ShadowColor="black"
+                                       ShadowBlur="1"
+                                       ShadowOffsetY="1"/>
+            </Border>
+
+            <!-- Confirm Button (Green) -->
+            <Border Grid.Column="1"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="1"
+                    Stroke="#40000000"
+                    HeightRequest="48"
+                    Background="{StaticResource GreenButtonGradient}">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                           DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                           PressedOpacity="0.6"
+                                           PressedScale="0.95"
+                                           TouchGestureCompleted="Confirm_TouchGestureCompleted"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="0,2"
+                            Opacity="0.25"
+                            Radius="2"/>
+                </Border.Shadow>
+
+                <outline:OutlinedLabel Text="Confirm"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="14"
+                                       StrokeColor="#40000000"
+                                       StrokeWidth="2"
+                                       HasShadow="True"
+                                       ShadowColor="black"
+                                       ShadowBlur="1"
+                                       ShadowOffsetY="1"/>
+            </Border>
+        </Grid>
+    </Grid>
+</the49:BottomSheet>

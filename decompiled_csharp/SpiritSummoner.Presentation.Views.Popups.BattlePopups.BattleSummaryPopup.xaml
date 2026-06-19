@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:converters="clr-namespace:SpiritSummoner.Presentation.Converters"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleSummaryPopup"
+               x:DataType="vm:BattleSummaryPopupViewModel"
+               Closed="Popup_Closed"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Grid Padding="15,25" RowDefinitions="Auto, *, Auto, Auto, Auto" RowSpacing="15"
+            Background="{Binding BackGround}">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding TapToExitCommand}"/>
+        </Grid.GestureRecognizers>
+
+        <Image Source="dots_offset_8px.png" Grid.RowSpan="4" Aspect="AspectFill"/>
+
+        <!--Title-->
+        <VerticalStackLayout Grid.Row="0">
+            <Label Text="RESULTS" VerticalOptions="Start" FontSize="24" FontFamily="PoppinsSemiBold" HorizontalOptions="Center" TextColor="#40000000" Opacity="0.8"/>
+            <outline:OutlinedLabel Text="{Binding OutcomeText}" VerticalOptions="Start" FontSize="65" FontAttributes="Bold" FontFamily="Poppins" HorizontalOptions="Center" TextColor="#EDF8EA" StrokeColor="#40000000" StrokeWidth="4" HasShadow="True" ShadowColor="#40000000" ShadowBlur="4" ShadowOffsetY="4"/>
+        </VerticalStackLayout>
+
+        <!-- Panels -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*" RowDefinitions="Auto,*" Padding="5" ColumnSpacing="25">
+
+            <!-- PLAYER BANNER -->
+            <Grid Grid.Column="0" Grid.Row="0" ZIndex="2">
+
+
+                <Border VerticalOptions="Center" StrokeShape="RoundRectangle 8" Padding="35,0" TranslationY="-20" HorizontalOptions="Center" BackgroundColor="#027242" Stroke="#40000000" Scale="0.95" ZIndex="3">
+                    <Border.Shadow>
+                        <Shadow Brush="#40000000" Offset="0,0" Radius="8"/>
+                    </Border.Shadow>
+                    <Label Text="{Binding PlayerRank,StringFormat='Level {0}'}" TextColor="#EDF8EA" FontFamily="PoppinsBold" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Border>
+
+                <Border BackgroundColor="#EDF8EA" StrokeShape="RoundRectangle 10" VerticalOptions="End" HorizontalOptions="Fill" Padding="4" Stroke="#027242" StrokeThickness="3" TranslationY="10" Scale="1.15" ZIndex="2">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding PlayerName}" TextColor="#027242" FontFamily="PoppinsSemiBold" FontSize="14" LineBreakMode="TailTruncation" HorizontalOptions="Center"/>
+                        <Label Text="{Binding PlayerGuildName}" FontSize="12" FontFamily="PoppinsSemiBold" TextColor="#80000000" LineBreakMode="TailTruncation" IsVisible="{Binding PlayerGuildName, Converter={toolkit:IsStringNotNullOrEmptyConverter}}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- Player Spirits -->
+            <Border Grid.Column="0" Grid.Row="1" Background="{StaticResource TanGradient}" StrokeShape="RoundRectangle 8" Stroke="#40000000" ZIndex="1" Padding="5,0,5,5" Margin="0, 5, 0, 0">
+                <FlexLayout Direction="Column" AlignItems="Center" VerticalOptions="Fill" JustifyContent="SpaceEvenly" BindableLayout.ItemsSource="{Binding PlayerSpirits}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="vm:SpriteModelResultsRecord">
+                            <Border Stroke="#B0AE8D" BackgroundColor="#EDF8EA" StrokeThickness="2" HeightRequest="120" StrokeShape="8">
+                                <Grid>
+                                    <Image Source="{Binding image}" Aspect="AspectFill" Scale="1.2" Opacity="{Binding opacity}"/>
+                                    <Image Source="{Binding imageOutcome}" Aspect="AspectFit" HeightRequest="45" HorizontalOptions="End" VerticalOptions="End"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </Border>
+
+            <!-- ENEMY BANNER -->
+            <Grid Grid.Column="1" Grid.Row="0" ZIndex="2">
+
+
+                <Border VerticalOptions="Center" StrokeShape="RoundRectangle 8" Padding="35,0" TranslationY="-19" HorizontalOptions="Center" BackgroundColor="#721502" Stroke="#40000000" Scale="0.95" ZIndex="3">
+                    <Border.Shadow>
+                        <Shadow Brush="#40000000" Offset="0,0" Radius="8"/>
+                    </Border.Shadow>
+                    <Label Text="{Binding EnemyRank,StringFormat='Level {0}'}" TextColor="#EDF8EA" FontFamily="PoppinsBold" HorizontalOptions="Center"/>
+                </Border>
+
+                <Border BackgroundColor="#EDF8EA" StrokeShape="RoundRectangle 10" VerticalOptions="End" HorizontalOptions="Fill" Padding="4" Stroke="#721502" StrokeThickness="3" TranslationY="10" Scale="1.15" ZIndex="2">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding EnemyName}" TextColor="#FFAF2121" FontFamily="PoppinsSemiBold" FontSize="14" LineBreakMode="TailTruncation" HorizontalOptions="Center"/>
+                        <Label Text="{Binding EnemyGuildname}" FontSize="12" FontFamily="PoppinsSemiBold" TextColor="#80000000" LineBreakMode="TailTruncation" IsVisible="{Binding EnemyGuildname, Converter={toolkit:IsStringNotNullOrEmptyConverter}}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- Enemy Spirits -->
+            <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource TanGradient}" StrokeShape="RoundRectangle 8" Stroke="#40000000" ZIndex="1" x:Name="enemyLineup" Padding="5,0,5,5" Margin="0, 5, 0, 0">
+                <FlexLayout Direction="Column" AlignItems="Center" VerticalOptions="Fill" JustifyContent="SpaceEvenly" BindableLayout.ItemsSource="{Binding EnemySpirits}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="vm:SpriteModelResultsRecord">
+                            <Border Stroke="#B0AE8D" BackgroundColor="#EDF8EA" StrokeThickness="2" HeightRequest="120" StrokeShape="8">
+                                <Grid>
+                                    <Image Source="{Binding image}" Aspect="AspectFill" Scale="1.2" Opacity="{Binding opacity}"/>
+                                    <Image Source="{Binding imageOutcome}" Aspect="AspectFit" HeightRequest="45" HorizontalOptions="End" VerticalOptions="End"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </Border>
+        </Grid>
+
+        <!-- Rewards: Added NoWrap to headers so they don't break -->
+        <Grid ColumnDefinitions="*,*,*,*" Grid.Row="2" HeightRequest="45" ColumnSpacing="2" IsVisible="{Binding HasRewards}" Padding="0" Margin="0, 10, 0, 0">
+            <Border Grid.Column="0" StrokeShape="RoundRectangle 8" Stroke="#F5CC37" BackgroundColor="#EDF8EA" StrokeThickness="2" Padding="5">
+                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="5">
+                    <Image Source="icon_gold_reward.png" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center"/>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="-5">
+                        <Label Text="GOLD" FontFamily="PoppinsSemiBold" TextColor="#80000000" FontSize="10" VerticalOptions="Center" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding EarnedGold}" FontFamily="PoppinsSemiBold" TextColor="#000000" FontSize="16" VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1" StrokeShape="RoundRectangle 8" Stroke="#FF4499D5" BackgroundColor="White" StrokeThickness="2" Padding="5">
+                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="5">
+                    <Image Source="icon_experience.avif" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center"/>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="-5">
+                        <Label Text="EXP" FontFamily="PoppinsSemiBold" TextColor="#80000000" FontSize="10" VerticalOptions="Center" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding EarnedEXP}" FontFamily="PoppinsSemiBold" HorizontalOptions="Start" TextColor="#000000" FontSize="16" VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" StrokeShape="RoundRectangle 8" Stroke="Gray" BackgroundColor="White" StrokeThickness="2" Padding="5">
+                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="5">
+                    <Image Source="icon_reputation.png" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center"/>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="-5">
+                        <Label Text="REP" FontFamily="PoppinsSemiBold" TextColor="#80000000" FontSize="10" VerticalOptions="Center" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding EarnedReputation}" FontFamily="PoppinsSemiBold" HorizontalOptions="Start" TextColor="#000000" FontSize="16" VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <!-- SCORE -->
+            <Border Grid.Column="3" StrokeShape="RoundRectangle 8" Stroke="#027242" BackgroundColor="White" StrokeThickness="2" Padding="5">
+                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="5">
+                    <Image Source="icon_star.png" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center"/>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="-5">
+                        <Label Text="SCORE" FontFamily="PoppinsSemiBold" TextColor="#80000000" FontSize="10" VerticalOptions="Center" LineBreakMode="NoWrap"/>
+                        <Label Text="{Binding ScoreChange, StringFormat='{0:+0;-0;0}'}" FontFamily="PoppinsSemiBold" HorizontalOptions="Start" TextColor="{Binding TextColor}" FontSize="16" VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- View Battle Log (alpha/dev only) -->
+        <Label Grid.Row="3" Text="View Battle Log" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="PoppinsSemiBold" FontSize="13" TextColor="{Binding TextColor}" Opacity="0.85" TextDecorations="Underline" IsVisible="{Binding IsBattleLogAvailable}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ViewBattleLogCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- Tap to Continue -->
+        <outline:OutlinedLabel Text="Tap to Continue" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" Opacity="0.7" TextColor="{Binding TextColor}" FontFamily="PoppinsBold" FontSize="24" StrokeColor="#EDF8EA" StrokeWidth="2" HasShadow="True" ShadowOffsetX="0" ShadowOffsetY="2" ShadowBlur="2" ShadowColor="#40000000"/>
+
+    </Grid>
+</toolkit:Popup>

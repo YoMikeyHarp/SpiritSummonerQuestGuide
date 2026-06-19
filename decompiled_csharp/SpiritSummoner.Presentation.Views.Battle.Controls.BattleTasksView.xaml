@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Battle.Controls.BattleTasksView"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Battles"
+             x:DataType="vm:BattleTasksViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12,10" Spacing="10">
+
+            <!-- Loading -->
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               Color="White"
+                               HeightRequest="32"/>
+
+            <!-- Error -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="#FF6B6B"
+                   FontFamily="Poppins"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"/>
+
+            <!-- Task cards -->
+            <CollectionView ItemsSource="{Binding Tasks}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:BattleTaskItemViewModel">
+
+                        <Border StrokeShape="RoundRectangle 8"
+                                Stroke="#44FFFFFF"
+                                StrokeThickness="0.5"
+                                BackgroundColor="#22FFFFFF"
+                                Padding="12,10">
+                            <VerticalStackLayout Spacing="8">
+
+                                <!-- Title + progress count -->
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding Title}"
+                                           TextColor="White"
+                                           FontFamily="Poppins"
+                                           FontAttributes="Bold"
+                                           FontSize="13"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding ProgressText}"
+                                           TextColor="#BBFFFFFF"
+                                           FontFamily="Poppins"
+                                           FontSize="12"
+                                           VerticalTextAlignment="Center"/>
+                                </Grid>
+
+                                <!-- Description -->
+                                <Label Text="{Binding Description}"
+                                       TextColor="#AAFFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="11"/>
+
+                                <!-- Progress bar -->
+                                <ProgressBar Progress="{Binding FillProgress}"
+                                             ProgressColor="#7ED4FF"
+                                             HeightRequest="6"/>
+
+                                <!-- Rewards -->
+                                <HorizontalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasGoldReward}">
+                                        <Image Source="icon_crystal.png" HeightRequest="14" WidthRequest="14" Aspect="AspectFit"/>
+                                        <Label TextColor="#FFE368" FontFamily="Poppins" FontSize="11">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="+"/><Span Text="{Binding GoldReward}"/><Span Text=" Crystals"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasEnergyReward}">
+                                        <Image Source="icon_experience.png" HeightRequest="14" WidthRequest="14" Aspect="AspectFit"/>
+                                        <Label TextColor="#7EC8E3" FontFamily="Poppins" FontSize="11">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="+"/><Span Text="{Binding EnergyReward}"/><Span Text=" Energy"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasGuildCoinsReward}">
+                                        <Image Source="icon_guild.png" HeightRequest="14" WidthRequest="14" Aspect="AspectFit"/>
+                                        <Label TextColor="#B8FFB0" FontFamily="Poppins" FontSize="11">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="+"/><Span Text="{Binding GuildCoinsReward}"/><Span Text=" Guild Coins"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                </HorizontalStackLayout>
+
+                                <!-- Claim button -->
+                                <Border StrokeShape="RoundRectangle 6"
+                                        Stroke="Transparent"
+                                        HeightRequest="36"
+                                        IsVisible="{Binding CanClaim}">
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior
+                                            DefaultAnimationDuration="200"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.6"
+                                            PressedScale="0.95"/>
+                                    </Border.Behaviors>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClaimCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Color="#FFD700" Offset="0"/>
+                                            <GradientStop Color="#F08000" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Label Text="CLAIM REWARD"
+                                           TextColor="Black"
+                                           FontFamily="Poppins"
+                                           FontAttributes="Bold"
+                                           FontSize="12"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                </Border>
+
+                                <!-- Claimed -->
+                                <Label Text="✓ Claimed"
+                                       TextColor="#88FFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="11"
+                                       HorizontalTextAlignment="Center"
+                                       IsVisible="{Binding IsRewardClaimed}"/>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentView>

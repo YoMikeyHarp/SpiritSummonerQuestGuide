@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Battles"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:Class="SpiritSummoner.Presentation.Views.Battle.BattleView"
+             x:DataType="vm:BattleViewModelRefactored"
+             xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="Black">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Black"
+                                   StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <cnv:StatusBarColorConverter x:Key="StatusBarColorConverter"/>
+        <cnv:TypeToColorConverter x:Key="TypeToColorConverter"/>
+        <cnv:BattleHPColorConverter x:Key="BattleHPColorConverter"/>
+        <cnv:DamageTextColorConverter x:Key="DamageTextColorConverter"/>
+        <cnv:EffectivenessIconConverter x:Key="EffectivenessIconConverter"/>
+    </ContentPage.Resources>
+
+    <Grid>
+
+        <!-- VS Screen Overlay (Single VS screen) -->
+        <Image x:Name="VsCanvas"
+               Source="fight_vs_screen.png"
+               Aspect="AspectFit"
+               VerticalOptions="Center"
+               Opacity="{Binding VsScreenOpacity}"
+               IsVisible="{Binding ShowVsScreen}"/>
+        
+        <Grid IsVisible="{Binding ShowChallenge}"
+                BackgroundColor="#B7000000"
+                ZIndex="20">
+
+                <Image Source="{Binding ChallengerBackgroundImage}"
+                       Aspect="AspectFit"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill"/>
+                
+        </Grid>
+
+        <!-- Main Battle Content -->
+        <Grid x:Name="BattleContent"
+              RowDefinitions="*,*"
+              Padding="10,15"
+              IsVisible="{Binding ShowVsScreen, Converter={StaticResource InverseBooleanConverter}}">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="1,0"
+                                     EndPoint="0,1">
+                    <GradientStop Color="{Binding ActiveEnemy.Type1,Converter={StaticResource TypeToColorConverter}}"
+                            Offset="0.0"/>
+                    <GradientStop Color="#B7B7B7"
+                            Offset="0.5"/>
+                    <GradientStop Color="{Binding ActivePlayerSpirit.Type1,Converter={StaticResource TypeToColorConverter}}"
+                            Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <!-- Background Image -->
+            <Image Grid.RowSpan="2"
+                x:Name="BattleBackground"
+                Source="bg_battleview.png"
+                Scale="1.2"
+                Aspect="AspectFill"/>
+
+            <!-- Enemy Section (Top Half) -->
+            <Grid Grid.Row="0"
+                  RowSpacing="15"
+                  RowDefinitions="70, *">
+
+                <!-- Enemy Header -->
+                <Border Grid.Row="0"
+                        IsVisible="{Binding Is3v3}"
+                        BackgroundColor="#EDF8EA"
+                        StrokeShape="RoundRectangle 8"
+                        Stroke="#A1A2B0"
+                        StrokeThickness="2">
+                    <Grid ColumnDefinitions="*,210"
+                          Padding="10">
+
+                        <VerticalStackLayout Grid.Column="0">
+
+                            <Label Text="{Binding ActiveEnemy.PlayerName}"
+                                   TextColor="#721502"
+                                   FontSize="16"
+                                   LineBreakMode="TailTruncation"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalOptions="Start"/>
+
+                            <Label Text="{Binding EnemyGuildName}"
+                                   TextColor="#4D000000"
+                                   FontSize="16"
+                                   LineBreakMode="TailTruncation"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalOptions="Start"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- Enemy Lineup -->
+                        <Border Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Padding="0,0"
+                                HeightRequest="80"
+                                IsVisible="{Binding Is3v3}"
+                                StrokeShape="RoundRectangle 0">
+                            <FlexLayout BindableLayout.ItemsSource="{Binding EnemySpirits}"
+                                        JustifyContent="SpaceBetween"
+                                        AlignItems="Stretch">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:SpriteModel">
+                                        <Grid>
+                                            <Border StrokeShape="RoundRectangle 0"
+                                                    Stroke="#A1A2B0"
+                                                    BackgroundColor="transparent">
+                                                <Grid>
+                                                    <Image Source="{Binding Image}"
+                                                           Aspect="AspectFill"
+                                                           WidthRequest="90"
+                                                           HeightRequest="60"/>
+                                                    <BoxView BackgroundColor="#9C000000"
+                                                             IsVisible="{Binding IsFainted}"/>
+                                                </Grid>
+                                                
+                                            </Border>
+                                            <Border HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    BackgroundColor="Transparent"
+                                                    Stroke="Transparent"
+                                                    IsVisible="false"
+                                                    TranslationY="-5">
+                                                <Image Source="{Binding Type1,Converter={StaticResource NameToImageConverter}}"
+                                                       Aspect="AspectFit"
+                                                       HeightRequest="25"/>
+                                            </Border>
+                                            <Border HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    BackgroundColor="Transparent"
+                                                    Stroke="Transparent"
+                                                    TranslationY="-5"
+                                                    IsVisible="false">
+                                                <Image Source="{Binding Type2,Converter={StaticResource NameToImageConverter}}"
+                                                       Aspect="AspectFit"
+                                                       HeightRequest="25"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </Border>
+
+
+
+
+
+                    </Grid>
+
+                </Border>
+
+                <!-- Enemy Battle Area -->
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,*">
+
+                    <!-- Enemy Stats Panel -->
+                    <Grid Grid.Column="0"
+                          VerticalOptions="Center"
+                          Padding="0"
+                          ZIndex="1"
+                          RowDefinitions="Auto,Auto,Auto,30">
+
+                        <!-- Enemy Health Bar -->
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="20"
+                            Padding="5,0">
+                            <outline:OutlinedLabel Grid.Column="0"
+                                    Text="{Binding ActiveEnemy.HP}"
+                                    TextColor="#EDF8EA"
+                                    HorizontalOptions="Start"
+                                    ZIndex="1"
+                                    TranslationY="-10"
+                                    FontSize="40"
+                                    FontFamily="PoppinsExtraBold"
+                                    StrokeColor="#721502"
+                                    StrokeWidth="3"
+                                    HasShadow="True"
+                                    ShadowBlur="0"
+                                    ShadowSpread="0"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="1"
+                                    ShadowColor="#BA7412"/>
+
+                            <maui:ProgressBar Grid.Column="0"
+                                x:Name="EnemyHealthBar"
+                                Progress="{Binding ActiveEnemy.HealthPercentage}"
+                                BaseColor="#721502"
+                                WidthRequest="150"
+                                HeightRequest="20"
+                                RoundCaps="True"
+                                ProgressColor="{Binding ActiveEnemy.HealthPercentage,Converter={StaticResource BattleHPColorConverter}}"/>
+
+                            <outline:OutlinedLabel Grid.Column="1"
+                                Text="HP"
+                                TextColor="#83CF63"
+                                FontFamily="Bungee"
+                                FontSize="20"
+                                StrokeColor="#014025"
+                                StrokeWidth="3"
+                                HasShadow="True"
+                                ShadowBlur="2"
+                                ShadowOffsetY="2"/>
+
+                        </Grid>
+
+                        <!-- Enemy Name -->
+                        <outline:OutlinedLabel Grid.Row="1"
+                                               Text="{Binding ActiveEnemy.Name}"
+                                               HorizontalOptions="Start"
+                                               FontSize="{Binding ActiveEnemy.Name, Converter={cnv:NicknameToFontSizeConverter}, ConverterParameter=24}"
+                                               TextColor="#FFE368"
+                                               FontFamily="PoppinsSemiBold"
+                                               StrokeColor="#BA7412"
+                                               StrokeWidth="3"
+                                               HasShadow="True"
+                                               ShadowBlur="1"
+                                               ShadowSpread="0"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               ShadowColor="#40000000"/>
+
+                        <!-- Enemy Level -->
+                        <HorizontalStackLayout Grid.Row="2"
+                                               Spacing="5"
+                                               Padding="5">
+
+                            <outline:OutlinedLabel Text="LVL"
+                                FontSize="12"
+                                FontFamily="PoppinsSemiBold"
+                                TextColor="#EDF8EA"
+                                StrokeColor="#000000"
+                                StrokeWidth="1.5"/>
+
+                            <outline:OutlinedLabel Text="{Binding ActiveEnemy.Level}"
+                                                   FontSize="20"
+                                                   FontFamily="Bungee"
+                                                   TextColor="#EDF8EA"
+                                                   StrokeColor="#000000"
+                                                   StrokeWidth="2.5"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Enemy Types -->
+                        <HorizontalStackLayout Grid.Row="3">
+                            <Image Source="{Binding ActiveEnemy.Type1,Converter={StaticResource NameToImageConverter}}"
+                                   Aspect="AspectFit"/>
+                            <Image Source="{Binding ActiveEnemy.Type2,Converter={StaticResource NameToImageConverter}}"
+                                   Aspect="AspectFit"
+                                   IsVisible="{Binding ActiveEnemy.HasType2}"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+
+                    <!-- Enemy Sprite Area -->
+                    <Grid Grid.Column="1"
+                          RowDefinitions="*"
+                          x:Name="EnemyArea">
+                        <!-- Platform -->
+                        <Image Source="{Binding ActiveEnemy.Type1,Converter={StaticResource PlatformImageConverter}}"
+                               Aspect="AspectFill"
+                               TranslationY="30"
+                               WidthRequest="350"
+                               HeightRequest="170"/>
+
+                        <!-- Enemy Sprite -->
+                        <Image Source="{Binding ActiveEnemy.Image}"
+                               x:Name="EnemySprite"
+                               VerticalOptions="Start"
+                               Aspect="AspectFit"
+                               HeightRequest="250"
+                               WidthRequest="250"
+                               Opacity="{Binding ActiveEnemy.Opacity}"/>
+
+                        <!-- Enemy Damage Display -->
+                        <HorizontalStackLayout HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               x:Name="DamageIndicatorEnemy"
+                                               IsVisible="{Binding ShowDamageEnemy}"
+                                               Spacing="5">
+                            <outline:OutlinedLabel Text="{Binding DamageText}"
+                                                   FontSize="64"
+                                                   FontFamily="Bungee"
+                                                   TextColor="{Binding DamageTextColor}"
+                                                   StrokeColor="{Binding DamageStrokeColor}"
+                                                   StrokeWidth="5"
+                                                   HasShadow="True"
+                                                   ShadowBlur="4"
+                                                   ShadowOffsetY="4"
+                                                   ShadowColor="#40000000"/>
+                            <Image Source="{Binding Effectiveness,Converter={StaticResource EffectivenessIconConverter}}"
+                                   HeightRequest="46"
+                                   IsVisible="{Binding ShowHealingEnemy}"
+                                   Aspect="AspectFit"/>
+                            <Image Source="icon_heart_common.webp"
+                                   HeightRequest="46"
+                                   IsVisible="{Binding ShowHealingEnemy}"
+                                   Aspect="AspectFit"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Critical Hit Label (enemy side) -->
+                        <outline:OutlinedLabel x:Name="CriticalLabelEnemy"
+                                               Text="CRITICAL!"
+                                               IsVisible="False"
+                                               Opacity="0"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               TranslationY="-70"
+                                               FontSize="32"
+                                               FontFamily="Bungee"
+                                               TextColor="#FFE500"
+                                               StrokeColor="#8B0000"
+                                               StrokeWidth="4"
+                                               HasShadow="True"
+                                               ShadowBlur="8"
+                                               ShadowOffsetY="3"
+                                               ShadowColor="#FF0000"
+                                               ZIndex="10"/>
+
+                        <!-- Status Effect Badge (enemy side) -->
+                        <Border x:Name="StatusBadgeEnemy"
+                                IsVisible="False"
+                                Opacity="0"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="0"
+                                Padding="14,6"
+                                ZIndex="10"
+                                BackgroundColor="{Binding StatusEffectColor}">
+                            <Label Text="{Binding StatusEffectText}"
+                                   TextColor="White"
+                                   FontFamily="PoppinsBold"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                    </Grid>
+                    
+
+                    <!-- Enemy Status Icon Stack -->
+                    <HorizontalStackLayout Grid.Column="0"
+                                         Grid.ColumnSpan="2"
+                                         HorizontalOptions="Start"
+                                         VerticalOptions="Start"
+                                         Spacing="6"
+                                         Padding="0,0,10,0"
+                                         ZIndex="15">
+                        <Border x:Name="EvasionBadgeEnemy"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#2E2F32"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_evasion.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                        <Border x:Name="PoisonBadgeEnemy"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#8520D0"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_poisoned.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                        <Border x:Name="HealingBadgeEnemy"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#FE120F"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_healthregen.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <!-- Enemy Move Indicator -->
+                    <Grid Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          HorizontalOptions="End">
+                        <Border BackgroundColor="#EDF8EA"
+                                StrokeShape="RoundRectangle 4"
+                                Stroke="#42000040"
+                                StrokeThickness="1"
+                                HeightRequest="35"
+                                x:Name="MoveIndicatorEnemy"
+                                Opacity="0.9"
+                                IsVisible="{Binding ShowMoveIndicatorEnemy}">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Radius="5"/>
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="32,Auto"
+                                  ColumnSpacing="5"
+                                  Padding="5,0">
+                                <Image Source="{Binding CurrentMoveTypeIcon}"
+                                       Grid.Column="0"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding CurrentMoveName}"
+                                       TextColor="Black"
+                                       FontFamily="PoppinsBold"
+                                       MaxLines="1"
+                                       VerticalOptions="Center"
+                                       FontSize="16"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Player Section (Bottom Half) -->
+            <Grid Grid.Row="1"
+                  RowSpacing="15"
+                  RowDefinitions="*, 70">
+
+                <!-- Player Battle Area -->
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*,*">
+
+                    <!-- Player Sprite Area -->
+                    <Grid Grid.Column="0"
+                          RowDefinitions="*"
+                          x:Name="PlayerArea">
+                        <!-- Platform -->
+                        <Image Source="{Binding ActivePlayerSpirit.Type1,Converter={StaticResource PlatformImageConverter}}"
+                               Aspect="AspectFill"
+                               WidthRequest="350"
+                               VerticalOptions="End"
+                               TranslationY="-10"
+                               HeightRequest="170"/>
+
+                        <!-- Player Sprite -->
+                        <Image Source="{Binding ActivePlayerSpirit.Image}"
+                               x:Name="PlayerSprite"
+                               HeightRequest="250"
+                               WidthRequest="250"
+                               Aspect="AspectFit"
+                               RotationY="180"
+                               Opacity="{Binding ActivePlayerSpirit.Opacity}"/>
+
+                        <!-- Player Damage Display -->
+                        <HorizontalStackLayout HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               x:Name="DamageIndicatorPlayer"
+                                               IsVisible="{Binding ShowDamagePlayer}"
+                                               Spacing="5">
+                            <outline:OutlinedLabel Text="{Binding DamageText}"
+                                                   FontSize="64"
+                                                   FontFamily="Bungee"
+                                                   TextColor="{Binding DamageTextColor}"
+                                                   StrokeColor="{Binding DamageStrokeColor}"
+                                                   StrokeWidth="5"
+                                                   HasShadow="True"
+                                                   ShadowBlur="4"
+                                                   ShadowOffsetY="4"
+                                                   ShadowColor="#40000000"/>
+                            <Image Source="{Binding Effectiveness,Converter={StaticResource EffectivenessIconConverter}}"
+                                   HeightRequest="46"
+                                   IsVisible="{Binding ShowHealingPlayer}"
+                                   Aspect="AspectFit"/>
+                            <Image Source="icon_heart_common.webp"
+                                   HeightRequest="46"
+                                   IsVisible="{Binding ShowHealingPlayer}"
+                                   Aspect="AspectFit"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Critical Hit Label (player side) -->
+                        <outline:OutlinedLabel x:Name="CriticalLabelPlayer"
+                                               Text="CRITICAL!"
+                                               IsVisible="False"
+                                               Opacity="0"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               TranslationY="-70"
+                                               FontSize="32"
+                                               FontFamily="Bungee"
+                                               TextColor="#FFE500"
+                                               StrokeColor="#8B0000"
+                                               StrokeWidth="4"
+                                               HasShadow="True"
+                                               ShadowBlur="8"
+                                               ShadowOffsetY="3"
+                                               ShadowColor="#FF0000"
+                                               ZIndex="10"/>
+                                               
+                        <!-- Status Effect Badge (player side) -->
+                        <Border x:Name="StatusBadgePlayer"
+                                IsVisible="False"
+                                Opacity="0"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="0"
+                                Padding="14,6"
+                                ZIndex="10"
+                                BackgroundColor="{Binding StatusEffectColor}">
+                            <Label Text="{Binding StatusEffectText}"
+                                   TextColor="White"
+                                   FontFamily="PoppinsBold"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                    </Grid>
+
+                    <!-- Player Stats Panel -->
+                    <Grid Grid.Column="1"
+                          Padding="5"
+                          RowDefinitions="Auto,Auto,Auto,30">
+
+                        <!-- Player Health Bar -->
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <outline:OutlinedLabel Grid.Column="0"
+                                                   Text="{Binding ActivePlayerSpirit.HP}"
+                                                   TextColor="#EDF8EA"
+                                                   HorizontalOptions="End"
+                                                   ZIndex="1"
+                                                   TranslationY="-10"
+                                                   FontSize="40"
+                                                   FontFamily="PoppinsExtraBold"
+                                                   StrokeColor="#721502"
+                                                   StrokeWidth="3"
+                                                   HasShadow="True"
+                                                   ShadowBlur="0"
+                                                   ShadowSpread="0"
+                                                   ShadowOffsetX="0"
+                                                   ShadowOffsetY="1"
+                                                   ShadowColor="#BA7412"/>
+                                                   
+                            <maui:ProgressBar Grid.Column="0"
+                                x:Name="PlayerHealthBar"
+                                Progress="{Binding ActivePlayerSpirit.HealthPercentage}"
+                                BaseColor="#721502"
+                                WidthRequest="150"
+                                HeightRequest="20"
+                                RoundCaps="True"
+                                ProgressColor="{Binding ActivePlayerSpirit.HealthPercentage,Converter={StaticResource BattleHPColorConverter}}"/>
+
+                            <outline:OutlinedLabel Grid.Column="1"
+                                                   Text="HP"
+                                                   TextColor="#83CF63"
+                                                   FontFamily="Bungee"
+                                                   FontSize="20"
+                                                   StrokeColor="#014025"
+                                                   StrokeWidth="3"
+                                                   HasShadow="True"
+                                                   ShadowBlur="2"
+                                                   ShadowOffsetY="2"/>
+                        </Grid>
+
+                        <!-- Player Name -->
+                        <outline:OutlinedLabel Grid.Row="1"
+                                               Text="{Binding ActivePlayerSpirit.Name}"
+                                               TextColor="#FFE368"
+                                               HorizontalOptions="End"
+                                               FontSize="{Binding ActivePlayerSpirit.Name, Converter={cnv:NicknameToFontSizeConverter}, ConverterParameter=24}"
+                                               FontFamily="PoppinsSemiBold"
+                                               StrokeColor="#BA7412"
+                                               StrokeWidth="3"
+                                               HasShadow="True"
+                                               ShadowBlur="1"
+                                               ShadowSpread="0"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               ShadowColor="#40000000"/>
+
+                        <!-- Player Level -->
+                        <HorizontalStackLayout Grid.Row="2"
+                                               Spacing="5"
+                                               HorizontalOptions="End"
+                                               Padding="5">
+                            <outline:OutlinedLabel Text="LVL"
+                                FontSize="12"
+                                FontFamily="PoppinsSemiBold"
+                                TextColor="#EDF8EA"
+                                StrokeColor="#000000"
+                                StrokeWidth="1.5"/>
+
+                            <outline:OutlinedLabel Text="{Binding ActivePlayerSpirit.Level}"
+                                                   FontSize="20"
+                                                   FontFamily="Bungee"
+                                                   TextColor="#EDF8EA"
+                                                   StrokeColor="#000000"
+                                                   StrokeWidth="2.5"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Player Types -->
+                        <HorizontalStackLayout Grid.Row="3"
+                                               HorizontalOptions="End">
+                            <Image Source="{Binding ActivePlayerSpirit.Type1,Converter={StaticResource NameToImageConverter}}"
+                                   Aspect="AspectFit"/>
+                            <Image Source="{Binding ActivePlayerSpirit.Type2,Converter={StaticResource NameToImageConverter}}"
+                                   Aspect="AspectFit"
+                                   IsVisible="{Binding ActivePlayerSpirit.HasType2}"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+
+                    <!-- Turn Tracker -->
+                    <Border Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            StrokeShape="RoundRectangle 8"
+                            Padding="5"
+                            Stroke="#40000000">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5"
+                                                EndPoint="1,0.5">
+                                <GradientStop Color="#CBCBCB"
+                                            Offset="0"/>
+                                <GradientStop Color="#B6B6B6"
+                                            Offset="0.25"/>
+                                <GradientStop Color="#B6B6B6"
+                                            Offset="0.75"/>
+                                <GradientStop Color="#CBCBCB"
+                                            Offset="1"/>                 
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <outline:OutlinedLabel x:Name="TurnTrackerLabel"
+                                        Grid.Row="1"
+                                        Text="{Binding CurrentTurn, StringFormat='Round {0}'}"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"
+                                        Opacity="0"
+                                        ZIndex="5"
+                                        FontSize="20"
+                                        FontFamily="PoppinsBold"
+                                        TextColor="#FFFFFF"
+                                        StrokeColor="#40000000"
+                                        StrokeWidth="3"
+                                        HasShadow="True"
+                                        ShadowBlur="6"
+                                        ShadowSpread="0"
+                                        ShadowOffsetX="0"
+                                        ShadowOffsetY="0"
+                                        ShadowColor="#40000000"/>
+                    </Border>
+
+                    <!-- Player Status Icon Stack -->
+                    <HorizontalStackLayout Grid.Column="0"
+                                         Grid.ColumnSpan="2"
+                                         HorizontalOptions="Start"
+                                         VerticalOptions="End"
+                                         Spacing="6"
+                                         Padding="10,0,0,0"
+                                         ZIndex="15">
+                        <Border x:Name="EvasionBadgePlayer"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#2E2F32"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_evasion.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                        <Border x:Name="PoisonBadgePlayer"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#8520D0"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_poisoned.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                        <Border x:Name="HealingBadgePlayer"
+                                IsVisible="False"
+                                Opacity="0"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#FE120F"
+                                StrokeThickness="2"
+                                BackgroundColor="#EDF8EA"
+                                Padding="6"
+                                HeightRequest="50"
+                                WidthRequest="50">
+                            <Image Source="battleicon_healthregen.png"
+                                   Aspect="AspectFit"/>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <!-- Player Move Indicator -->
+                    <Grid Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          HorizontalOptions="Start">
+                        <Border BackgroundColor="#EDF8EA"
+                                StrokeShape="RoundRectangle 4"
+                                Stroke="#42000040"
+                                StrokeThickness="1"
+                                HeightRequest="35"
+                                x:Name="MoveIndicatorPlayer"
+                                Opacity="0.9"
+                                IsVisible="{Binding ShowMoveIndicatorPlayer}">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Radius="5"/>
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="32,*"
+                                  ColumnSpacing="5"
+                                  Padding="5,0">
+                                <Image Source="{Binding CurrentMoveTypeIcon}"
+                                       Grid.Column="0"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding CurrentMoveName}"
+                                       TextColor="Black"
+                                       FontFamily="PoppinsBold"
+                                       MaxLines="1"
+                                       VerticalOptions="Center"
+                                       FontSize="16"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <!-- Player Footer -->
+                <Border Grid.Row="1"
+                        IsVisible="{Binding Is3v3}"
+                        BackgroundColor="#EDF8EA"
+                        StrokeShape="RoundRectangle 8"
+                        Stroke="#A1A2B0"
+                        StrokeThickness="2">
+                    <Grid ColumnDefinitions="*,210"
+                          Padding="10">
+
+                        <VerticalStackLayout Grid.Column="0">
+
+                            <Label Text="{Binding ActivePlayerSpirit.PlayerName}"
+                                   TextColor="#027242"
+                                   FontSize="16"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalOptions="Start"/>
+
+                            <Label Text="{Binding PlayerGuildName}"
+                                   TextColor="#4D000000"
+                                   FontSize="16"
+                                   LineBreakMode="TailTruncation"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalOptions="Start"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- Player Lineup -->
+                        <Border Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Padding="0"
+                                HeightRequest="80"
+                                IsVisible="{Binding Is3v3}"
+                                StrokeShape="RoundRectangle 0">
+                            <FlexLayout BindableLayout.ItemsSource="{Binding PlayerSpirits}"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Stretch">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:SpriteModel">
+                                        <Grid>
+                                            <Border StrokeShape="RoundRectangle 0"
+                                                    Stroke="#A1A2B0"
+                                                    BackgroundColor="transparent">
+                                                <Grid>
+                                                    <Image Source="{Binding Image}"
+                                                           Aspect="AspectFill"
+                                                           WidthRequest="90"
+                                                           HeightRequest="60"/>
+                                                    <BoxView BackgroundColor="#9C000000"
+                                                             IsVisible="{Binding IsFainted}"/>
+                                                </Grid>
+                                                
+                                            </Border>
+                                            <Border HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    BackgroundColor="Transparent"
+                                                    Stroke="Transparent"
+                                                    IsVisible="false"
+                                                    TranslationY="-5">
+                                                <Image Source="{Binding Type1,Converter={StaticResource NameToImageConverter}}"
+                                                       Aspect="AspectFit"
+                                                       HeightRequest="25"/>
+                                            </Border>
+                                            <Border HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    BackgroundColor="Transparent"
+                                                    Stroke="Transparent"
+                                                    TranslationY="-5"
+                                                    IsVisible="false">
+                                                <Image Source="{Binding Type2,Converter={StaticResource NameToImageConverter}}"
+                                                       Aspect="AspectFit"
+                                                       HeightRequest="25"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </Border>
+
+
+                    </Grid>
+
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

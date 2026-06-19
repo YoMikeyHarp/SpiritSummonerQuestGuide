@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.BattlePopups.BattleDebugLogPopup"
+               x:DataType="vm:BattleDebugLogPopupViewModel"
+               CanBeDismissedByTappingOutsideOfPopup="True"
+               Color="Transparent">
+
+    <Border Stroke="#1A1A24"
+            StrokeThickness="2"
+            BackgroundColor="#242430" 
+            Margin="16"
+            Padding="12"
+            StrokeShape="RoundRectangle 8">
+
+        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="12">
+
+            <Label Grid.Row="0"
+                   Text="Battle Log"
+                   TextColor="#FFFFFF"
+                   FontFamily="PoppinsSemiBold"
+                   FontSize="18"
+                   HorizontalOptions="Start"/>
+
+            <CollectionView Grid.Row="1" ItemsSource="{Binding LogEntries}">
+                <CollectionView.EmptyView>
+                    <Label Text="Waiting for battle data..." TextColor="#888888" HorizontalOptions="Center"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:BattleLogEntry">
+                        <Label FormattedText="{Binding FormattedContent}"
+                               FontFamily="Arial"
+                               FontSize="13"
+                               LineBreakMode="WordWrap"
+                               Margin="0,2,0,2"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border Grid.Row="2"
+                    Stroke="#3A3A4A"
+                    StrokeThickness="1"
+                    BackgroundColor="#1AFFFFFF"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="0,12"
+                    Margin="0,8,0,0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapToExitCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="TAP TO CLOSE"
+                       TextColor="#E0E0E0"
+                       FontFamily="PoppinsBold"
+                       FontSize="14"
+                       HorizontalOptions="Center"/>
+            </Border>
+
+        </Grid>
+    </Border>
+</toolkit:Popup>

@@ -1,0 +1,7797 @@
+{
+  "1": {
+    "ID": "1",
+    "Name": "Dogi",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 80,
+      "ATK": 12,
+      "DEF": 8,
+      "SATK": 3,
+      "SDEF": 6,
+      "SPD": 11,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "FURY JAB",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "goldCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "dogi.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.05,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": null,
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 10000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 2,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "10": {
+    "ID": "10",
+    "Name": "Trifish (B)",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 111,
+      "ATK": 5,
+      "DEF": 8,
+      "SATK": 25,
+      "SDEF": 13,
+      "SPD": 11,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "TIDE SMASH",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "WAVE CRUSH",
+        "Type": "Water",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "trifish.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Fish",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "100": {
+    "ID": "100",
+    "Name": "Koki",
+    "Level": 1,
+    "Type1": "Electric",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 124,
+      "ATK": 25,
+      "DEF": 18,
+      "SATK": 5,
+      "SDEF": 25,
+      "SPD": 20,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "JOLT SLAM",
+        "Type": "Electric",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "ZAP BOLT",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "koki.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1.1,
+      "SPD": 1.15,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 30,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 15000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 101,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "101": {
+    "ID": "101",
+    "Name": "Koko",
+    "Level": 1,
+    "Type1": "Electric",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 128,
+      "ATK": 50,
+      "DEF": 25,
+      "SATK": 5,
+      "SDEF": 25,
+      "SPD": 75,
+      "INT": 25
+    },
+    "LearnableMoves": [
+      {
+        "Name": "JOLT SLAM",
+        "Type": "Electric",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "ZAP BOLT",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "SPARK SHRED",
+        "Type": "Electric",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bolt.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1.1,
+      "SPD": 1.2,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 15000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "103": {
+    "ID": "103",
+    "Name": "Dogia",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 34,
+      "DEF": 22,
+      "SATK": 29,
+      "SDEF": 13,
+      "SPD": 21,
+      "INT": 20
+    },
+    "LearnableMoves": [
+      {
+        "Name": "FURY JAB",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "goldCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "JOLT SLAM",
+        "Type": "Electric",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "dogi_pp.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1500
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "109": {
+    "ID": "109",
+    "Name": "Paley",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 25,
+      "DEF": 25,
+      "SATK": 5,
+      "SDEF": 15,
+      "SPD": 5,
+      "INT": 5
+    },
+    "LearnableMoves": [
+      {
+        "Name": "TIDE SMASH",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "TOXIC ARROW",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "paley.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.15,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "???",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "11": {
+    "ID": "11",
+    "Name": "Trifish (R)",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 128,
+      "ATK": 5,
+      "DEF": 15,
+      "SATK": 28,
+      "SDEF": 15,
+      "SPD": 12,
+      "INT": 9
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "FIRESTORM",
+        "Type": "Fire",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "trifish_r.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 20000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 12,
+    "PreEvolution": 0,
+    "Category": "Fish",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "110": {
+    "ID": "110",
+    "Name": "Angi",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "Ground",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 4,
+      "DEF": 16,
+      "SATK": 28,
+      "SDEF": 0,
+      "SPD": 5,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "MUD SLAM",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "SPARK RAY",
+        "Type": "Light",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "DUST SMASH",
+        "Type": "Ground",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "angi.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": "Angel",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "114": {
+    "ID": "114",
+    "Name": "Steelha",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 48,
+      "DEF": 32,
+      "SATK": 35,
+      "SDEF": 20,
+      "SPD": 35,
+      "INT": 17
+    },
+    "LearnableMoves": [
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "JOLT SLAM",
+        "Type": "Electric",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "ZAP BOLT",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "ramma.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "12": {
+    "ID": "12",
+    "Name": "Crabfish",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 131,
+      "ATK": 47,
+      "DEF": 26,
+      "SATK": 55,
+      "SDEF": 28,
+      "SPD": 30,
+      "INT": 20
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "FIRESTORM",
+        "Type": "Fire",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "FLARE BURST",
+        "Type": "Fire",
+        "Power": 190,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "crabfish.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.2,
+      "SATK": 1.05,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 35,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 50
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Fish",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "129": {
+    "ID": "129",
+    "Name": "Rexli",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 159,
+      "ATK": 57,
+      "DEF": 32,
+      "SATK": 31,
+      "SDEF": 18,
+      "SPD": 35,
+      "INT": 12
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "FURY JAB",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "goldCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "rexli.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 0.5,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 10,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 5000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 130,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "130": {
+    "ID": "130",
+    "Name": "Rexa",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 168,
+      "ATK": 82,
+      "DEF": 57,
+      "SATK": 5,
+      "SDEF": 35,
+      "SPD": 36,
+      "INT": 9
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "FURY JAB",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "goldCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "IRON SMASH",
+        "Type": "Metal",
+        "Power": 190,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "rexa.png",
+    "BonusAttributes": {
+      "ATK": 1.25,
+      "DEF": 1.1,
+      "SATK": 1,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "134": {
+    "ID": "134",
+    "Name": "Firelord",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 192,
+      "ATK": 60,
+      "DEF": 66,
+      "SATK": 65,
+      "SDEF": 66,
+      "SPD": 21,
+      "INT": 35
+    },
+    "LearnableMoves": [
+      {
+        "Name": "INFERNAL BASH",
+        "Type": "Fire",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "LAVA LASH",
+        "Type": "Fire",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MAGMA SLAM",
+        "Type": "Fire",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "fire_lord.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.05,
+      "SDEF": 1.2,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 50,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 100000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Unique",
+    "Category2": "Beast",
+    "BaseMoveCount": 2,
+    "IsUnique": true
+  },
+  "135": {
+    "ID": "135",
+    "Name": "Mist",
+    "Level": 1,
+    "Type1": "Poison",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 141,
+      "ATK": 42,
+      "DEF": 35,
+      "SATK": 81,
+      "SDEF": 82,
+      "SPD": 51,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BILE SHOT",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mist.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.25,
+      "SDEF": 1.15,
+      "SPD": 1.2,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 100000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Unique",
+    "Category2": "Humanoid",
+    "BaseMoveCount": 2,
+    "IsUnique": true
+  },
+  "140": {
+    "ID": "140",
+    "Name": "Avenia",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 174,
+      "ATK": 5,
+      "DEF": 45,
+      "SATK": 52,
+      "SDEF": 55,
+      "SPD": 32,
+      "INT": 59
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BREEZE JAB",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "FOREST BLAST",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "LEAF BLADE",
+        "Type": "Grass",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "ROOT CRUSH",
+        "Type": "Grass",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "elf.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.05,
+      "SDEF": 1.2,
+      "SPD": 1,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Support",
+    "Category2": "Humanoid",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "2": {
+    "ID": "2",
+    "Name": "Sr. Dogi",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 83,
+      "ATK": 44,
+      "DEF": 39,
+      "SATK": 6,
+      "SDEF": 18,
+      "SPD": 36,
+      "INT": 26
+    },
+    "LearnableMoves": [
+      {
+        "Name": "POWER PUNCH",
+        "Type": "Neutral",
+        "Power": 140,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "pearl",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "sr_dogi.webp",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "Dogi Orb #1",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 25
+      }
+    },
+    "Evolution": 3,
+    "PreEvolution": 1,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "20": {
+    "ID": "20",
+    "Name": "Foorse (O)",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 140,
+      "ATK": 5,
+      "DEF": 10,
+      "SATK": 38,
+      "SDEF": 24,
+      "SPD": 20,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "foorse_fire.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 21,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "21": {
+    "ID": "21",
+    "Name": "Hellfoorse",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "Dark",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 159,
+      "ATK": 18,
+      "DEF": 45,
+      "SATK": 69,
+      "SDEF": 58,
+      "SPD": 28,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "DARK RUSH",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "BURNING CRASH",
+        "Type": "Fire",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "hellfoorse.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 1
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 35,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "22": {
+    "ID": "22",
+    "Name": "Armor",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 30,
+      "HP": 130,
+      "ATK": 17,
+      "DEF": 17,
+      "SATK": 17,
+      "SDEF": 17,
+      "SPD": 1,
+      "INT": 1
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "blood_armor.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.1,
+      "SATK": 1.05,
+      "SDEF": 1.05,
+      "SPD": 1.05,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 30,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/DARK CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 30,
+        "ItemRequired": "Armor Orb #22",
+        "Special": null,
+        "Amount": 10000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 222,
+    "PreEvolution": 0,
+    "Category": "Shadow",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "220": {
+    "ID": "220",
+    "Name": "BOMBAMAN",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 0,
+      "HP": 0,
+      "ATK": 5,
+      "DEF": 72,
+      "SATK": 32,
+      "SDEF": 58,
+      "SPD": 28,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "INFERNAL BASH",
+        "Type": "Fire",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MAGMA SLAM",
+        "Type": "Fire",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bomberman.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1.1,
+      "SPD": 0,
+      "INT": 0
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "222": {
+    "ID": "222",
+    "Name": "Blood Knight",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 30,
+      "HP": 150,
+      "ATK": 20,
+      "DEF": 65,
+      "SATK": 44,
+      "SDEF": 51,
+      "SPD": 30,
+      "INT": 40
+    },
+    "LearnableMoves": [
+      {
+        "Name": "WAVE CRUSH",
+        "Type": "Water",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "blood_knight_rb.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.15,
+      "SATK": 1.05,
+      "SDEF": 1.1,
+      "SPD": 1.05,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": null,
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "223": {
+    "ID": "223",
+    "Name": "Bulb Fighter",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 112,
+      "ATK": 28,
+      "DEF": 16,
+      "SATK": 42,
+      "SDEF": 25,
+      "SPD": 31,
+      "INT": 40
+    },
+    "LearnableMoves": [
+      {
+        "Name": "LIGHT LANCE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "GLARE STRIKE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "THUNDER PIERCER",
+        "Type": "Electric",
+        "Power": 180,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "LUMIN BEAM",
+        "Type": "Light",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "RADIANT SLASH",
+        "Type": "Light",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "Bulb_fighter.png",
+    "BonusAttributes": {
+      "ATK": 1.15,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 25,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "Bulbhead Orb #23",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 224,
+    "PreEvolution": 0,
+    "Category": "Unique",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "224": {
+    "ID": "224",
+    "Name": "Bulb Hero",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 115,
+      "ATK": 48,
+      "DEF": 45,
+      "SATK": 75,
+      "SDEF": 45,
+      "SPD": 42,
+      "INT": 60
+    },
+    "LearnableMoves": [
+      {
+        "Name": "LIGHT LANCE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "HOLY STRIKE",
+        "Type": "Light",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "LUMIN BEAM",
+        "Type": "Light",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "GLARE STRIKE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "THUNDER PIERCER",
+        "Type": "Electric",
+        "Power": 180,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "RADIANT SLASH",
+        "Type": "Light",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "CHARGE FIST",
+        "Type": "Electric",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bulb_super.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1,
+      "SATK": 1.2,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1.3
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Unique",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "23": {
+    "ID": "23",
+    "Name": "Bulbhead",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 109,
+      "ATK": 3,
+      "DEF": 8,
+      "SATK": 17,
+      "SDEF": 8,
+      "SPD": 8,
+      "INT": 6
+    },
+    "LearnableMoves": [
+      {
+        "Name": "LUMIN BEAM",
+        "Type": "Light",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "RADIANT SLASH",
+        "Type": "Light",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "LIGHT LANCE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "GLARE STRIKE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bulbi.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 25,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 1500
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 223,
+    "PreEvolution": 0,
+    "Category": "Unique",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "24": {
+    "ID": "24",
+    "Name": "Traruz",
+    "Level": 1,
+    "Type1": "Ground",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 163,
+      "ATK": 42,
+      "DEF": 50,
+      "SATK": 19,
+      "SDEF": 23,
+      "SPD": 25,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "SANDSTORM EDGE",
+        "Type": "Ground",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "EARTH SPLIT",
+        "Type": "Ground",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "traruz.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 20000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 241,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "240": {
+    "ID": "240",
+    "Name": "Dragon Jr.",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 90,
+      "ATK": 20,
+      "DEF": 37,
+      "SATK": 27,
+      "SDEF": 32,
+      "SPD": 18,
+      "INT": 19
+    },
+    "LearnableMoves": [
+      {
+        "Name": "EMBER STRIKE",
+        "Type": "Fire",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "WIND CUTTER",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "drago.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.05,
+      "SATK": 1.1,
+      "SDEF": 1.05,
+      "SPD": 1.05,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "241": {
+    "ID": "241",
+    "Name": "Traruza",
+    "Level": 1,
+    "Type1": "Ground",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 170,
+      "ATK": 42,
+      "DEF": 55,
+      "SATK": 19,
+      "SDEF": 29,
+      "SPD": 25,
+      "INT": 19
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SANDSTORM EDGE",
+        "Type": "Ground",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "EARTH SPLIT",
+        "Type": "Ground",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "traruza.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1.2,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "Traruz Orb #24",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 242,
+    "PreEvolution": 24,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "242": {
+    "ID": "242",
+    "Name": "St. Traruza",
+    "Level": 1,
+    "Type1": "Ground",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 174,
+      "ATK": 62,
+      "DEF": 85,
+      "SATK": 39,
+      "SDEF": 42,
+      "SPD": 32,
+      "INT": 28
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "SANDSTORM EDGE",
+        "Type": "Ground",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "EARTH SPLIT",
+        "Type": "Ground",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "st_traruza.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.2,
+      "SATK": 1.1,
+      "SDEF": 1.2,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 241,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "243": {
+    "ID": "243",
+    "Name": "Iferasz",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 149,
+      "ATK": 45,
+      "DEF": 35,
+      "SATK": 35,
+      "SDEF": 28,
+      "SPD": 30,
+      "INT": 25
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BLAZING CLAW",
+        "Type": "Fire",
+        "Power": 190,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MAGMA SLAM",
+        "Type": "Fire",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "iferasz.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 244,
+    "PreEvolution": 0,
+    "Category": null,
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "244": {
+    "ID": "244",
+    "Name": "Iferasa",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 153,
+      "ATK": 57,
+      "DEF": 38,
+      "SATK": 38,
+      "SDEF": 28,
+      "SPD": 35,
+      "INT": 25
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BLAZING CLAW",
+        "Type": "Fire",
+        "Power": 190,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "iferasa.png",
+    "BonusAttributes": {
+      "ATK": 1.15,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "Iferasz Orb #243",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 245,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "245": {
+    "ID": "245",
+    "Name": "St. Iferasa",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 157,
+      "ATK": 62,
+      "DEF": 45,
+      "SATK": 55,
+      "SDEF": 40,
+      "SPD": 45,
+      "INT": 25
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BLAZING CLAW",
+        "Type": "Fire",
+        "Power": 190,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MAGMA SLAM",
+        "Type": "Fire",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "st_iferasa.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "246": {
+    "ID": "246",
+    "Name": "Akigosa",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 140,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 48,
+      "SDEF": 33,
+      "SPD": 37,
+      "INT": 34
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "LIGHTNING CRUSH",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "akigosa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 247,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "247": {
+    "ID": "247",
+    "Name": "Akigowa",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 60,
+      "SDEF": 36,
+      "SPD": 37,
+      "INT": 42
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "LIGHTNING CRUSH",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "AQUA SLASH",
+        "Type": "Water",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "akigowa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "Akigosa Orb #246",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 248,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "248": {
+    "ID": "248",
+    "Name": "St.Akigowa",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 32,
+      "SATK": 86,
+      "SDEF": 53,
+      "SPD": 47,
+      "INT": 49
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "LIGHTNING CRUSH",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "FLOOD SHOT",
+        "Type": "Water",
+        "Power": 190,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "st_akigowa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.2,
+      "SDEF": 1.15,
+      "SPD": 1.05,
+      "INT": 1.15
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "249": {
+    "ID": "249",
+    "Name": "Skiinaza",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 32,
+      "SATK": 42,
+      "SDEF": 35,
+      "SPD": 38,
+      "INT": 35
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "TORNADO CLAW",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "HOLY STRIKE",
+        "Type": "Light",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "skiinaza.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1.05,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 250,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "25": {
+    "ID": "25",
+    "Name": "Chicka",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 156,
+      "ATK": 52,
+      "DEF": 48,
+      "SATK": 32,
+      "SDEF": 50,
+      "SPD": 42,
+      "INT": 55
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "TORNADO CLAW",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "BREEZE JAB",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "chikia.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.2,
+      "INT": 1.3
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 20,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/WIND CORE",
+        "Amount": 1
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 35,
+        "ItemRequired": "items/SOUL CORE (Chikin_(Pink)",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "250": {
+    "ID": "250",
+    "Name": "Skinna",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 32,
+      "SATK": 48,
+      "SDEF": 0,
+      "SPD": 51,
+      "INT": 40
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "TORNADO CLAW",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "HOLY STRIKE",
+        "Type": "Light",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "skiinaa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 0,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "Skiinaza Orb #249",
+        "Special": null,
+        "Amount": 100000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 251,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "251": {
+    "ID": "251",
+    "Name": "St.Skiinaa",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 42,
+      "SATK": 52,
+      "SDEF": 45,
+      "SPD": 82,
+      "INT": 60
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DRAGON CLAW",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "TORNADO CLAW",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "HOLY STRIKE",
+        "Type": "Light",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "st_skiinaa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.15,
+      "SDEF": 1.1,
+      "SPD": 1.2,
+      "INT": 1.15
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": null,
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Dragon",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "26": {
+    "ID": "26",
+    "Name": "Chiki",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 147,
+      "ATK": 42,
+      "DEF": 28,
+      "SATK": 22,
+      "SDEF": 30,
+      "SPD": 42,
+      "INT": 39
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "GALE FURY",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "BREEZE JAB",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "chiki.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.2,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 25,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 7500
+      },
+      "ItemRequirement": {
+        "ItemType": null,
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "items/SOUL CORE (Chikin)",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 25,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "260": {
+    "ID": "260",
+    "Name": "Chiki (P)",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 24,
+      "DEF": 25,
+      "SATK": 42,
+      "SDEF": 20,
+      "SPD": 42,
+      "INT": 36
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BODY SLAM",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "greenCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "GALE FURY",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "BREEZE JAB",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "chikip.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "27": {
+    "ID": "27",
+    "Name": "Dark Masko",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 111,
+      "ATK": 1,
+      "DEF": 12,
+      "SATK": 16,
+      "SDEF": 8,
+      "SPD": 2,
+      "INT": 11
+    },
+    "LearnableMoves": [
+      {
+        "Name": "NIGHT PULSE",
+        "Type": "Dark",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "SHADOW SMASH",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "dark_masko.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 10000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 28,
+    "PreEvolution": 0,
+    "Category": "Shadow",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "28": {
+    "ID": "28",
+    "Name": "King Masko",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 114,
+      "ATK": 1,
+      "DEF": 8,
+      "SATK": 14,
+      "SDEF": 12,
+      "SPD": 1,
+      "INT": 14
+    },
+    "LearnableMoves": [
+      {
+        "Name": "DARK RUSH",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "ECLIPSE CLAW",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "WRAITH SLASH",
+        "Type": "Dark",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "DARK RAZE",
+        "Type": "Dark",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "maskoa.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1,
+      "SATK": 1.2,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 100000
+      },
+      "ItemRequirement": {
+        "ItemType": "items/DARK CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 35,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Shadow",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "29": {
+    "ID": "29",
+    "Name": "Borgle",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 140,
+      "ATK": 20,
+      "DEF": 13,
+      "SATK": 3,
+      "SDEF": 16,
+      "SPD": 11,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "GROWTH STRIKE",
+        "Type": "Grass",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "GRASS CANNON",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "borgle.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.05,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 200
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 20000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 30,
+    "PreEvolution": 0,
+    "Category": "Bug",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "3": {
+    "ID": "3",
+    "Name": "Armored Dogi",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 85,
+      "ATK": 49,
+      "DEF": 55,
+      "SATK": 22,
+      "SDEF": 20,
+      "SPD": 34,
+      "INT": 26
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "CRUSH CLAW",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "pearl",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "armored_dogi.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.2,
+      "SATK": 1.1,
+      "SDEF": 1.2,
+      "SPD": 1.1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 2000
+      },
+      "ItemRequirement": {
+        "ItemType": "items/NORMAL CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 2,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "30": {
+    "ID": "30",
+    "Name": "Borge",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 147,
+      "ATK": 55,
+      "DEF": 49,
+      "SATK": 6,
+      "SDEF": 25,
+      "SPD": 36,
+      "INT": 11
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "GRASS CANNON",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "THORN JAB",
+        "Type": "Grass",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "borge.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 35,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/GRASS CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 35,
+        "ItemRequired": "SOUL CORE (Borgle)",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Bug",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "300": {
+    "ID": "300",
+    "Name": "Magi Wizard",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 40,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 107,
+      "SDEF": 50,
+      "SPD": 32,
+      "INT": 99
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "AIR CRASH",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "VOID BLAST",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "FIRESTORM",
+        "Type": "Fire",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "wizard_darker.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.25,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 32,
+    "Category": "Humanoid",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "31": {
+    "ID": "31",
+    "Name": "Magiman",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 127,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 42,
+      "SDEF": 25,
+      "SPD": 15,
+      "INT": 30
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "VOID BLAST",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "magiman.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 1
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 20,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 32,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": "Shadow",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "32": {
+    "ID": "32",
+    "Name": "Dark Wizard",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 20,
+      "HP": 131,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 96,
+      "SDEF": 50,
+      "SPD": 15,
+      "INT": 63
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "AIR CRASH",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "VOID BLAST",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "wizard_dark.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.2,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "Dark Crystal",
+        "Amount": 1
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 40,
+        "ItemRequired": "darkCrystal",
+        "Special": null,
+        "Amount": 1,
+        "CoresRequired": 0
+      }
+    },
+    "Evolution": 300,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": "Shadow",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "33": {
+    "ID": "33",
+    "Name": "Magiman (G)",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 12,
+      "SATK": 40,
+      "SDEF": 10,
+      "SPD": 9,
+      "INT": 20
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "VOID BLAST",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "LIGHTNING CRUSH",
+        "Type": "Electric",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "magiman_g.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 32,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "34": {
+    "ID": "34",
+    "Name": "Magiman (B)",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 0,
+      "HP": 0,
+      "ATK": 5,
+      "DEF": 22,
+      "SATK": 42,
+      "SDEF": 25,
+      "SPD": 15,
+      "INT": 30
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "CYCLONE SHRED",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "WIND CUTTER",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "magiman_b.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 32,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "35": {
+    "ID": "35",
+    "Name": "Pa",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 16,
+      "SATK": 20,
+      "SDEF": 12,
+      "SPD": 28,
+      "INT": 12
+    },
+    "LearnableMoves": [
+      {
+        "Name": "GROWTH STRIKE",
+        "Type": "Grass",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "pa.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "Pa Orb #35",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 36,
+    "PreEvolution": 0,
+    "Category": "Plant",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "36": {
+    "ID": "36",
+    "Name": "Pas",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 15,
+      "HP": 132,
+      "ATK": 5,
+      "DEF": 18,
+      "SATK": 21,
+      "SDEF": 12,
+      "SPD": 24,
+      "INT": 16
+    },
+    "LearnableMoves": [
+      {
+        "Name": "GROWTH STRIKE",
+        "Type": "Grass",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "FOREST BLAST",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "pas.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "Pa Orb #35",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 37,
+    "PreEvolution": 0,
+    "Category": "Plant",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "37": {
+    "ID": "37",
+    "Name": "Aveni",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 36,
+      "SATK": 44,
+      "SDEF": 49,
+      "SPD": 28,
+      "INT": 56
+    },
+    "LearnableMoves": [
+      {
+        "Name": "GROWTH STRIKE",
+        "Type": "Grass",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "FOREST BLAST",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "LEAF BLADE",
+        "Type": "Grass",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "pettle.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.05,
+      "SATK": 1.05,
+      "SDEF": 1.1,
+      "SPD": 0,
+      "INT": 1.15
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 30,
+        "ItemRequired": "Pa Orb #35",
+        "Special": null,
+        "Amount": 25,
+        "CoresRequired": 20
+      }
+    },
+    "Evolution": 140,
+    "PreEvolution": 0,
+    "Category": "Plant",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "38": {
+    "ID": "38",
+    "Name": "Wooman",
+    "Level": 1,
+    "Type1": "Poison",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 5,
+      "DEF": 35,
+      "SATK": 34,
+      "SDEF": 26,
+      "SPD": 25,
+      "INT": 12
+    },
+    "LearnableMoves": [
+      {
+        "Name": "TOXIC CLAW",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "SLUDGE SMASH",
+        "Type": "Poison",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "NEURO TOXIN",
+        "Type": "Poison",
+        "Power": 170,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "wooman.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Alien",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "4": {
+    "ID": "4",
+    "Name": "Isine",
+    "Level": 1,
+    "Type1": "Wind",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 166,
+      "ATK": 5,
+      "DEF": 62,
+      "SATK": 55,
+      "SDEF": 82,
+      "SPD": 28,
+      "INT": 76
+    },
+    "LearnableMoves": [
+      {
+        "Name": "GALE FURY",
+        "Type": "Wind",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "WIND CUTTER",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "BREEZE JAB",
+        "Type": "Wind",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "feather",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "LIGHT LANCE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "isine.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/SOUL CORE (Florela)",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "items/PETAL SHARD",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Angel",
+    "Category2": "Beast",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "44": {
+    "ID": "44",
+    "Name": "Armored Mikkia",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 29,
+      "DEF": 39,
+      "SATK": 36,
+      "SDEF": 35,
+      "SPD": 46,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "POISON JAB",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mikkia_armoured.png",
+    "BonusAttributes": {
+      "ATK": 1.15,
+      "DEF": 1.05,
+      "SATK": 1,
+      "SDEF": 1.05,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 6,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "45": {
+    "ID": "45",
+    "Name": "Mikki (P)",
+    "Level": 1,
+    "Type1": "Poison",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 20,
+      "HP": 197,
+      "ATK": 30,
+      "DEF": 22,
+      "SATK": 25,
+      "SDEF": 20,
+      "SPD": 32,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "TOXIC CLAW",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "POISON JAB",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mikki_p.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "5": {
+    "ID": "5",
+    "Name": "Miki",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 62,
+      "ATK": 8,
+      "DEF": 7,
+      "SATK": 8,
+      "SDEF": 5,
+      "SPD": 6,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "POISON JAB",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mikki.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 15,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 10000,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 6,
+    "PreEvolution": 0,
+    "Category": null,
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "6": {
+    "ID": "6",
+    "Name": "Mikia",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 65,
+      "ATK": 29,
+      "DEF": 18,
+      "SATK": 36,
+      "SDEF": 26,
+      "SPD": 55,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "HEADBUTT",
+        "Type": "Neutral",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "MEGA KICK",
+        "Type": "Neutral",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "redCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "POISON JAB",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mikkia.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.15,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 10000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "Miki Orb #5",
+        "Special": null,
+        "Amount": 20000,
+        "CoresRequired": 25
+      }
+    },
+    "Evolution": 44,
+    "PreEvolution": 5,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "66": {
+    "ID": "66",
+    "Name": "Duckle",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 140,
+      "ATK": 22,
+      "DEF": 15,
+      "SATK": 5,
+      "SDEF": 12,
+      "SPD": 25,
+      "INT": 10
+    },
+    "LearnableMoves": [
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "WATERY MAW",
+        "Type": "Water",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "TIDE SMASH",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "WAVE CRUSH",
+        "Type": "Water",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "duckle.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 67,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "665": {
+    "ID": "665",
+    "Name": "Justice",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 163,
+      "ATK": 72,
+      "DEF": 56,
+      "SATK": 72,
+      "SDEF": 62,
+      "SPD": 39,
+      "INT": 50
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SLICE",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "RADIANT SLASH",
+        "Type": "Light",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "THUNDER PIERCER",
+        "Type": "Electric",
+        "Power": 180,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "angel.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.1,
+      "SATK": 1.2,
+      "SDEF": 1.1,
+      "SPD": 1.1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Angel",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": true
+  },
+  "666": {
+    "ID": "666",
+    "Name": "Angel of War",
+    "Level": 1,
+    "Type1": "Light",
+    "Type2": "Dark",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 200,
+      "ATK": 72,
+      "DEF": 56,
+      "SATK": 91,
+      "SDEF": 62,
+      "SPD": 39,
+      "INT": 50
+    },
+    "LearnableMoves": [
+      {
+        "Name": "1000 SLICES",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "LIGHT LANCE",
+        "Type": "Light",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "SHINE BLAST",
+        "Type": "Light",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "THUNDER PIERCER",
+        "Type": "Electric",
+        "Power": 180,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "archangel.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.1,
+      "SATK": 1.2,
+      "SDEF": 1.1,
+      "SPD": 1.1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "God",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": true
+  },
+  "667": {
+    "ID": "667",
+    "Name": "Destroyer Carl",
+    "Level": 1,
+    "Type1": "Fire",
+    "Type2": "Dark",
+    "BaseStats": {
+      "Level": 0,
+      "HP": 180,
+      "ATK": 15,
+      "DEF": 34,
+      "SATK": 90,
+      "SDEF": 55,
+      "SPD": 23,
+      "INT": 75
+    },
+    "LearnableMoves": [
+      {
+        "Name": "BACK HAND",
+        "Type": "Neutral",
+        "Power": 120,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "MAGMA SLAM",
+        "Type": "Fire",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "flint",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "carl_the_destroyer.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1.1,
+      "SPD": 1.1,
+      "INT": 1.3
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Warrior",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": true
+  },
+  "67": {
+    "ID": "67",
+    "Name": "Duck",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "Neutral",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 147,
+      "ATK": 60,
+      "DEF": 45,
+      "SATK": 20,
+      "SDEF": 35,
+      "SPD": 50,
+      "INT": 25
+    },
+    "LearnableMoves": [
+      {
+        "Name": "AQUA SMASH",
+        "Type": "Water",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "FURY JAB",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "goldCrystal",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "BUBBLE LANCE",
+        "Type": "Water",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "AQUA SLASH",
+        "Type": "Water",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "WATER SPIN",
+        "Type": "Water",
+        "Power": 120,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 10,
+          "SpiritLevelRequired": 15
+        }
+      },
+      {
+        "Name": "TIDE SMASH",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "WATERY MAW",
+        "Type": "Water",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "WAVE CRUSH",
+        "Type": "Water",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 25
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "duck.png",
+    "BonusAttributes": {
+      "ATK": 1.3,
+      "DEF": 1,
+      "SATK": 1,
+      "SDEF": 1,
+      "SPD": 1.2,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 66,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "7": {
+    "ID": "7",
+    "Name": "Bigiworm",
+    "Level": 1,
+    "Type1": "Ground",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 137,
+      "ATK": 18,
+      "DEF": 14,
+      "SATK": 19,
+      "SDEF": 19,
+      "SPD": 7,
+      "INT": 8
+    },
+    "LearnableMoves": [
+      {
+        "Name": "MUD SLAM",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "VENOM STRIKE",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "ROCK TUMBLE",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 5
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bigiworm.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1200
+      },
+      "ItemRequirement": {
+        "ItemType": "items/GROUND CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": null,
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 8,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "74": {
+    "ID": "74",
+    "Name": "Waaga",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "Light",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 70,
+      "ATK": 2,
+      "DEF": 25,
+      "SATK": 25,
+      "SDEF": 18,
+      "SPD": 7,
+      "INT": 13
+    },
+    "LearnableMoves": [
+      {
+        "Name": "Illusion",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "VOID BLAST",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "PHANTOM HIT",
+        "Type": "Dark",
+        "Power": 150,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "weeba.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.05,
+      "SDEF": 1.05,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Shadow",
+    "Category2": "Ghost",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "8": {
+    "ID": "8",
+    "Name": "Bigisanda",
+    "Level": 1,
+    "Type1": "Ground",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 143,
+      "ATK": 33,
+      "DEF": 43,
+      "SATK": 21,
+      "SDEF": 43,
+      "SPD": 9,
+      "INT": 8
+    },
+    "LearnableMoves": [
+      {
+        "Name": "MUD SLAM",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "VENOM STRIKE",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "TOXIC CLAW",
+        "Type": "Poison",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "ROCK TUMBLE",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 5
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "bigisanda.png",
+    "BonusAttributes": {
+      "ATK": 1.05,
+      "DEF": 1.2,
+      "SATK": 1,
+      "SDEF": 1.15,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/GROUND CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "items/",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 7,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "86": {
+    "ID": "86",
+    "Name": "Shin",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 140,
+      "ATK": 50,
+      "DEF": 18,
+      "SATK": 42,
+      "SDEF": 15,
+      "SPD": 42,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SLICE",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "X SLASH",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "1000 SLICES",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "shin.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 10000
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "gold",
+        "Special": null,
+        "Amount": 30,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 87,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": "Rogue",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "87": {
+    "ID": "87",
+    "Name": "Blade Master (A)",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 147,
+      "ATK": 60,
+      "DEF": 28,
+      "SATK": 52,
+      "SDEF": 25,
+      "SPD": 52,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SLICE",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "X SLASH",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "1000 SLICES",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "blade_master.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.05,
+      "SATK": 1.05,
+      "SDEF": 1,
+      "SPD": 1.2,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "Shin Orb #86",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 88,
+    "PreEvolution": 86,
+    "Category": "Humanoid",
+    "Category2": "Assassin",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "88": {
+    "ID": "88",
+    "Name": "Blade Master (D)",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 147,
+      "ATK": 72,
+      "DEF": 30,
+      "SATK": 57,
+      "SDEF": 25,
+      "SPD": 57,
+      "INT": 22
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SLICE",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "X SLASH",
+        "Type": "Neutral",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "1000 SLICES",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "blademaster_battleform.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.15,
+      "SATK": 1,
+      "SDEF": 1.15,
+      "SPD": 1.05,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "Shin Orb #86",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 87,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": "Assassin",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "89": {
+    "ID": "89",
+    "Name": "Exiled",
+    "Level": 1,
+    "Type1": "Dark",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 100,
+      "ATK": 53,
+      "DEF": 42,
+      "SATK": 62,
+      "SDEF": 42,
+      "SPD": 32,
+      "INT": 45
+    },
+    "LearnableMoves": [
+      {
+        "Name": "SLICE",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 0,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "DARK RUSH",
+        "Type": "Dark",
+        "Power": 130,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "SHADOW SMASH",
+        "Type": "Dark",
+        "Power": 100,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "onyx",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "exiled.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1.15,
+      "SPD": 1,
+      "INT": 1.05
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Humanoid",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "9": {
+    "ID": "9",
+    "Name": "Robomon",
+    "Level": 1,
+    "Type1": "Metal",
+    "Type2": "None",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 148,
+      "ATK": 30,
+      "DEF": 150,
+      "SATK": 30,
+      "SDEF": 20,
+      "SPD": 1,
+      "INT": 100
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STEEL CLAW",
+        "Type": "Metal",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "IRON STORM",
+        "Type": "Metal",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "ALLOY SLAM",
+        "Type": "Metal",
+        "Power": 130,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "METAL CRUSH",
+        "Type": "Metal",
+        "Power": 160,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "t_01.png",
+    "BonusAttributes": {
+      "ATK": 1.1,
+      "DEF": 1.2,
+      "SATK": 1.05,
+      "SDEF": 1.1,
+      "SPD": 1.1,
+      "INT": 1.2
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 1,
+        "EvolveLevelRequired": 1,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": null,
+        "Amount": 3000
+      },
+      "ItemRequirement": {
+        "ItemType": "items/NORMAL CORE",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 25,
+        "ItemRequired": "items/",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Robot",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "91": {
+    "ID": "91",
+    "Name": "Snadle",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "Ground",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 131,
+      "ATK": 5,
+      "DEF": 40,
+      "SATK": 25,
+      "SDEF": 28,
+      "SPD": 20,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "PITTER PATTER",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "DUST SCREEN",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "FLOOD SHOT",
+        "Type": "Water",
+        "Power": 190,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "GROUND SHOCK",
+        "Type": "Ground",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "saddle.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.1,
+      "SATK": 1.1,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "Snadle Orb #91",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 92,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "92": {
+    "ID": "92",
+    "Name": "Snelly",
+    "Level": 1,
+    "Type1": "Water",
+    "Type2": "Ground",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 135,
+      "ATK": 5,
+      "DEF": 50,
+      "SATK": 40,
+      "SDEF": 45,
+      "SPD": 20,
+      "INT": 15
+    },
+    "LearnableMoves": [
+      {
+        "Name": "PITTER PATTER",
+        "Type": "Water",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "DUST SCREEN",
+        "Type": "Ground",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "FLOOD SHOT",
+        "Type": "Water",
+        "Power": 190,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "GROUND SHOCK",
+        "Type": "Ground",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "daddle.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1.2,
+      "SATK": 1.2,
+      "SDEF": 1.2,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "93": {
+    "ID": "93",
+    "Name": "Bigmouth",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 124,
+      "ATK": 5,
+      "DEF": 15,
+      "SATK": 32,
+      "SDEF": 16,
+      "SPD": 35,
+      "INT": 50
+    },
+    "LearnableMoves": [
+      {
+        "Name": "FOREST BLAST",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "CORRODE BLAST",
+        "Type": "Poison",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "SUN EDGE",
+        "Type": "Light",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "big_mouth.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.1,
+      "SDEF": 1,
+      "SPD": 1.1,
+      "INT": 1.1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 20,
+        "ItemRequired": "Bigmouth Orb #93",
+        "Special": null,
+        "Amount": 10,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 94,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": "Support",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "94": {
+    "ID": "94",
+    "Name": "Mouthtain",
+    "Level": 1,
+    "Type1": "Grass",
+    "Type2": "Poison",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 127,
+      "ATK": 5,
+      "DEF": 15,
+      "SATK": 52,
+      "SDEF": 24,
+      "SPD": 70,
+      "INT": 55
+    },
+    "LearnableMoves": [
+      {
+        "Name": "FOREST BLAST",
+        "Type": "Grass",
+        "Power": 140,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 15,
+          "SpiritLevelRequired": 25
+        }
+      },
+      {
+        "Name": "CORRODE BLAST",
+        "Type": "Poison",
+        "Power": 160,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "SUN EDGE",
+        "Type": "Light",
+        "Power": 110,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "diamond",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 7,
+          "SpiritLevelRequired": 5
+        }
+      },
+      {
+        "Name": "PETAL FLURRY",
+        "Type": "Grass",
+        "Power": 190,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seed",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "BILE SHOT",
+        "Type": "Poison",
+        "Power": 200,
+        "MoveType": "Special",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "goober.png",
+    "BonusAttributes": {
+      "ATK": 1,
+      "DEF": 1,
+      "SATK": 1.15,
+      "SDEF": 1,
+      "SPD": 1.3,
+      "INT": 1.15
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": "Rogue",
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  },
+  "99": {
+    "ID": "99",
+    "Name": "Mooman",
+    "Level": 1,
+    "Type1": "Neutral",
+    "Type2": "Water",
+    "BaseStats": {
+      "Level": 1,
+      "HP": 160,
+      "ATK": 60,
+      "DEF": 80,
+      "SATK": 25,
+      "SDEF": 82,
+      "SPD": 30,
+      "INT": 30
+    },
+    "LearnableMoves": [
+      {
+        "Name": "STRIKE DOWN",
+        "Type": "Neutral",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "",
+          "RequiredItemCount": 0,
+          "PlayerLevelRequired": 1,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "AQUA SMASH",
+        "Type": "Water",
+        "Power": 100,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "mushroom",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 5,
+          "SpiritLevelRequired": 1
+        }
+      },
+      {
+        "Name": "BOULDER BASH",
+        "Type": "Ground",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "clay",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "CRUSH CLAW",
+        "Type": "Neutral",
+        "Power": 150,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "pearl",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      },
+      {
+        "Name": "AQUA SLASH",
+        "Type": "Water",
+        "Power": 180,
+        "MoveType": "Physical",
+        "UnlockRequirements": {
+          "IsFree": false,
+          "RequiredItem": "seashell",
+          "RequiredItemCount": 1,
+          "PlayerLevelRequired": 20,
+          "SpiritLevelRequired": 30
+        }
+      }
+    ],
+    "TrainingPoints": 0,
+    "Image": "mooman.png",
+    "BonusAttributes": {
+      "ATK": 1.2,
+      "DEF": 1.2,
+      "SATK": 1.05,
+      "SDEF": 1.1,
+      "SPD": 1,
+      "INT": 1
+    },
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "",
+        "Amount": 0
+      },
+      "EvolveRequirements": {
+        "LevelRequired": 0,
+        "ItemRequired": "",
+        "Special": null,
+        "Amount": 0,
+        "CoresRequired": 10
+      }
+    },
+    "Evolution": 0,
+    "PreEvolution": 0,
+    "Category": "Beast",
+    "Category2": null,
+    "BaseMoveCount": 2,
+    "IsUnique": false
+  }
+}

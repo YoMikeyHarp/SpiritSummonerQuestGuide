@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Battle.Controls.GuildPerksView"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Battles"
+             x:DataType="vm:GuildPerksViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12,10" Spacing="14">
+
+            <!-- Loading -->
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               Color="White"
+                               HeightRequest="32"/>
+
+            <!-- Not in a guild -->
+            <Label Text="Join a guild to see perks"
+                   TextColor="#66FFFFFF"
+                   FontFamily="Poppins"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsNotInGuild}"/>
+
+            <!-- Error -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="#FF6B6B"
+                   FontFamily="Poppins"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"/>
+
+            <!-- Crystal balance header -->
+            <Border StrokeShape="RoundRectangle 8"
+                    Stroke="#44FFFFFF"
+                    StrokeThickness="0.5"
+                    BackgroundColor="#22FFFFFF"
+                    Padding="12,8"
+                    IsVisible="{Binding IsNotInGuild, Converter={toolkit:InvertedBoolConverter}}">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Image Grid.Column="0"
+                           Source="icon_badge.png"
+                           HeightRequest="20" WidthRequest="20"
+                           Aspect="AspectFit"/>
+                    <Label Grid.Column="1"
+                           Text="Guild Crystals"
+                           TextColor="#BBFFFFFF"
+                           FontFamily="Poppins"
+                           FontSize="12"
+                           Margin="8,0,0,0"
+                           VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2"
+                           Text="{Binding GuildCrystals}"
+                           TextColor="#A0DFFF"
+                           FontFamily="Poppins"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           VerticalTextAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Leader note -->
+            <Label Text="Only the guild leader can activate or upgrade perks."
+                   TextColor="#88FFFFFF"
+                   FontFamily="Poppins"
+                   FontSize="10"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsLeader, Converter={toolkit:InvertedBoolConverter}}"/>
+
+            <!-- Perk category groups -->
+            <CollectionView ItemsSource="{Binding Categories}"
+                            SelectionMode="None"
+                            IsVisible="{Binding IsNotInGuild, Converter={toolkit:InvertedBoolConverter}}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="14"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:GuildPerkCategoryGroup">
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <!-- Category header -->
+                            <Label Text="{Binding Label}"
+                                   TextColor="#CCFFFFFF"
+                                   FontFamily="Poppins"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   Margin="0,4,0,0"/>
+
+                            <!-- Perks in this category -->
+                            <CollectionView ItemsSource="{Binding Perks}"
+                                            SelectionMode="None">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:GuildPerkItemViewModel">
+
+                                        <Border StrokeShape="RoundRectangle 8"
+                                                StrokeThickness="0.5"
+                                                BackgroundColor="#22FFFFFF"
+                                                Stroke="#44FFFFFF"
+                                                Padding="12,10">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsActive}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#2A7ED4FF"/>
+                                                    <Setter Property="Stroke" Value="#447ED4FF"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsActive}" Value="False">
+                                                    <Setter Property="BackgroundColor" Value="#22FFFFFF"/>
+                                                    <Setter Property="Stroke" Value="#44FFFFFF"/>
+                                                </DataTrigger>
+                                            </Border.Triggers>
+
+                                            <VerticalStackLayout Spacing="6">
+
+                                                <!-- Title row + tier badge -->
+                                                <Grid ColumnDefinitions="*,Auto">
+                                                    <Label Grid.Column="0"
+                                                           Text="{Binding Title}"
+                                                           TextColor="White"
+                                                           FontFamily="Poppins"
+                                                           FontAttributes="Bold"
+                                                           FontSize="13"/>
+                                                    <Border Grid.Column="1"
+                                                            StrokeShape="RoundRectangle 4"
+                                                            BackgroundColor="#AA000000"
+                                                            Stroke="Transparent"
+                                                            Padding="6,2">
+                                                        <Label Text="{Binding TierText}"
+                                                               TextColor="#A0DFFF"
+                                                               FontFamily="Poppins"
+                                                               FontSize="10"/>
+                                                    </Border>
+                                                </Grid>
+
+                                                <!-- Description -->
+                                                <Label Text="{Binding Description}"
+                                                       TextColor="#AAFFFFFF"
+                                                       FontFamily="Poppins"
+                                                       FontSize="11"/>
+
+                                                <!-- Active effect -->
+                                                <HorizontalStackLayout Spacing="4"
+                                                                        IsVisible="{Binding IsActive}">
+                                                    <Label Text="Active:"
+                                                           TextColor="#7ED4FF"
+                                                           FontFamily="Poppins"
+                                                           FontSize="11"/>
+                                                    <Label Text="{Binding ActiveEffectDescription}"
+                                                           TextColor="#7ED4FF"
+                                                           FontFamily="Poppins"
+                                                           FontAttributes="Bold"
+                                                           FontSize="11"/>
+                                                </HorizontalStackLayout>
+
+                                                <!-- MAX TIER label -->
+                                                <Label Text="★ Maximum tier reached"
+                                                       TextColor="#FFD700"
+                                                       FontFamily="Poppins"
+                                                       FontSize="11"
+                                                       IsVisible="{Binding IsMaxTier}"/>
+
+                                                <!-- Next tier info (not max) -->
+                                                <VerticalStackLayout Spacing="4"
+                                                                     IsVisible="{Binding IsMaxTier, Converter={toolkit:InvertedBoolConverter}}">
+
+                                                    <HorizontalStackLayout Spacing="4">
+                                                        <Label Text="Next:"
+                                                               TextColor="#AAFFFFFF"
+                                                               FontFamily="Poppins"
+                                                               FontSize="11"/>
+                                                        <Label Text="{Binding NextEffectDescription}"
+                                                               TextColor="#CCFFFFFF"
+                                                               FontFamily="Poppins"
+                                                               FontSize="11"/>
+                                                    </HorizontalStackLayout>
+
+                                                    <!-- Cost row -->
+                                                    <HorizontalStackLayout Spacing="4">
+                                                        <Image Source="icon_badge.png"
+                                                               HeightRequest="12" WidthRequest="12"
+                                                               Aspect="AspectFit"/>
+                                                        <Label TextColor="#A0DFFF"
+                                                               FontFamily="Poppins"
+                                                               FontSize="11">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding NextTierCrystalCost}"/>
+                                                                    <Span Text=" crystals"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </HorizontalStackLayout>
+
+                                                    <!-- Activate/Upgrade button (leader + can afford) -->
+                                                    <Border StrokeShape="RoundRectangle 6"
+                                                            Stroke="Transparent"
+                                                            HeightRequest="36"
+                                                            IsVisible="{Binding CanActivate}">
+                                                        <Border.Behaviors>
+                                                            <toolkit:TouchBehavior
+                                                                DefaultAnimationDuration="200"
+                                                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                PressedOpacity="0.6"
+                                                                PressedScale="0.95"/>
+                                                        </Border.Behaviors>
+                                                        <Border.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding ActivateCommand}"/>
+                                                        </Border.GestureRecognizers>
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                <GradientStop Color="#4AAFFF" Offset="0"/>
+                                                                <GradientStop Color="#1A6FCC" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Label Text="{Binding ActivateButtonLabel}"
+                                                               TextColor="White"
+                                                               FontFamily="Poppins"
+                                                               FontAttributes="Bold"
+                                                               FontSize="12"
+                                                               HorizontalTextAlignment="Center"
+                                                               VerticalTextAlignment="Center"/>
+                                                    </Border>
+
+                                                    <!-- Can't afford label (leader) -->
+                                                    <Label Text="Not enough guild crystals"
+                                                           TextColor="#FF8888"
+                                                           FontFamily="Poppins"
+                                                           FontSize="11"
+                                                           HorizontalTextAlignment="Center"
+                                                           IsVisible="{Binding CannotAfford}"/>
+
+                                                </VerticalStackLayout>
+
+                                            </VerticalStackLayout>
+                                        </Border>
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentView>

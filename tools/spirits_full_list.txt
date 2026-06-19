@@ -1,0 +1,77 @@
+1 | Dogi | Neutral / None | Evo-> 2 | PreEvo: 0 | EvoReq: Lv 15 Item: gold Amt: 10000 Cores: 10 | Category: Beast None
+2 | Sr. Dogi | Neutral / None | Evo-> 3 | PreEvo: 1 | EvoReq: Lv 25 Item: Dogi Orb #1 Amt: 0 Cores: 25 | Category: Beast None
+3 | Armored Dogi | Neutral / None | Evo-> 0 | PreEvo: 2 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+4 | Isine | Wind / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 20 Item: items/PETAL SHARD Amt: 0 Cores: 10 | Category: Angel Beast
+5 | Miki | Neutral / Poison | Evo-> 6 | PreEvo: 0 | EvoReq: Lv 15 Item: gold Amt: 10000 Cores: 10 | Category: None None
+6 | Mikia | Neutral / Poison | Evo-> 44 | PreEvo: 5 | EvoReq: Lv 25 Item: Miki Orb #5 Amt: 20000 Cores: 25 | Category: Beast None
+7 | Bigiworm | Ground / Poison | Evo-> 8 | PreEvo: 0 | EvoReq: Lv 20 Item: None Amt: 0 Cores: 10 | Category: Beast None
+8 | Bigisanda | Ground / Poison | Evo-> 0 | PreEvo: 7 | EvoReq: Lv 20 Item: items/ Amt: 0 Cores: 10 | Category: Beast None
+9 | Robomon | Metal / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 25 Item: items/ Amt: 0 Cores: 10 | Category: Robot None
+10 | Trifish (B) | Water / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 25 Item:  Amt: 0 Cores: 10 | Category: Fish None
+11 | Trifish (R) | Fire / None | Evo-> 12 | PreEvo: 0 | EvoReq: Lv 15 Item: gold Amt: 20000 Cores: 10 | Category: Fish None
+12 | Crabfish | Fire / Neutral | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 35 Item: gold Amt: 100000 Cores: 50 | Category: Fish None
+20 | Foorse (O) | Fire / None | Evo-> 21 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+21 | Hellfoorse | Fire / Dark | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 35 Item:  Amt: 0 Cores: 10 | Category: Beast None
+22 | Armor | Neutral / None | Evo-> 222 | PreEvo: 0 | EvoReq: Lv 30 Item: Armor Orb #22 Amt: 10000 Cores: 10 | Category: Shadow None
+23 | Bulbhead | Light / None | Evo-> 223 | PreEvo: 0 | EvoReq: Lv 20 Item:  Amt: 0 Cores: 10 | Category: Unique None
+24 | Traruz | Ground / None | Evo-> 241 | PreEvo: 0 | EvoReq: Lv 40 Item: gold Amt: 100000 Cores: 10 | Category: Dragon None
+25 | Chicka | Wind / Neutral | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 35 Item: items/SOUL CORE (Chikin_(Pink) Amt: 0 Cores: 10 | Category: Beast None
+26 | Chiki | Wind / Neutral | Evo-> 25 | PreEvo: 0 | EvoReq: Lv 25 Item: items/SOUL CORE (Chikin) Amt: 0 Cores: 10 | Category: Beast None
+27 | Dark Masko | Dark / None | Evo-> 28 | PreEvo: 0 | EvoReq: Lv 20 Item: gold Amt: 0 Cores: 10 | Category: Shadow None
+28 | King Masko | Dark / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 35 Item:  Amt: 0 Cores: 10 | Category: Shadow None
+29 | Borgle | Grass / Neutral | Evo-> 30 | PreEvo: 0 | EvoReq: Lv 15 Item: gold Amt: 20000 Cores: 10 | Category: Bug None
+30 | Borge | Grass / Neutral | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 35 Item: SOUL CORE (Borgle) Amt: 0 Cores: 10 | Category: Bug None
+31 | Magiman | Dark / None | Evo-> 32 | PreEvo: 0 | EvoReq: Lv 20 Item:  Amt: 20 Cores: 10 | Category: Humanoid Shadow
+32 | Dark Wizard | Dark / None | Evo-> 300 | PreEvo: 0 | EvoReq: Lv 40 Item: darkCrystal Amt: 1 Cores: 0 | Category: Humanoid Shadow
+33 | Magiman (G) | Dark / None | Evo-> 32 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Humanoid None
+34 | Magiman (B) | Dark / None | Evo-> 32 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Humanoid None
+35 | Pa | Grass / None | Evo-> 36 | PreEvo: 0 | EvoReq: Lv 15 Item: Pa Orb #35 Amt: 10 Cores: 10 | Category: Plant None
+36 | Pas | Grass / None | Evo-> 37 | PreEvo: 0 | EvoReq: Lv 15 Item: Pa Orb #35 Amt: 10 Cores: 10 | Category: Plant None
+37 | Aveni | Grass / None | Evo-> 140 | PreEvo: 0 | EvoReq: Lv 30 Item: Pa Orb #35 Amt: 25 Cores: 20 | Category: Plant None
+38 | Wooman | Poison / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Alien None
+44 | Armored Mikkia | Neutral / None | Evo-> 0 | PreEvo: 6 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+45 | Mikki (P) | Poison / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+66 | Duckle | Water / Neutral | Evo-> 67 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+67 | Duck | Water / Neutral | Evo-> 0 | PreEvo: 66 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+74 | Waaga | Dark / Light | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Shadow Ghost
+86 | Shin | Neutral / None | Evo-> 87 | PreEvo: 0 | EvoReq: Lv 20 Item: gold Amt: 30 Cores: 10 | Category: Humanoid Rogue
+87 | Blade Master (A) | Neutral / None | Evo-> 88 | PreEvo: 86 | EvoReq: Lv 20 Item: Shin Orb #86 Amt: 10 Cores: 10 | Category: Humanoid Assassin
+88 | Blade Master (D) | Neutral / None | Evo-> 87 | PreEvo: 0 | EvoReq: Lv 20 Item: Shin Orb #86 Amt: 10 Cores: 10 | Category: Humanoid Assassin
+89 | Exiled | Dark / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Humanoid None
+91 | Snadle | Water / Ground | Evo-> 92 | PreEvo: 0 | EvoReq: Lv 20 Item: Snadle Orb #91 Amt: 10 Cores: 10 | Category: Beast None
+92 | Snelly | Water / Ground | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+93 | Bigmouth | Grass / Poison | Evo-> 94 | PreEvo: 0 | EvoReq: Lv 20 Item: Bigmouth Orb #93 Amt: 10 Cores: 10 | Category: Beast Support
+94 | Mouthtain | Grass / Poison | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast Rogue
+99 | Mooman | Neutral / Water | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+100 | Koki | Electric / None | Evo-> 101 | PreEvo: 0 | EvoReq: Lv 30 Item: gold Amt: 15000 Cores: 10 | Category: Beast None
+101 | Koko | Electric / Neutral | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+103 | Dogia | Neutral / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+109 | Paley | Water / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: ??? None
+110 | Angi | Light / Ground | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast Angel
+114 | Steelha | Neutral / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+129 | Rexli | Neutral / None | Evo-> 130 | PreEvo: 0 | EvoReq: Lv 10 Item: gold Amt: 5000 Cores: 10 | Category: Beast None
+130 | Rexa | Neutral / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+134 | Firelord | Fire / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Unique Beast
+135 | Mist | Poison / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Unique Humanoid
+140 | Avenia | Grass / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Support Humanoid
+220 | BOMBAMAN | Dark / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Humanoid None
+222 | Blood Knight | Dark / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: None None
+223 | Bulb Fighter | Light / None | Evo-> 224 | PreEvo: 0 | EvoReq: Lv 25 Item: Bulbhead Orb #23 Amt: 10 Cores: 10 | Category: Unique None
+224 | Bulb Hero | Light / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Unique None
+240 | Dragon Jr. | Neutral / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Dragon None
+241 | Traruza | Ground / None | Evo-> 242 | PreEvo: 24 | EvoReq: Lv 20 Item: Traruz Orb #24 Amt: 100000 Cores: 10 | Category: Dragon None
+242 | St. Traruza | Ground / None | Evo-> 0 | PreEvo: 241 | EvoReq: Lv 25 Item:  Amt: 10 Cores: 10 | Category: Dragon None
+243 | Iferasz | Fire / None | Evo-> 244 | PreEvo: 0 | EvoReq: Lv 40 Item: gold Amt: 100000 Cores: 10 | Category: None None
+244 | Iferasa | Fire / None | Evo-> 245 | PreEvo: 0 | EvoReq: Lv 25 Item: Iferasz Orb #243 Amt: 10 Cores: 10 | Category: Dragon None
+245 | St. Iferasa | Fire / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Dragon None
+246 | Akigosa | Water / None | Evo-> 247 | PreEvo: 0 | EvoReq: Lv 40 Item: gold Amt: 100000 Cores: 10 | Category: Dragon None
+247 | Akigowa | Water / None | Evo-> 248 | PreEvo: 0 | EvoReq: Lv 0 Item: Akigosa Orb #246 Amt: 100000 Cores: 10 | Category: Dragon None
+248 | St.Akigowa | Water / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Dragon None
+249 | Skiinaza | Wind / None | Evo-> 250 | PreEvo: 0 | EvoReq: Lv 40 Item: gold Amt: 100000 Cores: 10 | Category: Dragon None
+250 | Skinna | Wind / None | Evo-> 251 | PreEvo: 0 | EvoReq: Lv 40 Item: Skiinaza Orb #249 Amt: 100000 Cores: 10 | Category: Dragon None
+251 | St.Skiinaa | Wind / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item: None Amt: 0 Cores: 10 | Category: Dragon None
+260 | Chiki (P) | Wind / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Beast None
+300 | Magi Wizard | Dark / None | Evo-> 0 | PreEvo: 32 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Humanoid None
+665 | Justice | Light / None | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Angel None
+666 | Angel of War | Light / Dark | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: God None
+667 | Destroyer Carl | Fire / Dark | Evo-> 0 | PreEvo: 0 | EvoReq: Lv 0 Item:  Amt: 0 Cores: 10 | Category: Warrior None

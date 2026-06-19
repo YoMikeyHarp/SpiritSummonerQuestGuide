@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.HeldItemBottomSheet"
+                   x:DataType="bottomsheet:HeldItemSheetViewModel"
+                   BackgroundColor="#CC222222"
+                   HasBackdrop="True"
+                   HasHandle="True"
+                   CornerRadius="24">
+    <the49:BottomSheet.Resources>
+        <ResourceDictionary>
+            <Shadow x:Key="CardShadow"
+                    Brush="#30000000"
+                    Radius="12"
+                    Opacity="{OnPlatform Android='0.2',iOS='1'}"
+                    Offset="0,6"/>
+
+            <Shadow x:Key="ButtonShadow"
+                    Brush="#40000000"
+                    Radius="8"
+                    Offset="0,3"/>
+
+            <Shadow x:Key="IconShadow"
+                    Brush="#60000000"
+                    Radius="6"
+                    Offset="0,2"/>
+        </ResourceDictionary>
+    </the49:BottomSheet.Resources>
+
+    <Border Stroke="White"
+            BackgroundColor="#3E4E4E"
+            StrokeShape="RoundRectangle 24"
+            VerticalOptions="End">
+
+        <Grid RowDefinitions="Auto,Auto,*,Auto"
+              RowSpacing="15"
+              Padding="20,15">
+
+            <!-- Header -->
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="*,Auto">
+                <Label Text="Equip Held Item"
+                       Grid.Column="0"
+                       FontFamily="PoppinsSemiBold"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       FontSize="Title">
+                    <Label.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,0"
+                                Radius="5"/>
+                    </Label.Shadow>
+                </Label>
+
+                <!-- Remove Item Button -->
+                <Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 8"
+                        BackgroundColor="#FF5252"
+                        Padding="10,5"
+                        IsVisible="{Binding NewItemId, Converter={StaticResource StringToBoolConverter}}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RemoveItemCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Remove"
+                           FontFamily="Poppins"
+                           FontAttributes="Bold"
+                           FontSize="12"
+                           TextColor="White"
+                           VerticalTextAlignment="Center">
+                        <Label.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,1"
+                                    Radius="2"/>
+                        </Label.Shadow>
+                    </Label>
+                </Border>
+            </Grid>
+
+            <!-- Info Box -->
+            <Border Grid.Row="1"
+                    StrokeShape="RoundRectangle 8"
+                    BackgroundColor="#202626">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      Padding="10"
+                      RowSpacing="8">
+                    <Label Text="Equip an item to be held by your spirit. The item will provide passive benefits during PvE battle."
+                           TextColor="White"
+                           FontFamily="PoppinsSemiBold"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           LineBreakMode="WordWrap">
+                        <Label.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="1,1"
+                                    Radius="5"/>
+                        </Label.Shadow>
+                    </Label>
+
+                    <VerticalStackLayout Grid.Row="1"
+                                            Spacing="5">
+
+                        <HorizontalStackLayout Grid.Row="1"
+                                               Spacing="10"
+                                               HorizontalOptions="Start">
+
+                            <Label Text="Available items:"
+                                   TextColor="#90A3CA"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="Small"
+                                   FontAttributes="Bold"
+                                   VerticalTextAlignment="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="1,1"
+                                            Radius="5"/>
+                                </Label.Shadow>
+                            </Label>
+
+                            <Label Text="{Binding UnlockedItemsCount}"
+                                   TextColor="Yellow"
+                                   FontFamily="Bungee"
+                                   FontSize="Large"
+                                   FontAttributes="Bold"
+                                   VerticalTextAlignment="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="1,1"
+                                            Radius="5"/>
+                                </Label.Shadow>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <Label FontFamily="PoppinsSemiBold"
+                                   VerticalTextAlignment="Center"
+                                   IsVisible="{Binding HasItem}">
+                                   <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Equipped item: "
+                                      TextColor="#90A3CA"
+                                       FontAttributes="{OnPlatform iOS=Bold}"
+                                      FontSize="Small"
+                                     FontFamily="{OnPlatform iOS=Poppins}"/>
+                                <Span Text="{Binding CurrentHeldItem.Name}"
+                                   TextColor="Yellow"
+                                    FontAttributes="{OnPlatform iOS=Bold}"
+                                   FontSize="Small"
+                                      FontFamily="{OnPlatform iOS=Bungee}"/>
+                                    <Span Text="  Effect: "
+                                          TextColor="#90A3CA"
+                                            FontAttributes="{OnPlatform iOS=Bold}"
+                                        FontSize="Small"
+							              FontFamily="{OnPlatform iOS=Poppins}"/>
+                                    <Span Text="{Binding CurrentHeldItem.Description}"
+                                          TextColor="Yellow"
+                                    FontAttributes="{OnPlatform iOS=Bold}"
+                                   FontSize="Small"
+                                      FontFamily="{OnPlatform iOS=Bungee}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="1,1"
+                                            Radius="5"/>
+                                </Label.Shadow>
+                        </Label>
+
+                        <Label FontFamily="PoppinsSemiBold"
+                                   VerticalTextAlignment="Center"
+                                   IsVisible="{Binding IsItemSelected}">
+                                   <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Preview item: "
+                                      TextColor="#90A3CA"
+                                       FontAttributes="{OnPlatform iOS=Bold}"
+                                      FontSize="Small"
+                                     FontFamily="{OnPlatform iOS=Poppins}"/>
+                                <Span Text="{Binding SelectedItem.Name}"
+                                   TextColor="Yellow"
+                                    FontAttributes="{OnPlatform iOS=Bold}"
+                                   FontSize="Small"
+                                      FontFamily="{OnPlatform iOS=Bungee}"/>
+                                    <Span Text="  Effect: "
+                                          TextColor="#90A3CA"
+                                            FontAttributes="{OnPlatform iOS=Bold}"
+                                        FontSize="Small"
+							              FontFamily="{OnPlatform iOS=Poppins}"/>
+                                    <Span Text="{Binding SelectedItem.Description}"
+                                          TextColor="Yellow"
+                                    FontAttributes="{OnPlatform iOS=Bold}"
+                                   FontSize="Small"
+                                      FontFamily="{OnPlatform iOS=Bungee}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="1,1"
+                                            Radius="5"/>
+                                </Label.Shadow>
+                        </Label>
+
+                    </VerticalStackLayout>
+
+                    
+                </Grid>
+            </Border>
+
+            <!-- Items List -->
+            <Border Grid.Row="2"
+                    StrokeShape="RoundRectangle 8"
+                    BackgroundColor="#202626"
+                    Padding="10">
+
+                <CollectionView ItemsSource="{Binding FilteredItems}"
+                                VerticalScrollBarVisibility="Never"
+                                BackgroundColor="Transparent">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2"
+                                         HorizontalItemSpacing="15"
+                                         VerticalItemSpacing="15"
+                                         Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ItemModel">
+                            <Border Padding="8"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="2.5"
+                                    BackgroundColor="#F0FFFFFF"
+                                    Shadow="{StaticResource CardShadow}">
+                                <!-- Selected State -->
+                                <Border.Triggers>
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding Id}"
+                                                 Value="{Binding x:DataType='bottomsheet:HeldItemSheetViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:HeldItemSheetViewModel}}, Path=NewItemId}">
+                                        <Setter Property="Stroke"
+                                                Value="#4CAF50"/>
+                                        <Setter Property="StrokeThickness"
+                                                Value="4"/>
+                                        <Setter Property="BackgroundColor"
+                                                Value="#E8F5E9"/>
+                                    </DataTrigger>
+                                </Border.Triggers>
+
+                                <Grid RowDefinitions="Auto,Auto,Auto"
+                                      RowSpacing="8">
+                                    <!-- Item Image -->
+                                    <Border Grid.Row="0"
+                                            StrokeShape="RoundRectangle 12"
+                                            BackgroundColor="#FFFFFFFF"
+                                            Shadow="{StaticResource IconShadow}"
+                                            Padding="8"
+                                            HorizontalOptions="Center"
+                                            WidthRequest="60"
+                                            HeightRequest="60">
+                                        <Image Source="{Binding Icon}"
+                                               Aspect="AspectFit"/>
+                                    </Border>
+
+                                    <!-- Item Name -->
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Name}"
+                                           FontFamily="Poppins"
+                                           FontAttributes="Bold"
+                                           FontSize="14"
+                                           TextColor="#FF373737"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="2">
+                                        <Label.Shadow>
+                                            <Shadow Brush="White"
+                                                    Offset="0,1"
+                                                    Radius="3"/>
+                                        </Label.Shadow>
+                                    </Label>
+
+                                    <!-- Select Button -->
+                                    <Border Grid.Row="2"
+                                            BackgroundColor="#3F7FCC"
+                                            StrokeShape="RoundRectangle 10"
+                                            Padding="8,6"
+                                            Shadow="{StaticResource ButtonShadow}"
+                                            HorizontalOptions="Fill">
+                                        <Border.Behaviors>
+                                            <toolkit:TouchBehavior
+                                                DefaultAnimationDuration="300"
+                                                DefaultAnimationEasing="{x:Static Easing.CubicOut}"
+                                                PressedOpacity="0.7"
+                                                TouchGestureCompleted="OnSetItemTapped"
+                                                PressedScale="0.95"/>
+                                        </Border.Behaviors>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding x:DataType='bottomsheet:HeldItemSheetViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:HeldItemSheetViewModel}}, Path=SetItemCommand}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+
+                                        <Label Text="Equip"
+                                               FontFamily="Poppins"
+                                               FontAttributes="Bold"
+                                               FontSize="13"
+                                               TextColor="White"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center">
+                                            <Label.Shadow>
+                                                <Shadow Brush="Black"
+                                                        Offset="0,1"
+                                                        Radius="2"/>
+                                            </Label.Shadow>
+                                        </Label>
+
+                                        <!-- Selected Indicator -->
+                                        <Border.Triggers>
+                                            <DataTrigger TargetType="Border"
+                                                         Binding="{Binding Id}"
+                                                         Value="{Binding x:DataType='bottomsheet:HeldItemSheetViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:HeldItemSheetViewModel}}, Path=NewItemId}">
+                                                <Setter Property="BackgroundColor"
+                                                        Value="#4CAF50"/>
+                                            </DataTrigger>
+                                        </Border.Triggers>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <!-- Empty State -->
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="16"
+                                             Padding="40">
+                            <Border StrokeShape="RoundRectangle 40"
+                                    BackgroundColor="#20FFFFFF"
+                                    WidthRequest="80"
+                                    HeightRequest="80"
+                                    HorizontalOptions="Center">
+                                <Label Text="📦"
+                                       FontSize="40"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="No items available"
+                                   FontFamily="Poppins"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,2"
+                                            Radius="4"/>
+                                </Label.Shadow>
+                            </Label>
+                            <Label Text="Visit the shop to purchase items"
+                                   FontFamily="Poppins"
+                                   FontSize="14"
+                                   TextColor="#C0FFFFFF"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Margin="0,0,0,10">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,1"
+                                            Radius="2"/>
+                                </Label.Shadow>
+                            </Label>
+                            <Border BackgroundColor="#FF9800"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="15,10"
+                                    HorizontalOptions="Center">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToShopCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="Go to Shop"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="White">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,1"
+                                                Radius="2"/>
+                                    </Label.Shadow>
+                                </Label>
+                            </Border>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </Border>
+
+            <!-- Action Buttons -->
+            <Grid Grid.Row="3"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="15"
+                  HeightRequest="45"
+                  Padding="20,0">
+
+                <!-- Cancel Button -->
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 10"
+                        StrokeThickness="0.2"
+                        Stroke="Black"
+                        Padding="5">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0"
+                                                                     EndPoint="0.5,1">
+                                                        <GradientStop Color="#EB6756"
+                                                                      Offset="0"/>
+                                                        <GradientStop Color="#E53F37"
+                                                                      Offset="0.25"/>
+                                                        <GradientStop Color="#E53F37"
+                                                                      Offset="0.5"/>
+                                                        <GradientStop Color="#EB6756"
+                                                                      Offset="1"/>
+                            </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.6"
+                                               TouchGestureCompleted="OnCancelTapped"
+                                               PressedScale="0.95"/>
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2"
+                                Opacity="0.6"
+                                Radius="3"/>
+                    </Border.Shadow>
+                     <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                               Text="Cancel"
+                                                               HorizontalOptions="Center"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               FontSize="14"
+                                                               StrokeColor="#40000000"
+                                                               StrokeWidth="2"
+                                                               HasShadow="True"
+                                                               ShadowColor="black"
+                                                               ShadowBlur="1"
+                                                               ShadowOffsetY="1"/>
+                </Border>
+
+                <!-- Confirm Button -->
+                                <Border Grid.Column="1"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="0.2"
+                                        Stroke="Black"
+                                        Padding="5">
+                                        <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0"
+                                                                     EndPoint="0.5,1">
+                                                        <GradientStop Color="#9AE589"
+                                                                      Offset="0"/>
+                                                        <GradientStop Color="#64D855"
+                                                                      Offset="0.25"/>
+                                                        <GradientStop Color="#64D855"
+                                                                      Offset="0.5"/>
+                                                        <GradientStop Color="#9AE589"
+                                                                      Offset="1"/>
+                                                </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.Behaviors>
+                                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                       PressedOpacity="0.6"
+                                                                       PressedScale="0.7"
+                                                                       TouchGestureCompleted="OnConfirmTapped"/>
+                                        </Border.Behaviors>
+                                        <Border.Shadow>
+                                                <Shadow Brush="Black"
+                                                        Offset="0,1"
+                                                        Opacity="0.7"
+                                                        Radius="1"/>
+                                        </Border.Shadow>
+
+                                        <Grid>
+                                                <!-- Processing Indicator -->
+                                                <ActivityIndicator IsRunning="{Binding IsProcessing}"
+                                                                   IsVisible="{Binding IsProcessing}"
+                                                                   Color="White"
+                                                                   WidthRequest="20"
+                                                                   HeightRequest="20"/>
+
+                                                <!-- Confirm Text -->
+                                                <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                       HorizontalOptions="Center"
+                                                                       FontFamily="PoppinsSemiBold"
+                                                                       FontSize="14"
+                                                                       StrokeColor="#40000000"
+                                                                       StrokeWidth="2"
+                                                                       HasShadow="True"
+                                                                       ShadowColor="black"
+                                                                       ShadowBlur="1"
+                                                                       ShadowOffsetY="1">
+                                                        <outline:OutlinedLabel.Text>
+                                                                <Binding Path="HasUnsavedChanges">
+                                                                        <Binding.Converter>
+                                                                                <toolkit:BoolToObjectConverter TrueObject="Save Changes"
+                                                                                                               FalseObject="No Changes"/>
+                                                                        </Binding.Converter>
+                                                                </Binding>
+                                                        </outline:OutlinedLabel.Text>
+                                                </outline:OutlinedLabel>
+                                        </Grid>
+                                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</the49:BottomSheet>

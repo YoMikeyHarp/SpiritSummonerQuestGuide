@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SpiritSummoner.Presentation.Views.Spirits.EvolveView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:spirits="clr-namespace:SpiritSummoner.Presentation.ViewModels.Spirits"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="spirits:EvolveViewModel"
+    BackgroundColor="Black"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <!-- Background glow (animated via code-behind) -->
+        <BoxView
+            x:Name="GlowOverlay"
+            BackgroundColor="White"
+            IsVisible="True"
+            Opacity="0" />
+
+        <!-- Current spirit (fades out during evolve) -->
+        <VerticalStackLayout
+            x:Name="CurrentSpiritContainer"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="16">
+
+            <Label
+                HorizontalOptions="Center"
+                FontFamily="PoppinsBold"
+                FontSize="22"
+                Text="{Binding CurrentSpiritName}"
+                TextColor="White" />
+
+            <Image
+                x:Name="CurrentSpiritImage"
+                HeightRequest="240"
+                WidthRequest="240"
+                HorizontalOptions="Center"
+                Aspect="AspectFit"
+                Source="{Binding CurrentSpiritImage}" />
+
+            <ActivityIndicator
+                x:Name="EvolvingIndicator"
+                Color="White"
+                IsRunning="{Binding IsAnimating}"
+                IsVisible="{Binding IsAnimating}" />
+        </VerticalStackLayout>
+
+        <!-- Evolved spirit (starts invisible, fades in) -->
+        <VerticalStackLayout
+            x:Name="EvolvedSpiritContainer"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Opacity="0"
+            Spacing="16">
+
+            <Label
+                HorizontalOptions="Center"
+                FontFamily="PoppinsBold"
+                FontSize="14"
+                Text="Evolved into"
+                TextColor="#AAAAAA" />
+
+            <Label
+                HorizontalOptions="Center"
+                FontFamily="PoppinsBold"
+                FontSize="26"
+                Text="{Binding EvolvedSpiritName}"
+                TextColor="White" />
+
+            <Image
+                x:Name="EvolvedSpiritImage"
+                HeightRequest="260"
+                WidthRequest="260"
+                HorizontalOptions="Center"
+                Aspect="AspectFit"
+                Source="{Binding EvolvedSpiritImage}" />
+
+            <Button
+                Command="{Binding ContinueCommand}"
+                FontFamily="PoppinsBold"
+                FontSize="16"
+                BackgroundColor="#FFD700"
+                TextColor="Black"
+                CornerRadius="12"
+                Padding="40,12"
+                HorizontalOptions="Center"
+                Text="Continue" />
+        </VerticalStackLayout>
+
+        <!-- Error state -->
+        <VerticalStackLayout
+            x:Name="ErrorContainer"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            IsVisible="False"
+            Spacing="16">
+
+            <Label
+                HorizontalOptions="Center"
+                FontFamily="PoppinsBold"
+                FontSize="18"
+                Text="{Binding ErrorMessage}"
+                TextColor="#FF6B6B" />
+
+            <Button
+                Command="{Binding ContinueCommand}"
+                FontFamily="PoppinsBold"
+                FontSize="16"
+                BackgroundColor="#444444"
+                TextColor="White"
+                CornerRadius="12"
+                Padding="40,12"
+                HorizontalOptions="Center"
+                Text="Go Back" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

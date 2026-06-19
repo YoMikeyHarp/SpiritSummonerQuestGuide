@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:flex="http://schemas.microsoft.com/dotnet/2021/maui/flex"
+                   xmlns:controls="clr-namespace:SpiritSummoner.Presentation.Controls.SquadControls"
+                   xmlns:controlsvm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Squads"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SquadSheets.SavedSquadsBottomSheet"
+                   x:DataType="vm:SavedSquadsSheetViewModel"
+                   Dismissed="BottomSheet_Dismissed"
+                   HasBackdrop="True"
+                   Background="transparent"
+                   CornerRadius="24">
+
+    <the49:BottomSheet.Resources>
+        <cnv:BoolToColorConverter x:Key="BoolToColorConverter"/>
+    </the49:BottomSheet.Resources>
+
+    <Border Stroke="Brown"
+            StrokeThickness=".4"
+            Background="{StaticResource TanGradient}"
+            StrokeShape="RoundRectangle 8"
+            HeightRequest="550"
+            VerticalOptions="{OnPlatform Android=End}"
+            Padding="10,5">
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!-- Header -->
+            <Label Text="Saved Squads"
+                   FontFamily="PoppinsBold"
+                   FontSize="20"
+                   TextColor="#2E4A0F"
+                   HorizontalOptions="Center">
+                <Label.Shadow>
+                    <Shadow Brush="#40000000"
+                            Offset="0,1"
+                            Radius="0.25"/>
+                </Label.Shadow>
+            </Label>
+
+            <Border Grid.Row="1"
+                    StrokeShape="RoundRectangle 4"
+                    BackgroundColor="White"
+                    Padding="5,0">
+
+                <Grid RowDefinitions="Auto, *, Auto" RowSpacing="10" Padding="5,5,5,0">
+                    
+                    <Label Grid.Row="0"
+                           FontFamily="Poppins"
+                           FontSize="Small"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <!-- Instructions -->
+                    <Label Grid.Row="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Select a saved squadron to become your active squad."
+                                      TextColor="#80000000"
+                                      FontFamily="PoppinsMedium"
+                                      FontSize="15"/>
+
+                                <Span Text="You can also manually select a squad from the Spirits page."
+                                      TextColor="#80000000"
+                                      FontFamily="PoppinsBold"
+                                      FontSize="15"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <!-- Loading Indicator -->
+                    <Grid Grid.Row="1"
+                          IsVisible="{Binding IsLoading}"
+                          ZIndex="10">
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="16">
+                            <ActivityIndicator IsRunning="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"
+                                               Color="Black"
+                                               WidthRequest="40"
+                                               HeightRequest="40"/>
+                            <Label Text="Loading your Squads..."
+                                   TextColor="Black"
+                                   FontFamily="Poppins"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- Squad Collection -->
+                    <Grid Grid.Row="1"
+                          Padding="5"
+                          IsVisible="{Binding IsLoading,Converter={StaticResource InverseBooleanConverter}}"
+                          BackgroundColor="Black">
+
+                        <CollectionView ItemsSource="{Binding SquadCollection}"
+                                        SelectionMode="Single"
+                                        VerticalScrollBarVisibility="Never">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                        ItemSpacing="0"/>
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="controlsvm:SpiritSquadViewModel">
+                                    <Border StrokeShape="RoundRectangle 8"
+                                            Padding="5"
+                                            BackgroundColor="{Binding IsActiveSquadSheet, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#4CAF50,Transparent'}"
+                                            Stroke="{Binding IsActiveSquadSheet, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#2E7D32,Gray'}"
+                                            StrokeThickness="1">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding x:DataType='vm:SavedSquadsSheetViewModel', Source={RelativeSource AncestorType={x:Type vm:SavedSquadsSheetViewModel}}, Path=SetActiveSquadCommand}"
+                                                    CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                            </Border.GestureRecognizers>
+
+                                        <!-- Squad Card -->
+                                        <controls:SpiritSquadCardView Grid.Row="1"
+                                                                      BindingContext="{Binding .}"
+                                                                      HeightRequest="100"
+                                                                      Padding="2"
+                                                                      InputTransparent="True"/>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <!-- Action Buttons -->
+                    <Grid Grid.Row="3"
+                          ColumnDefinitions="*,*"
+                          ColumnSpacing="15"
+                          Padding="20,10">
+
+                        <!-- Cancel Button -->
+                        <Border Grid.Column="0"
+                                StrokeShape="RoundRectangle 8"
+                                StrokeThickness="0.2"
+                                Stroke="Black"
+                                HeightRequest="40"
+                                Padding="5">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0"
+                                                     EndPoint="0.5,1">
+                                    <GradientStop Color="#EB6756"
+                                                  Offset="0"/>
+                                    <GradientStop Color="#E53F37"
+                                                  Offset="0.25"/>
+                                    <GradientStop Color="#E53F37"
+                                                  Offset="0.5"/>
+                                    <GradientStop Color="#EB6756"
+                                                  Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                       PressedOpacity="0.6"
+                                                       PressedScale="0.7"
+                                                       TouchGestureCompleted="OnCancelTapped"/>
+                            </Border.Behaviors>
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Opacity="0.7"
+                                        Radius="1"/>
+                            </Border.Shadow>
+                            <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                   Text="Cancel"
+                                                   HorizontalOptions="Center"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="14"
+                                                   StrokeColor="#40000000"
+                                                   StrokeWidth="2"
+                                                   HasShadow="True"
+                                                   ShadowColor="black"
+                                                   ShadowBlur="1"
+                                                   ShadowOffsetY="1"/>
+                        </Border>
+
+                        <!-- Confirm Button -->
+                        <Border Grid.Column="1"
+                                StrokeShape="RoundRectangle 8"
+                                StrokeThickness="0.2"
+                                Stroke="Black"
+                                Padding="5">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0"
+                                                     EndPoint="0.5,1">
+                                    <GradientStop Color="#9AE589"
+                                                  Offset="0"/>
+                                    <GradientStop Color="#64D855"
+                                                  Offset="0.25"/>
+                                    <GradientStop Color="#64D855"
+                                                  Offset="0.5"/>
+                                    <GradientStop Color="#9AE589"
+                                                  Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                       PressedOpacity="0.6"
+                                                       PressedScale="0.7"
+                                                       TouchGestureCompleted="OnConfirmTapped"/>
+                            </Border.Behaviors>
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Opacity="0.7"
+                                        Radius="1"/>
+                            </Border.Shadow>
+
+                            <!-- Confirm Text -->
+                            <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                   Text="Confirm"
+                                                   HorizontalOptions="Center"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="14"
+                                                   StrokeColor="#40000000"
+                                                   StrokeWidth="2"
+                                                   HasShadow="True"
+                                                   ShadowColor="black"
+                                                   ShadowBlur="1"
+                                                   ShadowOffsetY="1">
+                            </outline:OutlinedLabel>
+                        </Border>
+                    </Grid>
+
+
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    </Border>
+
+
+</the49:BottomSheet>

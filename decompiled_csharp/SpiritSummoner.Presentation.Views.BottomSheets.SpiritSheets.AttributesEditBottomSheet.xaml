@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.AttributesEditBottomSheet"
+                   x:DataType="vm:AttributesEditViewModel"
+                   BackgroundColor="Transparent"
+                   HasBackdrop="True"
+                   HasHandle="False"
+                   IsCancelable="False"
+                   Dismissed="BottomSheet_Dismissed"
+                   CornerRadius="24">
+
+    <the49:BottomSheet.Detents>
+        <the49:ContentDetent />
+    </the49:BottomSheet.Detents>
+
+    <Border Stroke="#33FFFFFF"
+            StrokeThickness="1"
+            BackgroundColor="#CC050B14" 
+            StrokeShape="RoundRectangle 24,24,12,12" 
+            VerticalOptions="End"
+            Margin="15, 20, 15, 120">
+
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+              RowSpacing="6"
+              Padding="15,15,15,20">
+
+            <Grid Grid.Row="0" ColumnDefinitions="*, 110" VerticalOptions="Center">
+                <outline:OutlinedLabel Grid.Column="0" 
+                                       Text="Edit Stats"
+                                       FontFamily="Bungee"
+                                       TextColor="#EDF8EA"
+                                       FontSize="26"
+                                       StrokeColor="#000000"
+                                       StrokeWidth="3"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       HasShadow="True"
+                                       ShadowColor="#000000"
+                                       ShadowOffsetY="2"/>
+
+                <Border Grid.Column="1" 
+                        StrokeShape="RoundRectangle 8" 
+                        Stroke="#000000"
+                        StrokeThickness="1"
+                        VerticalOptions="Center"
+                        HeightRequest="32">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#FFB816" Offset="0.0"/>
+                            <GradientStop Color="#FFAE00" Offset="0.5"/>
+                            <GradientStop Color="#D98A00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="200" PressedOpacity="0.8" PressedScale="0.9"/>
+                    </Border.Behaviors>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}"/>
+                    </Border.GestureRecognizers>
+
+                    <Label Text="Reset Points"
+                           TextColor="White"
+                           FontFamily="PoppinsBold"
+                           FontSize="11"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Label.Shadow>
+                            <Shadow Brush="Black" Offset="0,1" Radius="2"/>
+                        </Label.Shadow>
+                    </Label>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    StrokeShape="RoundRectangle 12"
+                    BackgroundColor="#40000000"
+                    Stroke="#20FFFFFF"
+                    StrokeThickness="1"
+                    Padding="15,8">
+
+                <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                    <VerticalStackLayout Grid.Column="0" Spacing="0" VerticalOptions="Center">
+                        <Label Text="{Binding CurrentLevel, StringFormat='Level {0}'}" TextColor="#9AB8EC" FontFamily="PoppinsBold" FontSize="13"/>
+                        <HorizontalStackLayout Spacing="5">
+                            <Label Text="HP" TextColor="White" FontFamily="PoppinsBold" FontSize="16" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding CurrentHP}" TextColor="#EDF8EA" FontFamily="Bungee" FontSize="18" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="-4" HorizontalOptions="End" VerticalOptions="Center">
+                        <Label Text="Available Points" TextColor="#9AB8EC" FontFamily="PoppinsBold" FontSize="9" HorizontalOptions="End" TextTransform="Uppercase"/>
+                        <Label Text="{Binding RemainingTrainingPoints}" TextColor="#C2FF00" FontFamily="Bungee" FontSize="28" HorizontalOptions="End">
+                            <Label.Shadow>
+                                <Shadow Brush="Black" Offset="0,2" Radius="4"/>
+                            </Label.Shadow>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Label Grid.Row="2"
+                   Text="Assign points below to strengthen your spirit. Points are applied immediately upon saving."
+                   TextColor="#80EDF8EA"
+                   FontFamily="PoppinsMedium"
+                   FontSize="11" 
+                   HorizontalTextAlignment="Center"
+                   Margin="5,0"/>
+
+            <VerticalStackLayout Grid.Row="3" 
+                                 BindableLayout.ItemsSource="{Binding Attributes}" 
+                                 Spacing="0"
+                                 Margin="0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="vm:AttributeEditable">
+                        <Grid RowDefinitions="Auto, Auto" RowSpacing="0" Margin="0, 2, 0, 4">
+
+                            <Grid Grid.Row="0" ColumnDefinitions="36, 36, *, 36, 36" ColumnSpacing="6" VerticalOptions="Center">
+
+                                <!-- -10 Button -->
+                                <Border Grid.Column="0" StrokeShape="Ellipse" Stroke="White" StrokeThickness="2" BackgroundColor="#E5A91A" WidthRequest="34" HeightRequest="34">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="1,1" Radius="2" Opacity="0.4"/>
+                                    </Border.Shadow>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior 
+                                            TouchGestureCompleted="OnDecrement10Tapped"
+                                            DefaultAnimationDuration="150" 
+                                            LongPressDuration="750" 
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted" 
+                                            LongPressCommandParameter="{x:Reference Decrement10Label}" 
+                                            CurrentTouchState="{Binding CurrentTouchState}" 
+                                            CurrentTouchStateChanged="TouchBehavior_TouchStateChanged" 
+                                            PressedOpacity="0.6" 
+                                            PressedScale="0.8"/>
+                                    </Border.Behaviors>
+                                    <Label x:Name="Decrement10Label" Text="-10" TextColor="White" FontFamily="Bungee" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+
+                                <!-- -1 Button -->
+                                <Border Grid.Column="1" StrokeShape="Ellipse" Stroke="White" StrokeThickness="2" BackgroundColor="#E5A91A" WidthRequest="34" HeightRequest="34">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="1,1" Radius="2" Opacity="0.4"/>
+                                    </Border.Shadow>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior 
+                                            TouchGestureCompleted="OnDecrementTapped"
+                                            DefaultAnimationDuration="150" 
+                                            LongPressDuration="750" 
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted" 
+                                            LongPressCommandParameter="{x:Reference Decrement1Label}" 
+                                            CurrentTouchState="{Binding CurrentTouchState}" 
+                                            CurrentTouchStateChanged="TouchBehavior_TouchStateChanged" 
+                                            PressedOpacity="0.6" 
+                                            PressedScale="0.8"/>
+                                    </Border.Behaviors>
+                                    <Label x:Name="Decrement1Label" Text="-1" TextColor="White" FontFamily="Bungee" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+
+                                <!-- Stat Display -->
+                                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="-2">
+                                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                                        <outline:OutlinedLabel Text="{Binding Name}" FontFamily="PoppinsBold" FontSize="16" TextColor="#EDF8EA" StrokeColor="#000000" StrokeWidth="2" HasShadow="True" ShadowColor="#000000" ShadowOffsetY="1"/>
+                                        <Ellipse Fill="#FFB816" WidthRequest="5" HeightRequest="5" VerticalOptions="Center" IsVisible="{Binding HasChanges}" TranslationY="-2"/>
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                        <outline:OutlinedLabel Text="{Binding BaseValue}" TextColor="#EDF8EA" FontFamily="PoppinsMedium" FontSize="14" StrokeColor="#000000" StrokeWidth="2"/>
+                                        <Label Text="▶" TextColor="#7C8B99" FontSize="10" VerticalOptions="Center" TranslationY="1"/>
+                                        <outline:OutlinedLabel Text="{Binding CurrentValue}" TextColor="{Binding CurrentValueColor}" FontFamily="PoppinsMedium" FontSize="14" StrokeColor="#000000" StrokeWidth="2"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <!-- +1 Button -->
+                                <Border Grid.Column="3" StrokeShape="Ellipse" Stroke="White" StrokeThickness="2" BackgroundColor="#E5A91A" WidthRequest="34" HeightRequest="34">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="1,1" Radius="2" Opacity="0.4"/>
+                                    </Border.Shadow>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior 
+                                            TouchGestureCompleted="OnIncrementTapped"
+                                            DefaultAnimationDuration="150" 
+                                            LongPressDuration="750" 
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted" 
+                                            LongPressCommandParameter="{x:Reference Increment1Label}" 
+                                            CurrentTouchState="{Binding CurrentTouchState}" 
+                                            CurrentTouchStateChanged="TouchBehavior_TouchStateChanged" 
+                                            PressedOpacity="0.6" 
+                                            PressedScale="0.8"/>
+                                    </Border.Behaviors>
+                                    <Label x:Name="Increment1Label" Text="+1" TextColor="White" FontFamily="Bungee" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+
+                                <!-- +10 Button -->
+                                <Border Grid.Column="4" StrokeShape="Ellipse" Stroke="White" StrokeThickness="2" BackgroundColor="#E5A91A" WidthRequest="34" HeightRequest="34">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="1,1" Radius="2" Opacity="0.4"/>
+                                    </Border.Shadow>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior 
+                                            TouchGestureCompleted="OnIncrement10Tapped"
+                                            DefaultAnimationDuration="150" 
+                                            LongPressDuration="750" 
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted" 
+                                            LongPressCommandParameter="{x:Reference Increment10Label}" 
+                                            CurrentTouchState="{Binding CurrentTouchState}" 
+                                            CurrentTouchStateChanged="TouchBehavior_TouchStateChanged" 
+                                            PressedOpacity="0.6" 
+                                            PressedScale="0.8"/>
+                                    </Border.Behaviors>
+                                    <Label x:Name="Increment10Label" Text="+10" TextColor="White" FontFamily="Bungee" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+
+                            </Grid>
+
+                            <outline:OutlinedLabel Grid.Row="1" Text="{Binding Description}" HorizontalOptions="Center" FontFamily="PoppinsSemiBold" FontSize="9" TextColor="#9AB8EC" StrokeColor="#000000" StrokeWidth="1.5" Opacity="0.8"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Grid Grid.Row="4" ColumnDefinitions="*, *" ColumnSpacing="20" Padding="10,5,10,0">
+
+                <Border Grid.Column="0" StrokeShape="RoundRectangle 8" Stroke="#000000" StrokeThickness="1" HeightRequest="40">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#EB6756" Offset="0"/>
+                            <GradientStop Color="#C13025" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="200" PressedOpacity="0.8" PressedScale="0.95" TouchGestureCompleted="OnCancelTapped"/>
+                    </Border.Behaviors>
+                    <outline:OutlinedLabel Text="Cancel" TextColor="White" FontFamily="PoppinsBold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" StrokeColor="#000000" StrokeWidth="2" HasShadow="True" ShadowColor="#000000" ShadowOffsetY="1"/>
+                </Border>
+
+                <Border Grid.Column="1" StrokeShape="RoundRectangle 8" Stroke="#000000" StrokeThickness="1" HeightRequest="40" Opacity="{Binding CanConfirm, Converter={StaticResource BoolToOpacityConverter}}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#9AE589" Offset="0"/>
+                            <GradientStop Color="#4CB53A" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="200" PressedOpacity="0.8" PressedScale="0.95" TouchGestureCompleted="OnConfirmTapped"/>
+                    </Border.Behaviors>
+                    <Grid>
+                        <ActivityIndicator IsRunning="{Binding IsProcessing}" IsVisible="{Binding IsProcessing}" Color="White" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <outline:OutlinedLabel TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="PoppinsBold" FontSize="14" StrokeColor="#000000" StrokeWidth="2" HasShadow="True" ShadowColor="#000000" ShadowOffsetY="1" IsVisible="{Binding IsProcessing, Converter={StaticResource InverseBooleanConverter}}">
+                            <outline:OutlinedLabel.Text>
+                                <Binding Path="HasUnsavedChanges">
+                                    <Binding.Converter>
+                                        <toolkit:BoolToObjectConverter TrueObject="Save Changes" FalseObject="No Changes"/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </outline:OutlinedLabel.Text>
+                        </outline:OutlinedLabel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </Border>
+</the49:BottomSheet>

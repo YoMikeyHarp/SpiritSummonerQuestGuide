@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.Shared.PlayerInfoBar"
+             xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+             xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             x:DataType="models:PlayerInfoModel"
+             HeightRequest="65">
+
+    <ContentView.Resources>
+
+        <LinearGradientBrush x:Key="LevelIconBlue" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#CEE6FA" Offset="0.0" />
+                <GradientStop Color="#A0D5F4" Offset="0.2" />
+                <GradientStop Color="#77B1E7" Offset="0.8" />
+                <GradientStop Color="#5EA1E2" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="LightGreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#9AE589" Offset="0.0556" />
+                <GradientStop Color="#9EDA84" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="StarGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#EDF8EA" Offset="0.0556" />
+                <GradientStop Color="#EDF8EA1A" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentView.Resources>
+
+    <Grid Padding="25,5,25,0">
+
+        <Grid ColumnDefinitions="5, *">
+            <Grid Grid.Column="0" ZIndex="2" Grid.ColumnSpan="2" HorizontalOptions="Start" WidthRequest="62" HeightRequest="62">
+                <!-- Outer Circle -->
+                        <Ellipse Fill="{StaticResource LightGreenGradient}"
+                                 Stroke="#588049"
+                                 HorizontalOptions="Start"
+                                 StrokeThickness="1">
+                            <Ellipse.Shadow>
+                                <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25" />
+                            </Ellipse.Shadow>
+                        </Ellipse>
+
+                        <!-- Inner Circle -->
+                        <Ellipse WidthRequest="52" 
+                                 HeightRequest="52"
+                                Fill="{StaticResource LevelIconBlue}" 
+                                 Stroke="#40000000"
+                                 StrokeThickness="1"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+
+                        <!-- Rank Label -->
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           TranslationY="1"
+                                           Spacing="-2">
+
+                            <outline:OutlinedLabel 
+                                    Text="RANK"
+                                    FontSize="12"
+                                    FontFamily="PoppinsSemiBold"
+                                    TextColor="#FFE368"
+                                    StrokeColor="#BA7412"
+                                    StrokeWidth="1.75"
+                                    HorizontalOptions="Center"
+                                    HasShadow="True"
+                                    ShadowOffsetX="0"     
+                                    ShadowOffsetY="1" 
+                                    ShadowBlur="1"  
+                                    ShadowSpread="0"
+                                    ShadowColor="#40000000" />
+
+                            <outline:OutlinedLabel
+                                    Text="{Binding PlayerLevel}"
+                                    FontSize="20"
+                                    FontFamily="Bungee"
+                                    TextColor="#C96D1E"
+                                    StrokeColor="#EDF8EA"
+                                    StrokeWidth="4"
+                                    HorizontalOptions="Center" />
+
+                        </VerticalStackLayout>
+            </Grid>
+
+            <!-- EXP Display & ProgressBar -->
+                <Grid Grid.Column="1"
+                      Grid.Row="1"
+                      ZIndex="1"
+                      Padding="25,0,25,0"
+                      HorizontalOptions="Fill"
+                      VerticalOptions="End">
+
+                    <outline:OutlinedLabel 
+                                    Text="{Binding ExpByMax,StringFormat='EXP {0}'}"
+                                    FontFamily="PoppinsExtraBold"
+                                    FontSize="12"
+                                    TextColor="#EDF8EA"
+                                    StrokeColor="#2E4A0F"
+                                    StrokeWidth="2.5"
+                                    HorizontalOptions="Center"
+                                    ZIndex="2"
+                                    HasShadow="True"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="1"
+                                    TranslationY="3"
+                                    ShadowBlur="1"
+                                    ShadowColor="#40000000" />
+
+                    <maui:ProgressBar Progress="{Binding ExpProgress}"
+                                      HeightRequest="8"
+                                      BaseColor="#9AE589"
+                                      ProgressColor="#FFE804"
+                                      GradientColor="#FCE605"
+                                      UseGradient="True"
+                                      RoundCaps="True"
+                                      VerticalOptions="End"
+                                      ZIndex="1"/>
+                </Grid>
+
+            <Border Grid.Column="1"
+                StrokeShape="RoundRectangle 30"
+                HeightRequest="60"
+                Padding="0,0,5,0"
+                Background="{StaticResource GreenGradient}">
+                
+
+                <Grid ColumnDefinitions="65,*,Auto"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Center" ZIndex="2"
+                  Padding="0">
+
+                  <outline:OutlinedLabel Grid.Column="1"
+                                    Text="{Binding PlayerName}"
+                                    FontFamily="PoppinsSemiBold"
+                                    FontSize="15"
+                                    TextColor="#EDF8EA"
+                                    StrokeColor="#00000080"
+                                    StrokeWidth="2"
+                                    TranslationY="-2"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    ZIndex="2"
+                                    HasShadow="false"/>
+
+                <controls:BlendModeImage
+                                                Source="infobarbackground.png"
+                                                BlendMode="Multiply"
+                                                OpacityValue="1"
+                                                BlendBackground="{StaticResource GreenGradient}"
+                                                Grid.RowSpan="2"
+                                                Grid.ColumnSpan="3"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Fill"/>                        
+
+
+
+                <!-- Player Badge (Right Side Icon) -->
+                    <Image Source="{Binding BadgeImage}"
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            HeightRequest="45"
+                            HorizontalOptions="Start"
+                            ZIndex="2"
+                            VerticalOptions="Center"/>
+
+                <Path Grid.RowSpan="2"
+                          Grid.Column="2"
+                    Fill="{StaticResource StarGradient}"
+                    Aspect="Uniform"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Scale="1.2"
+                    Opacity="0.7"
+                    TranslationY="-5"/>
+
+                
+
+            </Grid>
+        </Border>
+            
+        </Grid>
+
+        
+    </Grid>
+    
+
+</ContentView>

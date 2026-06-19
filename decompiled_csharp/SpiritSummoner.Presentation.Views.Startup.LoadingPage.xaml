@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.LoadingPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.StartUp"
+             xmlns:progress="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:shell="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             shell:Shell.NavBarIsVisible="False"
+             BackgroundColor="Black"
+             x:DataType="vm:LoadingViewModel">
+
+        <ContentPage.Behaviors>
+                <toolkit:StatusBarBehavior StatusBarColor="Black"
+                                           StatusBarStyle="LightContent"/>
+        </ContentPage.Behaviors>
+        <ContentPage.Resources >
+
+                <Shadow x:Key="LabelBlackShadow"
+                        Offset="1,-1"
+                        Brush="Black"
+                        Opacity="0.7">
+                </Shadow>
+
+        </ContentPage.Resources>
+
+        <Grid>
+
+        <Grid RowDefinitions="*, Auto, Auto">
+                <Image Grid.Row="0"
+                       Grid.RowSpan="3"
+                       Source="splash_loading.png"
+                       IsVisible="True"
+                       Aspect="AspectFill"/>
+
+                <VerticalStackLayout Grid.Row="2"
+                                     Grid.RowSpan="2"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="Center"
+                                     Spacing="8"
+                                     Padding="0">
+
+                        <Label Text="LOADING..."
+                               TextColor="White"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Shadow="{StaticResource LabelBlackShadow}"
+                               IsVisible="{Binding ShowRefresh,Converter={StaticResource InverseBooleanConverter}}"/>
+                        
+
+                        <Border Background="{StaticResource GradientPerks}"
+                                Padding="10"
+                                IsVisible="{Binding ShowRefresh}">
+                                <Border.Behaviors>
+                                        <toolkit:TouchBehavior
+                                                DefaultAnimationDuration="250"
+                                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                PressedOpacity="0.6"
+                                                PressedScale="0.7"/>
+                                </Border.Behaviors>
+                                <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RefreshDataCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text ="Refresh"
+                                       TextColor="Black"
+                                       FontFamily="PoppinsBlack"/>
+                                        
+
+                        </Border>
+                                
+
+                        <ActivityIndicator IsRunning="{Binding ShowRefresh,Converter={StaticResource InverseBooleanConverter}}"
+                                           IsVisible="{Binding ShowRefresh,Converter={StaticResource InverseBooleanConverter}}"
+                                           Color="White"
+                                            Scale="1"/>
+
+                        <progress:ProgressBar Progress="{Binding Progress}"
+                                              IsVisible="{Binding ShowRefresh,Converter={StaticResource InverseBooleanConverter}}"
+                                              HeightRequest="20"
+                                              VerticalOptions="Fill"
+                                              BackgroundColor="Transparent"
+                                              BaseColor="#9CDF86"
+                                              ProgressColor="#FFEB00"
+                                              RoundCaps="True"
+                                              Margin="50,0,50,50"/>
+
+                </VerticalStackLayout>
+                
+        </Grid>
+
+
+                <!-- Update required overlay (blocks interaction entirely) -->
+                <Grid Grid.Row="0"
+                      Grid.RowSpan="3"
+                      IsVisible="{Binding ShowUpdateRequired}"
+                      BackgroundColor="#CC000000">
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="16"
+                                             Padding="32">
+                                <Label Text="Update Required"
+                                       TextColor="White"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       Shadow="{StaticResource LabelBlackShadow}"/>
+                                <Label Text="A new version is required to play. Please download the latest provided update."
+                                       TextColor="#CCCCCC"
+                                       FontSize="14"
+                                       HorizontalTextAlignment="Center"
+                                       Shadow="{StaticResource LabelBlackShadow}"/>
+                        </VerticalStackLayout>
+                </Grid>
+        </Grid>
+</ContentPage>

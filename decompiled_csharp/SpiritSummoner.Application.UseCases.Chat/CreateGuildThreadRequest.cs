@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+
+namespace SpiritSummoner.Application.UseCases.Chat;
+
+public record CreateGuildThreadRequest(string GuildId, string Subject, string Icon = "\ud83d\udcac")
+{
+	[CompilerGenerated]
+	protected virtual global::System.Type EqualityContract
+	{
+		[CompilerGenerated]
+		get
+		{
+			return typeof(CreateGuildThreadRequest);
+		}
+	}
+
+	[CompilerGenerated]
+	public override string ToString()
+	{
+		//IL_0000: Unknown result type (might be due to invalid IL or missing references)
+		//IL_0006: Expected O, but got Unknown
+		StringBuilder val = new StringBuilder();
+		val.Append("CreateGuildThreadRequest");
+		val.Append(" { ");
+		if (PrintMembers(val))
+		{
+			val.Append(' ');
+		}
+		val.Append('}');
+		return ((object)val).ToString();
+	}
+
+	[CompilerGenerated]
+	protected virtual bool PrintMembers(StringBuilder builder)
+	{
+		RuntimeHelpers.EnsureSufficientExecutionStack();
+		builder.Append("GuildId = ");
+		builder.Append((object)GuildId);
+		builder.Append(", Subject = ");
+		builder.Append((object)Subject);
+		builder.Append(", Icon = ");
+		builder.Append((object)Icon);
+		return true;
+	}
+
+	[CompilerGenerated]
+	public virtual bool Equals(CreateGuildThreadRequest? other)
+	{
+		return (object)this == other || ((object)other != null && EqualityContract == other.EqualityContract && EqualityComparer<string>.Default.Equals(GuildId, other.GuildId) && EqualityComparer<string>.Default.Equals(Subject, other.Subject) && EqualityComparer<string>.Default.Equals(Icon, other.Icon));
+	}
+}

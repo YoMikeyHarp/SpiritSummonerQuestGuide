@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Pouch"
+             xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Pouch.PouchView"
+             x:DataType="vm:PouchViewModel"
+             Background="{StaticResource GradientBackground}">
+
+        <ContentPage.Resources>
+                <ResourceDictionary>
+
+                <LinearGradientBrush x:Key="PageBackgroundGradient"
+                                        StartPoint="0,0"
+                                        EndPoint="0,1">
+                                <GradientStop Color="#4ADE80"
+                                                Offset="0.0"/>
+                                <!-- green-400 -->
+                                <GradientStop Color="#22C55E"
+                                                Offset="0.5"/>
+                                <!-- green-500 -->
+                                <GradientStop Color="#16A34A"
+                                                Offset="1.0"/>
+                                <!-- green-600 -->
+                </LinearGradientBrush>
+
+                <Shadow x:Key="LabelGoldenShadow"
+                        Brush="#FFFFFF4D"
+                        Offset="1,1"
+                        Radius="5">
+                </Shadow>
+
+                <cnv:StringIsNotNullOrEmptyConverter x:Key="StringIsNotNullOrEmptyConverter"/>
+
+                </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <Grid Padding="20,0"
+              RowDefinitions="140, 50, 50, 30, *"
+              RowSpacing="10"
+              IgnoreSafeArea="True">
+                <!-- Header Section -->
+                <Grid Grid.Row="0"
+                      ColumnSpacing="15"
+                      Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                ImageSource="backicon.png"
+                                BackgroundColor="Transparent"
+                                Scale="1.5"
+                                HorizontalOptions="Center"
+                                Command="{Binding CloseCommand}">
+                        </Button>
+
+                        <!-- Title -->
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="Center">
+                                <Label Text="{Binding PageTitle}"
+                                       FontFamily="Poppins"
+                                       FontSize="32"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       Shadow="{StaticResource LabelBlackShadow}"/>
+                                <Label Text="{Binding ItemCountText}"
+                                       FontSize="14"
+                                       FontFamily="Poppins"
+                                       TextColor="#FFFFFFCC"
+                                       FontAttributes="Bold"
+                                       Shadow="{StaticResource LabelBlackShadow}"/>
+                        </VerticalStackLayout>
+
+                        <!-- Crafting Toggle -->
+                        <Border Grid.Column="2"
+                                Background="{StaticResource GradientRewards}"
+                                StrokeShape="RoundRectangle 15"
+                                VerticalOptions="Center"
+                                Stroke="#FFFFFF4D"
+                                IsVisible="false">
+                                <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleCraftingModeCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Border.Behaviors>
+                                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                               PressedOpacity="0.7"
+                                                               PressedScale="0.85"/>
+                                </Border.Behaviors>
+                                <VerticalStackLayout Spacing="2" VerticalOptions="Center" Padding="5">
+                                        <Image Source="icon_crafting.png"
+                                               HeightRequest="30"/>
+                                        <Label FontSize="11"
+                                               FontFamily="Poppins"
+                                               TextColor="#FFFFFFCC"
+                                               FontAttributes="Bold"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalOptions="Center"
+                                               Shadow="{StaticResource LabelBlackShadow}">
+                                                <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsCraftingMode}"
+                                                                     Value="False">
+                                                                <Setter Property="Text" Value="Craft"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsCraftingMode}"
+                                                                     Value="True">
+                                                                <Setter Property="Text" Value="Items"/>
+                                                        </DataTrigger>
+                                                </Label.Triggers>
+                                        </Label>
+                                </VerticalStackLayout>
+                        </Border>
+                </Grid>
+
+                <!-- Crystal Count (crafting mode) -->
+                <Border Grid.Row="1"
+                        IsVisible="{Binding IsCraftingMode}"
+                        BackgroundColor="#8B5CF680"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8,5"
+                        Stroke="#FFFFFF40">
+                        <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                <Image Source="icon_crystal.png"
+                                       HeightRequest="20"/>
+                                <Label Text="{Binding PlayerCrystals, StringFormat='{0:N0} Crystals'}"
+                                       FontSize="16"
+                                       FontFamily="PoppinsBold"
+                                       TextColor="White"
+                                       VerticalTextAlignment="Center"
+                                       Shadow="{StaticResource LabelBlackShadow}"/>
+                        </HorizontalStackLayout>
+                </Border>
+
+                <!-- Search Bar -->
+                <Border Grid.Row="1"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="0"
+                        IsVisible="{Binding ShowFilterChips}"
+                        Shadow="{StaticResource HPbarShadow}"
+                        Stroke="#FFFFFF80">
+                        <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"
+                                       Text="🔍"
+                                       FontSize="20"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"/>
+
+                                <Entry Grid.Column="1"
+                                       Text="{Binding SearchText}"
+                                       Placeholder="Search items..."
+                                       PlaceholderColor="#9CA3AF"
+                                       TextColor="#374151"
+                                       FontAttributes="Bold"
+                                       FontFamily="Poppins"
+                                       Shadow="{StaticResource LabelWhiteShadow}"
+                                       BackgroundColor="Transparent"/>
+
+                                <Button Grid.Column="2"
+                                        Text="✕"
+                                        FontSize="18"
+                                        TextColor="#9CA3AF"
+                                        FontFamily="Poppins"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding ClearSearchCommand}"
+                                        IsVisible="{Binding SearchText, Converter={StaticResource StringIsNotNullOrEmptyConverter}}"/>
+                        </Grid>
+                </Border>
+
+                <!-- Filter Chips -->
+                <CollectionView Grid.Row="2"
+                                HorizontalScrollBarVisibility="Never"
+                                IsVisible="{Binding ShowFilterChips}"
+                                ItemsSource="{Binding FilterChips}">
+                        <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:FilterChipModel">
+                                        <Border StrokeShape="RoundRectangle 10"
+                                                Padding="15,10"
+                                                Margin="0,0,10,0">
+                                                <Border.Triggers>
+                                                        <DataTrigger TargetType="Border"
+                                                                     Binding="{Binding IsSelected}"
+                                                                     Value="True">
+                                                                <Setter Property="BackgroundColor"
+                                                                        Value="#FFFFFF"/>
+                                                                <Setter Property="Stroke"
+                                                                        Value="#FFFFFF4D"/>
+                                                                <Setter Property="StrokeThickness"
+                                                                        Value="2"/>
+                                                                
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Border"
+                                                                     Binding="{Binding IsSelected}"
+                                                                     Value="False">
+                                                                <Setter Property="Background"
+                                                                        Value="{StaticResource PageBackgroundGradient}"/>
+                                                                <Setter Property="Stroke"
+                                                                        Value="Transparent"/>
+                                                        </DataTrigger>
+                                                </Border.Triggers>
+                                                <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding x:DataType='vm:PouchViewModel', Source={RelativeSource AncestorType={x:Type vm:PouchViewModel}}, Path=SelectFilterCommand}"
+                                                                              CommandParameter="{Binding Id}"/>
+                                                </Border.GestureRecognizers>
+                                                <Grid ColumnDefinitions="Auto, Auto"
+                                                      ColumnSpacing="7">
+                                                        <Label Grid.Column="1"
+                                                                Text="{Binding Label}"
+                                                                FontFamily="Poppins"
+                                                                FontSize="14"
+                                                                FontAttributes="Bold"
+                                                                VerticalTextAlignment="Center">
+                                                                <Label.Triggers>
+                                                                        <DataTrigger TargetType="Label"
+                                                                                     Binding="{Binding IsSelected}"
+                                                                                     Value="True">
+                                                                                <Setter Property="TextColor"
+                                                                                        Value="#16A34A"/>
+                                                                                <Setter Property="Shadow"
+                                                                                        Value="{StaticResource LabelGoldenShadow}"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger TargetType="Label"
+                                                                                     Binding="{Binding IsSelected}"
+                                                                                     Value="False">
+                                                                                <Setter Property="TextColor"
+                                                                                        Value="Black"/>
+                                                                                <Setter Property="Opacity"
+                                                                                        Value="0.5"/>
+                                                                                <Setter Property="Shadow"
+                                                                                        Value="{StaticResource LabelWhiteShadow}"/>
+                                                                        </DataTrigger>
+                                                                </Label.Triggers>
+                                                                
+                                                        </Label>
+
+                                                        <Image Grid.Column="0"
+                                                               Source="{Binding Icon}"
+                                                               VerticalOptions="Center"
+                                                               HeightRequest="14">
+                                                                <Image.Triggers>
+                                                                        <DataTrigger TargetType="Image"
+                                                                                     Binding="{Binding IsSelected}"
+                                                                                     Value="False">
+                                                                                <Setter Property="Opacity"
+                                                                                        Value="0.7"/>
+                                                                        </DataTrigger>
+                                                                </Image.Triggers>
+                                                        </Image>
+                                                </Grid>
+                                        </Border>
+                                        
+                                        
+                                </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Sort Options -->
+                <Grid   Grid.Row="3"
+                        IsVisible="{Binding ShowFilterChips}"
+                        ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Text="Name"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                CornerRadius="10"
+                                Padding="0"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                Background="{StaticResource PageBackgroundGradient}"
+                                CommandParameter="Name">
+                                <Button.Triggers>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByNameActive}"
+                                                     Value="True">
+                                                <Setter Property="TextColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderWidth"
+                                                        Value="2"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByNameActive}"
+                                                     Value="False">
+                                                <Setter Property="TextColor"
+                                                        Value="#FFFFFFB3"/>
+                                                <Setter Property="Opacity"
+                                                        Value="0.7"/>
+                                        </DataTrigger>
+                                </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="1"
+                                Text="Rarity"
+                                FontSize="12"
+                                FontFamily="Poppins"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="0"
+                                Background="{StaticResource PageBackgroundGradient}"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Rarity">
+                                <Button.Triggers>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByRarityActive}"
+                                                     Value="True">
+                                                <Setter Property="TextColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderWidth"
+                                                        Value="2"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByRarityActive}"
+                                                     Value="False">
+                                                <Setter Property="TextColor"
+                                                        Value="#FFFFFFB3"/>
+                                                <Setter Property="Opacity"
+                                                        Value="0.7"/>
+                                        </DataTrigger>
+                                </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Text="Quantity"
+                                FontSize="12"
+                                Padding="0"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                Background="{StaticResource PageBackgroundGradient}"
+                                CornerRadius="10"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Quantity">
+                                <Button.Triggers>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByQuantityActive}"
+                                                     Value="True">
+                                                <Setter Property="TextColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderColor"
+                                                        Value="White"/>
+                                                <Setter Property="BorderWidth"
+                                                        Value="2"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Button"
+                                                     Binding="{Binding IsSortByQuantityActive}"
+                                                     Value="False">
+                                                <Setter Property="TextColor"
+                                                        Value="#FFFFFFB3"/>
+                                                <Setter Property="Opacity"
+                                                        Value="0.7"/>
+                                        </DataTrigger>
+                                </Button.Triggers>
+                        </Button>
+                </Grid>
+
+                <Grid Grid.Row="4"
+                      IgnoreSafeArea="True">
+                        <!-- Items Collection -->
+                        <CollectionView Grid.Row="4"
+                                        ItemsSource="{Binding DisplayedItems}"
+                                        VerticalScrollBarVisibility="Never"
+                                        SelectionMode="Single"
+                                        SelectionChangedCommand="{Binding ShowItemDetailsCommand}">
+                                <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:ItemModel">
+                                                <Border BackgroundColor="#F0FFFFFF"
+                                                        StrokeShape="RoundRectangle 20"
+                                                        Padding="15"
+                                                        Margin="0,0,0,12"
+                                                        Shadow="{StaticResource HPbarShadow}"
+                                                        Stroke="#FF5D5D5D">
+                                                        <Border.GestureRecognizers>
+                                                                <TapGestureRecognizer
+                                                                        Command="{Binding x:DataType='vm:PouchViewModel', Source={RelativeSource AncestorType={x:Type vm:PouchViewModel}}, Path=ShowItemDetailsCommand}"
+                                                                        CommandParameter="{Binding .}"/>
+                                                        </Border.GestureRecognizers>
+
+                                                        <Grid ColumnSpacing="15">
+                                                                <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="64"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <!-- Item Icon -->
+                                                                <Border Grid.Column="0"
+                                                                        Background="{Binding IconBackground}"
+                                                                        StrokeShape="RoundRectangle 12"
+                                                                        Padding="0"
+                                                                        Shadow="{StaticResource HPbarShadow}"
+                                                                        Stroke="White"
+                                                                        StrokeThickness="2"
+                                                                        WidthRequest="64"
+                                                                        HeightRequest="64">
+                                                                        <Image Source="{Binding Icon}"
+                                                                               HeightRequest="32"
+                                                                               HorizontalOptions="Center"
+                                                                               VerticalOptions="Center"/>
+                                                                </Border>
+
+                                                                <!-- Item Info -->
+                                                                <VerticalStackLayout Grid.Column="1"
+                                                                                     Spacing="5"
+                                                                                     VerticalOptions="Center">
+                                                                        <Label Text="{Binding Name}"
+                                                                               FontSize="18"
+                                                                               FontFamily="Poppins"
+                                                                               FontAttributes="Bold"
+                                                                               TextColor="#1F2937"
+                                                                               Shadow="{StaticResource LabelWhiteShadow}"
+                                                                               VerticalOptions="Center"/>
+
+                                                                        <Border Padding="5"
+                                                                                StrokeShape="RoundRectangle 6"
+                                                                                BackgroundColor="{Binding RarityColor}"
+                                                                                HorizontalOptions="Start">
+                                                                                <HorizontalStackLayout Spacing="3">
+                                                                                        <Label Text="⭐"
+                                                                                               FontSize="10"/>
+                                                                                        <Label Text="{Binding Rarity}"
+                                                                                               FontSize="10"
+                                                                                               FontFamily="Poppins"
+                                                                                               Shadow="{StaticResource LabelBlackShadow}"
+                                                                                               FontAttributes="Bold"
+                                                                                               TextColor="White"
+                                                                                               TextTransform="Uppercase"/>
+                                                                                </HorizontalStackLayout>
+                                                                        </Border>
+
+                                                                        <HorizontalStackLayout Spacing="12">
+                                                                                <Label Text="{Binding Type}"
+                                                                                       FontSize="12"
+                                                                                       FontFamily="Poppins"
+                                                                                       FontAttributes="Bold"
+                                                                                       TextColor="#6B7280"
+                                                                                       TextTransform="Uppercase"/>
+                                                                                <HorizontalStackLayout Spacing="3">
+                                                                                        <Label Text="×"
+                                                                                               FontSize="12"
+                                                                                               VerticalTextAlignment="End"
+                                                                                               FontFamily="Poppins"
+                                                                                               TextColor="#9CA3AF"/>
+                                                                                        <Label Text="{Binding Quantity}"
+                                                                                               FontSize="14"
+                                                                                               FontFamily="Poppins"
+                                                                                               FontAttributes="Bold"
+                                                                                               TextColor="#374151"/>
+                                                                                </HorizontalStackLayout>
+                                                                        </HorizontalStackLayout>
+
+                                                                        <Label Text="{Binding Description}"
+                                                                                Grid.Column="1"
+                                                                                FontSize="12"
+                                                                                FontFamily="PoppinsBold"
+                                                                                TextColor="#6B7280"
+                                                                                IsVisible="{Binding DescriptionVisible}"/>
+                                                                </VerticalStackLayout>
+
+                                                                
+
+                                                                <!-- Arrow (inventory mode) -->
+                                                                <Label Grid.Column="2"
+                                                                       Text="›"
+                                                                       FontSize="30"
+                                                                       TextColor="Black"
+                                                                       IsVisible="{Binding x:DataType='vm:PouchViewModel', Source={RelativeSource AncestorType={x:Type vm:PouchViewModel}}, Path=ShowFilterChips}"
+                                                                       VerticalOptions="Center"/>
+
+                                                                <!-- Craft button (crafting mode) -->
+                                                                <Border Grid.Column="2"
+                                                                        BackgroundColor="#8B5CF6"
+                                                                        StrokeShape="RoundRectangle 8"
+                                                                        Padding="8,4"
+                                                                        Stroke="Transparent"
+                                                                        VerticalOptions="Center"
+                                                                        IsVisible="{Binding x:DataType='vm:PouchViewModel', Source={RelativeSource AncestorType={x:Type vm:PouchViewModel}}, Path=IsCraftingMode}">
+                                                                        <Border.GestureRecognizers>
+                                                                                <TapGestureRecognizer
+                                                                                        Command="{Binding x:DataType='vm:PouchViewModel', Source={RelativeSource AncestorType={x:Type vm:PouchViewModel}}, Path=CraftItemCommand}"
+                                                                                        CommandParameter="{Binding .}"/>
+                                                                        </Border.GestureRecognizers>
+                                                                        <HorizontalStackLayout Spacing="4">
+                                                                                <Image Source="icon_crystal.png"
+                                                                                       HeightRequest="14"/>
+                                                                                <Label Text="{Binding Cost,StringFormat='Craft ({0} crystals)'}"
+                                                                                       FontSize="12"
+                                                                                       FontFamily="PoppinsBold"
+                                                                                       TextColor="White"
+                                                                                       VerticalTextAlignment="Center"/>
+                                                                        </HorizontalStackLayout>
+                                                                </Border>
+                                                        </Grid>
+                                                </Border>
+                                        </DataTemplate>
+                                </CollectionView.ItemTemplate>
+
+                                <CollectionView.EmptyView>
+                                        <VerticalStackLayout Padding="0,50"
+                                                             Spacing="15"
+                                                             IsVisible="{Binding HasNoItems}">
+                                                <Label Text="🔍"
+                                                       FontSize="60"
+                                                       HorizontalOptions="Center"/>
+                                                <Label Text="No items found"
+                                                       FontSize="18"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"
+                                                       HorizontalOptions="Center"/>
+                                                <Label Text="Try adjusting your filters"
+                                                       FontSize="14"
+                                                       TextColor="#FFFFFFB3"
+                                                       HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                </CollectionView.EmptyView>
+                        </CollectionView>
+                </Grid>
+
+                
+
+                <!-- Loading Indicator -->
+                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                   IsVisible="{Binding IsLoading}"
+                                   Color="White"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+
+        </Grid>
+</ContentPage>

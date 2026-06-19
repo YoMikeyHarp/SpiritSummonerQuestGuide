@@ -1,0 +1,408 @@
+{
+  "5": [
+    [
+      "Basalon Town",
+      "Catching a rat",
+      1,
+      0.8
+    ]
+  ],
+  "74": [
+    [
+      "Basalon Town",
+      "Ghost!",
+      5,
+      1
+    ]
+  ],
+  "1": [
+    [
+      "Basalon Town",
+      "Pet the dog?",
+      10,
+      0.9
+    ]
+  ],
+  "10": [
+    [
+      "Dark Forest",
+      "Catching a spirit with magical skills",
+      1,
+      1
+    ],
+    [
+      "Dark Forest",
+      "Trifish found!",
+      5,
+      1
+    ]
+  ],
+  "23": [
+    [
+      "Dark Forest",
+      "[Rare] BULBHEAD found!",
+      10,
+      1
+    ]
+  ],
+  "100": [
+    [
+      "Dark Forest",
+      "[Rare] A stray Koki appears",
+      15,
+      0.8
+    ],
+    [
+      "Spirit Sands",
+      "Defeat the Dark Summoner",
+      20,
+      0
+    ],
+    [
+      "Champion's Challenge",
+      "Apprentice Challenge (5/5)",
+      25,
+      0.5
+    ]
+  ],
+  "91": [
+    [
+      "Dark Forest",
+      "SNADLE approaches!",
+      12,
+      0.8
+    ]
+  ],
+  "93": [
+    [
+      "Dark Forest",
+      "BIGMOUTH chomps!",
+      12,
+      0.8
+    ],
+    [
+      "Champion's Challenge",
+      "Disciples Challenge (3/5)",
+      30,
+      0.25
+    ]
+  ],
+  "666": [
+    [
+      "Dark Forest",
+      "Duel test",
+      40,
+      0
+    ]
+  ],
+  "114": [
+    [
+      "Dark Forest",
+      "Duel test",
+      40,
+      0
+    ],
+    [
+      "King's Heart Forest",
+      "Leader",
+      30,
+      0.7
+    ],
+    [
+      "Champion's Challenge",
+      "Disciples Challenge (5/5)",
+      50,
+      0.25
+    ]
+  ],
+  "130": [
+    [
+      "Dark Forest",
+      "Duel test",
+      40,
+      0
+    ]
+  ],
+  "27": [
+    [
+      "Dark Forest",
+      "Expelling guard spirit",
+      20,
+      0
+    ],
+    [
+      "Spirit Sands",
+      "expelling guard spirit",
+      20,
+      0
+    ],
+    [
+      "Spirit Sands",
+      "Defeat the Dark Summoner",
+      20,
+      0
+    ],
+    [
+      "Dr. X's Laboratory",
+      "Entrance Guard",
+      42,
+      0.65
+    ]
+  ],
+  "7": [
+    [
+      "Spirit Sands",
+      "Big Worm!",
+      12,
+      1
+    ]
+  ],
+  "11": [
+    [
+      "Spirit Sands",
+      "TRIFISH in the desert",
+      20,
+      0.9
+    ]
+  ],
+  "29": [
+    [
+      "Spirit Sands",
+      "Defeat the Dark Summoner",
+      20,
+      0
+    ],
+    [
+      "Champion's Challenge",
+      "Apprentice Challenge (1/5)",
+      15,
+      0.25
+    ]
+  ],
+  "31": [
+    [
+      "Dark Shire",
+      "Encounter!",
+      25,
+      0.5
+    ],
+    [
+      "Dark Shire",
+      "Expelling dark mages",
+      28,
+      0.5
+    ],
+    [
+      "Dark Shire",
+      "Defeat the mage leader",
+      30,
+      0.5
+    ]
+  ],
+  "35": [
+    [
+      "King's Heart Forest",
+      "Plant attack",
+      10,
+      0.8
+    ]
+  ],
+  "36": [
+    [
+      "King's Heart Forest",
+      "Group!",
+      15,
+      0.8
+    ],
+    [
+      "King's Heart Forest",
+      "Breakthrough",
+      25,
+      0.8
+    ]
+  ],
+  "103": [
+    [
+      "King's Heart Forest",
+      "Minions",
+      25,
+      0.75
+    ]
+  ],
+  "20": [
+    [
+      "The Great Land",
+      "Protect the traveler",
+      28,
+      0.75
+    ],
+    [
+      "The Great Land",
+      "Clearing the path",
+      30,
+      0.75
+    ]
+  ],
+  "260": [
+    [
+      "The Great Land",
+      "Big Bird?",
+      30,
+      0.5
+    ]
+  ],
+  "45": [
+    [
+      "Sky Tower",
+      "Battle door guard",
+      40,
+      0
+    ],
+    [
+      "Sky Tower",
+      "Guard",
+      40,
+      0
+    ],
+    [
+      "Champion's Challenge",
+      "Disciples Challenge (4/5)",
+      30,
+      0.25
+    ]
+  ],
+  "243": [
+    [
+      "The Dragon's Lair",
+      "Fire brood approaches",
+      40,
+      0.4
+    ]
+  ],
+  "246": [
+    [
+      "The Dragon's Lair",
+      "Water brood approaches",
+      40,
+      0.4
+    ]
+  ],
+  "249": [
+    [
+      "The Dragon's Lair",
+      "Wind brood approaches",
+      40,
+      0.4
+    ]
+  ],
+  "24": [
+    [
+      "The Dragon's Lair",
+      "Ground brood approaches",
+      40,
+      0.4
+    ]
+  ],
+  "129": [
+    [
+      "Wall of Gaia",
+      "Defend yourself!",
+      35,
+      0.7
+    ]
+  ],
+  "33": [
+    [
+      "Wall of Gaia",
+      "Revenge  of the dark mage",
+      40,
+      0.7
+    ]
+  ],
+  "26": [
+    [
+      "Wall of Gaia",
+      "CHIKI",
+      40,
+      0.5
+    ]
+  ],
+  "38": [
+    [
+      "Wall of Gaia",
+      "Keeper of the village",
+      45,
+      0.8
+    ]
+  ],
+  "220": [
+    [
+      "Dr. X's Laboratory",
+      "Door Guard (1/2)",
+      45,
+      0.65
+    ]
+  ],
+  "66": [
+    [
+      "Champion's Challenge",
+      "Apprentice Challenge (2/5)",
+      15,
+      0.25
+    ]
+  ],
+  "110": [
+    [
+      "Champion's Challenge",
+      "Apprentice Challenge (3/5)",
+      15,
+      0.25
+    ]
+  ],
+  "109": [
+    [
+      "Champion's Challenge",
+      "Apprentice Challenge (4/5)",
+      15,
+      0.25
+    ]
+  ],
+  "86": [
+    [
+      "Champion's Challenge",
+      "Disciples Challenge (1/5)",
+      30,
+      0.25
+    ]
+  ],
+  "89": [
+    [
+      "Champion's Challenge",
+      "Disciples Challenge (2/5)",
+      30,
+      0.25
+    ],
+    [
+      "Deep Dungeon",
+      "Attack Attack!",
+      40,
+      0.5
+    ]
+  ],
+  "99": [
+    [
+      "Champion's Challenge",
+      "Adepts Challenge (1/5)",
+      60,
+      0.25
+    ]
+  ],
+  "22": [
+    [
+      "Deep Dungeon",
+      "Battle off living armor!",
+      30,
+      0.5
+    ]
+  ]
+}

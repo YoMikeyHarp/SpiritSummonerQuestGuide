@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritsMoreBottomSheet"
+                   x:DataType="bottomsheet:SpiritsMoreSheetViewModel"
+                   BackgroundColor="#CC222222"
+                   HasBackdrop="True"
+                   CornerRadius="18">
+
+    <the49:BottomSheet.Detents>
+        <the49:RatioDetent Ratio="0.35"/>
+    </the49:BottomSheet.Detents>
+
+    <Border Stroke="Brown"
+            StrokeThickness="5"
+            BackgroundColor="#f8f5be"
+            StrokeShape="RoundRectangle 16"
+            Padding="10,5">
+
+        <Grid RowSpacing="30"
+              Padding="30,5"
+              RowDefinitions="*,*,*">
+
+            <!-- Sell Spirit Button -->
+            <Border StrokeShape="RoundRectangle 6"
+                    Grid.Row="0"
+                    Padding="5,1">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        DefaultAnimationDuration="250"
+                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                        PressedOpacity="0.6"
+                        PressedScale="0.7"/>
+                </Border.Behaviors>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SellSpiritCommand}"/>
+                </Border.GestureRecognizers>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0.5"
+                                         EndPoint="0.2,0">
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                        <GradientStop Color="ForestGreen"
+                                      Offset="1"/>
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Padding="7,5">
+                    <Image Source="icon_gold.png"
+                           HeightRequest="55"
+                           TranslationX="-10"
+                           HorizontalOptions="Start"
+                           ZIndex="2"/>
+                    <Border StrokeShape="RoundRectangle 4"
+                            BackgroundColor="#FFF2B0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="1,1">
+                                <GradientStop Color="#FFF7C0"
+                                              Offset="0.0"/>
+                                <GradientStop Color="#FFE58B"
+                                              Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="SELL SPIRIT"
+                               HorizontalTextAlignment="Center"
+                               Margin="20,0,0,0"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontFamily="Poppins"
+                               TextColor="#6A3D00"
+                               FontSize="Large">
+                            <Label.Shadow>
+                                <Shadow Brush="White"
+                                        Offset="1,1"
+                                        Radius="5"/>
+                            </Label.Shadow>
+                        </Label>
+
+                    </Border>
+                </Grid>
+
+            </Border>
+
+            <!-- Edit name Button -->
+            <Border StrokeShape="RoundRectangle 6"
+                    Grid.Row="1"
+                    Padding="5,1">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        DefaultAnimationDuration="250"
+                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                        PressedOpacity="0.6"
+                        PressedScale="0.7"/>
+                </Border.Behaviors>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EditNameCommand}"/>
+                </Border.GestureRecognizers>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0.5"
+                                         EndPoint="0.2,0">
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                        <GradientStop Color="ForestGreen"
+                                      Offset="1"/>
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Padding="7,5">
+                    <Image Source="core_icon.png"
+                           HeightRequest="55"
+                           TranslationX="-10"
+                           HorizontalOptions="Start"
+                           ZIndex="2"/>
+                    <Border StrokeShape="RoundRectangle 4"
+                            BackgroundColor="#FFF2B0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="1,1">
+                                <GradientStop Color="#FFF7C0"
+                                              Offset="0.0"/>
+                                <GradientStop Color="#FFE58B"
+                                              Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="EDIT NAME"
+                               HorizontalTextAlignment="Center"
+                               Margin="24,0,0,0"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontFamily="Poppins"
+                               TextColor="#6A3D00"
+                               FontSize="Large">
+                            <Label.Shadow>
+                                <Shadow Brush="White"
+                                        Offset="1,1"
+                                        Radius="5"/>
+                            </Label.Shadow>
+                        </Label>
+
+                    </Border>
+                </Grid>
+
+            </Border>
+
+            <!-- Set Favorite Button -->
+            <Border StrokeShape="RoundRectangle 6"
+                    Grid.Row="2"
+                    Padding="5,1">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        DefaultAnimationDuration="250"
+                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                        PressedOpacity="0.6"
+                        PressedScale="0.7"/>
+                </Border.Behaviors>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToggleFavoriteCommand}"/>
+                </Border.GestureRecognizers>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0.5"
+                                         EndPoint="0.2,0">
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                        <GradientStop Color="ForestGreen"
+                                      Offset="1"/>
+                        <GradientStop Color="#FF145A14"
+                                      Offset="0.1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Padding="7,5">
+                    <!-- Favorite Heart -->
+                    <Image Source="icon_favorite.png"
+                           HeightRequest="55"
+                           TranslationX="-10"
+                           HorizontalOptions="Start"
+                           ZIndex="2"/>
+                    <Border StrokeShape="RoundRectangle 4"
+                            BackgroundColor="#FFF2B0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="1,1">
+                                <GradientStop Color="#FFF7C0"
+                                              Offset="0.0"/>
+                                <GradientStop Color="#FFE58B"
+                                              Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label HorizontalTextAlignment="Center"
+                               Margin="20,0,0,0"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontFamily="Poppins"
+                               TextColor="#6A3D00"
+                               FontSize="Large">
+                            <Label.Shadow>
+                                <Shadow Brush="White"
+                                        Offset="1,1"
+                                        Radius="5"/>
+                            </Label.Shadow>
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding IsFavorite}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="UnFavorite Spirit">
+                                    </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding IsFavorite}"
+                                             Value="False">
+                                    <Setter Property="Text"
+                                            Value="Favorite Spirit">
+                                    </Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </Border>
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+</the49:BottomSheet>

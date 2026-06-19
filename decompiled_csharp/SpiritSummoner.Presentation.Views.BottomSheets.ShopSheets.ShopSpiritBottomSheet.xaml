@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+                   xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+                   x:Class="SpiritSummoner.Presentation.Views.Shop.Controls.ShopSpiritBottomSheet"
+                   x:DataType="vm:ShopSpiritSheetViewModel"
+                   Background="{StaticResource GradientBackgroundSpirit}"
+                   HasBackdrop="True"
+                   Dismissed="BottomSheet_Dismissed"
+                   CornerRadius="24"
+                   Padding="15,20">
+        <the49:BottomSheet.Detents>
+            <the49:ContentDetent/>
+        </the49:BottomSheet.Detents>
+
+    <Grid RowDefinitions="*, Auto" RowSpacing="10">
+
+        <!-- Preview area -->
+        <Grid Grid.Row="0"
+              RowDefinitions="*, Auto, Auto"
+              RowSpacing="7">
+
+            <!-- Spirit imagery (centered, on platform) -->
+            <Grid Grid.Row="0">
+                <Image Aspect="AspectFit"
+                       HeightRequest="150"
+                       ScaleX="1.2"
+                       Source="{Binding SpiritPreview.Type1, Converter={StaticResource PlatformImageConverter}}"
+                       TranslationY="15"
+                       VerticalOptions="End" />
+                <Image Aspect="AspectFit"
+                       Source="{Binding SpiritPreview.Image}"
+                       VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Name / class (above stats) + types (above skills) -->
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="End">
+                    <outline:OutlinedLabel Text="{Binding SpiritPreview.Category}"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            HasShadow="True"
+                                            ShadowColor="#40000000"
+                                            ShadowOffsetY="1"
+                                            ShadowBlur="1"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="1.5"
+                                            TextColor="#727578" />
+                    <outline:OutlinedLabel FontFamily="PoppinsSemiBold"
+                                          HasShadow="True"
+                                           ShadowBlur="4"
+                                           ShadowColor="#40000000"
+                                           ShadowOffsetY="4"
+                                           StrokeColor="#BA7412"
+                                           StrokeWidth="1.5"
+                                           Text="{Binding SpiritPreview.Name}"
+                                           TextColor="#FFE368" />
+                </VerticalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1"
+                                       HeightRequest="52"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="End">
+                    <Image Aspect="AspectFit"
+                           HeightRequest="52"
+                           Source="{Binding SpiritPreview.Type1, Converter={StaticResource NameToImageConverter}}" />
+                    <Image Aspect="AspectFit"
+                           HeightRequest="52"
+                           Source="{Binding SpiritPreview.Type2, Converter={StaticResource NameToImageConverter}}" />
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!-- Stats + Skills -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+
+                <!-- Stats -->
+                <Border Grid.Column="0"
+                        Padding="10,7"
+                        BackgroundColor="#A4E4F1"
+                        Stroke="#EDF8EA"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="2">
+                    <Grid RowDefinitions="14, 14, *" RowSpacing="6">
+                        <Label Grid.Row="0"
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="11"
+                               Opacity="0.5"
+                               Text="STATS"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+
+                        <Border Grid.Row="1"
+                                BackgroundColor="#83CF63"
+                                HeightRequest="14"
+                                StrokeShape="RoundRectangle 100"
+                                StrokeThickness="1" />
+                        <outline:OutlinedLabel Grid.Row="1"
+                                               FontFamily="PoppinsExtraBold"
+                                               FontSize="14"
+                                               HorizontalOptions="Center"
+                                               StrokeColor="Black"
+                                               StrokeWidth="2"
+                                               Text="{Binding SpiritPreview.HP, StringFormat='{0} HP'}"
+                                               TextColor="#EDF8EA"
+                                               VerticalOptions="Center" />
+
+                        <CollectionView Grid.Row="2"
+                                        ItemsSource="{Binding Attributes}"
+                                        VerticalOptions="Center">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="3" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:AttributeProgressModel">
+                                    <Grid Padding="0,4,0,0"
+                                          ColumnDefinitions="30,*,22"
+                                          ColumnSpacing="5"
+                                          VerticalOptions="Center">
+
+                                        <outline:OutlinedLabel Grid.Column="0"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               FontSize="14"
+                                                               HasShadow="True"
+                                                               ShadowBlur="1"
+                                                               ShadowColor="Black"
+                                                               ShadowOffsetY="1"
+                                                               StrokeColor="#EDF8EA"
+                                                               StrokeWidth="2"
+                                                               Text="{Binding Name}"
+                                                               TextColor="#000000"
+                                                               VerticalOptions="Center" />
+
+                                        <HorizontalStackLayout Grid.Column="1"
+                                                               BindableLayout.ItemsSource="{Binding BonusMultiplier, Converter={cnv:BonusToStarsConverter}}"
+                                                               HorizontalOptions="Start"
+                                                               Spacing="2"
+                                                               VerticalOptions="Center"
+                                                               ZIndex="3">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate x:DataType="x:String">
+                                                    <Image Aspect="AspectFit"
+                                                           HeightRequest="12"
+                                                           Scale="1.4"
+                                                           Source="{Binding .}"
+                                                           TranslationY="-1"
+                                                           WidthRequest="12" />
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </HorizontalStackLayout>
+
+                                        <maui:ProgressBar Grid.Column="1"
+                                                          BaseColor="Transparent"
+                                                          HeightRequest="5"
+                                                          Progress="{Binding BaseProgress}"
+                                                          ProgressColor="#2857AD"
+                                                          RoundCaps="True"
+                                                          ZIndex="2" />
+
+                                        <maui:ProgressBar Grid.Column="1"
+                                                          BaseColor="Transparent"
+                                                          HeightRequest="5"
+                                                          Progress="{Binding BonusProgress}"
+                                                          ProgressColor="Gold"
+                                                          RoundCaps="True"
+                                                          ZIndex="1" />
+
+                                        <outline:OutlinedLabel Grid.Column="2"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               FontSize="14"
+                                                               HasShadow="True"
+                                                               ShadowBlur="1"
+                                                               ShadowColor="Black"
+                                                               ShadowOffsetY="1"
+                                                               StrokeColor="#000000"
+                                                               StrokeWidth="1"
+                                                               Text="{Binding FinalValue}"
+                                                               TextColor="#EDF8EA"
+                                                               VerticalOptions="Center">
+                                                        <outline:OutlinedLabel.Triggers>
+                                                            <DataTrigger TargetType="outline:OutlinedLabel" Value="True">
+                                                                <DataTrigger.Binding>
+                                                                    <Binding Path="BonusMultiplier" Converter="{toolkit:IsNotEqualConverter}">
+                                                                        <Binding.ConverterParameter>
+                                                                            <x:Double>1</x:Double>
+                                                                        </Binding.ConverterParameter>
+                                                                    </Binding>
+                                                                </DataTrigger.Binding>
+                                                                <Setter Property="StrokeColor" Value="#FFE368" />
+                                                                <Setter Property="TextColor" Value="#16A742" />
+                                                            </DataTrigger>
+                                                        </outline:OutlinedLabel.Triggers>
+                                        </outline:OutlinedLabel>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+
+                <!-- Skills -->
+                <Border Grid.Column="1"
+                        Padding="10,7"
+                        BackgroundColor="#A4E4F1"
+                        Stroke="#EDF8EA"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="2">
+                    <Grid RowDefinitions="14, *" RowSpacing="6">
+                        <Label Grid.Row="0"
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="11"
+                               Opacity="0.5"
+                               Text="SKILLS"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+
+                        <CollectionView Grid.Row="1"
+                                        ItemsSource="{Binding Moves}"
+                                        VerticalOptions="Fill">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="8" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:MoveStateReadModel">
+                                    <Grid
+                                        Padding="2,5"
+                                        ColumnSpacing="0"
+                                        Grid.ColumnDefinitions="*,40">
+                                        <!--  Bindings aligned with corresponding columns  -->
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="25"
+                                            HorizontalOptions="Start"
+                                            Source="{Binding Type, Converter={StaticResource NameToImageConverter}}" />
+
+                                        <outline:OutlinedLabel
+                                            Grid.Column="0"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            HasShadow="True"
+                                            HorizontalOptions="Start"
+                                            ShadowBlur="1"
+                                            ShadowColor="Black"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="2"
+                                            Text="{Binding MoveName}"
+                                            TextColor="Black"
+                                            TranslationX="10"
+                                            TranslationY="1"
+                                            VerticalOptions="Center" />
+
+                                        <Image
+                                            Grid.Column="1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="15"
+                                            HorizontalOptions="Start"
+                                            Source="{Binding MoveType, Converter={cnv:MoveTypeImageConverter}}"
+                                            TranslationX="-4" />
+
+                                        <outline:OutlinedLabel
+                                            Grid.Column="2"
+                                            FontFamily="PoppinsSemiBold"
+                                            HasShadow="True"
+                                            HorizontalOptions="End"
+                                            ShadowBlur="2"
+                                            ShadowColor="Black"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="Black"
+                                            StrokeWidth="1.5"
+                                            Text="{Binding Power}"
+                                            TextColor="#EDF8EA"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Requirements + Purchase -->
+        <Border Grid.Row="1"
+                Padding="12"
+                StrokeShape="RoundRectangle 8"
+                StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0.0" Color="#F9F5C0" />
+                    <GradientStop Offset="0.5048" Color="#F6F1A6" />
+                    <GradientStop Offset="1.0" Color="#D9D491" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid RowDefinitions="Auto, Auto" RowSpacing="10">
+
+                <!-- Requirement chips -->
+                <HorizontalStackLayout Grid.Row="0"
+                                       BindableLayout.ItemsSource="{Binding Requirements}"
+                                       HorizontalOptions="Center"
+                                       Spacing="12">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:RequirementChip">
+                            <Grid RowDefinitions="51,20" WidthRequest="111">
+                                <!-- Label + required (icon + amount) -->
+                                <Border Grid.Row="0"
+                                        BackgroundColor="#EDF8EA"
+                                        Stroke="#40000000"
+                                        StrokeShape="RoundRectangle 4,4,0,0"
+                                        StrokeThickness="1">
+                                    <Grid Padding="4,0" ColumnDefinitions="40,*">
+                                        <Image Grid.Column="0"
+                                               Aspect="AspectFit"
+                                               HeightRequest="40"
+                                               Source="{Binding Icon}" />
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="0"
+                                                             VerticalOptions="Center">
+                                            <Label FontFamily="PoppinsSemiBold"
+                                                   FontSize="10"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"
+                                                   MaxLines="1"
+                                                   Text="{Binding Label}"
+                                                   TextColor="#80000000" />
+                                            <Label FontFamily="PoppinsSemiBold"
+                                                   FontSize="12"
+                                                   HorizontalTextAlignment="Center"
+                                                   Text="{Binding Required}"
+                                                   TextColor="#80000000" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Have (green if met, red if not) -->
+                                <Border Grid.Row="1"
+                                        BackgroundColor="{Binding IsMet, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#64D855,#E53F37'}"
+                                        Stroke="#1A000000"
+                                        StrokeShape="RoundRectangle 0,0,4,4"
+                                        StrokeThickness="1">
+                                    <Label FontFamily="PoppinsSemiBold"
+                                           FontSize="12"
+                                           HorizontalTextAlignment="Center"
+                                           Text="{Binding Have}"
+                                           TextColor="#EDF8EA"
+                                           VerticalTextAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </HorizontalStackLayout>
+
+                <!-- Purchase button -->
+                <Border Grid.Row="1"
+                        HeightRequest="44"
+                        HorizontalOptions="Fill"
+                        Stroke="#40000000"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="1">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                            <GradientStop Offset="0.0" Color="#FFB816" />
+                            <GradientStop Offset="0.25" Color="#FFAE00" />
+                            <GradientStop Offset="0.75" Color="#FFAE00" />
+                            <GradientStop Offset="1.0" Color="#FFB816" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.7"
+                                               PressedScale="0.95" />
+                    </Border.Behaviors>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BuyShopSpiritCommand}" />
+                    </Border.GestureRecognizers>
+                    <outline:OutlinedLabel FontFamily="PoppinsSemiBold"
+                                           FontSize="16"
+                                           HasShadow="True"
+                                           HorizontalOptions="Center"
+                                           ShadowColor="#4D000000"
+                                           ShadowOffsetY="1"
+                                           StrokeColor="#40000000"
+                                           StrokeWidth="1"
+                                           Text="Purchase"
+                                           TextColor="#EDF8EA"
+                                           VerticalOptions="Center" />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</the49:BottomSheet>

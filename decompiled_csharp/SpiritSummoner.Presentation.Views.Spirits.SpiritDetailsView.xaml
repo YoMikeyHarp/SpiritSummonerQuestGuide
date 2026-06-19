@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SpiritSummoner.Presentation.Views.Spirits.SpiritDetailsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:SpiritSummoner.Presentation.Views.Animations"
+    xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+    xmlns:controls="clr-namespace:SpiritSummoner.Presentation.Views.Spirits.Controls"
+    xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+    xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+    xmlns:spirits="clr-namespace:SpiritSummoner.Presentation.ViewModels.Spirits"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels"
+    x:DataType="spirits:SpiritDetailsViewModel"
+    Background="{StaticResource GradientBackgroundSpirit}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{OnPlatform Android=Black, iOS=Transparent}" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <cnv:AttributeProgressConverter x:Key="AttributeProgressConverter" />
+        <cnv:BonusToStarsConverter x:Key="BonusToStarsConverter" />
+        <cnv:BoolToColorConverter x:Key="BoolToColorConverter" />
+
+
+        <Shadow
+            x:Key="IconShadow"
+            Brush="#60000000"
+            Radius="6"
+            Offset="0,2" />
+
+        <Shadow
+            x:Key="CardShadow"
+            Brush="#30000000"
+            Opacity="{OnPlatform Android='0.2',
+                                 iOS='1'}"
+            Radius="12"
+            Offset="0,6" />
+    </ContentPage.Resources>
+
+    <!--  Main Content  -->
+    <Grid Padding="0,0,0,0" RowDefinitions="100, *, 105">
+
+        <Image Grid.RowSpan="3" Source="dots_offset_8px.png" />
+
+        <!--  Top Controls  -->
+        <Grid
+            Grid.Row="0"
+            Padding="0,50,0,0"
+            ColumnDefinitions="90, * , 90"
+            RowDefinitions="10, *">
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Padding="5,0"
+                HeightRequest="15"
+                HorizontalOptions="Start"
+                Stroke="Black"
+                StrokeShape="RoundRectangle 0,4,0,4"
+                StrokeThickness="0.5"
+                VerticalOptions="Center"
+                WidthRequest="80">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="#A8CB3F" />
+                        <GradientStop Offset="0.6202" Color="#7DB813" />
+                        <GradientStop Offset="1.0" Color="#7DB813" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Label
+                    FontFamily="PoppinsBold"
+                    FontSize="10"
+                    Text="LVL"
+                    TextColor="#EDF8EA">
+                    <Label.Shadow>
+                        <Shadow Brush="#000000" Offset="1,1" />
+                    </Label.Shadow>
+                </Label>
+            </Border>
+
+            <outline:OutlinedLabel
+                Grid.Row="1"
+                Grid.Column="0"
+                FontFamily="Bungee"
+                FontSize="32"
+                HasShadow="True"
+                HorizontalOptions="Center"
+                ShadowBlur="2"
+                ShadowColor="Black"
+                ShadowOffsetY="2"
+                StrokeColor="#43781C"
+                StrokeWidth="3.5"
+                Text="{Binding SpiritCardModel.Model.Level}"
+                TextColor="#EDF8EA" />
+
+            <!--  Separator  -->
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="#EDF8EA80"
+                HorizontalOptions="Start"
+                ScaleY="1"
+                WidthRequest="1" />
+
+            <outline:OutlinedLabel
+                Grid.Row="0"
+                Grid.Column="1"
+                FontFamily="PoppinsSemiBold"
+                FontSize="12"
+                HorizontalOptions="Center"
+                Text="{Binding SpiritCardModel.Model.Class}"
+                TextColor="Gray"
+                VerticalOptions="Start"
+                ZIndex="2" >
+                <outline:OutlinedLabel.Triggers>
+                    <DataTrigger Binding="{Binding SpiritCardModel.Model.HasClass2}"
+                                 Value="True"
+                                 TargetType="outline:OutlinedLabel">
+                            <Setter Property="Text"
+                                    Value="{Binding SpiritCardModel.Model.TwoClasses}"/>
+                    </DataTrigger>
+                </outline:OutlinedLabel.Triggers>
+            </outline:OutlinedLabel>
+
+            <outline:OutlinedLabel
+                Grid.Row="1"
+                Grid.Column="1"
+                FontFamily="PoppinsBlack"
+                FontSize="{Binding SpiritCardModel.Model.Nickname, Converter={StaticResource NicknameToFontSizeConverter}, ConverterParameter=32}"
+                HasShadow="True"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsEditing, Converter={StaticResource InverseBooleanConverter}}"
+                ShadowBlur="2"
+                ShadowColor="black"
+                ShadowOffsetY="2"
+                StrokeColor="#43781C"
+                StrokeWidth="3.5"
+                MaximumWidthRequest="{OnIdiom Phone=200, Tablet=300, Default=200}"
+                Text="{Binding SpiritCardModel.Model.Nickname}"
+                TextColor="#EDF8EA"
+                ZIndex="1" />
+
+            <Entry
+                Grid.Row="1"
+                Grid.Column="1"
+                FontFamily="PoppinsBlack"
+                FontSize="14"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding IsEditing}"
+                Placeholder="Enter nickname"
+                PlaceholderColor="#FFA09F9F"
+                Shadow="{StaticResource LabelBlackShadow}"
+                Text="{Binding Nickname}"
+                TextColor="White">
+                <Entry.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsEditing}"
+                        TargetType="Entry"
+                        Value="True">
+                        <Setter Property="BackgroundColor" Value="Gold" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding IsEditing}"
+                        TargetType="Entry"
+                        Value="True">
+                        <Setter Property="TextColor" Value="Red" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                Command="{Binding ToggleEditCommand}"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                ImageSource="{mi:FontAwesomeSolid Icon=Pen,
+                                                  IconColor=Black}"
+                Opacity="0.3" />
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="2"
+                HeightRequest="15"
+                HorizontalOptions="End"
+                Stroke="Black"
+                StrokeShape="RoundRectangle 4,0,4,0"
+                StrokeThickness="0.5"
+                VerticalOptions="Center"
+                WidthRequest="80">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="#A8CB3F" />
+                        <GradientStop Offset="0.6202" Color="#7DB813" />
+                        <GradientStop Offset="1.0" Color="#7DB813" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <VerticalStackLayout
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalOptions="Center"
+                Spacing="25"
+                VerticalOptions="Center">
+                <HorizontalStackLayout
+                    HeightRequest="35"
+                    HorizontalOptions="Center">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="35"
+                        Source="{Binding SpiritCardModel.Model.Type1, Converter={StaticResource NameToImageConverter}}" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="35"
+                        Source="{Binding SpiritCardModel.Model.Type2, Converter={StaticResource NameToImageConverter}}" />
+                </HorizontalStackLayout>
+                <outline:OutlinedLabel
+                    FontFamily="PoppinsBold"
+                    FontSize="20"
+                    HorizontalOptions="Fill"
+                    IsVisible="{Binding SpiritCardModel.Model.IsUnique,FallbackValue='false'}"
+                    StrokeColor="White"
+                    StrokeWidth="1.5"
+                    Text="UNIQUE"
+                    TranslationX="-5"
+                    TextColor="Brown" />
+            </VerticalStackLayout>
+
+
+
+            <!--  Separator  -->
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="White"
+                HorizontalOptions="Start"
+                Opacity="0.5"
+                ScaleY="0.7"
+                WidthRequest="1" />
+        </Grid>
+
+        <Grid
+            Grid.Row="1"
+            Padding="15,5"
+            RowDefinitions="*,50,225,Auto"
+            RowSpacing="7">
+
+            <Grid
+                Grid.Row="0"
+                HeightRequest="250"
+                VerticalOptions="End">
+                <!--  Platform Image  -->
+                <Image
+                    Grid.Row="2"
+                    Margin="0,0"
+                    Aspect="AspectFit"
+                    ScaleX="0.8"
+                    Source="{Binding SpiritCardModel.Model.Type1, Converter={StaticResource PlatformImageConverter}}"
+                    TranslationY="40"
+                    VerticalOptions="End" />
+
+                <!--  Bouncing Spirit Image  -->
+                <animation:BouncingImage
+                    Grid.Row="2"
+                    Aspect="AspectFit"
+                    Source="{Binding SpiritCardModel.Model.Image}" />
+            </Grid>
+
+
+            <!--  Held Item  -->
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="Start"
+                VerticalOptions="End">
+                <Border
+                    Padding="5,7,5,5"
+                    BackgroundColor="#F0FFFFFF"
+                    Shadow="{StaticResource CardShadow}"
+                    Stroke="WhiteSmoke"
+                    StrokeShape="RoundRectangle 16"
+                    StrokeThickness="2.5">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.6"
+                            PressedScale="0.7"
+                            TouchGestureCompleted="TouchBehaviorHeldItem_TouchGestureCompleted" />
+                    </Border.Behaviors>
+                    <Grid RowDefinitions="*,Auto" RowSpacing="5">
+
+                        <!--  Item Image  -->
+                        <Border
+                            Grid.Row="0"
+                            Padding="7"
+                            BackgroundColor="#FFFFFFFF"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SpiritCardModel.HeldItem.Id, Converter={StaticResource StringToBoolConverter},FallbackValue=false}"
+                            StrokeShape="RoundRectangle 16">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Radius="1"
+                                        Offset="0,1"/>
+                            </Border.Shadow>
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="48"
+                                Source="{Binding SpiritCardModel.HeldItem.Id}"
+                                WidthRequest="48" />
+                        </Border>
+
+                        <!--  Item Info  -->
+                        <Label
+                            Grid.Row="1"
+                            FontFamily="PoppinsBold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="True"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding SpiritCardModel.HeldItem.Name}"
+                            TextColor="#FF373737">
+                            <Label.Shadow>
+                                <Shadow
+                                    Brush="White"
+                                    Radius="4"
+                                    Offset="0,2" />
+                            </Label.Shadow>
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SpiritCardModel.HeldItem.Id, FallbackValue=''}"
+                                    TargetType="Label"
+                                    Value="">
+                                    <Setter Property="Text" Value="No Item Equipped" />
+                                    <Setter Property="Opacity" Value="0.6" />
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </Grid>
+                </Border>
+
+
+
+            </Grid>
+
+
+            <!--  Action Buttons  -->
+            <VerticalStackLayout
+                Grid.Row="0"
+                HorizontalOptions="End"
+                Spacing="5"
+                VerticalOptions="End">
+
+                <Border
+                    Padding="5"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    Opacity="0.7"
+                    Stroke="#3A7E48"
+                    IsVisible="{Binding SpiritCardModel.Model.HasEvolution,FallbackValue=True}"
+                    StrokeShape="RoundRectangle 12"
+                    WidthRequest="100">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.6"
+                            TouchGestureCompleted="TouchBehaviorTransform_TouchGestureCompleted"
+                            PressedScale="0.7" />
+                    </Border.Behaviors>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0.0" Color="#9AE589" />
+                            <GradientStop Offset="0.25" Color="#64D855" />
+                            <GradientStop Offset="0.75" Color="#64D855" />
+                            <GradientStop Offset="1.0" Color="#9AE589" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#40000000"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="*" RowDefinitions="*">
+
+                        <outline:OutlinedLabel
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="16"
+                            HasShadow="True"
+                            HorizontalOptions="Center"
+                            ShadowColor="#40000000"
+                            ShadowOffsetY="1"
+                            StrokeColor="#40000000"
+                            StrokeWidth="2"
+                            Text="Transform"
+                            TextColor="#EDF8EA"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+                </Border>
+
+                <Border
+                    Padding="5"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    Stroke="Gray"
+                    StrokeShape="RoundRectangle 12"
+                    WidthRequest="100">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.6"
+                            PressedScale="0.7"
+                            TouchGestureCompleted="TouchBehaviorLevelUp_TouchGestureCompleted" />
+                    </Border.Behaviors>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0.0" Color="#FFB816" />
+                            <GradientStop Offset="0.25" Color="#FFAE00" />
+                            <GradientStop Offset="0.75" Color="#FFAE00" />
+                            <GradientStop Offset="1.0" Color="#FFB816" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#40000000"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Grid>
+                        <outline:OutlinedLabel
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="16"
+                            HasShadow="True"
+                            HorizontalOptions="Center"
+                            ShadowBlur="3"
+                            ShadowColor="#40000000"
+                            ShadowOffsetY="1"
+                            StrokeColor="#40000000"
+                            StrokeWidth="2"
+                            Text="Train"
+                            TextColor="#EDF8EA"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+
+                </Border>
+            </VerticalStackLayout>
+
+
+
+
+            <!--  Stats and Components  -->
+            <Grid
+                Grid.Row="1"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="30">
+                <!--  Talent Button  -->
+                <Border
+                    x:Name="TalentBorder"
+                    Grid.Column="0"
+                    BackgroundColor="#A4E4F1"
+                    Stroke="#EDF8EA"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="2">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.6"
+                            TouchGestureCompleted="TouchBehaviorTalent_TouchGestureCompleted"
+                            PressedScale="0.7" />
+                    </Border.Behaviors>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SpiritCardModel.EditTalentCommand}" />
+                    </Border.GestureRecognizers>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Transparent"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Grid
+                        Padding="5"
+                        ColumnDefinitions="30,*,10"
+                        ColumnSpacing="5">
+
+                        <VerticalStackLayout
+                            Grid.ColumnSpan="3"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SpiritCardModel.HasTalent,Converter={StaticResource InverseBooleanConverter}}"
+                            VerticalOptions="Center">
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="- NO TALENT - "
+                                TextColor="Gray"
+                                VerticalOptions="Start" />
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontFamily="Poppins"
+                                FontSize="10"
+                                HorizontalOptions="Center"
+                                Opacity="0.9"
+                                Text="(TAP TO ADD TALENT)"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+
+
+                        <!--  Icon  -->
+                        <Image
+                            Grid.Column="0"
+                            IsVisible="{Binding SpiritCardModel.HasTalent}"
+                            Rotation="-10"
+                            Source="{Binding SpiritCardModel.Talent.Icon}" />
+
+                        <StackLayout
+                            Grid.Column="1"
+                            IsVisible="{Binding SpiritCardModel.HasTalent}"
+                            VerticalOptions="Center">
+                            <!--  Text  -->
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="{Binding SpiritCardModel.Talent.Name,FallbackValue=''}"
+                                TextColor="Gray"
+                                VerticalOptions="Start" />
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontFamily="Poppins"
+                                FontSize="10"
+                                HorizontalOptions="Center"
+                                Opacity=".8"
+                                Text="{Binding SpiritCardModel.Talent.Description}"
+                                TextColor="Gray" />
+                        </StackLayout>
+
+
+                        <Image
+                            Grid.Column="2"
+                            IsVisible="{Binding SpiritCardModel.Model.TalentId,Converter={StaticResource StringToBoolConverter},FallbackValue=False}"
+                            Source="{mi:FontAwesomeSolid Icon=ArrowRight,
+                                                         IconColor=Gray}" />
+
+                    </Grid>
+                </Border>
+                <!--  Gear Button  -->
+                <Border
+                    x:Name="GearBorder"
+                    Grid.Column="1"
+                    BackgroundColor="#A4E4F1"
+                    Stroke="#EDF8EA"
+                    StrokeThickness="2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.6"
+                            TouchGestureCompleted="TouchBehaviorGear_TouchGestureCompleted"
+                            PressedScale="0.7" />
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Transparent"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Grid
+                        Padding="5"
+                        ColumnDefinitions="30,*,10"
+                        ColumnSpacing="5">
+
+                        <VerticalStackLayout
+                            Grid.ColumnSpan="3"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SpiritCardModel.HasGear,Converter={StaticResource InverseBooleanConverter}}"
+                            VerticalOptions="Center">
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="- NO GEAR - "
+                                TextColor="Gray"
+                                VerticalOptions="Start" />
+                            <Label
+                                Grid.ColumnSpan="3"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="10"
+                                HorizontalOptions="Center"
+                                Text="(TAP TO ADD GEAR)"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                        
+                        <!--  Icon  -->
+                        <Image
+                            Grid.Column="0"
+                            IsVisible="{Binding SpiritCardModel.HasGear}"
+                            Rotation="-10"
+                            Source="{Binding SpiritCardModel.Gear.Icon}" />
+                        <StackLayout
+                            Grid.Column="1"
+                            IsVisible="{Binding SpiritCardModel.Model.GearId,Converter={StaticResource StringToBoolConverter},FallbackValue=False}"
+                            VerticalOptions="Center">
+                            
+                            <!--  Text  -->
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="8"
+                                Text="{Binding SpiritCardModel.Gear.Name}"
+                                TextColor="Gray">
+                                <Label.Shadow>
+                                    <Shadow
+                                        Brush="#FBFBF9"
+                                        Opacity="2"
+                                        Offset="1,1" />
+                                </Label.Shadow>
+                            </Label>
+
+                            <!--  Text  -->
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="Micro"
+                                IsVisible="{Binding SpiritCardModel.Model.GearId,Converter={StaticResource StringToBoolConverter},FallbackValue=False}"
+                                Text="{Binding SpiritCardModel.Gear.Description}"
+                                TextColor="#FF52B844">
+                                <Label.Shadow>
+                                    <Shadow
+                                        Brush="#FBFBF9"
+                                        Opacity="5"
+                                        Offset="1,1" />
+                                </Label.Shadow>
+                            </Label>
+                        </StackLayout>
+
+
+                        <Image
+                            Grid.Column="2"
+                            IsVisible="{Binding SpiritCardModel.Model.GearId,Converter={StaticResource StringToBoolConverter},FallbackValue=False}"
+                            Source="{mi:FontAwesomeSolid Icon=ArrowRight,
+                                                         IconColor=Gray}" />
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--  Attributes & Moves  -->
+            <Grid
+                Grid.Row="2"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="30">
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="7"
+                    BackgroundColor="#A4E4F1"
+                    Stroke="#EDF8EA"
+                    StrokeShape="RoundRectangle 8 "
+                    StrokeThickness="2">
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Transparent"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.7"
+                            PressedScale="0.9"
+                            TouchGestureCompleted="TouchBehaviorAttributes_TouchGestureCompleted" />
+                    </Border.Behaviors>
+
+                    <Grid
+                        Grid.Column="0"
+                        RowDefinitions="20,20,*"
+                        RowSpacing="7">
+
+                        <Label
+                            Grid.Row="0"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="11"
+                            HorizontalOptions="Start"
+                            Opacity="0.5"
+                            Text="STATS"
+                            TextColor="black"
+                            VerticalOptions="Center">
+                            <Label.Shadow>
+                                <Shadow
+                                    Brush="White"
+                                    Radius="5"
+                                    Offset="1,1" />
+                            </Label.Shadow>
+                        </Label>
+
+                        <Border
+                            Grid.Row="1"
+                            BackgroundColor="#83CF63"
+                            HeightRequest="15"
+                            HorizontalOptions="Fill"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 100">
+                            <Border.Shadow>
+                                <Shadow
+                                    Brush="Transparent"
+                                    Opacity="0.4"
+                                    Radius="4"
+                                    Offset="0,2" />
+                            </Border.Shadow>
+                        </Border>
+
+                        <outline:OutlinedLabel
+                            Grid.Row="1"
+                            FontFamily="PoppinsExtraBold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            StrokeColor="{Binding SpiritCardModel.Model.HPStrokeColor}"
+                            StrokeWidth="2"
+                            Text="{Binding SpiritCardModel.Model.HP, StringFormat='{0} HP'}"
+                            TextColor="#EDF8EA"
+                            VerticalOptions="Center" />
+
+
+                        <Image
+                            Grid.Column="2"
+                            HorizontalOptions="End"
+                            Source="{mi:FontAwesomeSolid Icon=ArrowRight,
+                                                         IconColor=#40000000}" />
+
+
+                        <!--  Attributes Grid  -->
+                        <CollectionView
+                            Grid.Row="2"
+                            HorizontalOptions="Center"
+                            ItemsSource="{Binding SpiritCardModel.Model.Attributes}"
+                            VerticalOptions="Center">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="3" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:AttributeProgressModel">
+                                    <Grid
+                                        Padding="0,5,0,0"
+                                        ColumnDefinitions="30,*,22"
+                                        ColumnSpacing="5"
+                                        VerticalOptions="Center">
+
+                                        <!--  Attribute Name  -->
+                                        <outline:OutlinedLabel
+                                            Grid.Column="0"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            HasShadow="True"
+                                            ShadowBlur="1"
+                                            ShadowColor="black"
+                                            ShadowOffsetX="0"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="2"
+                                            Text="{Binding Name}"
+                                            TextColor="#000000"
+                                            VerticalOptions="Center" />
+
+                                        <Grid
+                                            Grid.Column="1"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Center" />
+
+                                        <HorizontalStackLayout
+                                            Grid.Column="1"
+                                            BindableLayout.ItemsSource="{Binding BonusMultiplier, Converter={StaticResource BonusToStarsConverter}}"
+                                            HorizontalOptions="Start"
+                                            Spacing="2"
+                                            VerticalOptions="Center"
+                                            ZIndex="3">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate x:DataType="x:String">
+                                                    <Image
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="12"
+                                                        Scale="1.4"
+                                                        Source="{Binding .}"
+                                                        TranslationY="-1"
+                                                        WidthRequest="12" />
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </HorizontalStackLayout>
+
+                                        <maui:ProgressBar
+                                            Grid.Column="1"
+                                            BaseColor="Transparent"
+                                            HeightRequest="5"
+                                            Progress="{Binding BaseProgress}"
+                                            ProgressColor="#2857AD"
+                                            RoundCaps="True"
+                                            ZIndex="2" />
+
+                                        <maui:ProgressBar
+                                            Grid.Column="1"
+                                            BaseColor="Transparent"
+                                            HeightRequest="5"
+                                            Progress="{Binding BonusProgress}"
+                                            ProgressColor="Gold"
+                                            RoundCaps="True"
+                                            ZIndex="1" />
+
+                                        <maui:ProgressBar
+                                            Grid.Column="1"
+                                            BaseColor="Transparent"
+                                            HeightRequest="5"
+                                            Progress="{Binding ItemBuffProgress}"
+                                            ProgressColor="{Binding IsItemBuffNegative, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#E53F37,#4CAF50'}"
+                                            RoundCaps="True"
+                                            ZIndex="0" />
+
+                                        <!--  Attribute Total  -->
+                                        <outline:OutlinedLabel
+                                            Grid.Column="2"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            HasShadow="True"
+                                            ShadowBlur="1"
+                                            ShadowColor="Black"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="#000000"
+                                            StrokeWidth="1"
+                                            Text="{Binding FinalValue}"
+                                            TextColor="#EDF8EA"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+
+                <!--  Grid Moves  -->
+                <Border
+                    Grid.Column="1"
+                    BackgroundColor="#A4E4F1"
+                    Stroke="#EDF8EA"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="0"
+                    StrokeThickness="2">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.7"
+                            PressedScale="0.9"
+                            TouchGestureCompleted="TouchBehaviorMoves_TouchGestureCompleted" />
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Transparent"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+
+                    <Grid
+                        Padding="2,3,0,0"
+                        RowDefinitions="20, *"
+                        RowSpacing="5">
+
+                        <Grid Padding="7,0">
+                            <Label
+                            Grid.Row="0"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="11"
+                            HorizontalOptions="Start"
+                            Opacity="0.5"
+                            Text="SKILLS"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.Shadow> 
+                                <Shadow
+                                    Brush="White"
+                                    Radius="5"
+                                    Offset="1,1" />
+                            </Label.Shadow>
+                        </Label>
+
+                        <Image
+                            Grid.Column="2"
+                            HorizontalOptions="End"
+                            Source="{mi:FontAwesomeSolid Icon=ArrowRight,
+                                                         IconColor=#40000000}" />
+                        </Grid>
+                        
+
+
+                        <!--  CollectionView with DataTemplate  -->
+                        <CollectionView
+                            Grid.Row="1"
+                            ItemsSource="{Binding SpiritCardModel.Model.SpiritMoves}"
+                            VerticalOptions="Fill">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:MoveEditableState">
+                                    <Grid
+                                        Padding="2,5"
+                                        ColumnSpacing="0"
+                                        Grid.ColumnDefinitions="*,40">
+                                        <!--  Bindings aligned with corresponding columns  -->
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="25"
+                                            HorizontalOptions="Start"
+                                            Opacity="{Binding IsActive, Converter={StaticResource BoolToOpacityConverter}}"
+                                            Source="{Binding Type, Converter={StaticResource NameToImageConverter}}" />
+
+                                        <outline:OutlinedLabel
+                                            Grid.Column="0"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            HasShadow="True"
+                                            HorizontalOptions="Start"
+                                            Opacity="{Binding IsActive, Converter={StaticResource BoolToOpacityConverter}}"
+                                            ShadowBlur="1"
+                                            ShadowColor="Black"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="2"
+                                            Text="{Binding MoveId}"
+                                            TextColor="Black"
+                                            TranslationX="10"
+                                            TranslationY="1"
+                                            VerticalOptions="Center" />
+
+                                        <Image
+                                            Grid.Column="1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="15"
+                                            HorizontalOptions="Start"
+                                            Opacity="{Binding IsActive, Converter={StaticResource BoolToOpacityConverter}}"
+                                            Source="{Binding MoveType, Converter={cnv:MoveTypeImageConverter}}"
+                                            TranslationX="-4" />
+
+                                        <outline:OutlinedLabel
+                                            Grid.Column="2"
+                                            FontFamily="PoppinsSemiBold"
+                                            HasShadow="True"
+                                            HorizontalOptions="End"
+                                            Opacity="{Binding IsActive, Converter={StaticResource BoolToOpacityConverter}}"
+                                            ShadowBlur="2"
+                                            ShadowColor="Black"
+                                            ShadowOffsetY="1"
+                                            StrokeColor="Black"
+                                            StrokeWidth="1.5"
+                                            Text="{Binding Power}"
+                                            TextColor="#EDF8EA"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3">
+
+            <outline:BlendModeImage
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="4"
+                BlendBackground="{StaticResource GreenGradient}"
+                BlendMode="Multiply"
+                HorizontalOptions="Fill"
+                OpacityValue="1"
+                Source="infobarbackground.png"
+                VerticalOptions="Fill" />
+
+            <Grid
+                Padding="10"
+                ColumnDefinitions="100, *, 100"
+                ColumnSpacing="25">
+
+                <Button
+                    Grid.Column="0"
+                    BackgroundColor="Transparent"
+                    Command="{Binding CloseCommand}"
+                    HorizontalOptions="Center"
+                    ImageSource="icon_back_outlined.png" />
+
+                <Border
+                    Grid.Column="1"
+                    HeightRequest="42"
+                    HorizontalOptions="Center"
+                    Stroke="#40000000"
+                    StrokeShape="RoundRectangle 4"
+                    StrokeThickness="2"
+                    VerticalOptions="Center"
+                    WidthRequest="150">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="250"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.8"
+                            PressedScale="0.8"
+                            TouchGestureCompleted="TouchBehaviorSetParnter_TouchGestureCompleted" />
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Transparent"
+                            Opacity="0.4"
+                            Radius="4"
+                            Offset="0,2" />
+                    </Border.Shadow>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                            <GradientStop Offset="0" Color="#E99F6A" />
+                            <GradientStop Offset="0.25" Color="#D6680F" />
+                            <GradientStop Offset="0.75" Color="#D6680F" />
+                            <GradientStop Offset="1" Color="#B2590A" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid Padding="5">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="34"
+                            HorizontalOptions="Start"
+                            Source="staricon.png"
+                            TranslationX="-5"
+                            ZIndex="2" />
+
+                        <Border
+                            Background="{StaticResource SpiritsForegroundButton}"
+                            HeightRequest="32"
+                            StrokeShape="RoundRectangle 2"
+                            WidthRequest="128">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SpiritCardModel.SetAsPartnerCommand}" />
+                            </Border.GestureRecognizers>
+                            <outline:OutlinedLabel
+                                FontFamily="PoppinsBold"
+                                FontSize="14"
+                                HasShadow="True"
+                                HorizontalOptions="Center"
+                                ShadowBlur="1"
+                                ShadowColor="Black"
+                                ShadowOffsetY="1"
+                                StrokeColor="#EDF8EA80"
+                                StrokeWidth="2"
+                                Text="SET PARTNER"
+                                TextColor="#954F14"
+                                TranslationX="7" />
+                        </Border>
+                    </Grid>
+
+
+                </Border>
+
+                <ImageButton
+                    Grid.Column="2"
+                    Command="{Binding SpiritsMoreCommand}"
+                    Source="icon_more.png" />
+
+            </Grid>
+
+
+
+        </Grid>
+    </Grid>
+</ContentPage>

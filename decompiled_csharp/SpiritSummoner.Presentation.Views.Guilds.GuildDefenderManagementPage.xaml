@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models.Guilds"
+             xmlns:converters="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildDefenderManagementPage"
+             x:DataType="vm:GuildDefenderManagementViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:EqualityToColorConverter x:Key="EqualityToColorConverter"/>
+            <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*"
+          Background="{StaticResource GradientBackground}">
+
+        <!-- Header Section -->
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" Grid.Row="0" Padding="20,20,20,15" ColumnSpacing="10">
+
+            <!-- Title -->
+            <Label Text="MANAGE DEFENDERS"
+                   Grid.Row="0" Grid.Column="0"
+                   FontFamily="PoppinsExtraBold"
+                   FontSize="22"
+                   TextColor="White"
+                   Shadow="{StaticResource LabelBlackShadow}"/>
+
+            <!-- Defender Count -->
+            <Label Text="{Binding DefenderCountText}"
+                   Grid.Row="1" Grid.Column="0"
+                   FontFamily="PoppinsSemiBold"
+                   FontSize="12"
+                   TextColor="#FFFFFFCC"
+                   Margin="0,-5,0,0"/>
+
+            <!-- Main Defenders Section Header -->
+            <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Margin="0,15,0,5" Spacing="8">
+                <Label Text="MAIN DEFENDERS"
+                       FontFamily="PoppinsExtraBold"
+                       FontSize="14"
+                       TextColor="#FFD700"
+                       VerticalOptions="Center"/>
+                <Label Text="{Binding MainDefenderCountText}"
+                       FontFamily="PoppinsSemiBold"
+                       FontSize="12"
+                       TextColor="#FFFFFFAA"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Main Defenders Horizontal List -->
+            <ScrollView Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="10" x:Name="MainDefendersList">
+                    <BindableLayout.ItemsSource>
+                        <Binding Path="MainDefenders"/>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:DefenderReadModel">
+                            <Border Padding="10" WidthRequest="100"
+                                    StrokeShape="RoundRectangle 12"
+                                    Stroke="#FFD700"
+                                    StrokeThickness="2"
+                                    BackgroundColor="#FFFFFF20">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:GuildDefenderManagementViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildDefenderManagementViewModel}}, Path=SelectDefenderCommand}"
+                                                          CommandParameter="{Binding .}"/>
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="4">
+                                    <!-- Avatar -->
+                                    <Border WidthRequest="40" HeightRequest="40"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="#FFD70040"
+                                            HorizontalOptions="Center">
+                                        <Label Text="👤" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <!-- Name -->
+                                    <Label Text="{Binding PlayerName}"
+                                           FontFamily="PoppinsSemiBold"
+                                           FontSize="10"
+                                           TextColor="Black"
+                                           MaxLines="1"
+                                           LineBreakMode="TailTruncation"
+                                           HorizontalOptions="Center"/>
+                                    <!-- Timer -->
+                                    <Label Text="{Binding TimeUntilExpiryText}"
+                                           FontFamily="PoppinsSemiBold"
+                                           FontSize="9"
+                                           TextColor="Gray"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </HorizontalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Content Section -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,Auto,*" Padding="20,0,20,100">
+
+            <!-- Search Bar -->
+            <Border Grid.Row="0" Margin="0,10,0,15"
+                    Padding="12,0,12,0"
+                    StrokeShape="RoundRectangle 16"
+                    Stroke="#FFFFFF80"
+                    StrokeThickness="2"
+                    BackgroundColor="White"
+                    Shadow="{StaticResource ImageShadow}">
+                <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="48">
+                    <Label Grid.Column="0" Text="🔍" FontSize="20" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry Grid.Column="1"
+                           Text="{Binding SearchText}"
+                           Placeholder="Search defenders..."
+                           FontFamily="PoppinsSemiBold"
+                           TextColor="#1F2937"
+                           PlaceholderColor="#9CA3AF"
+                           VerticalOptions="Center"/>
+                    <Border Grid.Column="2"
+                            IsVisible="{Binding SearchText, Converter={StaticResource StringToBoolConverter}}"
+                            Padding="8"
+                            StrokeShape="RoundRectangle 8">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClearSearchCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="X" FontSize="18" TextColor="#9CA3AF" VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Sort Options -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,0,0,12">
+                <Border Grid.Column="0" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='expiry:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='expiry:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="expiry"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Expiry"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <Border Grid.Column="1" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='level:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='level:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="level"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Level"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <Border Grid.Column="2" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='name:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='name:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="name"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Name"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Defenders List -->
+            <CollectionView Grid.Row="2" ItemsSource="{Binding Defenders}">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+                        <Label Text="No Defenders"
+                               FontFamily="PoppinsExtraBold"
+                               FontSize="18"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+                        <Label Text="Guild members can sign up for defense from the Guild Wars page."
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="12"
+                               TextColor="#FFFFFFAA"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:DefenderReadModel">
+                        <Border Padding="16" Margin="0,0,0,8"
+                                StrokeShape="RoundRectangle 16"
+                                Stroke="{Binding IsMainDefender, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#FFD700,Transparent'}"
+                                StrokeThickness="2"
+                                BackgroundColor="White"
+                                Shadow="{StaticResource ImageShadow}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding x:DataType='vm:GuildDefenderManagementViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildDefenderManagementViewModel}}, Path=SelectDefenderCommand}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                <!-- Avatar with Main Defender Badge -->
+                                <Grid Grid.Column="0">
+                                    <Border WidthRequest="56" HeightRequest="56"
+                                            StrokeShape="RoundRectangle 12"
+                                            Stroke="White"
+                                            StrokeThickness="2"
+                                            Shadow="{StaticResource ImageShadow}">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#10B981" Offset="0.0"/>
+                                                <GradientStop Color="#059669" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Label Text="🛡️" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+
+                                    <!-- Main Defender Crown -->
+                                    <Border IsVisible="{Binding IsMainDefender}"
+                                            WidthRequest="20" HeightRequest="20"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="#FFD700"
+                                            Stroke="White"
+                                            StrokeThickness="2"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Start"
+                                            Margin="0,-4,-4,0">
+                                        <Label Text="⭐" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                </Grid>
+
+                                <!-- Defender Info -->
+                                <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto" RowSpacing="2">
+                                    <!-- Name -->
+                                    <Label Grid.Row="0"
+                                           Text="{Binding PlayerName}"
+                                           FontFamily="PoppinsExtraBold"
+                                           FontSize="14"
+                                           TextColor="#1F2937"
+                                           VerticalOptions="Center"/>
+
+                                    <!-- Stats -->
+                                    <HorizontalStackLayout Grid.Row="1" Spacing="12">
+                                        <Label FontFamily="PoppinsSemiBold" FontSize="11" TextColor="#6B7280">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Lvl "/>
+                                                    <Span Text="{Binding Level}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="🏆" FontSize="11"/>
+                                            <Label Text="{Binding Trophies}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="11"
+                                                   TextColor="#6B7280"/>
+                                        </HorizontalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Defense Timer -->
+                                    <HorizontalStackLayout Grid.Row="2" Spacing="4">
+                                        <Label Text="⏱️" FontSize="10"/>
+                                        <Label Text="{Binding DefenseStatusText}"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="10"
+                                               TextColor="{Binding IsDefenseActive, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#10B981,#EF4444'}"/>
+                                    </HorizontalStackLayout>
+                                </Grid>
+
+                                <!-- Chevron -->
+                                <Label Grid.Column="2" Text="›" FontSize="24" TextColor="#D1D5DB" VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Defender Detail Modal -->
+        <Border Grid.RowSpan="2"
+                IsVisible="{Binding HasSelectedDefender}"
+                BackgroundColor="#80000000">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseDetailsCommand}"/>
+            </Border.GestureRecognizers>
+
+            <Border Padding="24"
+                    StrokeShape="RoundRectangle 24"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="340"
+                    Shadow="{StaticResource ImageShadow}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer/>
+                </Border.GestureRecognizers>
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="16">
+                    <!-- Header -->
+                    <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Defender Details"
+                               FontFamily="PoppinsExtraBold"
+                               FontSize="20"
+                               TextColor="#1F2937"/>
+                        <Border Grid.Column="1" Padding="8" StrokeShape="RoundRectangle 8">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseDetailsCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="X" FontSize="20" TextColor="#9CA3AF"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Defender Avatar and Name -->
+                    <VerticalStackLayout Grid.Row="1" Spacing="12">
+                        <Border WidthRequest="96" HeightRequest="96"
+                                StrokeShape="RoundRectangle 20"
+                                Stroke="#E5E7EB"
+                                StrokeThickness="4"
+                                HorizontalOptions="Center"
+                                Shadow="{StaticResource ImageShadow}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#10B981" Offset="0.0"/>
+                                    <GradientStop Color="#059669" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="🛡️" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Label Text="{Binding SelectedDefender.PlayerName}"
+                               FontFamily="PoppinsExtraBold"
+                               FontSize="18"
+                               TextColor="#1F2937"
+                               HorizontalOptions="Center"/>
+
+                        <!-- Main Defender Badge -->
+                        <Border Padding="10,4" StrokeShape="RoundRectangle 8" HorizontalOptions="Center"
+                                IsVisible="{Binding SelectedDefender.IsMainDefender}">
+                            <Border.Background>
+                                <SolidColorBrush Color="#FFD700"/>
+                            </Border.Background>
+                            <HorizontalStackLayout Spacing="4">
+                                <Label Text="⭐" FontSize="12" VerticalOptions="Center"/>
+                                <Label Text="Main Defender"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="11"
+                                       TextColor="Black"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Stats Grid -->
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <!-- Level -->
+                        <Border Grid.Row="0" Grid.Column="0"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#DBEAFE">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedDefender.Level}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="24"
+                                       TextColor="#2563EB"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Level"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#1E40AF"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Trophies -->
+                        <Border Grid.Row="0" Grid.Column="1"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#FEF3C7">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedDefender.Trophies}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="24"
+                                       TextColor="#D97706"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Trophies"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#92400E"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Defense Time -->
+                        <Border Grid.Row="1" Grid.ColumnSpan="2"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#D1FAE5">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedDefender.TimeUntilExpiryText}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="20"
+                                       TextColor="#059669"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Time Until Expiry"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#047857"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- Actions (only visible to leaders) -->
+                    <VerticalStackLayout Grid.Row="3" Spacing="8"
+                                         IsVisible="{Binding CanManageDefenders}">
+
+                        <!-- Set as Main Defender Button (only if not already main) -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}"
+                                IsVisible="{Binding SelectedDefender.IsMainDefender, Converter={StaticResource InverseBooleanConverter}}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F59E0B" Offset="0.0"/>
+                                    <GradientStop Color="#D97706" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetAsMainDefenderCommand}"
+                                                      CommandParameter="{Binding SelectedDefender}"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                <Label Text="⭐" FontSize="16" VerticalOptions="Center"/>
+                                <Label Text="Set as Main Defender"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="14"
+                                       TextColor="White"/>
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        <!-- Remove from Main Defenders Button (only if main) -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}"
+                                IsVisible="{Binding SelectedDefender.IsMainDefender}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#6B7280" Offset="0.0"/>
+                                    <GradientStop Color="#4B5563" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RemoveFromMainDefendersCommand}"
+                                                      CommandParameter="{Binding SelectedDefender}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Remove from Main Defenders"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                        <!-- Remove Defender Button -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#EF4444" Offset="0.0"/>
+                                    <GradientStop Color="#DC2626" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RemoveDefenderCommand}"
+                                                      CommandParameter="{Binding SelectedDefender}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Remove Defender"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Read-only message for non-leaders -->
+                    <Label Grid.Row="4"
+                           Text="Only guild leaders can manage defenders."
+                           FontFamily="PoppinsSemiBold"
+                           FontSize="11"
+                           TextColor="#9CA3AF"
+                           HorizontalOptions="Center"
+                           IsVisible="{Binding CanManageDefenders, Converter={StaticResource InverseBooleanConverter}}"/>
+                </Grid>
+            </Border>
+        </Border>
+
+        <!-- Back Button -->
+        <Border Grid.RowSpan="2"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Background="{StaticResource GradientPerks}"
+                Stroke="Black"
+                StrokeShape="Ellipse"
+                HeightRequest="60"
+                Scale="0.8"
+                Padding="5">
+            <ImageButton Source="icon_back.png"
+                         Command="{Binding GoBackCommand}"/>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

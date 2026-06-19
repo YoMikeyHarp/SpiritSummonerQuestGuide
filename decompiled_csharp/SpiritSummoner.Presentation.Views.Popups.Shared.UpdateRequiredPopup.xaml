@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.Shared.UpdateRequiredPopup"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Color="#CC000000">
+
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="16"
+                         Padding="32">
+        <Label Text="Update Required"
+               TextColor="White"
+               FontSize="22"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+        <Label Text="A new version is required to play. Please download the latest provided update."
+               TextColor="#CCCCCC"
+               FontSize="14"
+               HorizontalTextAlignment="Center"/>
+    </VerticalStackLayout>
+
+</toolkit:Popup>

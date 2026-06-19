@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:guildmodels="clr-namespace:SpiritSummoner.Domain.Entities.Guilds"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildWarHistoryPage"
+             x:Name="ThisPage"
+             x:DataType="vm:GuildWarHistoryViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="VictoryPillGradient" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#5DBB41" Offset="0.0"/>
+                <GradientStop Color="#83CF63" Offset="1.0"/>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="DefeatPillGradient" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#C94040" Offset="0.0"/>
+                <GradientStop Color="#E06060" Offset="1.0"/>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="StatsBannerBrush" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#22FFFFFF" Offset="0.0"/>
+                <GradientStop Color="#10FFFFFF" Offset="1.0"/>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="CloseButtonBrush" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#1E1E1E" Offset="0.0"/>
+                <GradientStop Color="#3A3A3A" Offset="1.0"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Background="{StaticResource GradientBackground}">
+
+        <!-- Background dots pattern -->
+        <Image Source="dots_offset_8px.png" Aspect="Fill" Opacity="1"/>
+
+        <!-- ═══════════════════════════════════════════
+             MAIN LAYOUT: Header + List
+             ═══════════════════════════════════════════ -->
+        <Grid RowDefinitions="Auto,*" RowSpacing="0"
+              Padding="10">
+
+            <!-- ══ HEADER ══ -->
+            <Grid Grid.Row="0" Padding="15" RowDefinitions="Auto,Auto" RowSpacing="14">
+
+                <!-- Row 0: Back button + Title + Record -->
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+
+                    <!-- Title block -->
+                    <VerticalStackLayout Grid.Column="1" Spacing="1"
+                                         VerticalOptions="Center"
+                                         Margin="8,0,0,0">
+                        <controls:OutlinedLabel
+                            Text="WAR HISTORY"
+                            HorizontalOptions="Center"
+                            FontFamily="PoppinsExtraBold"
+                            FontSize="26"
+                            TextColor="White"
+                            StrokeColor="#27441E"
+                            StrokeWidth="2.5"
+                            HasShadow="True"
+                            ShadowColor="#40000000"
+                            ShadowOffsetY="1"
+                            ShadowBlur="2"/>
+
+                        <Label Text="{Binding RecordText}"
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="13"
+                               TextColor="#FFFFFFCC"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Row 1: Stats bar (Wins / Losses / Win Rate) -->
+                <Border Grid.Row="1"
+                        Background="{StaticResource StatsBannerBrush}"
+                        Stroke="#30FFFFFF"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14"
+                        Padding="8,12">
+
+                    <Grid ColumnDefinitions="*,1,*,1,*" ColumnSpacing="0">
+
+                        <!-- Wins -->
+                        <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="1">
+                            <controls:OutlinedLabel 
+                                    Text="{Binding TotalWins}"
+                                    StrokeColor="#EDF8EA"
+                                    TextColor="#83CF63"
+                                    FontFamily="Bungee"
+                                    FontSize="24"/>
+                            <Label Text="WINS"
+                                   FontFamily="PoppinsSemiBold" FontSize="10"
+                                   TextColor="#FFFFFFAA"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Divider -->
+                        <BoxView Grid.Column="1" BackgroundColor="#40FFFFFF"
+                                 WidthRequest="1" VerticalOptions="Fill" Margin="0,4"/>
+
+                        <!-- Losses -->
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="1">
+                            <controls:OutlinedLabel 
+                                    Text="{Binding TotalWins}"
+                                    StrokeColor="#EDF8EA"
+                                    TextColor="#DA848D"
+                                    FontFamily="Bungee"
+                                    FontSize="24"/>
+                            <Label Text="LOSSES"
+                                   FontFamily="PoppinsSemiBold" FontSize="10"
+                                   TextColor="#FFFFFFAA"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Divider -->
+                        <BoxView Grid.Column="3" BackgroundColor="#40FFFFFF"
+                                 WidthRequest="1" VerticalOptions="Fill" Margin="0,4"/>
+
+                        <!-- Win Rate -->
+                        <VerticalStackLayout Grid.Column="4" HorizontalOptions="Center" Spacing="1">
+                            <controls:OutlinedLabel 
+                                    Text="{Binding TotalWins}"
+                                    StrokeColor="#EDF8EA"
+                                    TextColor="#FFE368"
+                                    FontFamily="Bungee"
+                                    FontSize="24"/>
+                                   
+                            <Label Text="WIN RATE"
+                                   FontFamily="PoppinsSemiBold" FontSize="10"
+                                   TextColor="#FFFFFFAA"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- ══ WAR HISTORY LIST ══ -->
+            <RefreshView Grid.Row="1"
+                         Command="{Binding RefreshCommand}"
+                         IsRefreshing="{Binding IsLoading}"
+                         RefreshColor="Black"
+                         Padding="0">
+
+                <CollectionView ItemsSource="{Binding WarHistory}">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+
+                    <!-- Empty state -->
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="10"
+                                             Padding="0,60">
+                            <Label Text="⚔️"
+                                   FontSize="52"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="No wars recorded yet"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="18"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Your guild's battle history will appear here"
+                                   FontFamily="Poppins"
+                                   FontSize="13"
+                                   TextColor="#FFFFFFCC"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <!-- ── War History Card ── -->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="guildmodels:GuildWarHistory">
+                            <Border StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    BackgroundColor="White"
+                                    Padding="0">
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="150"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicOut}"
+                                        PressedScale="0.97"
+                                        PressedOpacity="0.88"/>
+                                </Border.Behaviors>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding x:DataType='vm:GuildWarHistoryViewModel',Source={RelativeSource AncestorType={x:Type vm:GuildWarHistoryViewModel}},Path=ShowDetailCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Border.GestureRecognizers>
+
+                                <!-- Card inner grid: accent strip | content -->
+                                <Grid ColumnDefinitions="5,*" HeightRequest="88">
+
+                                    <!-- Left accent strip: green = victory, red = defeat -->
+                                    <BoxView Grid.Column="0"
+                                             BackgroundColor="#78CB55"
+                                             VerticalOptions="Fill">
+                                        <BoxView.Triggers>
+                                            <DataTrigger TargetType="BoxView"
+                                                         Binding="{Binding IsVictory}"
+                                                         Value="False">
+                                                <Setter Property="BackgroundColor" Value="#CB5560"/>
+                                            </DataTrigger>
+                                        </BoxView.Triggers>
+                                    </BoxView>
+
+                                    <!-- Content -->
+                                    <Grid Grid.Column="1"
+                                          Padding="12,10,12,10"
+                                          ColumnDefinitions="*,Auto"
+                                          RowDefinitions="Auto,Auto,Auto"
+                                          RowSpacing="4">
+
+                                        <!-- Row 0: Result badge + opponent name -->
+                                        <HorizontalStackLayout Grid.Row="0" Grid.Column="0"
+                                                               Spacing="8"
+                                                               VerticalOptions="Center">
+                                            <!-- Result badge pill -->
+                                            <Border Padding="7,3"
+                                                    StrokeShape="RoundRectangle 5"
+                                                    StrokeThickness="0"
+                                                    Background="{StaticResource VictoryPillGradient}">
+                                                <Border.Triggers>
+                                                    <DataTrigger TargetType="Border"
+                                                                 Binding="{Binding IsVictory}"
+                                                                 Value="False">
+                                                        <Setter Property="Background" Value="{StaticResource DefeatPillGradient}"/>
+                                                    </DataTrigger>
+                                                </Border.Triggers>
+                                                <Label Text="{Binding ResultDisplay}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="10"
+                                                       TextColor="White"/>
+                                            </Border>
+
+                                            <!-- Opponent guild name -->
+                                            <Label Text="{Binding OpponentGuildName}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="15"
+                                                   TextColor="#1A1A1A"
+                                                   VerticalOptions="Center"
+                                                   LineBreakMode="TailTruncation"
+                                                   MaxLines="1"/>
+                                        </HorizontalStackLayout>
+
+                                        <!-- Row 0 right: trophy change -->
+                                        <Label Grid.Row="0" Grid.Column="1"
+                                               Text="{Binding TrophyChangeDisplay}"
+                                               FontFamily="Bungee"
+                                               FontSize="18"
+                                               TextColor="#027242"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="End">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label"
+                                                             Binding="{Binding IsVictory}"
+                                                             Value="False">
+                                                    <Setter Property="TextColor" Value="#CB5560"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                        <!-- Row 1: Date -->
+                                        <Label Grid.Row="1" Grid.Column="0"
+                                               Text="{Binding Timestamp, StringFormat='{}{0:MMM dd, yyyy}'}"
+                                               FontFamily="Poppins"
+                                               FontSize="11"
+                                               TextColor="#999999"/>
+
+                                        <!-- Row 1 right: trophy icon -->
+                                        <Label Grid.Row="1" Grid.Column="1"
+                                               Text="🏆"
+                                               FontSize="11"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- Row 2: Crystal + Battle stats chips -->
+                                        <HorizontalStackLayout Grid.Row="2" Grid.Column="0"
+                                                               Grid.ColumnSpan="2"
+                                                               Spacing="14">
+                                            <!-- Crystals stolen -->
+                                            <HorizontalStackLayout Spacing="3">
+                                                <Label Text="⚔" FontSize="11" TextColor="#555"/>
+                                                <Label Text="{Binding CrystalsStolen}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="11"
+                                                       TextColor="#364DBD"/>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Crystals lost -->
+                                            <HorizontalStackLayout Spacing="3">
+                                                <Label Text="💎" FontSize="11"/>
+                                                <Label Text="{Binding CrystalsLost, StringFormat='-{0}'}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="11"
+                                                       TextColor="#CB5560"/>
+                                            </HorizontalStackLayout>
+
+                                            <!-- Battle record -->
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Label Text="{Binding Wins, StringFormat='{}{0}W'}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="11"
+                                                       TextColor="#027242"/>
+                                                <Label Text="{Binding Losses, StringFormat='{}{0}L'}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="11"
+                                                       TextColor="#721502"/>
+                                            </HorizontalStackLayout>
+                                        </HorizontalStackLayout>
+
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+        </Grid>
+
+        <!-- ═══════════════════════════════════════════
+             DETAIL OVERLAY (rendered on top of everything)
+             ═══════════════════════════════════════════ -->
+        <Grid IsVisible="{Binding IsDetailVisible}">
+
+            <!-- Dark semi-transparent backdrop — tap to dismiss -->
+            <BoxView BackgroundColor="#70000000">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowDetailCommand}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+
+            <!-- Bottom-anchored detail sheet -->
+            <Border VerticalOptions="End"
+                    StrokeShape="RoundRectangle 24,24,0,0"
+                    StrokeThickness="0"
+                    Background="{StaticResource GradientBackground}"
+                    Padding="0,0,0,28">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,-6" Radius="24" Opacity="0.25"/>
+                </Border.Shadow>
+
+                <ScrollView>
+                    <VerticalStackLayout Spacing="0">
+
+                        <!-- ── Drag handle ── -->
+                        <BoxView WidthRequest="40" HeightRequest="4"
+                                 BackgroundColor="#D0D0D0"
+                                 CornerRadius="2"
+                                 HorizontalOptions="Center"
+                                 Margin="0,12,0,20"/>
+
+                        <!-- ── Result header ── -->
+                        <Grid ColumnDefinitions="*,Auto"
+                              Padding="20,0"
+                              Margin="0,0,0,4">
+
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+
+                                <!-- Result badge (large) -->
+                                <Border Padding="12,5"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="0"
+                                        HorizontalOptions="Start"
+                                        Background="{StaticResource VictoryPillGradient}">
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border"
+                                                     Binding="{Binding SelectedWar.IsVictory}"
+                                                     Value="False">
+                                            <Setter Property="Background" Value="{StaticResource DefeatPillGradient}"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                    <Label Text="{Binding SelectedWar.ResultDisplay}"
+                                           FontFamily="PoppinsExtraBold"
+                                           FontSize="13"
+                                           TextColor="White"/>
+                                </Border>
+
+                                <!-- Opponent name -->
+                                <Label Text="{Binding SelectedWar.OpponentGuildName}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="22"
+                                       TextColor="#1A1A1A"
+                                       Margin="0,4,0,0"/>
+
+                                <!-- Date -->
+                                <Label Text="{Binding SelectedWar.Timestamp, StringFormat='{}{0:MMMM dd, yyyy  ·  HH:mm}'}"
+                                       FontFamily="Poppins"
+                                       FontSize="12"
+                                       TextColor="#888888"/>
+                            </VerticalStackLayout>
+
+                            <!-- Trophy change (right) -->
+                            <VerticalStackLayout Grid.Column="1"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2"
+                                                 Margin="0,0,0,0">
+                                <Label Text="🏆" FontSize="22" HorizontalOptions="Center"/>
+                                <Label Text="{Binding SelectedWar.TrophyChangeDisplay}"
+                                       FontFamily="Bungee"
+                                       FontSize="24"
+                                       HorizontalOptions="Center"
+                                       TextColor="#027242">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding SelectedWar.IsVictory}"
+                                                     Value="False">
+                                            <Setter Property="TextColor" Value="#CB5560"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- ── Separator ── -->
+                        <BoxView HeightRequest="1" BackgroundColor="#E8E8E8" Margin="20,16,20,16"/>
+
+                        <!-- ══ MVP SECTION ══ -->
+                        <VerticalStackLayout IsVisible="{Binding HasAnyMvp}"
+                                             Padding="20,0"
+                                             Spacing="10"
+                                             Margin="0,0,0,4">
+
+                            <Label Text="MVPS"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="11"
+                                   TextColor="Gray"
+                                   CharacterSpacing="2"/>
+
+                            <!-- 🏆 War MVP -->
+                            <Border IsVisible="{Binding HasWarMvp}"
+                                    BackgroundColor="#FFFBEA"
+                                    Stroke="#FFE68A"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="14,12">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Grid.Column="0"
+                                           Text="🏆"
+                                           FontSize="24"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,12,0"/>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                        <Label Text="WAR MVP"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="10"
+                                               TextColor="#B8860B"
+                                               CharacterSpacing="1"/>
+                                        <Label Text="{Binding SelectedWarMvpName}"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="16"
+                                               TextColor="#1A1A1A"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+
+                            <!-- ⚔ Attack MVP -->
+                            <Border IsVisible="{Binding HasAttackMvp}"
+                                    BackgroundColor="#FFF4F4"
+                                    Stroke="#FFCACA"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="14,12">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Grid.Column="0"
+                                           Text="⚔️"
+                                           FontSize="24"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,12,0"/>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                        <Label Text="ATTACK MVP"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="10"
+                                               TextColor="#C0392B"
+                                               CharacterSpacing="1"/>
+                                        <Label Text="{Binding SelectedAttackMvpName}"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="16"
+                                               TextColor="#1A1A1A"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+
+                            <!-- 🛡 Defense MVP -->
+                            <Border IsVisible="{Binding HasDefenseMvp}"
+                                    BackgroundColor="#F0F4FF"
+                                    Stroke="#BECEFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="14,12">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Grid.Column="0"
+                                           Text="🛡️"
+                                           FontSize="24"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,12,0"/>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                        <Label Text="DEFENSE MVP"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="10"
+                                               TextColor="#2471A3"
+                                               CharacterSpacing="1"/>
+                                        <Label Text="{Binding SelectedDefenseMvpName}"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="16"
+                                               TextColor="#1A1A1A"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                        <!-- Separator (conditional) -->
+                        <BoxView HeightRequest="1" BackgroundColor="#E8E8E8"
+                                 Margin="20,4,20,16"
+                                 IsVisible="{Binding HasAnyMvp}"/>
+
+                        <!-- ══ STATS GRID ══ -->
+                        <Grid Padding="20,0"
+                              ColumnDefinitions="*,*,*,*"
+                              ColumnSpacing="8">
+
+                            <!-- Crystals Stolen -->
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#EDF4FF"
+                                    StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    Padding="8,14">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="⚔️" FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding SelectedWar.CrystalsStolen}"
+                                           FontFamily="Bungee" FontSize="20"
+                                           TextColor="#364DBD"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="Stolen"
+                                           FontFamily="Poppins" FontSize="9"
+                                           TextColor="#888"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- Crystals Lost -->
+                            <Border Grid.Column="1"
+                                    BackgroundColor="#FFF0F0"
+                                    StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    Padding="8,14">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="💎" FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding SelectedWar.CrystalsLost}"
+                                           FontFamily="Bungee" FontSize="20"
+                                           TextColor="#CB5560"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="Lost"
+                                           FontFamily="Poppins" FontSize="9"
+                                           TextColor="#888"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- Wins -->
+                            <Border Grid.Column="2"
+                                    BackgroundColor="#F0FFF4"
+                                    StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    Padding="8,14">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="🗡️" FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding SelectedWar.Wins}"
+                                           FontFamily="Bungee" FontSize="20"
+                                           TextColor="#027242"
+                                           HorizontalOptions="Center">
+                                        <Label.Shadow>
+                                            <Shadow Brush="White"
+                                                    Offset="0,1"
+                                                    Radius="2"/>
+                                        </Label.Shadow>
+                                    </Label>
+                                    <Label Text="Wins"
+                                           FontFamily="Poppins" FontSize="9"
+                                           TextColor="#888"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- Losses -->
+                            <Border Grid.Column="3"
+                                    BackgroundColor="#FFF5F5"
+                                    StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    Padding="8,14">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="🏳️" FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding SelectedWar.Losses}"
+                                           FontFamily="Bungee" FontSize="20"
+                                           TextColor="#721502"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="Losses"
+                                           FontFamily="Poppins" FontSize="9"
+                                           TextColor="#888"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                        </Grid>
+
+                        <!-- ── Footer details ── -->
+                        <HorizontalStackLayout Padding="20,14,20,0" Spacing="6">
+                            <Label Text="👥" FontSize="14" VerticalOptions="Center"/>
+                            <Label Text="{Binding SelectedWar.ActiveMemberCount, StringFormat='Active Members: {0}'}"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="13"
+                                   TextColor="#555"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Padding="20,6,20,0" Spacing="6" IsVisible="false">
+                            <Label Text="Season ID:"
+                                   FontFamily="Poppins" FontSize="11"
+                                   TextColor="Gray"
+                                   VerticalOptions="Center"/>
+                            <Label Text="{Binding SelectedWar.SeasonId}"
+                                   FontFamily="Poppins" FontSize="11"
+                                   TextColor="Gray"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="MiddleTruncation"/>
+                        </HorizontalStackLayout>
+
+                        <!-- ── Close Button ── -->
+                        <Border Margin="20,18,20,0"
+                                Background="{StaticResource CloseButtonBrush}"
+                                StrokeShape="RoundRectangle 14"
+                                StrokeThickness="0"
+                                Padding="0,15">
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="150"
+                                    PressedScale="0.97"
+                                    PressedOpacity="0.7"/>
+                            </Border.Behaviors>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseDetailCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="CLOSE"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="15"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Border>
+        </Grid>
+
+
+            <Border Grid.RowSpan="2"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Background="{StaticResource GradientPerks}"
+                Stroke="Black"
+                StrokeShape="Ellipse"
+                HeightRequest="60"
+                Scale="0.8"
+                Padding="5">
+                <ImageButton Grid.RowSpan="4"
+                            Source="icon_back.png"
+                            Command="{Binding GoBackCommand}"/>
+
+            </Border>
+
+    </Grid>
+</ContentPage>

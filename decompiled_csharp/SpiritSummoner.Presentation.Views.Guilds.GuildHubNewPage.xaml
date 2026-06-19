@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildHubNewPage"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:pbar="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:guilds="clr-namespace:SpiritSummoner.Domain.Entities.Guilds;assembly=SpiritSummoner"
+             x:DataType="vm:GuildHubViewModel">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!-- Gradient Brushes -->
+
+            <LinearGradientBrush x:Key="LightGreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#9AE589" Offset="0.0556" />
+                <GradientStop Color="#9EDA84" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#1D4897" Offset="0.0" />
+                <GradientStop Color="#48C8EC" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="OrangeGradient" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#FFDC7B" Offset="0.0" />
+                <GradientStop Color="#F37815" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="CrystalGauge" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#3ADEFF" Offset="0.0" />
+                <GradientStop Color="#A4E4F1" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="LevelIconBlue" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#CEE6FA" Offset="0.0" />
+                <GradientStop Color="#A0D5F4" Offset="0.2" />
+                <GradientStop Color="#77B1E7" Offset="0.8" />
+                <GradientStop Color="#5EA1E2" Offset="1.0" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid>
+
+        <!-- NO GUILD MODE - Show when player is not in a guild -->
+        <Grid IsVisible="{Binding ShowNoGuildContent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <BoxView Color="#C6000000"
+                     Opacity="0.7"
+                     Grid.Row="0"
+                     Grid.RowSpan="3"
+                     IsVisible="{Binding IsAccountLinked,Converter={StaticResource InverseBooleanConverter},FallbackValue='false'}"
+                     ZIndex="1"/>
+
+            <Label Grid.Row="0"
+                   ZIndex="2"
+                   Text="Link your account to compete in guilds and earn premium rewards!"
+                   FontSize="34"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   TranslationY="50"
+                   TextColor="#EDF8EA"
+                   IsVisible="{Binding IsAccountLinked,Converter={StaticResource InverseBooleanConverter},FallbackValue='false'}"
+                   FontFamily="PoppinsBold"/>
+
+            <!-- Main Content Area -->
+            <VerticalStackLayout Grid.Row="0" 
+                                Padding="10" 
+                                Spacing="0"
+                                VerticalOptions="Start">
+                
+                <!-- Guild Emblem -->
+                <Border WidthRequest="120"
+                       HeightRequest="120"
+                       StrokeShape="RoundRectangle 30"
+                       Padding="0"
+                       Shadow="{StaticResource ImageShadow}"
+                       Stroke="#EAB308"
+                       StrokeThickness="4"
+                       HorizontalOptions="Center"
+                       Margin="0,20,0,0"
+                       ZIndex="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#3B82F6" Offset="0.0" />
+                            <GradientStop Color="#1E40AF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="👥" 
+                           FontSize="60" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </Border>
+                
+
+                <!-- Title with Purple Ribbon -->
+                <VerticalStackLayout Spacing="10"
+                                     HorizontalOptions="Center"
+                                     ZIndex="1"
+                                     TranslationY="-5">
+                    <Grid>
+                        <Border Padding="20,5"
+                               StrokeShape="RoundRectangle 15"
+                               Shadow="{StaticResource ImageShadow}"
+                               Background="{StaticResource GradientSelectedSpirit}"
+                               StrokeThickness="0">
+                            <Label Text="Guilds"
+                                   FontSize="32"
+                                   VerticalTextAlignment="Center"
+                                   FontFamily="PoppinsExtraBold"
+                                   TextColor="Black"
+                                   Shadow="{StaticResource LabelWhiteShadow}"
+                                   HorizontalOptions="Center" />
+                        </Border>
+
+                    </Grid>
+
+                    <Label Text="Join a Guild and fight together to" 
+                           FontSize="16" 
+                           FontFamily="PoppinsBold"
+                           TextColor="Black"
+                           Shadow="{StaticResource LabelWhiteShadow}"
+                           HorizontalOptions="Center" />
+                    <Label Text="unlock rewards in Guild Wars!" 
+                           FontSize="16" 
+                           FontFamily="PoppinsBold"
+                           TextColor="Black"
+                           Shadow="{StaticResource LabelWhiteShadow}"
+                           HorizontalOptions="Center" />
+
+
+                    <HorizontalStackLayout TranslationY="20">
+
+                    <Label Text="You have pending invites!" 
+                           FontSize="16" 
+                           FontFamily="PoppinsBold"
+                           TextColor="Black"
+                           Shadow="{StaticResource LabelWhiteShadow}"
+                           IsVisible="{Binding HasPendingInvitations}"
+                           HorizontalOptions="Start" />
+
+                    <!-- Invitation Notification Badge -->
+                    <Border IsVisible="{Binding HasPendingInvitations}"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               StrokeShape="RoundRectangle 22.5"
+                               Stroke="White"
+                               StrokeThickness="2"
+                               TranslationX="10"
+                               TranslationY="-10">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenInvitationsCommand}" />
+                            </Border.GestureRecognizers>
+                            <Grid RowDefinitions="Auto,Auto">
+                                <Label Text="📧"
+                                      Grid.Row="0"
+                                      FontSize="20"
+                                      HorizontalOptions="Center"/>
+                                <Label Text="{Binding PendingInvitationCount}"
+                                      FontSize="12"
+                                      Grid.Row="1"
+                                      FontFamily="PoppinsBold"
+                                      TextColor="White"
+                                      HorizontalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+
+                <!-- Guild Search Results (Shows when ShowGuildList is true) -->
+                <Border IsVisible="{Binding ShowGuildList}"
+                       BackgroundColor="White"
+                       StrokeShape="RoundRectangle 20"
+                       Padding="15"
+                       Shadow="{StaticResource ImageShadow}"
+                       Stroke="#E5E7EB"
+                       MaximumHeightRequest="400">
+                    
+                    <Grid RowSpacing="12"
+                          RowDefinitions="Auto,Auto,*">
+                        <!-- Search Header with Filter -->
+                        <Grid ColumnSpacing="10" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Search Entry -->
+                            <Border Grid.Column="0"
+                                   BackgroundColor="#F3F4F6"
+                                   StrokeShape="RoundRectangle 12"
+                                   Padding="10,8">
+                                <Entry Text="{Binding SearchText}"
+                                       Placeholder="Search guilds..."
+                                       PlaceholderColor="#9CA3AF"
+                                       TextColor="#1F2937"
+                                       BackgroundColor="Transparent" />
+                            </Border>
+
+                            <!-- Filter Button -->
+                            <Button Grid.Column="1"
+                                    Text="🔍"
+                                    FontSize="20"
+                                    BackgroundColor="#6366F1"
+                                    TextColor="White"
+                                    CornerRadius="12"
+                                    Padding="12"
+                                    Command="{Binding ShowFilterPopupCommand}" />
+
+                            <!-- Close Button -->
+                            <Button Grid.Column="2"
+                                    Text="✕"
+                                    FontSize="18"
+                                    BackgroundColor="#EF4444"
+                                    TextColor="White"
+                                    CornerRadius="12"
+                                    Padding="12"
+                                    Command="{Binding HideGuildListCommand}" />
+                        </Grid>
+
+                        <!-- Results Count -->
+                        <Label Text="{Binding SearchResultsCount, StringFormat='{0} guilds found'}" 
+                               FontSize="12" 
+                               FontFamily="PoppinsBold"
+                               TextColor="#6B7280"
+                               Grid.Row="1" />
+
+                        <!-- Guild List -->
+                            <CollectionView ItemsSource="{Binding AvailableGuilds}"
+                                            VerticalScrollBarVisibility="Default"
+                                            Grid.Row="2">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:GuildSearchResult">
+                                        <Border BackgroundColor="White"
+                                               StrokeShape="RoundRectangle 12"
+                                               Padding="12"
+                                               Margin="0,0,0,8"
+                                               Stroke="#E5E7EB"
+                                               StrokeThickness="1">
+                                            <Grid ColumnSpacing="12">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Emblem -->
+                                                <Border Grid.Column="0"
+                                                       StrokeShape="RoundRectangle 10"
+                                                       Padding="0"
+                                                       Stroke="#A855F7"
+                                                       StrokeThickness="2"
+                                                       WidthRequest="50"
+                                                       HeightRequest="50">
+                                                    <Label Text="{Binding Emblem}"
+                                                           FontSize="24"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center" />
+                                                </Border>
+
+                                                <!-- Guild Info -->
+                                                <VerticalStackLayout Grid.Column="1" 
+                                                                    VerticalOptions="Center" 
+                                                                    Spacing="4">
+                                                    <Label Text="{Binding Name}"
+                                                           FontSize="14"
+                                                           FontFamily="PoppinsBold"
+                                                           TextColor="#1F2937" />
+                                                    <HorizontalStackLayout Spacing="8">
+                                                        <Label Text="{Binding RankDisplay}" 
+                                                               FontSize="10" 
+                                                               FontFamily="PoppinsBold"
+                                                               TextColor="#6B7280" />
+                                                        <Label Text="{Binding MemberDisplay}" 
+                                                               FontSize="10" 
+                                                               FontFamily="PoppinsBold"
+                                                               TextColor="#6B7280" />
+                                                        <Label Text="{Binding TypeDisplay}" 
+                                                               FontSize="10" 
+                                                               FontFamily="PoppinsBold"
+                                                               TextColor="#6B7280" />
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+
+                                                <!-- Join Button -->
+                                                <Button Grid.Column="2"
+                                                        Text="{Binding JoinButtonText}"
+                                                        FontSize="11"
+                                                        FontFamily="PoppinsBold"
+                                                        BackgroundColor="#10B981"
+                                                        TextColor="White"
+                                                        CornerRadius="10"
+                                                        Padding="15,8"
+                                                        VerticalOptions="Center"
+                                                        IsEnabled="true"
+                                                        Command="{Binding x:DataType='vm:GuildHubViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildHubViewModel}}, Path=JoinGuildCommand}"
+                                                        CommandParameter="{Binding GuildId}" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                    </Grid>
+                </Border>
+                
+
+            </VerticalStackLayout>
+
+            <!-- Bottom Action Bar -->
+            <Border Grid.Row="1"
+                   BackgroundColor="White"
+                   Background="{StaticResource GradientRewards}"
+                   StrokeShape="RoundRectangle 20"
+                   Padding="15"
+                   Margin="20,0,20,25"
+                   Shadow="{StaticResource ImageShadow}"
+                   Stroke="#E5E7EB"
+                   IsVisible="{Binding ShowGuildList,Converter={StaticResource InverseBooleanConverter}}">
+                <Grid ColumnSpacing="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Create Button (Left Side) -->
+                    <Button Grid.Column="0"
+                            Text="CREATE"
+                            FontSize="16"
+                            IsEnabled="{Binding IsAccountLinked}"
+                            TextColor="Black"
+                            BorderColor="Black"
+                            BorderWidth="2"
+                            FontFamily="PoppinsExtraBold"
+                            CornerRadius="15"
+                            Padding="0,15"
+                            Command="{Binding ShowCreateGuildPopupCommand}"
+                            Background="{StaticResource GradientBackgroundSpiritSimple}">
+                    </Button>
+
+                    <!-- Show Button (Right Side) -->
+                    <Button Grid.Column="1"
+                            Text="SHOW"
+                            IsEnabled="{Binding IsAccountLinked}"
+                            FontSize="16"
+                            BorderColor="White"
+                            BorderWidth="3"
+                            FontFamily="PoppinsExtraBold"
+                            CornerRadius="15"
+                            Padding="30,15"
+                            Command="{Binding ShowGuildListCommand}"
+                            Background="{StaticResource GradientBackground}">
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid RowDefinitions="Auto,*,120" Padding="16,30,16,5" IsVisible="{Binding ShowGuildContent}" RowSpacing="15">
+            <Grid Grid.Row="0" RowDefinitions="Auto,Auto" RowSpacing="15">
+                <!-- Guild Name Section -->
+                <VerticalStackLayout Grid.Row="0" Spacing="0">
+                    <Label Text="GUILD"
+                           FontFamily="PoppinsSemiBold"
+                           FontSize="12"
+                           TextColor="#40000000"
+                           HorizontalTextAlignment="Center" />
+                    
+                    <outline:OutlinedLabel
+                            Text="{Binding GuildName}"
+                            FontSize="{OnIdiom Phone=26, Tablet=36}"
+                            FontFamily="PoppinsExtraBold"
+                            TextColor="#EDF8EA"
+                            StrokeColor="#43781C"
+                            StrokeWidth="1.5"
+                            HorizontalOptions="Center"
+                            HasShadow="True"
+                            ShadowOffsetX="0"     
+                            ShadowOffsetY="2" 
+                            ShadowBlur="2"  
+                            ShadowSpread="0"
+                            ShadowColor="#40000000" />
+                            
+                </VerticalStackLayout>
+
+                <!-- Level & Stats Section -->
+                <Grid Grid.Row="1" ColumnSpacing="8" RowDefinitions="Auto,Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone=56, Tablet=80}" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Rank Badge -->
+                    <Grid Grid.Column="0" Grid.RowSpan="2" WidthRequest="{OnIdiom Phone=56, Tablet=80}" HeightRequest="{OnIdiom Phone=56, Tablet=80}" ZIndex="2">
+                        <!-- Outer Circle -->
+                        <Ellipse Fill="{StaticResource LightGreenGradient}"
+                                 Stroke="#588049"
+                                 StrokeThickness="1">
+                            <Ellipse.Shadow>
+                                <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25" />
+                            </Ellipse.Shadow>
+                        </Ellipse>
+
+                        <!-- Inner Circle -->
+                        <Ellipse WidthRequest="{OnIdiom Phone=46, Tablet=68}"
+                                 HeightRequest="{OnIdiom Phone=46, Tablet=68}"
+                                Fill="{StaticResource LevelIconBlue}" 
+                                 Stroke="#40000000"
+                                 StrokeThickness="1"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+
+                        <!-- Rank Label -->
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           TranslationY="1"
+                                           Spacing="-7">
+
+                            <outline:OutlinedLabel 
+                                    Text="RANK"
+                                    FontSize="15"
+                                    FontFamily="PoppinsSemiBold"
+                                    TextColor="#FFE368"
+                                    StrokeColor="#BA7412"
+                                    StrokeWidth="1.75"
+                                    WidthRequest="100"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    HasShadow="True"
+                                    ShadowOffsetX="0"     
+                                    ShadowOffsetY="1" 
+                                    ShadowBlur="1"  
+                                    ShadowSpread="0"
+                                    ShadowColor="#40000000" />
+
+                            <outline:OutlinedLabel 
+                                    Text="{Binding CurrentGuild.Level}"
+                                    FontSize="20"
+                                    FontFamily="Bungee"
+                                    TextColor="#C96D1E"
+                                    StrokeColor="#EDF8EA"
+                                    StrokeWidth="4"
+                                    HorizontalOptions="Center" />
+
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- EXP Bar Container -->
+                    <Border Background="{StaticResource TanGradient}"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            TranslationX="7"
+                            Stroke="#40000000"
+                            StrokeThickness="1"
+                            Padding="10,6"
+                            HeightRequest="{OnIdiom Phone=36, Tablet=48}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+
+                            <Grid ColumnDefinitions="52,*">
+                                <!-- EXP Progress Bar Background -->
+                                <Border Grid.Column="1"
+                                        Background="#B9B8B9"
+                                        Stroke="#40000000"
+                                        StrokeThickness="1"
+                                        Padding="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="4" />
+                                    </Border.StrokeShape>
+                                    <pbar:ProgressBar Progress="{Binding XPProgress}" HeightRequest="{OnIdiom Phone=28, Tablet=36}"
+                                                      RoundCaps="True"
+                                                      BaseColor="#B9B8B9"
+                                                      UseGradient="True"
+                                                      GradientColor="#3ADEFF"
+                                                      ProgressColor="#A4E4F1"/>
+
+                                </Border>
+
+                                <!-- EXP Text -->
+                                <outline:OutlinedLabel 
+                                    Grid.Column="1"
+                                    Text="{Binding XPProgressText}"
+                                    FontSize="14"
+                                    FontFamily="PoppinsExtraBold"
+                                    TextColor="#EDF8EA"
+                                    StrokeColor="#000000"
+                                    StrokeWidth="1.5"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>    
+
+
+
+                    <!-- Stats Section -->
+                    <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="8">
+                        <!-- Reputation and Founded -->
+                        <Grid ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <outline:OutlinedLabel Grid.Column="0"
+                                   Text="{Binding Trophies,StringFormat='Reputation Score: {0:F0}'}"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="12"
+                                   TextColor="#FFE368"
+                                   StrokeColor="#BA7412"
+                                   StrokeWidth="1"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowOffsetX="1"
+                                   ShadowOffsetY="0"
+                                   ShadowSpread="0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+
+                            <outline:OutlinedLabel Grid.Column="1"
+                                   Text="{Binding CurrentGuild.CreatedAt,StringFormat='Founded: {0:dd/MM/yyyy}'}"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="12"
+                                   TextColor="#FFE368"
+                                   StrokeColor="#BA7412"
+                                   StrokeWidth="1"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowOffsetX="1"
+                                   ShadowOffsetY="0"
+                                   ShadowSpread="0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Padding="0" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" /> <!-- Guild Message -->
+                        <RowDefinition Height="Auto" /> <!-- Leader -->
+                        <RowDefinition Height="Auto" /> <!-- Guild Members -->
+                        <RowDefinition Height="Auto" /> <!-- Guild Shop -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Guild Message Section -->
+                    <VerticalStackLayout Grid.Row="0" Spacing="8">
+
+                        <Grid ColumnDefinitions="*,*" ZIndex="2">
+                            <outline:OutlinedLabel
+                                Text="GUILD MESSAGE"
+                                Grid.Column="0"
+                                FontSize="14"
+                                FontFamily="PoppinsSemiBold"
+                                TextColor="#027242"
+                                StrokeColor="#40000000"
+                                StrokeWidth="1"
+                                HorizontalOptions="Start"
+                                HasShadow="True"
+                                ShadowColor="#40000000"
+                                ShadowBlur="1"
+                                ShadowSpread="0"
+                                ShadowOffsetX="1"
+                                ShadowOffsetY="0"/>
+
+                            <Border Grid.Column="1"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="End"
+                                        Padding="10,3"
+                                        BackgroundColor="LimeGreen"
+                                        StrokeShape="RoundRectangle 12"
+                                        IsVisible="{Binding HideOptions}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowGuildOptionsCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="..."
+                                        HorizontalOptions="Center"
+                                        TranslationY="-5"
+                                        TextColor="White"
+                                        FontFamily="Poppins"/>
+                            </Border>
+
+                                <Border Grid.Column="1"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="End"
+                                        BackgroundColor="LimeGreen"
+                                        Padding="15,5"
+                                        StrokeShape="RoundRectangle 14"
+                                        IsVisible="{Binding HideOptions,Converter={StaticResource InverseBooleanConverter}}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowGuildOptionsCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="4">
+                                        <Border Grid.Row="1"
+                                                StrokeShape="RoundRectangle 6"
+                                                Padding="5"
+                                                BackgroundColor="white"
+                                                IsVisible="{Binding ShowOptions}">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EditGuildCommand}"/>
+                                            </Border.GestureRecognizers>
+                                            <Border.Behaviors>
+                                                <toolkit:TouchBehavior
+                                                    DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.6"
+                                                    PressedScale="0.7"/>
+                                            </Border.Behaviors>
+                                            <Label Text="Edit guild"
+                                                HorizontalOptions="Center"
+                                                FontSize="Small"
+                                                TextColor="black"
+                                                FontFamily="Poppins"/>
+                                        </Border>
+
+                                        <Border Grid.Row="0"
+                                                StrokeShape="RoundRectangle 6"
+                                                Padding="5"
+                                                BackgroundColor="#FF6B6B"
+                                                IsVisible="{Binding ShowOptions}">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DisbandGuildCommand}"/>
+                                            </Border.GestureRecognizers>
+                                            <Border.Behaviors>
+                                                <toolkit:TouchBehavior
+                                                    DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.6"
+                                                    PressedScale="0.7"/>
+                                            </Border.Behaviors>
+                                            <Label Text="Disband guild"
+                                                HorizontalOptions="Center"
+                                                FontSize="Small"
+                                                TextColor="White"
+                                                FontFamily="Poppins"/>
+                                        </Border>
+
+                                        <Border Grid.Row="2"
+                                                StrokeShape="RoundRectangle 6"
+                                                Padding="5"
+                                                BackgroundColor="White">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding LeaveGuildCommand}"/>
+                                            </Border.GestureRecognizers>
+                                            <Border.Behaviors>
+                                                <toolkit:TouchBehavior
+                                                    DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.6"
+                                                    PressedScale="0.7"/>
+                                            </Border.Behaviors>
+                                            <Label Text="Leave guild"
+                                                HorizontalOptions="Center"
+                                                FontSize="Small"
+                                                TextColor="black"
+                                                FontFamily="Poppins"/>
+                                        </Border>
+
+                                    </Grid>
+                                </Border>
+                        </Grid>
+
+                        <Border Background="#40000000"
+                                    Stroke="#40000000"
+                                    IsVisible="{Binding IsDisbanding,Converter={StaticResource InverseBooleanConverter}}"
+                                    StrokeThickness="1"
+                                    MinimumHeightRequest="130"
+                                    MaximumHeightRequest="150">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+
+                                <ScrollView Padding="8" VerticalScrollBarVisibility="Never">
+                                    <Label FontFamily="PoppinsBold"
+                                        FontSize="16"
+                                        Text="{Binding CurrentGuild.Description}" IsVisible="true"
+                                        TextColor="#EDF8EA"
+                                        LineHeight="1.2">
+                                        <Label.Shadow>
+                                            <Shadow Brush="#000000" Offset="0,1" Radius="1" Opacity="1" />
+                                        </Label.Shadow>
+                                    </Label>
+                                </ScrollView>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Disbanding Warning Banner -->
+                    <Border Grid.Row="0"
+                            BackgroundColor="#FF6B6B"
+                            Padding="12,10"
+                            IsVisible="{Binding IsDisbanding}"
+                            StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="Auto, *, Auto"
+                                ColumnSpacing="10">
+                            <Label Grid.Column="0"
+                                Text="⚠️"
+                                FontSize="20"
+                                VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1"
+                                    Spacing="2"
+                                    VerticalOptions="Center">
+                                <Label Text="GUILD DISBANDING"
+                                    FontFamily="PoppinsBold"
+                                    FontSize="12"
+                                    TextColor="White"/>
+                                <Label FontFamily="Poppins"
+                                    FontSize="11"
+                                    TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Deleting in: "/>
+                                            <Span Text="{Binding DisbandTimeRemaining}"
+                                                    FontFamily="PoppinsBold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <Border Grid.Column="2"
+                                    BackgroundColor="White"
+                                    Padding="10,6"
+                                    StrokeShape="RoundRectangle 8"
+                                    VerticalOptions="Center"
+                                    IsVisible="{Binding IsLeader}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CancelDisbandGuildCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="Cancel"
+                                    FontFamily="PoppinsSemiBold"
+                                    FontSize="11"
+                                    TextColor="#FF6B6B"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Leader Section -->
+                    <Grid Grid.Row="1"
+                        Background="{StaticResource LightGreenGradient}"
+                        Padding="16,8"
+                        Margin="-15,0,-15,0">
+                        <Grid.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Radius="4" Opacity="0.25" />
+                        </Grid.Shadow> 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="{OnIdiom Phone=56, Tablet=72}" />
+                        </Grid.ColumnDefinitions>
+
+                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                            <Label Text="LEADER"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="12"
+                                TextColor="#40000000"
+                                HorizontalTextAlignment="Start" />
+
+                            <outline:OutlinedLabel Text="{Binding LeaderPlayerName}"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="{OnIdiom Phone=18, Tablet=24}"
+                                TextColor="#EDF8EA"
+                                HorizontalOptions="Start"
+                                HasShadow="True"
+                                ShadowColor="#000000"/>
+
+                            <outline:OutlinedLabel 
+                                Text="{Binding LeaderPlayerLevel, StringFormat='Rank {0}'}"
+                                TextColor="#B2590A"
+                                FontFamily="PoppinsSemiBold"
+                                FontSize="12"
+                                StrokeColor="Transparent"
+                                HasShadow="False"
+                                HorizontalOptions="Start"/>
+                        </VerticalStackLayout>
+
+                        <!-- Message Button -->
+                        <Border Grid.Column="1"
+                                Background="{StaticResource TanGradient}"
+                                Stroke="#40000000"
+                                StrokeThickness="1"
+                                WidthRequest="{OnIdiom Phone=56, Tablet=72}"
+                                HeightRequest="{OnIdiom Phone=56, Tablet=72}"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.25" />
+                            </Border.Shadow>
+
+                            <Image Source="chat_icon.png"
+                                WidthRequest="{OnIdiom Phone=46, Tablet=62}"
+                                HeightRequest="{OnIdiom Phone=46, Tablet=62}"
+                                Aspect="AspectFit" />
+                        </Border>
+                    </Grid>
+
+                    <!-- Guild Members Section -->
+                    <VerticalStackLayout Grid.Row="2" Spacing="8">
+                        <Border Background="#027242"
+                                Stroke="#40000000"
+                                StrokeThickness="1"
+                                Padding="8">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToMembersCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Border.Behaviors>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+
+                            <Grid RowSpacing="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <!-- Header -->
+                                <Grid Grid.Row="0">
+                                    <Label Text="Guild Members"
+                                        FontFamily="PoppinsBold"
+                                        FontSize="16"
+                                        IsVisible="false"
+                                        TextColor="#EDF8EA"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center">
+                                        <Label.Shadow>
+                                            <Shadow Brush="#40000000" Offset="0,1" Radius="1" Opacity="1" />
+                                        </Label.Shadow>
+                                    </Label>
+
+                                    <outline:OutlinedLabel Text="Guild Members"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="16"
+                                        TextColor="#EDF8EA"
+                                        HasShadow="True"
+                                        StrokeColor="#40000000"
+                                        StrokeWidth="1"
+                                        ShadowOffsetX="0"
+                                        ShadowOffsetY="1"
+                                        ShadowBlur="1"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"/>
+
+                                    <Label Text="{Binding MemberCountText}"
+                                        FontFamily="PoppinsBold"
+                                        FontSize="16"
+                                        TextColor="#83CF63"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center">
+                                        <Label.Shadow>
+                                            <Shadow Brush="#40000000" Offset="0,1" Radius="1" Opacity="0.25" />
+                                        </Label.Shadow>
+                                    </Label>
+                                </Grid>
+
+                                <!-- Member Avatars -->
+                                <ScrollView Grid.Row="1"
+                                        Orientation="Horizontal"
+                                        HorizontalScrollBarVisibility="Never">
+                                    <HorizontalStackLayout Spacing="8"
+                                                        BindableLayout.ItemsSource="{Binding Members}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="guilds:GuildMember">
+                                                <Grid WidthRequest="{OnIdiom Phone=40, Tablet=56}" HeightRequest="{OnIdiom Phone=40, Tablet=56}">
+                                                    <Ellipse Fill="#EDF8EA"
+                                                            Stroke="#40000000"
+                                                            StrokeThickness="1"
+                                                            IsVisible="{Binding HasIcon, Converter={StaticResource InverseBooleanConverter}}"/>
+                                                    <Image Source="{Binding PlayerIcon}"
+                                                        Aspect="AspectFit"
+                                                        IsVisible="{Binding HasIcon}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                </ScrollView>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Guild Shop -->
+                    <Border Grid.Row="3"
+                            Background="#D9D9D9"
+                            Stroke="#40000000"
+                            StrokeThickness="1"
+                            Padding="10,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Border.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Border.Behaviors>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToShopCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Label Text="{Binding CurrentPlayerGuildCoins,StringFormat='Guild Shop&#x0a;Guild coins {0}'}"
+                            FontFamily="Poppins"
+                            FontSize="14"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </Border>
+            </Grid>
+
+            <Grid Grid.Row="2" ColumnSpacing="25" Padding="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                <!-- History Button -->
+                    <Grid Grid.Column="0">
+                            <Grid.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Grid.Behaviors>
+
+                            <Image Source="icon_history.png"
+                                ZIndex="1"
+                                VerticalOptions="Start"
+                                Aspect="AspectFit"
+                                TranslationY="-15"/>
+
+                            <Border Stroke="Black"
+                                    Grid.Column="0"
+                                    StrokeThickness="0.3"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="Transparent">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="0,2" Radius="0.5" Opacity="0.25" />
+                                    </Border.Shadow>
+                                <Grid RowDefinitions="*,0.8*">
+
+                                    <Border Grid.Row="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                EndPoint="1,0">
+                                                <GradientStop Color="#1D4897"
+                                                            Offset="0.0"/>
+                                                <GradientStop Color="#48C8EC"
+                                                            Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+
+                                    <Border BackgroundColor="#E5E5E5"
+                                            Grid.Row="1">
+                                        
+                                        <outline:OutlinedLabel
+                                            Text="HISTORY"
+                                            FontFamily="Bungee"
+                                            FontSize="{OnIdiom Phone=18, Tablet=24}"
+                                            TextColor="#1626A3"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="3"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="2"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    <!-- Guild War Button -->
+                    <Grid Grid.Column="1">
+                            <Grid.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Grid.Behaviors>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToWarsCommand}"/>
+                            </Grid.GestureRecognizers>
+
+                            <Image Source="icon_exclamation2.webp"
+                                ZIndex="1"
+                                HeightRequest="{OnIdiom Phone=70, Tablet=100}"
+                                WidthRequest="{OnIdiom Phone=70, Tablet=100}"
+                                Aspect="AspectFit"
+                                TranslationY="-20"/>
+
+                            <Border Stroke="Black"
+                                    Grid.Column="0"
+                                    StrokeThickness="0.3"
+                                    StrokeShape="RoundRectangle 12"
+                                    BackgroundColor="Transparent">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Offset="0,2" Radius="0.5" Opacity="0.25" />
+                                    </Border.Shadow>
+                                <Grid RowDefinitions="*,0.8*">
+
+                                    <Border Grid.Row="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                EndPoint="1,0">
+                                                <GradientStop Color="#FFDC7B"
+                                                            Offset="0.0"/>
+                                                <GradientStop Color="#F37815"
+                                                            Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+
+                                    <Border BackgroundColor="#E5E5E5"
+                                            Grid.Row="1">
+                                        
+                                        <outline:OutlinedLabel
+                                            Text="GUILD WAR"
+                                            FontFamily="Bungee"
+                                            FontSize="20"
+                                            TextColor="#F37815"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="3"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="2"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</ContentView>

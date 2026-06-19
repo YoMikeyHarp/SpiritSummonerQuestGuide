@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.SpiritHoldNavigationSheet"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             x:DataType="bottomsheet:SpiritsHoldNavigationSheetViewModel"
+             HasBackdrop="True" 
+             HasHandle="False"
+             BackgroundColor="Transparent">
+
+    <the49:BottomSheet.Detents>
+        <the49:ContentDetent />
+    </the49:BottomSheet.Detents>
+
+    <the49:BottomSheet.Resources>
+        <Style x:Key="PortalNavItem" TargetType="VerticalStackLayout">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Spacing" Value="-4"/>
+        </Style>
+    </the49:BottomSheet.Resources>
+
+    <Border BackgroundColor="Transparent"
+            HeightRequest="160"
+            VerticalOptions="End"
+            StrokeThickness="0"
+            Margin="0,0,0,-10">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="30,30,0,0" />
+        </Border.StrokeShape>
+
+        <Grid>
+            <outline:BlendModeImage
+                      Source="infobarbackground.png"
+                      BlendMode="Multiply"
+                      OpacityValue="1"
+                      BlendBackground="{StaticResource GreenGradient}"
+                      HorizontalOptions="Fill"
+                      VerticalOptions="Fill"/>
+
+            <BoxView Color="Black"
+                     HeightRequest="2"
+                     IsVisible="false"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Start"/>
+
+            <Grid RowDefinitions="Auto,Auto"
+                  HorizontalOptions="Center"
+                  RowSpacing="8"
+                  Padding="10,20,10,0">
+
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*,*,*"
+                      ColumnSpacing="4">
+
+                    <VerticalStackLayout Grid.Column="0" Style="{StaticResource PortalNavItem}">
+                        <Grid>
+                            <Image Source="icon_squads_outlined.png"
+                                   WidthRequest="55"
+                                   HeightRequest="55"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center">
+                                <Image.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="350"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        TouchGestureCompleted="SavedSquads"
+                                        PressedScale="0.7"/>
+                                </Image.Behaviors>
+                            </Image>
+                        </Grid>
+
+                        <outline:OutlinedLabel Text="Squads"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowBlur="1"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               ShadowSpread="0"
+                                               ShadowColor="#40000000"
+                                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Style="{StaticResource PortalNavItem}">
+                        <Grid>
+                            <Image Source="staricon.png"
+                                   WidthRequest="55"
+                                   HeightRequest="55"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center">
+                                <Image.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="350"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        TouchGestureCompleted="NavigateToPartner"
+                                        PressedScale="0.7"/>
+                                </Image.Behaviors>
+                            </Image>
+                        </Grid>
+
+                        <outline:OutlinedLabel Text="Partner"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowBlur="1"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               ShadowSpread="0"
+                                               ShadowColor="#40000000"
+                                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="2" Style="{StaticResource PortalNavItem}">
+                        <Image Source="icon_spirits_outlined.png"
+                               WidthRequest="55"
+                               HeightRequest="55"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="350"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    TouchGestureCompleted="NavigateToCollection"
+                                    PressedScale="0.7"/>
+                            </Image.Behaviors>
+                        </Image>
+
+                        <outline:OutlinedLabel Text="Spirits"
+                                               FontSize="12"
+                                               FontFamily="PoppinsSemiBold"
+                                               TextColor="#EDF8EA"
+                                               StrokeColor="#2E4A0F"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowBlur="1"
+                                               ShadowOffsetX="0"
+                                               ShadowOffsetY="1"
+                                               ShadowSpread="0"
+                                               ShadowColor="#40000000"
+                                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <ImageButton Grid.Row="1"
+                             Source="x.png"
+                             HeightRequest="55"
+                             HorizontalOptions="Center">
+                    <ImageButton.Behaviors>
+                        <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="350"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    TouchGestureCompleted="Dissmiss"
+                                    PressedScale="0.7"/>
+                    </ImageButton.Behaviors>
+                    <ImageButton.Shadow>
+                        <Shadow Brush="White"
+                                    Offset="1,0"
+                                    Radius="4"/>
+                    </ImageButton.Shadow>
+                </ImageButton>
+            </Grid>
+        </Grid>
+    </Border>
+</the49:BottomSheet>

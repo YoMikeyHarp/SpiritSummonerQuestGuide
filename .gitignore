@@ -1,0 +1,23 @@
+# Large raw APK / decompile artifacts — not part of the guide deliverable
+*.apk
+jadx.zip
+jadx/
+decompiled/
+dotnet_dlls/
+extracted/
+unzip.log
+
+# Large third-party tool binaries pulled onto tools/
+tools/dotnet/
+tools/dotnet-runtime.zip
+tools/frida-server-*
+tools/ilspycmd*
+tools/*.nupkg
+
+# Misc local artifacts
+tools/static_cache.b64
+*.pyc
+__pycache__/
+
+# Local Claude Code session state
+.claude/

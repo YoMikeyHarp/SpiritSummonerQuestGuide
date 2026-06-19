@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:guildmodels="clr-namespace:SpiritSummoner.Domain.Entities.Guilds"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.GuildPopups.InvitePlayerPopup"
+               x:DataType="vm:InvitePlayerPopupViewModel"
+               Size="375,625"
+               Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Border Padding="5"
+            Background="{StaticResource GradientBackground}"
+            StrokeShape="RoundRectangle 8">
+
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="15" Padding="15">
+
+            <!-- Header -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Invite Player"
+                           FontSize="Large"
+                           FontAttributes="Bold">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label"
+                                         Binding="{Binding IsInviteMode}"
+                                         Value="false">
+                                    <Setter Property="Text"
+                                            Value="Pending Join Requests"/>
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label Text="{Binding GuildName, StringFormat='to {0}'}"
+                           FontSize="Small"
+                           TextColor="Gray"
+                           IsVisible="{Binding GuildName, Converter={StaticResource StringToBoolConverter}}"/>
+                </VerticalStackLayout>
+
+                <ImageButton Grid.Column="1"
+                            Source="backicon.png"
+                            Command="{Binding CloseCommand}"
+                            BackgroundColor="Transparent"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            VerticalOptions="Start"/>
+            </Grid>
+
+            <!-- Search Bar -->
+            <Border Grid.Row="1"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="2"
+                    BackgroundColor="White">
+                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                    <Entry Grid.Column="0"
+                           Text="{Binding SearchText}"
+                           Placeholder="Search by username..."
+                           PlaceholderColor="Gray"
+                           BackgroundColor="Transparent"
+                           ReturnCommand="{Binding SearchPlayersCommand}"/>
+
+                    <Button Grid.Column="1"
+                            Text="🔍"
+                            Command="{Binding SearchPlayersCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"
+                            FontSize="18"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="8"
+                            Padding="0"
+                            IsVisible="{Binding IsSearching, Converter={StaticResource InverseBooleanConverter}}"/>
+
+                    <ActivityIndicator Grid.Column="1"
+                                      IsRunning="{Binding IsSearching}"
+                                      IsVisible="{Binding IsSearching}"
+                                      Color="{StaticResource Primary}"
+                                      WidthRequest="40"
+                                      HeightRequest="40"/>
+
+                    <Button Grid.Column="2"
+                            Text="✕"
+                            Command="{Binding ClearSearchCommand}"
+                            BackgroundColor="{StaticResource Gray200}"
+                            TextColor="Black"
+                            FontSize="18"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="8"
+                            Padding="0"
+                            IsVisible="{Binding HasSearched}"/>
+                </Grid>
+            </Border>
+
+            <!-- Search Results -->
+            <Border Grid.Row="2"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="Transparent"
+                    Background="{StaticResource GradientBackgroundSpirit}">
+                <Grid>
+                <!-- Loading indicator -->
+                <ActivityIndicator IsRunning="{Binding IsSearching}"
+                                  IsVisible="{Binding IsSearching}"
+                                  Color="{StaticResource Primary}"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"/>
+
+                <!-- Empty state - no search yet -->
+                <VerticalStackLayout IsVisible="{Binding HasSearched, Converter={StaticResource InverseBooleanConverter}}"
+                                    Spacing="15"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                    <Label Text="🔍"
+                           FontSize="60"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Search for players to invite"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Gray"/>
+                    <Label Text="Enter at least 2 characters"
+                           FontSize="Small"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Gray"
+                           Opacity="0.7"/>
+                </VerticalStackLayout>
+
+                <!-- Empty state - no results -->
+                <VerticalStackLayout IsVisible="{Binding HasResults, Converter={StaticResource InverseBooleanConverter}}"
+                                    Spacing="15"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                    <Label Text="😕"
+                           FontSize="60"
+                           HorizontalOptions="Center"
+                           IsVisible="{Binding HasSearched}"/>
+                    <Label Text="No players found"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Gray"
+                           IsVisible="{Binding HasSearched}"/>
+                    <Label Text="Try a different search"
+                           FontSize="Small"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Gray"
+                           Opacity="0.7"
+                           IsVisible="{Binding HasSearched}"/>
+                </VerticalStackLayout>
+
+                <!-- Results list -->
+                <ScrollView IsVisible="{Binding HasResults}">
+                    <CollectionView ItemsSource="{Binding SearchResults}"
+                                   SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="guildmodels:GuildJoinRequest">
+                                <Border Margin="0,5"
+                                       Padding="15"
+                                       BackgroundColor="White"
+                                       StrokeShape="RoundRectangle 12"
+                                       StrokeThickness="2">
+
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <!-- Player Info -->
+                                        <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                            <Label Text="{Binding PlayerName}"
+                                                  FontSize="Medium"
+                                                  FontAttributes="Bold"
+                                                  TextColor="Black"/>
+                                            <Label FontSize="Small"
+                                                  TextColor="Gray">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Level " />
+                                                        <Span Text="{Binding PlayerLevel}"
+                                                              FontAttributes="Bold"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </VerticalStackLayout>
+
+                                        <HorizontalStackLayout Grid.Column="1">
+                                            <!-- Invite Button -->
+                                        <Button Grid.Column="1"
+                                               Text="Invite"
+                                               TextColor="White"
+                                               FontAttributes="Bold"
+                                               FontSize="Small"
+                                               CornerRadius="8"
+                                               Padding="15,8"
+                                               Command="{Binding x:DataType='vm:InvitePlayerPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:InvitePlayerPopupViewModel}}, Path=SendInvitationCommand}"
+                                               CommandParameter="{Binding .}"
+                                               VerticalOptions="Center">
+                                               <Button.Triggers>
+                                                    <DataTrigger TargetType="Button"
+                                                                 Binding="{Binding x:DataType='vm:InvitePlayerPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:InvitePlayerPopupViewModel}}, Path=IsInviteMode}"
+                                                                 Value="False">
+                                                            <Setter Property="Text"
+                                                                    Value="Accept"/>
+                                                            <Setter Property="Command"
+                                                                    Value="{Binding x:DataType='vm:InvitePlayerPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:InvitePlayerPopupViewModel}}, Path=AcceptJoinRequestCommand}"/>
+                                                    </DataTrigger>
+                                               </Button.Triggers>
+                                        </Button>
+
+                                        <!-- Decline Button -->
+                                        <Button Grid.Column="1"
+                                               Text="Reject"
+                                               TextColor="White"
+                                               FontAttributes="Bold"
+                                               FontSize="Small"
+                                               CornerRadius="8"
+                                               Padding="15,8"
+                                               IsVisible="{Binding x:DataType='vm:InvitePlayerPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:InvitePlayerPopupViewModel}}, Path=IsInviteMode,Converter={StaticResource InverseBooleanConverter}}"
+                                               Command="{Binding x:DataType='vm:InvitePlayerPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:InvitePlayerPopupViewModel}}, Path=DeclineJoinRequestCommand}"
+                                               CommandParameter="{Binding .}"
+                                               VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+
+                                        
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+                </Grid>
+                
+            </Border>
+
+            <!-- Error message -->
+            <Label Grid.Row="3"
+                   Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"
+                   FontSize="Small"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+    </Border>
+</toolkit:Popup>

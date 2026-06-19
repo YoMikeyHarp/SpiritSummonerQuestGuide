@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Onboarding"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             x:Class="SpiritSummoner.Presentation.Views.Onboarding.OnboardingSpiritsRewardPage"
+             x:DataType="vm:OnboardingViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <!-- Green gradient: #78CB55 → #9EDA84 → #67C441 -->
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#78CB55" Offset="0"/>
+            <GradientStop Color="#9EDA84" Offset="0.5"/>
+            <GradientStop Color="#67C441" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <!-- Tan/Golden Card Gradient -->
+        <LinearGradientBrush x:Key="GoldenCardGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FED571" Offset="0.0"/>
+            <GradientStop Color="#FEF093" Offset="0.2548"/>
+            <GradientStop Color="#FEF89D" Offset="0.5"/>
+            <GradientStop Color="#FEF093" Offset="0.75"/>
+            <GradientStop Color="#FED571" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Spirit Card Tan Gradient -->
+        <LinearGradientBrush x:Key="SpiritCardGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F9F5C0" Offset="0.0"/>
+            <GradientStop Color="#F6F1A6" Offset="0.5048"/>
+            <GradientStop Color="#D9D491" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding TapToContinueCommand}"/>
+        </Grid.GestureRecognizers>
+
+        <!-- Dots pattern overlay -->
+        <Image Source="dots_offset_8px.png"
+               Grid.RowSpan="3"
+               Aspect="Fill"/>
+
+        <!-- Golden Reward Card -->
+        <Border Grid.Row="1"
+                WidthRequest="380"
+                StrokeShape="RoundRectangle 8"
+                Background="{StaticResource GoldenCardGradient}"
+                Stroke="#FFAE00"
+                StrokeThickness="4"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="10">
+
+            <Border.Shadow>
+                <Shadow Brush="#40000000" Offset="0,4" Radius="2"/>
+            </Border.Shadow>
+
+            <!-- Inner content area -->
+            <Border Grid.Row="2"
+                    StrokeShape="RoundRectangle 8"
+                    BackgroundColor="#EDF8EA"
+                    Stroke="#40000000"
+                    StrokeThickness="1"
+                    Padding="8">
+
+                <Grid RowDefinitions="Auto, Auto, *">
+                <!-- Card Header -->
+                <Label Grid.Row="0"
+                       Text="Quest Progressed!"
+                       FontFamily="PoppinsSemiBold"
+                       FontSize="36"
+                       TextColor="#000000">
+                    <Label.Shadow>
+                        <Shadow Brush="#40000000" Offset="0,1" Radius="1"/>
+                    </Label.Shadow>
+                </Label>
+
+                <Label Grid.Row="1"
+                       Text="You've obtained these spirits:"
+                       FontFamily="PoppinsSemiBold"
+                       FontSize="18"
+                       TextColor="#1E85C2"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,12"/>
+
+                    <!-- 3 Spirit Cards in vertical stack -->
+                    <VerticalStackLayout Spacing="8"
+                                         Grid.Row="2"
+                                         BindableLayout.ItemsSource="{Binding StarterSpirits}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="vm:OnboardingSpiritReadModel">
+                                <Border StrokeShape="RoundRectangle 8"
+                                        Background="{StaticResource SpiritCardGradient}"
+                                        Stroke="#46000040"
+                                        StrokeThickness="2"
+                                        Padding="8"
+                                        HeightRequest="100">
+                                    <Border.Shadow>
+                                        <Shadow Brush="#00000030"
+                                                Offset="0,2"
+                                                Radius="2"/>
+                                    </Border.Shadow>
+
+                                    <Grid ColumnDefinitions="90, *">
+                                        <!-- Spirit Image -->
+                                        <Image Grid.Column="0"
+                                               Source="{Binding Image}"
+                                               HeightRequest="85"
+                                               WidthRequest="85"
+                                               Aspect="AspectFit"/>
+                                        
+                                        <HorizontalStackLayout Grid.Column="0"
+                                                               HorizontalOptions="End" RotationY="180"
+                                                               VerticalOptions="End">
+
+                                            <Image Grid.Column="0"
+                                                   Source="{Binding Type1,Converter={ StaticResource NameToImageConverter}}"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"/>
+
+                                            <Image Grid.Column="0"
+                                                   Source="{Binding Type2,Converter={ StaticResource NameToImageConverter}}"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"/>
+
+
+
+                                        </HorizontalStackLayout>
+                                        
+
+                                        <!-- Spirit Info -->
+                                        <Border Grid.Column="1"
+                                                StrokeShape="RoundRectangle 4"
+                                                BackgroundColor="#EDF8EA"
+                                                Stroke="#00000020"
+                                                StrokeThickness="1"
+                                                Padding="8">
+                                            
+                                            <Grid ColumnDefinitions="Auto,*">
+                                                <VerticalStackLayout Grid.Column="0"
+                                                                     Spacing="2"
+                                                                     VerticalOptions="Center">
+
+                                                    <!-- Name with yellow text, orange stroke -->
+                                                    <outline:OutlinedLabel Text="{Binding Name}"
+                                                                           FontFamily="PoppinsSemiBold"
+                                                                           HorizontalOptions="Start"
+                                                                           FontSize="20"
+                                                                           TextColor="#FFE368"
+                                                                           StrokeColor="#BA7412"
+                                                                           StrokeWidth="2"
+                                                                           HasShadow="True"
+                                                                           ShadowOffsetY="1"
+                                                                           ShadowBlur="1"
+                                                                           ShadowColor="#40000000"/>
+
+                                                    <!-- Description -->
+                                                    <Label Text="{Binding Description}"
+                                                           FontFamily="Poppins"
+                                                           FontSize="11"
+                                                           TextColor="#00000080"
+                                                           LineBreakMode="TailTruncation"
+                                                           MaxLines="1"/>
+
+                                                    <!-- Level and Types -->
+                                                    <Label Text="{Binding TypesDisplay, StringFormat='Level 1 - {0}'}"
+                                                           FontFamily="PoppinsMedium"
+                                                           FontSize="10"
+                                                           TextColor="#2E4A0F"/>
+                                                </VerticalStackLayout>
+
+                                                <Image Grid.Column="1"
+                                                       Source="check.png"
+                                                       Aspect="AspectFit"
+                                                       HorizontalOptions="End"/>
+
+                                            </Grid>
+
+                                            
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Border>
+
+        <!-- Tap to Continue -->
+        <outline:OutlinedLabel Grid.Row="2"
+                               Text="Tap to Continue"
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="24"
+                               TextColor="#2E4A0F"
+                               StrokeColor="#EDF8EA"
+                               StrokeWidth="1"
+                               HorizontalOptions="Center"
+                               Margin="0,20,0,50"
+                               HasShadow="True"
+                               ShadowOffsetY="2"
+                               ShadowBlur="2"
+                               ShadowColor="#40000000"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Controls.SquadControls.SpiritSquadCardView"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.Controls.SpiritControls"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Squads"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:DataType="vm:SpiritSquadViewModel">
+
+        <ContentView.Resources>
+            <cnv:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        </ContentView.Resources>
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Grid Grid.Row="0" IsVisible="{Binding IsActiveSquad}">
+
+            <Path HeightRequest="25"
+                  WidthRequest="400"
+                  Stroke="#f8f5be"
+                  Fill="{StaticResource TanGradient}"
+                  Aspect="Uniform"
+                  Data="M 0,50 L 20,0 L 380,0 L 400, 50 L 0,50 Z"/>
+            <Grid WidthRequest="160"
+                BackgroundColor="Transparent"
+                  ColumnDefinitions="*,20"
+                  ColumnSpacing="10">
+                
+                <outline:OutlinedLabel Text="Active Squad"
+                                       Grid.ColumnSpan="2"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="16"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#2E4A0F"
+                                       StrokeWidth="2"
+                                       HasShadow="True"
+                                       ShadowColor="#2E4A0F"
+                                       ShadowOffsetY="1"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ZIndex="2" Padding="7">
+
+            <!-- Level Display -->
+            <HorizontalStackLayout VerticalOptions="Start"
+                                   HorizontalOptions="End"
+                                   Grid.Column="0"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-11}"
+                                   TranslationY="{OnPlatform Android=-7,iOS=7}"
+                                   IsVisible="{Binding Slot1.HasSpirit,FallbackValue=false}">
+                <outline:OutlinedLabel Text="LVL "
+                                       FontSize="14"
+                                       FontFamily="PoppinsSemiBold"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       TranslationY="3"
+                                       StrokeWidth="2"/>
+
+                <outline:OutlinedLabel Text="{Binding Slot1.Model.Level}"
+                                       FontSize="24"
+                                       FontFamily="Bungee"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       VerticalOptions="End"
+                                       StrokeWidth="2"/>
+            </HorizontalStackLayout>
+
+            <!-- Nickname -->
+            <outline:OutlinedLabel Text="{Binding Slot1.Model.Nickname}"
+                                   IsVisible="{Binding Slot1.HasSpirit}"
+                                   Grid.Column="0"
+                                   FontSize="{Binding Slot1.Model.Nickname, Converter={StaticResource NicknameToFontSizeConverter}, ConverterParameter=20}"
+                                   FontFamily="PoppinsSemiBold"
+                                   MaximumWidthRequest="{OnIdiom Phone=110, Tablet=160, Default=110}"
+                                   HorizontalOptions="End"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-5}"
+                                   TranslationY="{OnPlatform Android=0,iOS=7}"
+                                   VerticalOptions="End"
+                                   TextColor="#FFE368"
+                                   ZIndex="2"
+                                   StrokeColor="#BA7412"
+                                   StrokeWidth="2"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowBlur="2"
+                                   ShadowOffsetY="2"/>
+
+            <!-- Level Display -->
+            <HorizontalStackLayout VerticalOptions="Start"
+                                   HorizontalOptions="End"
+                                   Grid.Column="1"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-11}"
+                                   TranslationY="{OnPlatform Android=-7,iOS=7}"
+                                   IsVisible="{Binding Slot2.HasSpirit,FallbackValue=false}">
+                <outline:OutlinedLabel Text="LVL "
+                                       FontSize="14"
+                                       FontFamily="PoppinsSemiBold"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       TranslationY="3"
+                                       StrokeWidth="2"/>
+
+                <outline:OutlinedLabel Text="{Binding Slot2.Model.Level}"
+                                       FontSize="24"
+                                       FontFamily="Bungee"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       VerticalOptions="End"
+                                       StrokeWidth="2"/>
+            </HorizontalStackLayout>
+
+            <!-- Nickname -->
+            <outline:OutlinedLabel Text="{Binding Slot2.Model.Nickname}"
+                                   IsVisible="{Binding Slot2.HasSpirit,FallbackValue=false}"
+                                   Grid.Column="1"
+                                   FontSize="{Binding Slot2.Model.Nickname, Converter={StaticResource NicknameToFontSizeConverter}, ConverterParameter=20}"
+                                   FontFamily="PoppinsSemiBold"
+                                   MaximumWidthRequest="{OnIdiom Phone=110, Tablet=160, Default=110}"
+                                   HorizontalOptions="End"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-5}"
+                                   TranslationY="{OnPlatform Android=0,iOS=7}"
+                                   VerticalOptions="End"
+                                   TextColor="#FFE368"
+                                   ZIndex="2"
+                                   StrokeColor="#BA7412"
+                                   StrokeWidth="2"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowBlur="2"
+                                   ShadowOffsetY="2"/>
+
+            <!-- Level Display -->
+            <HorizontalStackLayout VerticalOptions="Start"
+                                   HorizontalOptions="End"
+                                   Grid.Column="2"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-11}"
+                                   TranslationY="{OnPlatform Android=-7,iOS=7}"
+                                   IsVisible="{Binding Slot3.HasSpirit,FallbackValue=false}">
+                <outline:OutlinedLabel Text="LVL "
+                                       FontSize="14"
+                                       FontFamily="PoppinsSemiBold"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       TranslationY="3"
+                                       StrokeWidth="2"/>
+
+                <outline:OutlinedLabel Text="{Binding Slot3.Model.Level}"
+                                       FontSize="24"
+                                       FontFamily="Bungee"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       VerticalOptions="End"
+                                       StrokeWidth="2"/>
+            </HorizontalStackLayout>
+
+            <!-- Nickname -->
+            <outline:OutlinedLabel Text="{Binding Slot3.Model.Nickname}"
+                                   IsVisible="{Binding Slot3.HasSpirit,FallbackValue=false}"
+                                   Grid.Column="2"
+                                   FontSize="{Binding Slot3.Model.Nickname, Converter={StaticResource NicknameToFontSizeConverter}, ConverterParameter=20}"
+                                   MaximumWidthRequest="{OnIdiom Phone=110, Tablet=160, Default=110}"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalOptions="End"
+                                   TranslationX="{OnPlatform iOS=-5,Android=-5}"
+                                   TranslationY="{OnPlatform Android=0,iOS=7}"
+                                   VerticalOptions="End"
+                                   TextColor="#FFE368"
+                                   ZIndex="2"
+                                   StrokeColor="#BA7412"
+                                   StrokeWidth="2"
+                                   HasShadow="True"
+                                   ShadowColor="#40000000"
+                                   ShadowBlur="2"
+                                   ShadowOffsetY="2"/>
+
+        </Grid>
+
+        <Border Grid.Row="1"
+                Background="{StaticResource TanGradient}"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="2"
+                Stroke="#C4BC96"
+                Padding="2">
+
+            <Grid ColumnDefinitions="*, *, *">
+
+
+                <Border Grid.Column="0"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot1.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToSpiritDetailsCommand}"
+                                  CommandParameter="{Binding Slot1.Model.PlayerSpiritId}"/>
+                        </Grid.GestureRecognizers>
+                        <controls:SpiritVerticalCardView BindingContext="{Binding Slot1}"
+                                         IsVisible="{Binding Slot1.HasSpirit}"/>
+                        <Image Source="icon_nospiritset.webp"
+               Aspect="AspectFit"
+               Margin="15"
+               Opacity="0.4"
+               IsVisible="{Binding Slot1.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                    </Grid>
+                </Border>
+
+
+                <Border Grid.Column="1"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot2.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToSpiritDetailsCommand}"
+                                                  CommandParameter="{Binding Slot2.Model.PlayerSpiritId}"/>
+                        </Grid.GestureRecognizers>
+                        <controls:SpiritVerticalCardView BindingContext="{Binding Slot2}"
+                                                         IsVisible="{Binding Slot2.HasSpirit}"/>
+                        <Image Source="icon_nospiritset.webp"
+                               Aspect="AspectFit"
+                               Margin="15"
+                               Opacity="0.4"
+                               IsVisible="{Binding Slot2.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot3.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToSpiritDetailsCommand}"
+                                                  CommandParameter="{Binding Slot3.Model.PlayerSpiritId}"/>
+                        </Grid.GestureRecognizers>
+                        <controls:SpiritVerticalCardView BindingContext="{Binding Slot3}"
+                                                         IsVisible="{Binding Slot3.HasSpirit}"/>
+                        <Image Source="icon_nospiritset.webp"
+                               Aspect="AspectFit"
+                               Margin="15"
+                               Opacity="0.4"
+                               IsVisible="{Binding Slot3.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</ContentView>

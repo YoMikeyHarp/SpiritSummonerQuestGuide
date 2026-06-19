@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Chat"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:shared="clr-namespace:SpiritSummoner.Presentation.Views.Shared"
+             x:Class="SpiritSummoner.Presentation.Views.Chats.ChatView"
+             x:DataType="vm:ChatViewModel"
+             Background="{StaticResource GradientBackground}">
+
+    <ContentPage.Resources>
+        <cnv:ShopItemSelectConverter x:Key="ShopItemSelectConverter"/>
+        <cnv:StringEqualConverter x:Key="StringEqualConverter"/>
+
+        <!-- Header Green Gradient -->
+        <LinearGradientBrush x:Key="ChatHeaderGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#9AE589" Offset="0.0"/>
+            <GradientStop Color="#64D855" Offset="0.25"/>
+            <GradientStop Color="#64D855" Offset="0.75"/>
+            <GradientStop Color="#9AE589" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Fight Button Red Gradient -->
+        <LinearGradientBrush x:Key="FightButtonGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#EB6756" Offset="0.0"/>
+            <GradientStop Color="#E53F37" Offset="0.25"/>
+            <GradientStop Color="#E53F37" Offset="0.75"/>
+            <GradientStop Color="#EB6756" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Add Friend Button Green Gradient -->
+        <LinearGradientBrush x:Key="AddFriendButtonGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#9AE589" Offset="0.0"/>
+            <GradientStop Color="#64D855" Offset="0.25"/>
+            <GradientStop Color="#64D855" Offset="0.75"/>
+            <GradientStop Color="#9AE589" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Send Button Blue Gradient -->
+        <LinearGradientBrush x:Key="SendButtonGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#5B9CF5" Offset="0.0"/>
+            <GradientStop Color="#4F88FA" Offset="0.25"/>
+            <GradientStop Color="#4F88FA" Offset="0.75"/>
+            <GradientStop Color="#5B9CF5" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" x:Name="masterGrid">
+
+        <Image Source="dots_offset_8px.png"
+               Grid.RowSpan="3"/>
+        
+        <!-- Player Info Bar -->
+        <shared:PlayerInfoBar BindingContext="{Binding PlayerInfoModel}"
+                              Grid.Row="0"/>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="1" 
+            RowDefinitions="Auto,*,Auto"
+            RowSpacing="10"
+            Padding="7">
+
+            <!-- ===== INBOX ACTION BUTTONS ===== -->
+            <Grid Grid.Row="0"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="20"
+                Padding="5"
+                IsVisible="{Binding IsInboxTab}">
+
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource AddFriendButtonGradient}"
+                        HeightRequest="40">
+                        <Border.Shadow>
+                                <Shadow Brush="Transparent"
+                                        Offset="0,2"
+                                        Radius="4"/>
+                            </Border.Shadow>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.7"
+                                                    PressedScale="0.85"/>
+                            </Border.Behaviors>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SearchPlayersCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <outline:OutlinedLabel Text="Add a Friend"
+                                                    TextColor="#EDF8EA"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    IsVisible="true"
+                                                    HeightRequest="50"
+                                                    StrokeColor="#5200004D"
+                                                    StrokeWidth="2"
+                                                    HasShadow="True"
+                                                    ShadowColor="#5200004D"
+                                                    ShadowBlur="1"
+                                                    ShadowOffsetY="1"/>
+
+                            </Grid>
+                </Border>
+
+                <Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource GradientRewards}"
+                        HeightRequest="40">
+                            <Border.Shadow>
+                                <Shadow Brush="Transparent"
+                                        Offset="0,2"
+                                        Radius="4"/>
+                            </Border.Shadow>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.7"
+                                                    PressedScale="0.85"/>
+                            </Border.Behaviors>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ToggleFriendListCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <outline:OutlinedLabel Text="{Binding FriendListToggleLabel}"
+                                                    TextColor="#EDF8EA"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    IsVisible="true"
+                                                    HeightRequest="50"
+                                                    StrokeColor="#5200004D"
+                                                    StrokeWidth="2"
+                                                    HasShadow="True"
+                                                    ShadowColor="#5200004D"
+                                                    ShadowBlur="1"
+                                                    ShadowOffsetY="1"/>
+
+                            </Grid>
+                </Border>
+            </Grid>
+
+            <!-- ===== GUILD ACTION BUTTONS ===== -->
+            <Grid Grid.Row="0"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="20"
+                Padding="5"
+                IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='guild'}">
+
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource AddFriendButtonGradient}"
+                        HeightRequest="40">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowGuildMembersCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <outline:OutlinedLabel Text="Guild Members"
+                                            TextColor="#EDF8EA"
+                                            FontFamily="PoppinsSemiBold"
+                                            HeightRequest="50"
+                                            StrokeColor="#5200004D"
+                                            StrokeWidth="2"
+                                            HasShadow="True"
+                                            ShadowColor="#5200004D"
+                                            ShadowBlur="1"
+                                            ShadowOffsetY="1"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource GradientRewards}"
+                        HeightRequest="40">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowGuildInvitationsCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <outline:OutlinedLabel Text="Guild Invites"
+                                            TextColor="#EDF8EA"
+                                            FontFamily="PoppinsSemiBold"
+                                            HeightRequest="50"
+                                            StrokeColor="#5200004D"
+                                            StrokeWidth="2"
+                                            HasShadow="True"
+                                            ShadowColor="#5200004D"
+                                            ShadowBlur="1"
+                                            ShadowOffsetY="1"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- ===== NOTIFICATIONS ACTION BUTTONS ===== -->
+            <Grid Grid.Row="0"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="20"
+                Padding="5"
+                IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='notifications'}">
+
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource AddFriendButtonGradient}"
+                        HeightRequest="40">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <outline:OutlinedLabel Text="Help Guide / FAQ"
+                                        TextColor="#EDF8EA"
+                                        FontFamily="PoppinsSemiBold"
+                                        HeightRequest="50"
+                                        StrokeColor="#5200004D"
+                                        StrokeWidth="2"
+                                        HasShadow="True"
+                                        ShadowColor="#5200004D"
+                                        ShadowBlur="1"
+                                        ShadowOffsetY="1"/>
+                </Border>
+
+                <Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 8"
+                        Background="{StaticResource GradientRewards}"
+                        HeightRequest="40">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <outline:OutlinedLabel Text="Contact Us"
+                                        TextColor="#EDF8EA"
+                                        FontFamily="PoppinsSemiBold"
+                                        HeightRequest="50"
+                                        StrokeColor="#5200004D"
+                                        StrokeWidth="2"
+                                        HasShadow="True"
+                                        ShadowColor="#5200004D"
+                                        ShadowBlur="1"
+                                        ShadowOffsetY="1"/>
+                </Border>
+            </Grid>
+
+            <!-- ===== Friends and friend requests CONTENT ===== -->
+            <ScrollView Grid.Row="1"
+                        Margin="16,12,16,0"
+                        IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='dm'}">
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Loading Indicator -->
+                    <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                    IsVisible="{Binding IsLoading}"
+                                    Color="#64D855"
+                                    HorizontalOptions="Center"/>
+
+                    <!-- ── Friend Requests Section ── -->
+                    <VerticalStackLayout Spacing="8"
+                                        IsVisible="{Binding HasFriendRequests}">
+                        <Label Text="Friend Requests"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="14"
+                            TextColor="White"
+                            Opacity="0.8"
+                            Margin="4,0,0,0"/>
+
+                        <CollectionView ItemsSource="{Binding FriendRequests}"
+                                        SelectionMode="None"
+                                        VerticalScrollBarVisibility="Never"
+                                        ItemSizingStrategy="MeasureAllItems">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:FriendRequestModel">
+                                    <Border BackgroundColor="#FFE89A"
+                                            StrokeShape="RoundRectangle 8"
+                                            Stroke="#C9A032"
+                                            StrokeThickness="1"
+                                            HeightRequest="70"
+                                            Padding="0">
+                                        <Grid ColumnDefinitions="50,*,Auto,Auto"
+                                            ColumnSpacing="8"
+                                            Padding="10,0">
+
+                                            <!-- Avatar -->
+                                            <Ellipse Grid.Column="0"
+                                                    Fill="#4F88FA"
+                                                    Stroke="#80000000"
+                                                    StrokeThickness="1"
+                                                    WidthRequest="42"
+                                                    HeightRequest="42"
+                                                    VerticalOptions="Center"/>
+
+                                            <!-- Name + Level -->
+                                            <VerticalStackLayout Grid.Column="1"
+                                                                VerticalOptions="Center"
+                                                                Spacing="0">
+                                                <Label Text="{Binding SenderName}"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="15"
+                                                    TextColor="#000000"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <Label Text="{Binding SenderLevel, StringFormat='Level {0}'}"
+                                                    FontFamily="Poppins"
+                                                    FontSize="11"
+                                                    TextColor="#000000"
+                                                    Opacity="0.6"/>
+                                            </VerticalStackLayout>
+
+                                            <!-- Accept -->
+                                            <Border Grid.Column="2"
+                                                    Background="{StaticResource RedButtonGradient}"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    Stroke="#40000000"
+                                                    StrokeThickness="1"
+                                                    WidthRequest="70"
+                                                    HeightRequest="28"
+                                                    VerticalOptions="Center"
+                                                    Padding="0">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=AcceptFriendRequestCommand}"
+                                                                        CommandParameter="{Binding .}"/>
+                                                </Border.GestureRecognizers>
+                                                <Label Text="Accept"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="12"
+                                                    TextColor="White"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+
+                                            <!-- Decline -->
+                                            <Border Grid.Column="3"
+                                                    Background="{StaticResource FightButtonGradient}"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    Stroke="#40000000"
+                                                    StrokeThickness="1"
+                                                    WidthRequest="28"
+                                                    HeightRequest="28"
+                                                    VerticalOptions="Center"
+                                                    Margin="4,0,0,0"
+                                                    Padding="0">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=DeclineFriendRequestCommand}"
+                                                                        CommandParameter="{Binding .}"/>
+                                                </Border.GestureRecognizers>
+                                                <Label Text="X"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="12"
+                                                    TextColor="White"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+
+                    <!-- ── Friends List Section ── -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Friends"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="14"
+                            TextColor="White"
+                            Opacity="0.8"
+                            Margin="4,0,0,0"
+                            IsVisible="{Binding HasFriends}"/>
+
+                        <CollectionView ItemsSource="{Binding Friends}"
+                                        SelectionMode="None"
+                                        VerticalScrollBarVisibility="Never"
+                                        ItemSizingStrategy="MeasureAllItems">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ChatPlayerModel">
+                                    <Border BackgroundColor="#D9D9D9"
+                                            StrokeShape="RoundRectangle 8"
+                                            Stroke="#40000000"
+                                            StrokeThickness="1"
+                                            HeightRequest="80"
+                                            Padding="0">
+                                        
+
+                                        <Grid ColumnDefinitions="58,*,Auto,Auto"
+                                            ColumnSpacing="6"
+                                            Padding="8,0">
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=OpenDMCommand}"
+                                                                    CommandParameter="{Binding .}"/>
+                                            </Grid.GestureRecognizers>
+
+                                            <!-- Notification Badge -->
+                                            <Border BackgroundColor="Red"
+                                                    Grid.Column="3"
+                                                    StrokeShape="RoundRectangle 10"
+                                                    Padding="2"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    HeightRequest="22"
+                                                    WidthRequest="22"
+                                                    Margin="0,0,0,0"
+                                                    IsVisible="{Binding Unread}"
+                                                    TranslationX="5">
+
+                                                <Label Text="{Binding UnreadCountDisplay}"
+                                                    FontSize="Small"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    TranslationY="-3"
+                                                    TextColor="White"
+                                                    FontFamily="PoppinsBold">
+                                                    <Label.Shadow>
+                                                        <Shadow Brush="Black"
+                                                                Offset="0,0"
+                                                                Radius="1"/>
+
+                                                    </Label.Shadow>
+                                                </Label>
+                                            </Border>
+
+                                            <!-- Player Icon -->
+                                            <Grid Grid.Column="0"
+                                                VerticalOptions="Center">
+                                                <Ellipse Fill="#4F88FA"
+                                                        Stroke="#80000000"
+                                                        StrokeThickness="1"
+                                                        WidthRequest="50"
+                                                        HeightRequest="50"
+                                                        VerticalOptions="Start"/>
+
+                                                <!-- Online Status Dot -->
+                                                <Border WidthRequest="14"
+                                                        HeightRequest="14"
+                                                        StrokeShape="RoundRectangle 7"
+                                                        BackgroundColor="{Binding OnlineStatusColor}"
+                                                        Stroke="White"
+                                                        StrokeThickness="2"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="Start"
+                                                        Margin="0,-2,-2,0"/>
+
+                                                <Border BackgroundColor="#7A7A7A"
+                                                        StrokeShape="RoundRectangle 4"
+                                                        Stroke="#80000000"
+                                                        StrokeThickness="1"
+                                                        WidthRequest="45"
+                                                        HeightRequest="16"
+                                                        VerticalOptions="End"
+                                                        HorizontalOptions="Center"
+                                                        Padding="0">
+                                                    <outline:OutlinedLabel Text="{Binding Rank, StringFormat='Rank {0}'}"
+                                                                        FontSize="10"
+                                                                        FontFamily="PoppinsSemiBold"
+                                                                        TextColor="#EDF8EA"
+                                                                        StrokeColor="#000000"
+                                                                        StrokeWidth="0.5"
+                                                                        HorizontalOptions="Center"
+                                                                        VerticalOptions="Center"/>
+                                                </Border>
+                                            </Grid>
+
+                                            <!-- Player Name + Title -->
+                                            <VerticalStackLayout Grid.Column="1"
+                                                                VerticalOptions="Center"
+                                                                Spacing="0">
+                                                <Label Text="{Binding PlayerName}"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="16"
+                                                    TextColor="#000000"
+                                                    LineBreakMode="TailTruncation">
+                                                    <Label.Shadow>
+                                                        <Shadow Brush="white"
+                                                                Offset="1,1"
+                                                                Radius="1"/>
+                                                    </Label.Shadow>
+                                                </Label>
+                                                <Label Text="{Binding Title}"
+                                                    FontFamily="Poppins"
+                                                    FontSize="12"
+                                                    TextColor="#000000"
+                                                    Opacity="0.6"/>
+                                            </VerticalStackLayout>
+
+                                            <!-- More Button -->
+                                            <Border Grid.Column="2"
+                                                    BackgroundColor="#7A7A7A"
+                                                    StrokeShape="RoundRectangle 4"
+                                                    Stroke="#80000000"
+                                                    StrokeThickness="1"
+                                                    WidthRequest="20"
+                                                    HeightRequest="20"
+                                                    VerticalOptions="Center"
+                                                    Padding="0">
+                                                <Border.Behaviors>
+                                                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                        PressedOpacity="0.7"
+                                                                        PressedScale="0.85"/>
+                                                </Border.Behaviors>
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=MoreOptionsCommand}"
+                                                                        CommandParameter="{Binding .}"/>
+                                                </Border.GestureRecognizers>
+                                                <Label Text="+"
+                                                    FontFamily="PoppinsBold"
+                                                    FontSize="14"
+                                                    TextColor="#EDF8EA"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+
+                                            <!-- Fight Button -->
+                                            <Border Grid.Column="3"
+                                                    Background="{StaticResource FightButtonGradient}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Stroke="#40000000"
+                                                    StrokeThickness="1"
+                                                    WidthRequest="75"
+                                                    HeightRequest="30"
+                                                    VerticalOptions="Center"
+                                                    Padding="0">
+                                                <Border.Behaviors>
+                                                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                        PressedOpacity="0.7"
+                                                                        TouchGestureCompleted="OnFriendFightTapped"
+                                                                        PressedScale="0.85"/>
+                                                </Border.Behaviors>
+                                                <outline:OutlinedLabel Text="Fight"
+                                                                    FontSize="14"
+                                                                    FontFamily="PoppinsSemiBold"
+                                                                    TextColor="#EDF8EA"
+                                                                    StrokeColor="#40000000"
+                                                                    StrokeWidth="1"
+                                                                    HorizontalOptions="Center"
+                                                                    VerticalOptions="Center"
+                                                                    HasShadow="True"
+                                                                    ShadowBlur="1"
+                                                                    ShadowOffsetY="1"
+                                                                    ShadowColor="#4D000000"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                            <!-- Empty State -->
+                            <CollectionView.EmptyView>
+                                <VerticalStackLayout HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Spacing="16"
+                                                    Padding="40">
+                                    <Label Text="No friends yet"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="Search for players to add friends"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Opacity="0.7"
+                                        HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            <!-- ===== INBOX CONTENT ===== -->
+            <Border Grid.Row="1"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 8"
+                    Background="{StaticResource TanGradient}"
+                    IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='inbox'}">
+
+                <Grid RowDefinitions="Auto, *"
+                    RowSpacing="10">
+
+                    <Grid Grid.Row="0"
+                        ColumnDefinitions="Auto, *">
+                        
+                        <outline:OutlinedLabel Grid.Column="0"
+                                            Text="Direct Messages"
+                                            FontSize="24"
+                                            FontFamily="PoppinsBold"
+                                            TextColor="#2E4A0F"
+                                            StrokeColor="Transparent"
+                                            HasShadow="True"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="1"
+                                            ShadowOffsetY="1"
+                                            VerticalOptions="Center"/>
+
+                        <!-- New message button -->
+                        <Border Grid.Column="3"
+                                Background="{StaticResource FightButtonGradient}"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#40000000"
+                                StrokeThickness="1"
+                                HeightRequest="30"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                Padding="10">
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                        PressedOpacity="0.7"
+                                                        PressedScale="0.85"/>
+                            </Border.Behaviors>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=NewMessageCommand}"
+                                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                                <outline:OutlinedLabel Text="New Message"
+                                                        FontSize="14"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        TextColor="#EDF8EA"
+                                                        StrokeColor="#40000000"
+                                                        StrokeWidth="1"
+                                                        HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        HasShadow="True"
+                                                        ShadowBlur="1"
+                                                        ShadowOffsetY="1"
+                                                        ShadowColor="#4D000000"/>
+                                                    
+                        </Border>
+                        
+                    
+                    </Grid>
+
+                    <!-- Loading Indicator -->
+                    <ActivityIndicator Grid.Row="1"
+                                    IsRunning="{Binding IsLoading}"
+                                    IsVisible="{Binding IsLoading}"
+                                    Color="#64D855"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+                                    
+                    <Border Grid.Row="1"
+                            BackgroundColor="#EDF8EA"
+                            StrokeShape="4"
+                            Stroke="#40000000"
+                            StrokeThickness="1.5">
+                            
+                            <!-- DM Threads List -->
+                            <CollectionView Grid.Row="1"
+                                            ItemsSource="{Binding DMThreads}"
+                                            SelectionMode="None"
+                                            BackgroundColor="Transparent"
+                                            VerticalScrollBarVisibility="Never"
+                                            ItemsUpdatingScrollMode="KeepScrollOffset"
+                                            Margin="10"
+                                            IsVisible="true">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical"
+                                                    ItemSpacing="8"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:DMThreadModel">
+                                        <Border Background="{Binding Background}"
+                                                StrokeShape="RoundRectangle 10"
+                                                Stroke="#40000000"
+                                                StrokeThickness="0.5"
+                                                Padding="14,10">
+                                            <Border.Behaviors>
+                                                <toolkit:TouchBehavior DefaultAnimationDuration="150"
+                                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                    PressedOpacity="0.7"
+                                                                    PressedScale="0.97"/>
+                                            </Border.Behaviors>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel',Source = {RelativeSource AncestorType={x:Type vm:ChatViewModel}},Path=OpenDMThreadCommand}"
+                                                                    CommandParameter="{Binding .}"/>
+                                            </Border.GestureRecognizers>
+                                            <Grid ColumnDefinitions="Auto,*"
+                                                RowDefinitions="Auto,Auto"
+                                                RowSpacing="4"
+                                                ColumnSpacing="15">
+
+                                                <!-- Icon -->
+                                                <Image Grid.Column="0"
+                                                    Grid.RowSpan="2"
+                                                    Source="pfp1.png"
+                                                    WidthRequest="70"
+                                                    HeightRequest="70"/>
+
+                                                <!-- Online Status Dot -->
+                                                <Border Grid.Column="0"
+                                                        Grid.Row="1"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        StrokeShape="RoundRectangle 24"
+                                                        BackgroundColor="{Binding OnlineStatusColor}"
+                                                        Stroke="White"
+                                                        StrokeThickness="2"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="End"
+                                                        Margin="0,-2,-2,0"/>
+                                                
+                                                <!-- Player name -->
+                                                <Label Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Text="{Binding PlayerName}"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="20"
+                                                    TextColor="#000000"
+                                                    LineBreakMode="TailTruncation"
+                                                    MaxLines="1"/>
+
+                                                <!-- Last Message Preview -->
+                                                <Label Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Text="{Binding LastMessagePreviewText}"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="12"
+                                                    TextColor="#4D000000"
+                                                    Opacity="0.55"
+                                                    LineBreakMode="TailTruncation"
+                                                    MaxLines="2"
+                                                    IsVisible="{Binding HasMessages}"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <VerticalStackLayout HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        Spacing="8"
+                                                        Padding="40"
+                                                        IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}">
+                                        <Label Text="No messages yet"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="14"
+                                            TextColor="Black"
+                                            Opacity="0.5"
+                                            HorizontalOptions="Center"/>
+                                        <Label Text="Start chatting with friends or guildmates!"
+                                            FontFamily="PoppinsSemiBold"
+                                            FontSize="12"
+                                            TextColor="Black"
+                                            Opacity="0.3"
+                                            HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </CollectionView.EmptyView>
+                            </CollectionView>
+
+                    </Border>
+                    
+                </Grid>
+                    
+            </Border>
+
+            <!-- ===== GUILD THREADS CONTENT ===== -->
+            <Border Grid.Row="1"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 8"
+                    Background="{StaticResource TanGradient}"
+                    IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='guild'}">
+
+                <Grid RowDefinitions="Auto, *"
+                    RowSpacing="10">
+
+                    <!-- Header -->
+                    <Grid Grid.Row="0"
+                        ColumnDefinitions="Auto, *">
+                        <outline:OutlinedLabel Grid.Column="0"
+                                            Text="Guild Messages"
+                                            FontSize="24"
+                                            FontFamily="PoppinsBold"
+                                            TextColor="#2E4A0F"
+                                            StrokeColor="Transparent"
+                                            HasShadow="True"
+                                            ShadowColor="#40000000"
+                                            ShadowBlur="1"
+                                            ShadowOffsetY="1"
+                                            VerticalOptions="Center"/>
+
+                        <Border Grid.Column="1"
+                                Background="{StaticResource FightButtonGradient}"
+                                StrokeShape="RoundRectangle 8"
+                                Stroke="#40000000"
+                                StrokeThickness="1"
+                                HeightRequest="30"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                Padding="10">
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.7"
+                                                    PressedScale="0.85"/>
+                            </Border.Behaviors>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenNewThreadSheetCommand}"/>
+                            </Border.GestureRecognizers>
+                            <outline:OutlinedLabel Text="New Topic"
+                                                FontSize="14"
+                                                FontFamily="PoppinsSemiBold"
+                                                TextColor="#EDF8EA"
+                                                StrokeColor="#40000000"
+                                                StrokeWidth="1"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HasShadow="True"
+                                                ShadowBlur="1"
+                                                ShadowOffsetY="1"
+                                                ShadowColor="#4D000000"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Loading Indicator -->
+                    <ActivityIndicator Grid.Row="1"
+                                    IsRunning="{Binding IsLoadingGuildThreads}"
+                                    IsVisible="{Binding IsLoadingGuildThreads}"
+                                    Color="#64D855"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+
+                    <!-- No Guild Empty State -->
+                    <VerticalStackLayout Grid.Row="1"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Spacing="12"
+                                        Padding="40"
+                                        IsVisible="{Binding HasGuild, Converter={StaticResource InverseBooleanConverter}}">
+                        <Image Source="icon_guild.png"
+                            WidthRequest="60"
+                            HeightRequest="60"
+                            Opacity="0.5"
+                            HorizontalOptions="Center"/>
+                        <Label Text="No Guild"
+                            FontFamily="PoppinsSemiBold"
+                            FontSize="18"
+                            TextColor="Black"
+                            HorizontalOptions="Center"/>
+                        <Label Text="Join a guild to chat with members"
+                            FontFamily="Poppins"
+                            FontSize="13"
+                            TextColor="Black"
+                            Opacity="0.6"
+                            HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+
+                    <!-- Guild Threads Inner Border -->
+                    <Border Grid.Row="1"
+                            BackgroundColor="#EDF8EA"
+                            StrokeShape="RoundRectangle 4"
+                            Stroke="#40000000"
+                            StrokeThickness="1.5"
+                            IsVisible="{Binding HasGuild}">
+                        <CollectionView ItemsSource="{Binding GuildThreads}"
+                                        SelectionMode="None"
+                                        BackgroundColor="Transparent"
+                                        VerticalScrollBarVisibility="Never"
+                                        ItemsUpdatingScrollMode="KeepScrollOffset"
+                                        Margin="10">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:GuildThreadModel">
+                                    <Border BackgroundColor="#EDF8EA"
+                                            StrokeShape="RoundRectangle 10"
+                                            Stroke="#40000000"
+                                            StrokeThickness="0.5"
+                                            Padding="14,10">
+                                        <Border.Behaviors>
+                                            <toolkit:TouchBehavior DefaultAnimationDuration="150"
+                                                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                PressedOpacity="0.7"
+                                                                PressedScale="0.97"/>
+                                        </Border.Behaviors>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding x:DataType='vm:ChatViewModel', Source={RelativeSource AncestorType={x:Type vm:ChatViewModel}}, Path=OpenThreadCommand}"
+                                                                CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+                                        <Grid ColumnDefinitions="Auto,*"
+                                            RowDefinitions="Auto,Auto"
+                                            RowSpacing="4"
+                                            ColumnSpacing="15">
+
+                                            <!-- Thread Icon -->
+                                            <Border Grid.Column="0"
+                                                    Grid.RowSpan="2"
+                                                    BackgroundColor="#2E4A0F"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    StrokeThickness="0"
+                                                    WidthRequest="70"
+                                                    HeightRequest="70"
+                                                    VerticalOptions="Center">
+                                                <Label Text="{Binding Icon}"
+                                                    FontSize="36"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+
+                                            <!-- Subject -->
+                                            <Label Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="{Binding Subject}"
+                                                FontFamily="PoppinsSemiBold"
+                                                FontSize="16"
+                                                TextColor="#000000"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="1"/>
+
+                                            <!-- Last Message Preview -->
+                                            <Label Grid.Row="1"
+                                                Grid.Column="1"
+                                                Text="{Binding LastMessageText}"
+                                                FontFamily="Poppins"
+                                                FontSize="12"
+                                                TextColor="#4D000000"
+                                                Opacity="0.55"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="2"
+                                                IsVisible="{Binding HasMessages}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <VerticalStackLayout HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Spacing="8"
+                                                    Padding="40"
+                                                    IsVisible="{Binding IsLoadingGuildThreads, Converter={StaticResource InverseBooleanConverter}}">
+                                    <Label Text="No threads yet"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="14"
+                                        TextColor="Black"
+                                        Opacity="0.5"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="Tap 'New Topic' to start a conversation"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="12"
+                                        TextColor="Black"
+                                        Opacity="0.3"
+                                        HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- ===== NOTIFICATIONS CONTENT ===== -->
+            <Border Grid.Row="1"
+                    Background="{StaticResource TanGradient}"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="0"
+                    Padding="12"
+                    IsVisible="{Binding CurrentChatTab, Converter={StaticResource StringEqualConverter}, ConverterParameter='notifications'}">
+                <Grid RowDefinitions="Auto,*"
+                    RowSpacing="10">
+
+                    <!-- Header: Notifications title + Read More -->
+                    <Grid Grid.Row="0"
+                        ColumnDefinitions="*,Auto">
+                        <outline:OutlinedLabel Grid.Column="0"
+                                            Text="Notifications"
+                                            FontFamily="PoppinsBold"
+                                            FontSize="24"
+                                            TextColor="#2E4A0F"
+                                            HasShadow="True"
+                                            ShadowColor="#29000040"
+                                            ShadowBlur="2"
+                                            ShadowOffsetY="2"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center"/>
+                        <Border Grid.Column="1"
+                                StrokeShape="RoundRectangle 8"
+                                StrokeThickness="0.2"
+                                Stroke="Black"
+                                Background="{StaticResource GradientRewards}"
+                                HorizontalOptions="End"
+                                Padding="10,6">
+                            <outline:OutlinedLabel Text="Read More"
+                                                FontSize="12"
+                                                FontFamily="PoppinsSemiBold"
+                                                TextColor="#EDF8EA"
+                                                StrokeColor="#40000000"
+                                                StrokeWidth="1"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HasShadow="True"
+                                                ShadowBlur="1"
+                                                ShadowOffsetY="1"
+                                                ShadowColor="#4D000000"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Loading Indicator -->
+                    <ActivityIndicator Grid.Row="1"
+                                    IsRunning="{Binding IsNotificationsLoading}"
+                                    IsVisible="{Binding IsNotificationsLoading}"
+                                    Color="#64D855"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+
+                    <!-- Notifications Inner Border -->
+                    <Border Grid.Row="1"
+                            BackgroundColor="#EDF8EA"
+                            StrokeShape="RoundRectangle 4"
+                            Stroke="#40000000"
+                            StrokeThickness="1.5"
+                            IsVisible="{Binding IsNotificationsLoading, Converter={StaticResource InverseBooleanConverter}}">
+                        <CollectionView ItemsSource="{Binding NotificationGroups}"
+                                        IsGrouped="True"
+                                        SelectionMode="None"
+                                        BackgroundColor="Transparent"
+                                        VerticalScrollBarVisibility="Never"
+                                        Margin="10">
+
+                            <CollectionView.GroupHeaderTemplate>
+                                <DataTemplate x:DataType="vm:NotificationGroup">
+                                    <Label Text="{Binding GroupLabel}"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="11"
+                                        TextColor="#2E4A0F"
+                                        Opacity="0.6"
+                                        Margin="2,10,0,2"/>
+                                </DataTemplate>
+                            </CollectionView.GroupHeaderTemplate>
+
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:PlayerNotificationModel">
+                                    <Border BackgroundColor="#EDF8EA"
+                                            StrokeShape="RoundRectangle 10"
+                                            Stroke="#40000000"
+                                            StrokeThickness="0.5"
+                                            Padding="12,10">
+
+                                        <Grid ColumnDefinitions="40,*,Auto"
+                                            ColumnSpacing="10"
+                                            VerticalOptions="Center">
+
+                                            <!-- Icon bubble -->
+                                            <Border Grid.Column="0"
+                                                    BackgroundColor="#2E4A0F"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    StrokeThickness="0"
+                                                    WidthRequest="36"
+                                                    HeightRequest="36"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center">
+                                                <Label Text="{Binding Icon}"
+                                                    FontSize="17"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+
+                                            <!-- Title + Body -->
+                                            <VerticalStackLayout Grid.Column="1"
+                                                                VerticalOptions="Center"
+                                                                Spacing="2">
+                                                <Label Text="{Binding Title}"
+                                                    FontFamily="PoppinsSemiBold"
+                                                    FontSize="13"
+                                                    TextColor="#1A1A1A"
+                                                    LineBreakMode="TailTruncation"
+                                                    MaxLines="1"/>
+                                                <Label Text="{Binding Body}"
+                                                    FontFamily="Poppins"
+                                                    FontSize="12"
+                                                    TextColor="#4D000000"
+                                                    LineBreakMode="TailTruncation"
+                                                    MaxLines="2"/>
+                                            </VerticalStackLayout>
+
+                                            <!-- Timestamp + unread dot -->
+                                            <VerticalStackLayout Grid.Column="2"
+                                                                VerticalOptions="Center"
+                                                                HorizontalOptions="End"
+                                                                Spacing="6">
+                                                <Label Text="{Binding TimeDisplay}"
+                                                    FontFamily="Poppins"
+                                                    FontSize="10"
+                                                    TextColor="#80000000"
+                                                    HorizontalOptions="End"/>
+                                                <Ellipse Fill="#64D855"
+                                                        WidthRequest="8"
+                                                        HeightRequest="8"
+                                                        HorizontalOptions="End"
+                                                        IsVisible="{Binding IsRead, Converter={StaticResource InverseBooleanConverter}}"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                            <CollectionView.EmptyView>
+                                <VerticalStackLayout HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Spacing="8"
+                                                    Padding="40">
+                                    <Label Text="No notifications"
+                                        FontFamily="PoppinsSemiBold"
+                                        FontSize="14"
+                                        TextColor="Black"
+                                        Opacity="0.5"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="You're all caught up"
+                                        FontFamily="Poppins"
+                                        FontSize="12"
+                                        TextColor="Black"
+                                        Opacity="0.3"
+                                        HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- ===== TAB BAR ===== -->
+            <Border Grid.Row="3"
+                    Stroke="#80000000"
+                    StrokeThickness="0.5"
+                    StrokeShape="RoundRectangle 0"
+                    HeightRequest="28">
+                <Grid ColumnDefinitions="*,*,*"
+                    ColumnSpacing="0"
+                    HorizontalOptions="Fill">
+
+                    <!-- Inbox Tab -->
+                    <Border Grid.Column="0"
+                            Background="{Binding CurrentChatTab, Converter={StaticResource ShopItemSelectConverter}, ConverterParameter='inbox'}"
+                            StrokeShape="RoundRectangle 4,0,0,4"
+                            StrokeThickness="0"
+                            VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectChatTabCommand}"
+                                                CommandParameter="inbox"/>
+                        </Border.GestureRecognizers>
+                        <outline:OutlinedLabel Text="Inbox"
+                                            FontSize="12"
+                                            FontFamily="PoppinsSemiBold"
+                                            TextColor="#FFFFFF"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#40000000"
+                                            StrokeWidth="2"
+                                            HasShadow="False"/>
+                    </Border>
+
+                    <!-- Guild Tab -->
+                    <Border Grid.Column="1"
+                            Background="{Binding CurrentChatTab, Converter={StaticResource ShopItemSelectConverter}, ConverterParameter='guild'}"
+                            StrokeThickness="0"
+                            VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectChatTabCommand}"
+                                                CommandParameter="guild"/>
+                        </Border.GestureRecognizers>
+                        <outline:OutlinedLabel Text="Guild"
+                                            FontSize="12"
+                                            FontFamily="PoppinsSemiBold"
+                                            TextColor="#FFFFFF"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            StrokeColor="#40000000"
+                                            StrokeWidth="2"
+                                            HasShadow="False"/>
+                    </Border>
+
+                    <!-- Notifications Tab -->
+                    <Border Grid.Column="2"
+                            Background="{Binding CurrentChatTab, Converter={StaticResource ShopItemSelectConverter}, ConverterParameter='notifications'}"
+                            StrokeShape="RoundRectangle 0,4,4,0"
+                            StrokeThickness="0"
+                            VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectChatTabCommand}"
+                                                CommandParameter="notifications"/>
+                        </Border.GestureRecognizers>
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                            <outline:OutlinedLabel Text="Notifs"
+                                                FontSize="12"
+                                                FontFamily="PoppinsSemiBold"
+                                                TextColor="#FFFFFF"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                StrokeColor="#40000000"
+                                                StrokeWidth="2"
+                                                HasShadow="False"/>
+                            <!-- Unread badge -->
+                            <Border BackgroundColor="#E53935"
+                                    StrokeShape="RoundRectangle 8"
+                                    StrokeThickness="0"
+                                    Padding="3,1"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    TranslationX="10"
+                                    TranslationY="-4"
+                                    IsVisible="{Binding HasUnreadNotifications}">
+                                <Label Text="{Binding UnreadNotificationCount}"
+                                    FontFamily="PoppinsSemiBold"
+                                    FontSize="9"
+                                    TextColor="White"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Vertical Separators -->
+                    <BoxView Grid.Column="0"
+                            BackgroundColor="Black"
+                            WidthRequest="1"
+                            Opacity="0.5"
+                            HorizontalOptions="End"
+                            VerticalOptions="Fill"/>
+                    <BoxView Grid.Column="1"
+                            BackgroundColor="Black"
+                            WidthRequest="1"
+                            Opacity="0.5"
+                            HorizontalOptions="End"
+                            VerticalOptions="Fill"/>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <!-- Custom Navigation Bar -->
+        <Border Grid.Row="3"
+                Stroke="Gray"
+                StrokeThickness="2">
+            <Grid>
+
+                <outline:BlendModeImage
+                    Source="infobarbackground.png"
+                    BlendMode="Multiply"
+                    OpacityValue="1"
+                    BlendBackground="{StaticResource GreenGradient}"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="4"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+
+                <Grid Padding="5,0"
+                      ColumnDefinitions="80,50,50,*"
+                      ColumnSpacing="20">
+
+                    <!-- Back Button -->
+                    <ImageButton Grid.Column="0"
+                                 Source="icon_back_outlined.png"
+                                 HeightRequest="75"
+                                 Command="{Binding GoBackCommand}">
+                        <ImageButton.Shadow>
+                            <Shadow Brush="White"
+                                    Offset="1,0"
+                                    Radius="4"/>
+                        </ImageButton.Shadow>
+                    </ImageButton>
+
+                    <!-- Quest Icon -->
+                    <Grid Grid.Column="1"
+                          Margin="10,0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToQuestCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Image Source="icon_quest_outlined.png"
+                               HeightRequest="60"
+                               WidthRequest="60"/>
+                        <!-- EP Timers -->
+							<ContentView>
+                                <VerticalStackLayout>
+                                    <outline:OutlinedLabel Text="{Binding PlayerInfoModel.EpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding PlayerInfoModel.EpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+                    </Grid>
+
+                    <!-- Battle Icon -->
+                    <Grid Grid.Column="2"
+                          Margin="10,0"
+                          ZIndex="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToBattleCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Image Source="icon_battle_outlined.png"
+                               HeightRequest="60"
+                               WidthRequest="60"/>
+                        <!-- SP Timers -->
+							<ContentView>
+                                <VerticalStackLayout>
+                                    <outline:OutlinedLabel Text="{Binding PlayerInfoModel.SpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding PlayerInfoModel.SpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+                    </Grid>
+
+                    <!-- Cropped Spirit -->
+                    <Grid Grid.Column="3">
+                        <Image Source="{Binding PartnerSpiritImage}"
+                            Grid.Column="3"
+                            RotationY="180"
+                                        Aspect="AspectFill"
+                                        TranslationX="230"
+                                        HeightRequest="105"
+                                        WidthRequest="225">
+                                <Image.Behaviors>
+                                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                PressedOpacity="0.8"
+                                                PressedScale="0.95"
+                                                TouchGestureCompleted="PartnerTapped"
+                                                LongPressDuration="1000"
+                                                LongPressCompleted="ParnterLongPress"/>
+                                </Image.Behaviors>
+                        </Image>
+                    </Grid>
+
+                    
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

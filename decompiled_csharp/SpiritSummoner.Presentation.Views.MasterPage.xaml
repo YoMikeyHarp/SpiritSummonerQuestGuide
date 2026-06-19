@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.MasterPage"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:shared="clr-namespace:SpiritSummoner.Presentation.Views.Shared"
+             x:DataType="vm:NavBarViewModel"
+             xmlns:shell="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             shell:Shell.NavBarIsVisible="False"
+             shell:Shell.BackgroundColor="#FFB4E138"
+             Background="{StaticResource GradientBackground}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{OnPlatform iOS=Transparent,Android=#78CB55}"
+                                   StatusBarStyle="{ OnPlatform iOS=Default}"/>
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*,Auto" x:Name="masterGrid">
+
+        <Image Source="dots_offset_8px.png"
+               Grid.RowSpan="3"/>
+        
+        <!-- Player Info Bar -->
+        <shared:PlayerInfoBar BindingContext="{Binding PlayerInfoModel}"
+                              Grid.Row="0"
+                              IsVisible="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}}, Path=IsPlayerInfoVisible}"/>
+
+        <!-- Content Area for CurrentPage -->
+        <ContentPresenter Content="{Binding CurrentPage}" Grid.Row="1" />
+
+        <!-- Custom Navigation Bar -->
+        <shared:NavBar BindingContext="{Binding .}"
+                       Grid.Row="2"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,158 @@
+{
+  "story": [
+    {
+      "Id": "basalonTown",
+      "Name": "Basalon Town",
+      "Order": 1,
+      "LevelRequired": 1,
+      "Image": "zone_basaltown.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "darkForest",
+      "Name": "Dark Forest",
+      "Order": 2,
+      "LevelRequired": 5,
+      "Image": "zone_darkforest.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "spiritSands",
+      "Name": "Spirit Sands",
+      "Order": 3,
+      "LevelRequired": 8,
+      "Image": "zone_spiritsands.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "darkShire",
+      "Name": "Dark Shire",
+      "Order": 4,
+      "LevelRequired": 12,
+      "Image": "zone_darkshire.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "kingsHeartForest",
+      "Name": "King's Heart Forest",
+      "Order": 5,
+      "LevelRequired": 20,
+      "Image": "zone_kingsheartforest.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "theGreatLand",
+      "Name": "The Great Land",
+      "Order": 6,
+      "LevelRequired": 25,
+      "Image": "zone_thegreatland.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "skyTower",
+      "Name": "Sky Tower",
+      "Order": 7,
+      "LevelRequired": 30,
+      "Image": "zone_skytower.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "theDragonsLair",
+      "Name": "The Dragon's Lair",
+      "Order": 7,
+      "LevelRequired": 32,
+      "Image": "zone_thedragonslair.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "wallOfGaia",
+      "Name": "Wall of Gaia",
+      "Order": 8,
+      "LevelRequired": 32,
+      "Image": "zone_wallofgaia.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "drXlaboratory",
+      "Name": "Dr. X's Laboratory",
+      "Order": 10,
+      "LevelRequired": 35,
+      "Image": "zone_drxlaboratory.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "theVertex",
+      "Name": "The Vertex",
+      "Order": 11,
+      "LevelRequired": 40,
+      "Image": "zone_thevertex.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "theBeastPlains",
+      "Name": "The Beast Plains",
+      "Order": 12,
+      "LevelRequired": 99,
+      "Image": "zone_beastplains.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    }
+  ],
+  "challenge": [
+    {
+      "Id": "ChallangeFights",
+      "Name": "Champion's Challenge",
+      "Order": 1,
+      "LevelRequired": 10,
+      "Image": "zone_championschallenge.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    },
+    {
+      "Id": "DeepDungeon",
+      "Name": "Deep Dungeon",
+      "Order": 2,
+      "LevelRequired": 99,
+      "Image": "zone_deepdungeon.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    }
+  ],
+  "dojo": [
+    {
+      "Id": "theGauntlet",
+      "Name": "The Gauntlet",
+      "Order": 1,
+      "LevelRequired": 25,
+      "Image": "zone_thegauntlet.png",
+      "IsSelected": false,
+      "TaskRequired": null,
+      "HasUnclaimedQuest": false
+    }
+  ]
+}

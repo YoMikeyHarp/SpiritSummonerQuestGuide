@@ -1,0 +1,986 @@
+{
+  "amber": {
+    "ID": "amber",
+    "Name": "Amber",
+    "Description": "Boosts INT",
+    "Image": "amber.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 5000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "INT": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  },
+  "amethyst": {
+    "ID": "amethyst",
+    "Name": "Amethyst",
+    "Description": "Boosts MGK",
+    "Image": "amethyst.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 2000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "SATK": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  },
+  "blueCrystal": {
+    "ID": "blueCrystal",
+    "Name": "Blue Crystal",
+    "Description": "Used to unlock moves",
+    "Image": "crystal_blue.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "None",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "crystals",
+        "Amount": 5
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "crafting",
+    "Effect": null,
+    "IsNew": false
+  },
+  "clay": {
+    "ID": "clay",
+    "Name": "Clay",
+    "Description": "Used to unlock Earth moves and evolutions",
+    "Image": "icon_clay.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 200
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "darkCrystal": {
+    "ID": "darkCrystal",
+    "Name": "Dark Crystal",
+    "Description": "",
+    "Image": "icon_item_dark_crystal.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 1
+      },
+      "CurrencyCost": {
+        "Type": "clancredits",
+        "Amount": 1000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "spirits",
+    "Effect": null,
+    "IsNew": false
+  },
+  "diamond": {
+    "ID": "diamond",
+    "Name": "Diamond",
+    "Description": "Used to unlock Light moves and evolutions",
+    "Image": "diamond.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "dragonTooth_fire": {
+    "ID": "dragonTooth_fire",
+    "Name": "Fire Dragon Tooth",
+    "Description": "",
+    "Image": "icon_item_dragon_tooth_fire.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 2
+      },
+      "CurrencyCost": {
+        "Type": "clancredits",
+        "Amount": 10
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "spirits",
+    "Effect": null,
+    "IsNew": false
+  },
+  "emerald": {
+    "ID": "emerald",
+    "Name": "Emerald",
+    "Description": "Boosts MDF",
+    "Image": "emerald.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 5000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "SDEF": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  },
+  "feather": {
+    "ID": "feather",
+    "Name": "Feather",
+    "Description": "Used to unlock Wind moves and evolutions",
+    "Image": "icon_feather.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "flint": {
+    "ID": "flint",
+    "Name": "Flint",
+    "Description": "Used to unlock Fire moves and evolutions",
+    "Image": "icon_flint.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "goldCrystal": {
+    "ID": "goldCrystal",
+    "Name": "Gold Crystal",
+    "Description": "Used to unlock very powerful moves",
+    "Image": "crystal_gold.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 0,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "None",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "crystals",
+        "Amount": 15
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "crafting",
+    "Effect": null,
+    "IsNew": false
+  },
+  "greenCrystal": {
+    "ID": "greenCrystal",
+    "Name": "Green Crystal",
+    "Description": "Used to unlock more powerful moves",
+    "Image": "crystal_green.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "None",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "crystals",
+        "Amount": 10
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "crafting",
+    "Effect": null,
+    "IsNew": false
+  },
+  "mushroom": {
+    "ID": "mushroom",
+    "Name": "Mushroom",
+    "Description": "Used to unlock Poison moves and evolutions",
+    "Image": "icon_mushroom.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "onyx": {
+    "ID": "onyx",
+    "Name": "Onyx",
+    "Description": "Used to unlock Dark moves and evolutions",
+    "Image": "icon_onyx",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 200
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "pearl": {
+    "ID": "pearl",
+    "Name": "Pearl",
+    "Description": "Used to unlock Neutral moves and evolutions",
+    "Image": "icon_pearl.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 200
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "redCrystal": {
+    "ID": "redCrystal",
+    "Name": "Red Crystal",
+    "Description": "Used to unlock the most powerful moves",
+    "Image": "crystal_red.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 20,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "None",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "crystal",
+        "Amount": 25
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "crafting",
+    "Effect": null,
+    "IsNew": false
+  },
+  "ruby": {
+    "ID": "ruby",
+    "Name": "Ruby",
+    "Description": "Boosts ATK",
+    "Image": "ruby.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 5000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "ATK": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  },
+  "sapphire": {
+    "ID": "sapphire",
+    "Name": "Sapphire",
+    "Description": "Boosts DEF",
+    "Image": "sapphire.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 5,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 500
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "DEF": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  },
+  "seashell": {
+    "ID": "seashell",
+    "Name": "Seashell",
+    "Description": "Used to unlock Water moves and evolutions",
+    "Image": "icon_seashell.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "seed": {
+    "ID": "seed",
+    "Name": "Seed",
+    "Description": "Used to unlock Grass moves and evolutions",
+    "Image": "icon_seed.png",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 10,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "crystal",
+        "Amount": 100
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "unlock",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbDark": {
+    "ID": "soulOrbDark",
+    "Name": "Dark Orb",
+    "Description": "A Soul Orb containing the energy of a Dark-type spirit!",
+    "Image": "soulorb_dark.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbElectric": {
+    "ID": "soulOrbElectric",
+    "Name": "Electric Orb",
+    "Description": "A Soul Orb containing the energy of a Electric-type spirit!",
+    "Image": "soulorb_electric.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbFire": {
+    "ID": "soulOrbFire",
+    "Name": "Fire Orb",
+    "Description": "A powerful Soul Orb containing the energy of a Fire-type spirit!",
+    "Image": "soulorb_fire.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "None",
+        "Amount": 0
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbFragment": {
+    "ID": "soulOrbFragment",
+    "Name": "Soul Orb Fragment",
+    "Description": "A fragment of a soul orb used for crafting a full Orb!",
+    "Image": "icon_fragment.png",
+    "Requirements": null,
+    "ItemType": "spirits",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbGrass": {
+    "ID": "soulOrbGrass",
+    "Name": "Grass Orb",
+    "Description": "A powerful Soul Orb containing the energy of a Grass-ght type spirit!",
+    "Image": "soulorb_grass.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbGrass",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbGround": {
+    "ID": "soulOrbGround",
+    "Name": "Ground Orb",
+    "Description": "A Soul Orb containing the energy of a Ground-type spirit!",
+    "Image": "soulorb_ground.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbLight": {
+    "ID": "soulOrbLight",
+    "Name": "Light Orb",
+    "Description": "A powerful Soul Orb containing the energy of a Light-type spirit!",
+    "Image": "soulorb_light.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbMetal": {
+    "ID": "soulOrbMetal",
+    "Name": "Metal Orb",
+    "Description": "A Soul Orb containing the energy of a Metal-type spirit!",
+    "Image": "soulorb_metal.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbNeutral": {
+    "ID": "soulOrbNeutral",
+    "Name": "Neutral Orb",
+    "Description": "A Soul Orb containing the energy of a Neutral-type spirit!",
+    "Image": "soulorb_neutral.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbPoison": {
+    "ID": "soulOrbPoison",
+    "Name": "Poison Orb",
+    "Description": "A Soul Orb containing the energy of a Poison-type spirit!",
+    "Image": "soulorb_poison.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbWater": {
+    "ID": "soulOrbWater",
+    "Name": "Water Orb",
+    "Description": "A powerful Soul Orb containing the energy of a Water-type spirit!",
+    "Image": "soulorb_water.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "soulOrbWind": {
+    "ID": "soulOrbWind",
+    "Name": "Wind Orb",
+    "Description": "A Soul Orb containing the energy of a Wind-type spirit!",
+    "Image": "soulorb_wind.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 2,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "item",
+        "Amount": 5
+      },
+      "ItemRequirement": {
+        "ItemType": "items/soulOrbFragment",
+        "Amount": 50
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "orb",
+    "Effect": null,
+    "IsNew": false
+  },
+  "topaz": {
+    "ID": "topaz",
+    "Name": "Topaz",
+    "Description": "Boosts SPD",
+    "Image": "topaz.webp",
+    "Requirements": {
+      "LevelRequirement": {
+        "PlayerLevelRequired": 15,
+        "EvolveLevelRequired": 0,
+        "GuildRankRequired": 0
+      },
+      "CurrencyCost": {
+        "Type": "gold",
+        "Amount": 5000
+      },
+      "ItemRequirement": {
+        "ItemType": "None",
+        "Amount": 0
+      },
+      "EvolveRequirements": null
+    },
+    "ItemType": "booster",
+    "Effect": {
+      "FlatStatChanges": null,
+      "StatMultipliers": {
+        "SPD": 1.25
+      },
+      "DamageMultiplier": 1,
+      "TypeDamageMultipliers": null,
+      "ElementalResistances": null,
+      "CritRateBonus": 0,
+      "CritDamageBonus": 0,
+      "AccuracyBonus": 0,
+      "EvasionBonus": 0,
+      "HealPerTurn": 0,
+      "DamagePerTurn": 0,
+      "RecoilDamage": 0,
+      "SquadSynergy": null,
+      "HpThresholdEffect": null,
+      "LocksMove": false,
+      "PreventsStatus": false,
+      "GrantsImmunity": null,
+      "PriorityBonus": 0,
+      "UnlockedMoves": null,
+      "SpecialAbilities": null,
+      "CanStack": true,
+      "StackingGroup": null,
+      "MaxStackCount": 0,
+      "ClassRestrictions": null,
+      "TypeRestrictions": null,
+      "CustomDescription": null
+    },
+    "IsNew": false
+  }
+}

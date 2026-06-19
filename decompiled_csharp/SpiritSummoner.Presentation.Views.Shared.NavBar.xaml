@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 x:Class="SpiritSummoner.Presentation.Views.Shared.NavBar"
+			 xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+			 xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+			 x:Name="RootNavBar"
+			 x:DataType="vm:NavBarViewModel"
+			 HeightRequest="90" 
+			 xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared">
+
+    <ContentView.Resources>
+        <Style x:Key="NavItemContainer" TargetType="VerticalStackLayout">
+            <Setter Property="WidthRequest" Value="60"/>
+			<Setter Property="HeightRequest" Value="60"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <cnv:NavBarCDConverter x:Key="CoolDownConverter"/>
+    </ContentView.Resources>
+
+    <Grid>
+        <Border BackgroundColor="#7CB342"
+				StrokeThickness="0"
+				StrokeShape="Rectangle 40,40,0,0"
+				HorizontalOptions="Fill"
+				VerticalOptions="Fill" />
+
+        <BoxView Color="Black"
+				 HeightRequest="2"
+				 HorizontalOptions="Fill"
+				 VerticalOptions="Start"/>
+
+        <FlexLayout x:Name="NavFlexLayout"
+					BindableLayout.ItemsSource="{Binding VisibleItems}"
+					JustifyContent="SpaceBetween"
+					Padding="10, 4, 10, 0" 
+					VerticalOptions="Fill">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="vm:NavItem">
+                    <VerticalStackLayout Style="{StaticResource NavItemContainer}" Spacing="-4" VerticalOptions="Center">
+
+                        <Grid>
+                            <Image Source="{Binding Icon}"
+								   WidthRequest="55"
+								   HeightRequest="55"
+								   Aspect="AspectFit"
+                                   HorizontalOptions="Center">
+                                <Image.Behaviors>
+                                    <toolkit:TouchBehavior
+										DefaultAnimationDuration="350"
+										DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+										PressedOpacity="0.6"
+										TouchGestureCompleted="OnNavItemTapped"
+										PressedScale="0.7"/>
+                                </Image.Behaviors>
+                            </Image>
+
+							<!-- EP Timers -->
+							<ContentView IsVisible="{Binding DisplayName,Converter={cnv:StringEqualConverter},ConverterParameter='quest'}"
+										 TranslationY="-7">
+                                <VerticalStackLayout Spacing="-10"> 
+                                    <outline:OutlinedLabel Text="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=PlayerInfoModel.EpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=PlayerInfoModel.EpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+
+							<!-- SP Timers -->
+							<ContentView IsVisible="{Binding DisplayName,Converter={cnv:StringEqualConverter},ConverterParameter='battle'}"
+										 TranslationY="-7">
+                                <VerticalStackLayout Spacing="-10">
+                                    <outline:OutlinedLabel Text="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=PlayerInfoModel.SpDisplay}"
+										FontSize="14"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										TextColor="#000000"
+										FontFamily="PoppinsBold"
+										StrokeColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+
+									<outline:OutlinedLabel Text="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=PlayerInfoModel.SpCooldown}"
+										FontSize="12"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										StrokeColor="#000000"
+										FontFamily="PoppinsBold"
+										TextColor="#EDF8EA"
+										StrokeWidth="1.5"
+										HasShadow="True"
+										ShadowColor="#40000000"
+										ShadowBlur="4"
+										ShadowOffsetY="1">
+                                    </outline:OutlinedLabel>
+                                </VerticalStackLayout>
+                            </ContentView>
+
+                            <ContentView IsVisible="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=HasUnReadMessages}">
+                                <Border BackgroundColor="Red"
+										StrokeShape="RoundRectangle 10"
+										Padding="2"
+										HorizontalOptions="End"
+										VerticalOptions="Start"
+										HeightRequest="22"
+										WidthRequest="22"
+										Margin="0,0,10,0"
+										IsVisible="{Binding DisplayName,Converter={cnv:StringEqualConverter},ConverterParameter='chat'}"
+										TranslationX="5">
+                                    <Label Text="{Binding x:DataType='vm:NavBarViewModel',Source={RelativeSource AncestorType={x:Type vm:NavBarViewModel}},Path=UnReadMessageCount}"
+										FontSize="Small"
+										HorizontalOptions="Center"
+										VerticalOptions="Center"
+										TranslationY="-3"
+										TextColor="White"
+										FontFamily="PoppinsBold">
+                                        <Label.Shadow>
+                                            <Shadow Brush="Black" Offset="0,0" Radius="1"/>
+                                        </Label.Shadow>
+                                    </Label>
+                                </Border>
+                            </ContentView>
+                        </Grid>
+
+                        <outline:OutlinedLabel Text="{Binding DisplayName}"
+											   FontSize="12"
+											   FontFamily="PoppinsSemiBold"
+											   TextColor="#EDF8EA"
+											   StrokeColor="#2E4A0F"
+											   StrokeWidth="2"
+											   HasShadow="True"
+											   ShadowBlur="1"
+											   ShadowOffsetX="0"
+											   ShadowOffsetY="1"
+											   ShadowSpread="0"
+											   ShadowColor="#40000000"
+											   HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </Grid>
+</ContentView>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.DailyGiftPopup"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+               x:DataType="vm:DailyGiftPopupViewModel"
+               Closed="Popup_Closed"
+               Color="Transparent"
+               Size="381, 320"
+               CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Border StrokeShape="RoundRectangle 8"
+            Padding="10"
+            Stroke="#D6680F"
+            StrokeThickness="6">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#FEF89D" Offset="0.0" />
+                <GradientStop Color="#FEF093" Offset="0.25" />
+                <GradientStop Color="#FED571" Offset="0.75" />
+                <GradientStop Color="#F9C23A" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Shadow>
+            <Shadow Brush="#D6680F" Offset="1,0" Radius="6" />
+        </Border.Shadow>
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding TapToExitCommand}" />
+        </Border.GestureRecognizers>
+
+        <Grid Padding="5" RowDefinitions="Auto, Auto, *, Auto" RowSpacing="12">
+
+            <!--  Title  -->
+            <outline:OutlinedLabel
+                Grid.Row="0"
+                Text="{Binding Title}"
+                HorizontalOptions="Center"
+                FontFamily="PoppinsBold"
+                FontSize="22"
+                TextColor="#954F14"
+                StrokeColor="#FFF2B0"
+                StrokeWidth="3"
+                HasShadow="True"
+                ShadowBlur="2"
+                ShadowOffsetY="1"
+                ShadowColor="#40000000" />
+
+            <!--  Description  -->
+            <Label
+                Grid.Row="1"
+                Text="{Binding Description}"
+                FontFamily="PoppinsSemiBold"
+                TextColor="#7A3A0A"
+                HorizontalTextAlignment="Center"
+                FontSize="13" />
+
+            <!--  Icon + Reward amount  -->
+            <VerticalStackLayout
+                Grid.Row="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Spacing="8">
+
+                <Border WidthRequest="90"
+                        HeightRequest="90"
+                        StrokeShape="RoundRectangle 16"
+                        Stroke="#E99F6A"
+                        StrokeThickness="2"
+                        HorizontalOptions="Center">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#FFF5CC" Offset="0" />
+                            <GradientStop Color="#FFE08A" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Image
+                        Source="{Binding IconSource}"
+                        Aspect="AspectFit"
+                        Margin="10" />
+                </Border>
+
+                <outline:OutlinedLabel
+                    Text="{Binding RewardAmountText}"
+                    HorizontalOptions="Center"
+                    FontFamily="PoppinsBlack"
+                    FontSize="20"
+                    TextColor="#954F14"
+                    StrokeColor="#FFF2B0"
+                    StrokeWidth="3"
+                    HasShadow="True"
+                    ShadowBlur="2"
+                    ShadowOffsetY="1"
+                    ShadowColor="#40000000" />
+
+            </VerticalStackLayout>
+
+            <!--  Tap to Continue  -->
+            <outline:OutlinedLabel
+                Grid.Row="3"
+                Text="Tap to Continue"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Opacity="0.75"
+                TextColor="#D6680F"
+                FontFamily="PoppinsBold"
+                FontSize="18"
+                StrokeColor="#FFF2B0"
+                StrokeWidth="2"
+                HasShadow="True"
+                ShadowOffsetX="0"
+                ShadowOffsetY="1"
+                ShadowBlur="2"
+                ShadowColor="#40000000" />
+
+        </Grid>
+    </Border>
+
+</toolkit:Popup>

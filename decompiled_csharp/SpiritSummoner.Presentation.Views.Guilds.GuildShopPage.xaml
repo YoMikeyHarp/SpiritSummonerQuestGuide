@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildShopPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             xmlns:shared="clr-namespace:SpiritSummoner.Presentation.Views.Shared"
+             x:DataType="vm:GuildShopViewModel"
+             Background="{StaticResource GradientBackground}">
+
+    <ContentPage.Resources>
+        <toolkit:TextCaseConverter x:Key="TextCaseConverterFull" Type="Upper"/>
+
+        <LinearGradientBrush x:Key="GreenGradient"
+                StartPoint="0,0"
+                EndPoint="0,1">
+            <GradientStop Color="#A8CB3F" Offset="0.0"/>
+            <GradientStop Color="#7DB813" Offset="0.5"/>
+            <GradientStop Color="#78B614" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, 40, *, 105"
+          RowSpacing="10"
+          IgnoreSafeArea="False">
+
+        <Image Source="dots_offset_8px.png"
+               Grid.RowSpan="3"/>
+
+        <!-- Player Info Bar -->
+        <shared:PlayerInfoBar BindingContext="{Binding CurrentPlayer}"
+                              Grid.Row="0"/>
+
+        <!-- Guild Coins -->
+        <Grid Grid.Row="1"
+              Padding="10,5,10,0"
+              HorizontalOptions="Center">
+            <Border StrokeShape="RoundRectangle 4"
+                    Padding="15,5,15,5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0.47" EndPoint="1,0.53">
+                        <GradientStop Color="#D5AD2E" Offset="0.0" />
+                        <GradientStop Color="#FFF058" Offset="0.45" />
+                        <GradientStop Color="#FFFDC2" Offset="0.50" />
+                        <GradientStop Color="#FFF058" Offset="0.55" />
+                        <GradientStop Color="#D5AD2E" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="28,*"
+                      ColumnSpacing="8">
+                    <Image Source="icon_guild.png"
+                           HeightRequest="28"
+                           WidthRequest="28"
+                           Aspect="AspectFit"/>
+                    <outline:OutlinedLabel Grid.Column="1"
+                           Text="{Binding CurrentPlayer.GuildCoins}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontFamily="PoppinsBold"
+                           TextColor="#766C1B"
+                           FontSize="14"
+                           StrokeColor="#EDF8EA"
+                           StrokeWidth="1"
+                           HasShadow="True"
+                           ShadowColor="#40000000"
+                           ShadowBlur="1"
+                           ShadowOffsetY="1"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Shop List -->
+        <Grid Grid.Row="2"
+              Padding="10,0">
+            <Border Stroke="Brown"
+                    StrokeThickness=".4"
+                    Background="{StaticResource TanGradient}"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="10,5"
+                    VerticalOptions="Fill">
+
+                <Grid RowDefinitions="Auto, *">
+
+                    <Label Grid.Row="0"
+                           Text="Guild Shop"
+                           FontSize="Large"
+                           FontFamily="PoppinsBold"
+                           FontAttributes="Bold"
+                           TextColor="#4A4A4A"
+                           Padding="10,5"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+
+                    <ActivityIndicator Grid.Row="1"
+                                       IsVisible="{Binding IsLoading}"
+                                       IsRunning="{Binding IsLoading}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Color="Black"
+                                       Scale="2"
+                                       ZIndex="2"/>
+
+                    <!-- Purchase Overlay -->
+                    <Border Grid.Row="1"
+                            IsVisible="{Binding IsProcessingPurchase}"
+                            BackgroundColor="#80000000"
+                            ZIndex="3">
+                        <ActivityIndicator IsRunning="True"
+                                           Color="White"
+                                           Scale="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- One carousel page per guild-shop level -->
+                    <CarouselView Grid.Row="1"
+                                  ItemsSource="{Binding ShopPages}"
+                                  CurrentItem="{Binding CurrentGuildShopItems, Mode=TwoWay}"
+                                  Loop="False"
+                                  IsScrollAnimated="True"
+                                  HorizontalScrollBarVisibility="Default">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="vm:GuildLevelPage">
+                                <Border Stroke="Black"
+                                        StrokeThickness=".5"
+                                        BackgroundColor="#EDF8EA"
+                                        StrokeShape="RoundRectangle 8"
+                                        Margin="0,0,0,5">
+                                    <Grid>
+                                        <CollectionView ItemsSource="{Binding Items}"
+                                                        VerticalScrollBarVisibility="Never"
+                                                        BackgroundColor="Transparent"
+                                                        ItemSizingStrategy="MeasureFirstItem">
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="models:ItemModel">
+                                                    <Border Padding="5,7,5,5"
+                                                            StrokeShape="RoundRectangle 8"
+                                                            StrokeThickness="1"
+                                                            Stroke="#40000000"
+                                                            Background="{StaticResource TanGradient}">
+
+                                                        <Grid ColumnDefinitions="Auto, *, 80"
+                                                              ColumnSpacing="7">
+
+                                                            <Border Grid.Column="0"
+                                                                    StrokeShape="RoundRectangle 6"
+                                                                    BackgroundColor="#EDF8EA"
+                                                                    Padding="5"
+                                                                    Stroke="#40000000">
+                                                                <Grid RowDefinitions="*,Auto">
+                                                                    <Image Source="{Binding Icon}"
+                                                                           WidthRequest="73"
+                                                                           HeightRequest="73"
+                                                                           Aspect="AspectFit"/>
+                                                                    <Image Source="{Binding SpiritImage}"
+                                                                           IsVisible="{Binding IsSpirit}"
+                                                                           HeightRequest="35"
+                                                                           WidthRequest="80"
+                                                                           Scale="1.5"
+                                                                           VerticalOptions="End"
+                                                                           HorizontalOptions="End"
+                                                                           TranslationX="20"
+                                                                           TranslationY="5"
+                                                                           Aspect="AspectFit"/>
+                                                                    <Border Grid.Row="1"
+                                                                            StrokeShape="RoundRectangle 2"
+                                                                            Stroke="#40000000"
+                                                                            Padding="5">
+                                                                        <Border.Background>
+                                                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                                                <GradientStop Color="#A8CB3F" Offset="0.0"/>
+                                                                                <GradientStop Color="#7DB813" Offset="0.62"/>
+                                                                                <GradientStop Color="#78B614" Offset="1.0"/>
+                                                                            </LinearGradientBrush>
+                                                                        </Border.Background>
+                                                                        <outline:OutlinedLabel Text="{Binding Type,Converter={StaticResource TextCaseConverterFull}}"
+                                                                                            FontFamily="PoppinsSemiBold"
+                                                                                            FontSize="10"
+                                                                                            HorizontalOptions="Center"
+                                                                                            VerticalOptions="Center"
+                                                                                            StrokeColor="#40000000"
+                                                                                            StrokeWidth="1.5"/>
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+
+                                                            <Grid Grid.Column="1"
+                                                                  RowDefinitions="Auto, Auto"
+                                                                  RowSpacing="5"
+                                                                  VerticalOptions="Center">
+                                                                <outline:OutlinedLabel Grid.Row="0"
+                                                                                       Text="{Binding Name}"
+                                                                                       FontFamily="PoppinsSemiBold"
+                                                                                       FontSize="20"
+                                                                                       TextColor="#7DB813"
+                                                                                       StrokeColor="#EDF8EA"
+                                                                                       StrokeWidth="2.5"
+                                                                                       HasShadow="True"
+                                                                                       ShadowColor="#40000000"
+                                                                                       ShadowBlur="1"
+                                                                                       ShadowOffsetY="1"
+                                                                                       HorizontalOptions="Start"/>
+                                                                <Label Grid.Row="1"
+                                                                       Text="{Binding Description}"
+                                                                       FontFamily="PoppinsSemiBold"
+                                                                       FontSize="12"
+                                                                       TextColor="#4D000000"
+                                                                       VerticalOptions="Center"/>
+                                                            </Grid>
+
+                                                            <Border Grid.Column="2"
+                                                                    StrokeShape="RoundRectangle 8"
+                                                                    Stroke="#40000000"
+                                                                    Background="{StaticResource GradientRewards}"
+                                                                    VerticalOptions="Center">
+                                                                <Border.Behaviors>
+                                                                    <toolkit:TouchBehavior
+                                                                        DefaultAnimationDuration="500"
+                                                                        DefaultAnimationEasing="{x:Static Easing.CubicOut}"
+                                                                        PressedOpacity="0.8"
+                                                                        TouchGestureCompleted="TouchBehavior_TouchGestureCompleted"
+                                                                        ShouldMakeChildrenInputTransparent="True"
+                                                                        PressedScale="0.95"/>
+                                                                </Border.Behaviors>
+                                                                <Grid ColumnDefinitions="Auto,*"
+                                                                      ColumnSpacing="5"
+                                                                      Padding="10">
+                                                                    <Image Source="{Binding CurrencyIcon}"
+                                                                           Aspect="AspectFit"
+                                                                           HeightRequest="21"
+                                                                           WidthRequest="21"/>
+                                                                    <outline:OutlinedLabel Grid.Column="1"
+                                                                                           Text="{Binding Cost}"
+                                                                                           FontFamily="PoppinsSemiBold"
+                                                                                           FontSize="14"
+                                                                                           TextColor="#EDF8EA"
+                                                                                           StrokeColor="#40000000"
+                                                                                           HasShadow="True"
+                                                                                           ShadowColor="#4D000000"
+                                                                                           ShadowBlur="1"
+                                                                                           ShadowOffsetY="1"
+                                                                                           HorizontalOptions="Center"
+                                                                                           VerticalOptions="Center"/>
+                                                                </Grid>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+
+                                            <CollectionView.EmptyView>
+                                                <VerticalStackLayout HorizontalOptions="Center"
+                                                                     VerticalOptions="Center"
+                                                                     Spacing="10"
+                                                                     Padding="40">
+                                                    <Label Text="No items at this level"
+                                                           FontFamily="PoppinsSemiBold"
+                                                           FontAttributes="Bold"
+                                                           FontSize="18"
+                                                           TextColor="#2E4A0F"
+                                                           HorizontalOptions="Center"/>
+                                                </VerticalStackLayout>
+                                            </CollectionView.EmptyView>
+                                        </CollectionView>
+
+                                        <!-- Locked overlay: next-level preview, not buyable -->
+                                        <Border IsVisible="{Binding IsLocked}"
+                                                BackgroundColor="#66000000"
+                                                StrokeShape="RoundRectangle 8"
+                                                ZIndex="5"
+                                                InputTransparent="False">
+                                            <VerticalStackLayout HorizontalOptions="Center"
+                                                                 VerticalOptions="Center"
+                                                                 Spacing="8">
+                                                <Image Source="icon_lock_outline.png"
+                                                       HeightRequest="48"
+                                                       WidthRequest="48"
+                                                       Aspect="AspectFit"/>
+                                                <outline:OutlinedLabel Text="{Binding Level, StringFormat='Unlocks at Guild Level {0}'}"
+                                                                       FontFamily="PoppinsBold"
+                                                                       FontSize="16"
+                                                                       TextColor="#EDF8EA"
+                                                                       StrokeColor="#000000"
+                                                                       StrokeWidth="1"
+                                                                       HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Footer -->
+        <Border Grid.Row="3"
+                Stroke="Gray"
+                StrokeThickness="2">
+            <Grid>
+                <outline:BlendModeImage
+                    Source="infobarbackground.png"
+                    BlendMode="Multiply"
+                    OpacityValue="1"
+                    BlendBackground="{StaticResource GreenGradient}"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+
+                <Grid Padding="10"
+                      ColumnDefinitions="75,*"
+                      ColumnSpacing="20">
+                    <ImageButton Grid.Column="0"
+                                 Source="icon_back_outlined.png"
+                                 HeightRequest="75"
+                                 Command="{Binding GoBackCommand}">
+                        <ImageButton.Shadow>
+                            <Shadow Brush="White" Offset="1,0" Radius="4"/>
+                        </ImageButton.Shadow>
+                    </ImageButton>
+
+                    <Grid Grid.Column="1"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          RowDefinitions="Auto, Auto">
+
+                          <outline:OutlinedLabel Grid.Row="0"
+                                           Text="{Binding CurrentGuildShopItems.Level, StringFormat='Guild Shop Level {0}'}"
+                                           FontFamily="PoppinsBold"
+                                           FontSize="20"
+                                           TextColor="#EDF8EA"
+                                           StrokeColor="#2E4A0F"
+                                           StrokeWidth="2"
+                                           HasShadow="True"
+                                           ShadowColor="#40000000"
+                                           ShadowBlur="1"
+                                           ShadowOffsetY="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                            <outline:OutlinedLabel Grid.Row="1"
+                                           Text="&lt;-- Swipe for other levels --&gt;"
+                                           FontFamily="PoppinsBold"
+                                           FontSize="20"
+                                           TextColor="#EDF8EA"
+                                           StrokeColor="#2E4A0F"
+                                           StrokeWidth="2"
+                                           HasShadow="True"
+                                           ShadowColor="#40000000"
+                                           ShadowBlur="1"
+                                           ShadowOffsetY="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>

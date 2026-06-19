@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirit Summoner — Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090d;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --gold: #f2c86b;
+    --purple: #c9a9f5;
+    --text: #ebe4f5;
+    --muted: #8a7fa8;
+    --border: rgba(242,200,107,0.15);
+    --sidebar-w: 220px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.6; display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  #sidebar {
+    position: fixed; top: 0; left: 0; height: 100vh; width: var(--sidebar-w);
+    background: var(--bg2); border-right: 1px solid var(--border);
+    overflow-y: auto; z-index: 100; padding-bottom: 2rem;
+  }
+  .sidebar-title {
+    padding: 1.5rem 1rem 1rem;
+    font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border);
+  }
+  .sidebar-title small { display: block; font-family: 'Manrope', sans-serif; font-size: 10px; color: var(--muted); text-transform: none; letter-spacing: 0; margin-top: 2px; }
+  .nav-section { padding: 0.5rem 0; }
+  .nav-section-header { font-family: 'Cinzel', serif; font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; padding: 0.5rem 1rem 0.25rem; opacity: 0.7; }
+  .nav-link { display: block; padding: 5px 1rem; color: var(--muted); text-decoration: none; font-size: 12px; border-left: 2px solid transparent; transition: all 0.15s; }
+  .nav-link:hover, .nav-link.active { color: var(--text); border-left-color: var(--gold); background: rgba(242,200,107,0.05); }
+
+  /* MAIN */
+  #main { margin-left: var(--sidebar-w); flex: 1; padding: 2.5rem 2.5rem 4rem; max-width: 820px; }
+
+  /* PAGE HEADER */
+  .page-hero { padding-bottom: 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+  .page-hero h1 { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); }
+  .page-hero p { color: var(--muted); margin-top: 0.4rem; font-size: 13px; }
+
+  /* AREA SECTION */
+  .area { margin-bottom: 1rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .area-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 1.25rem; background: var(--bg2); cursor: pointer; user-select: none;
+    font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); transition: background 0.15s;
+  }
+  .area-header:hover { background: var(--bg3); }
+  .area-header .meta { font-family: 'Manrope', sans-serif; font-size: 11px; color: var(--muted); margin-left: auto; margin-right: 1rem; }
+  .area-header .chevron { font-size: 11px; color: var(--muted); transition: transform 0.2s; }
+  .area-header.open .chevron { transform: rotate(180deg); }
+  .area-body { display: none; padding: 1.25rem; background: var(--bg); border-top: 1px solid var(--border); }
+  .area-body.open { display: block; }
+
+  /* TASKS */
+  .task { padding: 0.65rem 0.9rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 6px; }
+  .task-top { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+  .task-num { font-size: 11px; color: var(--muted); min-width: 18px; }
+  .task-name { font-weight: 600; color: var(--text); font-size: 13px; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px; }
+  .tag-fight { background: rgba(242,200,107,0.15); color: var(--gold); }
+  .tag-duel { background: rgba(201,169,245,0.15); color: var(--purple); }
+  .tag-rep { background: rgba(138,127,168,0.15); color: var(--muted); }
+  .task-details { margin-top: 4px; font-size: 12px; color: var(--muted); display: flex; gap: 1rem; flex-wrap: wrap; }
+  .task-enemy { color: var(--purple); }
+  .task-energy { color: var(--text); }
+  .task-reward { color: var(--gold); }
+
+  /* SECTION HEADING */
+  .section-heading { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1rem; margin: 2rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+  /* HAMBURGER */
+  #hamburger { display: none; position: fixed; top: 12px; left: 12px; z-index: 200; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; cursor: pointer; font-size: 16px; color: var(--gold); }
+
+  @media (max-width: 680px) {
+    #sidebar { transform: translateX(-100%); transition: transform 0.2s; }
+    #sidebar.open { transform: translateX(0); }
+    #hamburger { display: block; }
+    #main { margin-left: 0; padding: 1rem 1rem 3rem; }
+    .page-hero h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<button id="hamburger" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<nav id="sidebar">
+  <div class="sidebar-title">Spirit Summoner<small>Story Guide</small></div>
+  <div class="nav-section">
+    <div class="nav-section-header">Story Quest</div>
+    <a class="nav-link" href="#basalonTown">Basalon Town</a>
+    <a class="nav-link" href="#darkForest">Dark Forest</a>
+    <a class="nav-link" href="#spiritSands">Spirit Sands</a>
+    <a class="nav-link" href="#darkShire">Dark Shire</a>
+    <a class="nav-link" href="#kingsHeartForest">King's Heart Forest</a>
+    <a class="nav-link" href="#theGreatLand">The Great Land</a>
+    <a class="nav-link" href="#skyTower">Sky Tower</a>
+    <a class="nav-link" href="#theDragonsLair">Dragon's Lair</a>
+    <a class="nav-link" href="#wallOfGaia">Wall of Gaia</a>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="page-hero">
+    <h1>Spirit Summoner</h1>
+    <p>Story quest walkthrough — areas, tasks &amp; encounters</p>
+  </div>
+
+  <p class="section-heading" style="border-top:none;padding-top:0;margin-top:0;">Summoner Chapter One: First Adventure</p>
+
+  <!-- BASALON TOWN -->
+  <div class="area" id="basalonTown">
+    <div class="area-header" onclick="toggle(this)">
+      Basalon Town <span class="meta">Level 1</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <div class="task"><div class="task-top"><span class="task-num">1</span><span class="task-name">Visit the Summoner Guild</span></div><div class="task-details"><span>Explore · 1 step</span><span class="task-energy">1 energy</span><span class="task-reward">2 XP · 10 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">2</span><span class="task-name">Join the Summoner Guild</span></div><div class="task-details"><span>Explore · 3 steps</span><span class="task-energy">1 energy</span><span class="task-reward">2 XP · 12 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">3</span><span class="task-name">Training</span></div><div class="task-details"><span>Explore · 5 steps</span><span class="task-energy">1 energy</span><span class="task-reward">3 XP · 12 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">4</span><span class="task-name">Assisting in the laboratory</span></div><div class="task-details"><span>Collect · 5 steps</span><span class="task-energy">1 energy</span><span class="task-reward">5 XP · 15 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">5</span><span class="task-name">Patrol Task</span></div><div class="task-details"><span>Explore · 4 steps</span><span class="task-energy">1 energy</span><span class="task-reward">5 XP · 13 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">6</span><span class="task-name">Helping Villagers</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">6 XP · 30 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">7</span><span class="task-name">Listening to residents problems</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 5 steps</span><span class="task-energy">1 energy</span><span class="task-reward">10 XP · 10 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">8</span><span class="task-name">Catching a rat</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Rat spirit · Lv.1</span><span class="task-energy">1 energy</span><span class="task-reward">10 XP · 50 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">9</span><span class="task-name">Exploring the mystic house</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">10 XP · 10 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">10</span><span class="task-name">Ghost!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Ghost spirit · Lv.5</span><span class="task-energy">1 energy</span><span class="task-reward">25 XP · 50 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">11</span><span class="task-name">Pet the dog?</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dogi · Lv.10</span><span class="task-energy">1 energy</span><span class="task-reward">30 XP · 55 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">12</span><span class="task-name">Rumor of the Dragon's Lair</span></div><div class="task-details"><span>Unlocks after Dark Shire</span><span class="task-energy">1 energy</span><span class="task-reward">0 XP · 0 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">14</span><span class="task-name">Reward for completed task</span></div><div class="task-details"><span>Unlocks after Spirit Sands</span><span class="task-energy">1 energy</span><span class="task-reward">500 XP · 3,000 G</span></div></div>
+    </div>
+  </div>
+
+  <!-- DARK FOREST -->
+  <div class="area" id="darkForest">
+    <div class="area-header" onclick="toggle(this)">
+      Dark Forest <span class="meta">Level 5</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <div class="task"><div class="task-top"><span class="task-num">1</span><span class="task-name">Exploring the entrance</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">15 XP · 30 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">2</span><span class="task-name">Catching a spirit with magical skills</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Trifish (B) · Lv.1</span><span class="task-energy">1 energy</span><span class="task-reward">66 XP · 200 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">3</span><span class="task-name">Exploring the forest</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 5 steps</span><span class="task-energy">1 energy</span><span class="task-reward">22 XP · 34 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">4</span><span class="task-name">Trifish found!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Trifish (B) · Lv.5</span><span class="task-energy">1 energy</span><span class="task-reward">69 XP · 250 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">5</span><span class="task-name">Light up the path</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">21 XP · 45 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">6</span><span class="task-name">Exploring the deep forest</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">22 XP · 46 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">7</span><span class="task-name">Check the mystic light</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">20 XP · 48 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">8</span><span class="task-name">[Rare] BULBHEAD found!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Bulbhead · Lv.10</span><span class="task-energy">1 energy</span><span class="task-reward">70 XP · 280 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">9</span><span class="task-name">[Rare] A stray Koki appears</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Koki · Lv.15</span><span class="task-energy">1 energy</span><span class="task-reward">70 XP · 100 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">10</span><span class="task-name">SNADLE approaches!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Snadle · Lv.12</span><span class="task-energy">1 energy</span><span class="task-reward">70 XP · 100 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">11</span><span class="task-name">Check the bushes...</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 3 steps</span><span class="task-energy">1 energy</span><span class="task-reward">25 XP · 15 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">12</span><span class="task-name">BIGMOUTH chomps!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Bigmouth · Lv.12</span><span class="task-energy">1 energy</span><span class="task-reward">70 XP · 100 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">13</span><span class="task-name">Duel test</span><span class="tag tag-duel">Duel</span></div><div class="task-details"><span>Lv.40 required · Repeatable</span><span class="task-enemy">vs. Queen Morwyn (Obsidrak) — 3 spirits at Lv.40</span><span class="task-energy">2 energy</span><span class="task-reward">2,000 XP · 100 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">14</span><span class="task-name">Dark matter collection</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Patrol · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">280 XP · 280 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">15</span><span class="task-name">Expelling guard spirit</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dark spirit · Lv.20</span><span class="task-energy">2 energy</span><span class="task-reward">500 XP · 500 G</span></div></div>
+    </div>
+  </div>
+
+  <!-- SPIRIT SANDS -->
+  <div class="area" id="spiritSands">
+    <div class="area-header" onclick="toggle(this)">
+      Spirit Sands <span class="meta">Level 8</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <div class="task"><div class="task-top"><span class="task-num">1</span><span class="task-name">Prepare water</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">35 XP · 12 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">2</span><span class="task-name">Exploring the desert</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">35 XP · 15 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">3</span><span class="task-name">Helping a lost traveler</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">37 XP · 16 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">4</span><span class="task-name">Big Worm!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Giant Worm · Lv.12</span><span class="task-energy">1 energy</span><span class="task-reward">250 XP · 400 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">5</span><span class="task-name">Search for treasure</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">35 XP · 20 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">6</span><span class="task-name">Entering the Pyramid</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">45 XP · 21 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">7</span><span class="task-name">Exploring the pyramid</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">55 XP · 22 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">8</span><span class="task-name">Investigating the heat source</span></div><div class="task-details"><span>Explore · 3 steps</span><span class="task-energy">1 energy</span><span class="task-reward">68 XP · 100 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">9</span><span class="task-name">TRIFISH in the desert</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Trifish (R) · Lv.20</span><span class="task-energy">1 energy</span><span class="task-reward">300 XP · 300 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">11</span><span class="task-name">Expelling guard spirit</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dark spirit · Lv.20</span><span class="task-energy">2 energy</span><span class="task-reward">500 XP · 500 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">12</span><span class="task-name">The dark summoner</span></div><div class="task-details"><span>Talk</span><span class="task-energy">1 energy</span><span class="task-reward">500 XP · 500 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">13</span><span class="task-name">Defeat the Dark Summoner</span><span class="tag tag-duel">Duel</span></div><div class="task-details"><span class="task-enemy">vs. Dark Summoner (Obsidrak) — 3 spirits at Lv.20</span><span class="task-energy">3 energy</span><span class="task-reward">5,000 XP · 10,000 G 🏆</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">14</span><span class="task-name">The Dark Summoner retreats</span></div><div class="task-details"><span>Talk</span><span class="task-energy">1 energy</span><span class="task-reward">500 XP · 1,000 G</span></div></div>
+    </div>
+  </div>
+
+  <!-- DARK SHIRE -->
+  <div class="area" id="darkShire">
+    <div class="area-header" onclick="toggle(this)">
+      Dark Shire <span class="meta">Level 12</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <div class="task"><div class="task-top"><span class="task-num">1</span><span class="task-name">Break in</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">100 XP · 205 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">2</span><span class="task-name">Encounter!</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dark spirit · Lv.25</span><span class="task-energy">1 energy</span><span class="task-reward">300 XP · 500 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">3</span><span class="task-name">Capture the gate</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">130 XP · 200 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">4</span><span class="task-name">Securing the gate</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">131 XP · 190 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">5</span><span class="task-name">Expelling dark mages</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dark spirit · Lv.28</span><span class="task-energy">1 energy</span><span class="task-reward">500 XP · 500 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">6</span><span class="task-name">Capture the village</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">150 XP · 160 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">7</span><span class="task-name">Defeat the mage leader</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Dark spirit · Lv.30</span><span class="task-energy">1 energy</span><span class="task-reward">550 XP · 550 G</span></div></div>
+    </div>
+  </div>
+
+  <!-- KINGS HEART FOREST -->
+  <div class="area" id="kingsHeartForest">
+    <div class="area-header" onclick="toggle(this)">
+      King's Heart Forest <span class="meta">Level 20</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <div class="task"><div class="task-top"><span class="task-num">1</span><span class="task-name">Camp Preparations</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">250 XP · 21 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">2</span><span class="task-name">Collect King forest wood</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">260 XP · 20 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">3</span><span class="task-name">Crafting artifact</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">330 XP · 16 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">4</span><span class="task-name">Activate artifact</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">300 XP · 18 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">5</span><span class="task-name">Plant attack</span><span class="tag tag-fight">Fight</span></div><div class="task-details"><span class="task-enemy">vs. Plant spirit · Lv.10</span><span class="task-energy">1 energy</span><span class="task-reward">300 XP · 78 G</span></div></div>
+      <div class="task"><div class="task-top"><span class="task-num">6</span><span class="task-name">Exploring the hidden path</span><span class="tag tag-rep">Repeatable</span></div><div class="task-details"><span>Explore · 10 steps</span><span class="task-energy">1 energy</span><span class="task-reward">~350 XP</span></div></div>
+    </div>
+  </div>
+
+  <!-- THE GREAT LAND -->
+  <div class="area" id="theGreatLand">
+    <div class="area-header" onclick="toggle(this)">
+      The Great Land <span class="meta">Level 25</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <p style="color:var(--muted);font-size:13px;">Open plains unlocking after King's Heart Forest. Higher-level encounters with improved XP and gold rewards across repeatable tasks.</p>
+    </div>
+  </div>
+
+  <!-- SKY TOWER -->
+  <div class="area" id="skyTower">
+    <div class="area-header" onclick="toggle(this)">
+      Sky Tower <span class="meta">Level 30</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <p style="color:var(--muted);font-size:13px;">Vertical ascent zone. Lv.30 required. Strong spirit encounters as you climb higher.</p>
+    </div>
+  </div>
+
+  <!-- DRAGON'S LAIR -->
+  <div class="area" id="theDragonsLair">
+    <div class="area-header" onclick="toggle(this)">
+      The Dragon's Lair <span class="meta">Level 32</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <p style="color:var(--muted);font-size:13px;">Unlocks from a task in Basalon Town (available after clearing Dark Shire). Fire and dragon-type territory.</p>
+    </div>
+  </div>
+
+  <!-- WALL OF GAIA -->
+  <div class="area" id="wallOfGaia">
+    <div class="area-header" onclick="toggle(this)">
+      Wall of Gaia <span class="meta">Level 32</span><span class="chevron">▼</span>
+    </div>
+    <div class="area-body">
+      <p style="color:var(--muted);font-size:13px;">Parallel to Dragon's Lair at Lv.32. Ground and earth-type encounters.</p>
+    </div>
+  </div>
+
+  <div style="height:3rem;"></div>
+</main>
+
+<script>
+function toggle(header) {
+  const body = header.parentElement.querySelector('.area-body');
+  const open = body.classList.toggle('open');
+  header.classList.toggle('open', open);
+}
+
+const links = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const l = document.querySelector('.nav-link[href="#' + e.target.id + '"]');
+      if (l) l.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+document.querySelectorAll('.area[id]').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

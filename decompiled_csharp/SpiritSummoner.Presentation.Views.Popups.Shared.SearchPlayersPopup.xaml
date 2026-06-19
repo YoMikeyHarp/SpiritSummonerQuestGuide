@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:players="clr-namespace:SpiritSummoner.Application.UseCases.Players"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.Shared.SearchPlayersPopup"
+               x:DataType="vm:SearchPlayersPopupViewModel"
+               Size="375,600"
+               Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Border Padding="5"
+            Background="{StaticResource GradientBackground}"
+            StrokeShape="RoundRectangle 8">
+
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="15" Padding="15">
+
+            <!-- Header -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Find Players"
+                           FontSize="Large"
+                           FontAttributes="Bold"/>
+                    <Label Text="Search and send friend requests"
+                           FontSize="Small"
+                           TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <ImageButton Grid.Column="1"
+                            Source="backicon.png"
+                            Command="{Binding CloseCommand}"
+                            BackgroundColor="Transparent"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            VerticalOptions="Start"/>
+            </Grid>
+
+            <!-- Search Bar -->
+            <Border Grid.Row="1"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="2"
+                    BackgroundColor="White">
+                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                    <Entry Grid.Column="0"
+                           Text="{Binding SearchText}"
+                           Placeholder="Search by username..."
+                           PlaceholderColor="Gray"
+                           BackgroundColor="Transparent"
+                           ReturnCommand="{Binding SearchPlayersCommand}"/>
+
+                    <Button Grid.Column="1"
+                            Text="Search"
+                            Command="{Binding SearchPlayersCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            HeightRequest="40"
+                            CornerRadius="8"
+                            Padding="12,0"
+                            IsVisible="{Binding IsSearching, Converter={StaticResource InverseBooleanConverter}}"/>
+
+                    <ActivityIndicator Grid.Column="1"
+                                      IsRunning="{Binding IsSearching}"
+                                      IsVisible="{Binding IsSearching}"
+                                      Color="{StaticResource Primary}"
+                                      WidthRequest="40"
+                                      HeightRequest="40"/>
+
+                    <Button Grid.Column="2"
+                            Text="X"
+                            Command="{Binding ClearSearchCommand}"
+                            BackgroundColor="{StaticResource Gray200}"
+                            TextColor="Black"
+                            FontSize="18"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="8"
+                            Padding="0"
+                            IsVisible="{Binding HasSearched}"/>
+                </Grid>
+            </Border>
+
+            <!-- Search Results -->
+            <Border Grid.Row="2"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="Transparent"
+                    Background="{StaticResource GradientBackgroundSpirit}">
+                <Grid>
+                    <!-- Loading -->
+                    <ActivityIndicator IsRunning="{Binding IsSearching}"
+                                      IsVisible="{Binding IsSearching}"
+                                      Color="{StaticResource Primary}"
+                                      HorizontalOptions="Center"
+                                      VerticalOptions="Center"/>
+
+                    <!-- Empty state - no search yet -->
+                    <VerticalStackLayout IsVisible="{Binding HasSearched, Converter={StaticResource InverseBooleanConverter}}"
+                                        Spacing="15"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                        <Label Text="Search for players to add as friends"
+                               FontSize="Medium"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               IsVisible="{Binding IsAccountLinked}"/>
+                        <Label Text="Enter at least 2 characters"
+                               FontSize="Small"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               Opacity="0.7"
+                               IsVisible="{Binding IsAccountLinked}"/>
+                        <Label Text="You have not linked your account"
+                               FontSize="Medium"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               IsVisible="{Binding IsAccountLinked,Converter={StaticResource InverseBooleanConverter}}"/>
+                        <Label Text="Accountlinking required to search"
+                               FontSize="Small"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               Opacity="0.7"
+                               IsVisible="{Binding IsAccountLinked,Converter={StaticResource InverseBooleanConverter}}"/>
+                    </VerticalStackLayout>
+
+                    <!-- Empty state - no results -->
+                    <VerticalStackLayout IsVisible="{Binding HasResults, Converter={StaticResource InverseBooleanConverter}}"
+                                        Spacing="15"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                        <Label Text="No players found"
+                               FontSize="Medium"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               IsVisible="{Binding HasSearched}"/>
+                        <Label Text="Try a different search"
+                               FontSize="Small"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray"
+                               Opacity="0.7"
+                               IsVisible="{Binding HasSearched}"/>
+                    </VerticalStackLayout>
+
+                    <!-- Results list -->
+                    <ScrollView IsVisible="{Binding HasResults}">
+                        <CollectionView ItemsSource="{Binding SearchResults}"
+                                       SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="players:PlayerSearchResultModel">
+                                    <Border Margin="0,5"
+                                           Padding="15"
+                                           BackgroundColor="White"
+                                           StrokeShape="RoundRectangle 12"
+                                           StrokeThickness="2">
+
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                            <!-- Player Info -->
+                                            <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                                <Label Text="{Binding PlayerName}"
+                                                      FontSize="Medium"
+                                                      FontAttributes="Bold"
+                                                      TextColor="Black"/>
+                                                <Label Text="{Binding LevelDisplay}"
+                                                      FontSize="Small"
+                                                      TextColor="Gray"/>
+                                            </VerticalStackLayout>
+
+                                            <!-- Add Friend Button -->
+                                            <Button Grid.Column="1"
+                                                   Text="Add Friend"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Small"
+                                                   CornerRadius="8"
+                                                   Padding="15,8"
+                                                   BackgroundColor="{StaticResource Primary}"
+                                                   Command="{Binding x:DataType='vm:SearchPlayersPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:SearchPlayersPopupViewModel}}, Path=SendFriendRequestCommand}"
+                                                   CommandParameter="{Binding .}"
+                                                   VerticalOptions="Center"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </Grid>
+            </Border>
+
+            <!-- Error message -->
+            <Label Grid.Row="3"
+                   Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"
+                   FontSize="Small"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+    </Border>
+</toolkit:Popup>

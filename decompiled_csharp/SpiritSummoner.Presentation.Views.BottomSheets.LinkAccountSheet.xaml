@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheets"
+             x:DataType="vm:LinkAccountSheetViewModel"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.LinkAccountSheet"
+             IsCancelable="False"
+             BackgroundColor="Transparent"
+             HasBackdrop="True"
+             HasHandle="True"
+             CornerRadius="4">
+
+    <the49:BottomSheet.Resources>
+        <LinearGradientBrush x:Key="GreenGradient"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#4CAF50"
+                          Offset="0.0"/>
+            <GradientStop Color="#388E3C"
+                          Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GreyGradient"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#CBCBCB"
+                          Offset="0.0"/>
+            <GradientStop Color="#B6B6B6"
+                          Offset="0.5"/>
+            <GradientStop Color="#B6B6B6"
+                          Offset="0.75"/>
+            <GradientStop Color="#CBCBCB"
+                          Offset="1.0"/>
+        </LinearGradientBrush>
+    </the49:BottomSheet.Resources>
+
+    <Border Stroke="Transparent"
+            BackgroundColor="#EDF8EA"
+            StrokeShape="RoundRectangle 8"
+            VerticalOptions="End"
+            HeightRequest="620">
+
+        <Grid RowSpacing="20"
+              RowDefinitions="Auto, *, Auto"
+              Padding="30">
+
+            <!-- Header -->
+            <VerticalStackLayout Grid.Row="0" Spacing="10">
+                <outline:OutlinedLabel Text="Link Your Account"
+                                       TextColor="#027242"
+                                       HorizontalOptions="Start"
+                                       FontFamily="PoppinsBold"
+                                       FontSize="28"
+                                       HasShadow="True"
+                                       ShadowColor="#40000000"
+                                       ShadowBlur="1"
+                                       ShadowOffsetY="1"/>
+
+                <Label Text="Link your account to save your progress across devices. Without linking, your data may be lost!"
+                       TextColor="#000000"
+                       FontFamily="PoppinsMedium"
+                       FontSize="13"
+                       LineBreakMode="WordWrap"/>
+            </VerticalStackLayout>
+
+            <!-- Content Area -->
+            <Grid Grid.Row="1">
+
+                <!-- Main Options (visible when not showing email form) -->
+                <VerticalStackLayout Spacing="15"
+                                     IsVisible="{Binding ShowEmailForm, Converter={toolkit:InvertedBoolConverter}}">
+
+                    <!-- Email Button -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            StrokeThickness="1"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="White"
+                            HeightRequest="56"
+                            Padding="15,0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowEmailLinkingCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Image Source="mage_email.svg"
+                                   HeightRequest="24"
+                                   WidthRequest="24"
+                                   Grid.Column="0"/>
+                            <Label Text="Link with Email"
+                                   TextColor="#333333"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1"
+                                   Margin="15,0,0,0"/>
+                            <Image Source="icon_right.png"
+                                   HeightRequest="16"
+                                   WidthRequest="16"
+                                   Grid.Column="2"
+                                   Opacity="0.5"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Google Button -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            StrokeThickness="1"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="White"
+                            HeightRequest="56"
+                            Padding="15,0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LinkWithGoogleCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Source="logo_google.png"
+                                   HeightRequest="24"
+                                   WidthRequest="24"
+                                   Grid.Column="0"/>
+                            <Label Text="Link with Google"
+                                   TextColor="#333333"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1"
+                                   Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Apple Button (iOS only) -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            StrokeThickness="1"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="Black"
+                            HeightRequest="56"
+                            Padding="15,0"
+                            IsVisible="{OnPlatform Android=false,iOS=true}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LinkWithAppleCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Source="logo_apple.png"
+                                   HeightRequest="24"
+                                   WidthRequest="24"
+                                   Grid.Column="0"/>
+                            <Label Text="Link with Apple"
+                                   TextColor="White"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1"
+                                   Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Warning Message -->
+                    <Border BackgroundColor="#FFF3CD"
+                            StrokeShape="RoundRectangle 8"
+                            Stroke="#FFCA28"
+                            Padding="15"
+                            Margin="0,10,0,0">
+                        <Label Text="Guest accounts cannot be recovered if you lose access to this device or uninstall the app."
+                               TextColor="#856404"
+                               FontFamily="PoppinsMedium"
+                               FontSize="12"
+                               LineBreakMode="WordWrap"/>
+                    </Border>
+
+                    <!-- Error Message -->
+                    <Label Text="{Binding ErrorMessage}"
+                           TextColor="#D32F2F"
+                           FontFamily="PoppinsMedium"
+                           FontSize="13"
+                           IsVisible="{Binding ErrorMessage, Converter={toolkit:IsNotNullConverter}}"
+                           HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+                <!-- Email Form (visible when showing email form) -->
+                <VerticalStackLayout Spacing="15"
+                                     IsVisible="{Binding ShowEmailForm}">
+
+                    <!-- Back Button -->
+                    <HorizontalStackLayout Spacing="5">
+                        <Image Source="icon_back_outlined.png"
+                               HeightRequest="50"
+                               WidthRequest="50"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HideEmailLinkingCommand}"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <!-- Email Entry -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="White"
+                            Padding="15,5">
+                        <Entry Placeholder="Email"
+                               Text="{Binding Email}"
+                               Keyboard="Email"
+                               FontFamily="PoppinsMedium"
+                               FontSize="16"
+                               TextColor="#333333"/>
+                    </Border>
+
+                    <!-- Password Entry -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="White"
+                            Padding="15,5">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry Placeholder="Password"
+                                   Text="{Binding Password}"
+                                   IsPassword="{Binding IsPasswordVisible, Converter={toolkit:InvertedBoolConverter}}"
+                                    FontFamily="PoppinsMedium"
+                                   FontSize="16"
+                                   TextColor="#333333"
+                                   Grid.Column="0"/>
+                            <Image Source="{Binding IsPasswordVisible, Converter={toolkit:BoolToObjectConverter TrueObject='icon_lock_outline.svg', FalseObject='icon_eye_outline.svg'}}"
+                                   HeightRequest="24"
+                                   WidthRequest="24"
+                                   Grid.Column="1"
+                                   Opacity="0.5">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TogglePasswordVisibilityCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Border>
+
+                    <!-- Confirm Password Entry -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            Stroke="#E0E0E0"
+                            BackgroundColor="White"
+                            Padding="15,5">
+                        <Entry Placeholder="Confirm Password"
+                               Text="{Binding ConfirmPassword}"
+                               IsPassword="{Binding IsPasswordVisible, Converter={toolkit:InvertedBoolConverter}}"
+                               FontFamily="PoppinsMedium"
+                               FontSize="16"
+                               TextColor="#333333"/>
+                    </Border>
+
+                    <!-- Error Message -->
+                    <Label Text="{Binding ErrorMessage}"
+                           TextColor="#D32F2F"
+                           FontFamily="PoppinsMedium"
+                           FontSize="13"
+                           IsVisible="{Binding ErrorMessage, Converter={toolkit:IsNotNullConverter}}"
+                           HorizontalOptions="Center"/>
+
+                    <!-- Link Button -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            StrokeThickness="0.2"
+                            Stroke="Black"
+                            Padding="5"
+                            Background="{StaticResource GreenGradient}"
+                            HeightRequest="48"
+                            Margin="0,10,0,0">
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                   DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                   PressedOpacity="0.6"
+                                                   PressedScale="0.95"/>
+                        </Border.Behaviors>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LinkWithEmailCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Grid>
+                            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                               IsVisible="{Binding IsLoading}"
+                                               Color="White"
+                                               HeightRequest="24"
+                                               WidthRequest="24"/>
+                            <outline:OutlinedLabel Text="Link Account"
+                                                   TextColor="#EDF8EA"
+                                                   HorizontalOptions="Center"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="14"
+                                                   StrokeColor="#40000000"
+                                                   StrokeWidth="2"
+                                                   HasShadow="True"
+                                                   ShadowColor="black"
+                                                   ShadowBlur="1"
+                                                   ShadowOffsetY="1"
+                                                   IsVisible="{Binding IsLoading, Converter={toolkit:InvertedBoolConverter}}"/>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Continue as Guest Button -->
+            <Border StrokeShape="RoundRectangle 8"
+                    StrokeThickness="1"
+                    Stroke="#027242"
+                    Padding="5"
+                    BackgroundColor="Transparent"
+                    HeightRequest="48"
+                    Grid.Row="2"
+                    IsVisible="{Binding ShowEmailForm, Converter={toolkit:InvertedBoolConverter}}">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                           DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                           PressedOpacity="0.6"
+                                           PressedScale="0.95"/>
+                </Border.Behaviors>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ContinueAsGuestCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="Continue as Guest"
+                       TextColor="#027242"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontFamily="PoppinsSemiBold"
+                       FontSize="14"/>
+            </Border>
+
+            <!-- Loading Overlay -->
+            <Grid Grid.RowSpan="3"
+                  Padding="-30"
+                  BackgroundColor="#80000000"
+                  IsVisible="{Binding IsLoading}">
+                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                   Color="White"
+                                   HeightRequest="48"
+                                   WidthRequest="48"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</the49:BottomSheet>

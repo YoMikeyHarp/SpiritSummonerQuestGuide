@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               x:DataType="vm:NewsDetailsPopupViewModel"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.GameNewsPopup"
+               Color="Transparent"
+               Closed="Popup_Closed">
+
+    <Border Stroke="#EDF8EA" StrokeThickness="4" BackgroundColor="#83CF63">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="12" />
+        </Border.StrokeShape>
+
+        <Grid RowDefinitions="Auto, Auto, *, Auto" Padding="15" WidthRequest="320" HeightRequest="460">
+            <outline:OutlinedLabel Grid.Row="0" Text="GAME NEWS" FontSize="22" 
+                                    FontFamily="PoppinsBlack" HorizontalOptions="Center"
+                                    StrokeColor="Black" StrokeWidth="2"/>
+
+            <Border Grid.Row="1" Margin="0,5,0,5" Padding="8" BackgroundColor="#5865F2" StrokeShape="RoundRectangle 8">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenDiscordCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="Updates (FULL LIST ON DISCORD)" 
+                       TextColor="White" 
+                       FontFamily="PoppinsBold" 
+                       FontSize="12" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"/>
+            </Border>
+
+            <ScrollView Grid.Row="2" Margin="0,5">
+                <VerticalStackLayout Spacing="10">
+
+                    <Border Padding="10" BackgroundColor="#FFF2B0" StrokeShape="RoundRectangle 8" StrokeThickness="0">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="SYSTEMS &amp; BALANCE" TextColor="#954F14" FontFamily="PoppinsBlack" FontSize="13"/>
+                            <BoxView HeightRequest="1" Color="#D4A373" Margin="0,2"/>
+                            <Label Text="• PVP Exp Formula Rework" TextColor="#954F14" FontFamily="PoppinsBold" FontSize="11"/>
+                            <Label Text="• PVP Score Formula Rework" TextColor="#954F14" FontFamily="PoppinsBold" FontSize="11"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Padding="10" BackgroundColor="#FFF2B0" StrokeShape="RoundRectangle 8" StrokeThickness="0">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="COMBAT FIXES" TextColor="#954F14" FontFamily="PoppinsBlack" FontSize="13"/>
+                            <BoxView HeightRequest="1" Color="#D4A373" Margin="0,2"/>
+                            <Label Text="• NPC Mons now scale with level in pvp" TextColor="#954F14" FontFamily="PoppinsBold" FontSize="11"/>
+       
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Padding="10" BackgroundColor="#FFF2B0" StrokeShape="RoundRectangle 8" StrokeThickness="0">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="UI &amp; STABILITY" TextColor="#954F14" FontFamily="PoppinsBlack" FontSize="13"/>
+                            <BoxView HeightRequest="1" Color="#D4A373" Margin="0,2"/>
+                            <Label Text="• Attribute box UI look chnaged" TextColor="#954F14" FontFamily="PoppinsBold" FontSize="11"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Padding="10" BackgroundColor="#FFF2B0" StrokeShape="RoundRectangle 8" StrokeThickness="0">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="QUESTS &amp; GUILDS" TextColor="#954F14" FontFamily="PoppinsBlack" FontSize="13"/>
+                            <BoxView HeightRequest="1" Color="#D4A373" Margin="0,2"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Padding="10" BackgroundColor="#FFF2B0" StrokeShape="RoundRectangle 8" StrokeThickness="0">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="CONTENT &amp; SHOP" TextColor="#954F14" FontFamily="PoppinsBlack" FontSize="13"/>
+                            <BoxView HeightRequest="1" Color="#D4A373" Margin="0,2"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Button Grid.Row="3" Text="CLOSE" Command="{Binding TapToExitCommand}"
+                    BackgroundColor="#D6680F" TextColor="White" FontFamily="PoppinsBold"/>
+        </Grid>
+    </Border>
+</toolkit:Popup>

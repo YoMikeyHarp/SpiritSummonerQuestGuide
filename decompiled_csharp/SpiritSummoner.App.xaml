@@ -1,0 +1,32 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+    <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SpiritSummoner"
+             x:Class="SpiritSummoner.App"
+             xmlns:shared="clr-namespace:SpiritSummoner.Presentation.Views.Shared"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters">
+        <Application.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                    <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                    <shared:ContentResources/>
+                </ResourceDictionary.MergedDictionaries>
+                <cnv:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
+                <cnv:NameToImageConverter x:Key="NameToImageConverter"/>
+                <cnv:PlatformImageConverter x:Key="PlatformImageConverter"/>
+                <cnv:BonusToImageClipConverter x:Key="BonusToImageClipConverter"/>
+                <cnv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+                <cnv:BackgroundImageConverter x:Key="BackgroundImageConverter"/>
+                <cnv:StringToBoolConverter x:Key="StringToBoolConverter"/>
+                <cnv:IsPositiveConverter x:Key="IsPositiveConverter"/>
+                <cnv:BoolToColorConverter x:Key="BoolToColorConverter"/>
+                <cnv:NicknameToFontSizeConverter x:Key="NicknameToFontSizeConverter"/>
+
+
+        </ResourceDictionary>
+        </Application.Resources>
+
+
+    </Application>
+

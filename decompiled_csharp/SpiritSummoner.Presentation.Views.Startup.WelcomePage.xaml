@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.StartUp"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="SpiritSummoner.Presentation.Views.WelcomePage"
+             x:DataType="vm:WelcomeViewModel"
+             ios:Page.UseSafeArea="True"
+             Background="{StaticResource GradientBackground}"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Black"
+                                   StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <Image Source="splash_loading.png"
+               Aspect="AspectFit"
+               Grid.RowSpan="3"
+               IsVisible="{Binding IsSignedIn,FallbackValue='false'}"/>
+
+        <Grid RowDefinitions="*,Auto,Auto"
+              IsVisible="{Binding IsSignedIn,Converter={StaticResource InverseBooleanConverter},FallbackValue='true'}">
+
+            
+
+            <!-- Background pattern -->
+            <Image Source="dots_offset_8px.png"
+                   Scale="1.2"
+                   Grid.RowSpan="3"/>
+
+            <!-- Main Content Area -->
+            <VerticalStackLayout Grid.Row="0"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="20"
+                                 Padding="40">
+
+                <!-- Logo/Branding -->
+                <Image Source="welcome.webp"
+                       HeightRequest="180"
+                       HorizontalOptions="Center"/>
+
+                <!-- Tagline -->
+                <Label Text="Collect. Battle. Become Legend."
+                       FontFamily="PoppinsMedium"
+                       FontSize="16"
+                       TextColor="#78000000"
+                       HorizontalTextAlignment="Center"/>
+
+            </VerticalStackLayout>
+
+            <!-- Journey Choice Section -->
+            <VerticalStackLayout Grid.Row="1"
+                                 Spacing="15"
+                                 Padding="30,0"
+                                 VerticalOptions="End">
+
+                <!-- Continue Journey Header -->
+                <Label Text="Ready to begin?"
+                       FontFamily="PoppinsSemiBold"
+                       FontSize="18"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"/>
+
+                <!-- Start Fresh Button (Primary Action) -->
+                <Border StrokeShape="RoundRectangle 12"
+                        Background="{StaticResource GradientRewards}"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill">
+                    <Border.Shadow>
+                        <Shadow Brush="#40000000"
+                                Offset="0,2"
+                                Radius="4"/>
+                    </Border.Shadow>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.8"
+                                               PressedScale="0.97"/>
+                    </Border.Behaviors>
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding StartFreshCommand}"/>
+                        </Grid.GestureRecognizers>
+
+                        <outline:OutlinedLabel Text="Start New Journey"
+                                               TextColor="#EDF8EA"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="16"
+                                               StrokeColor="#5200004D"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowColor="#5200004D"
+                                               ShadowBlur="1"
+                                               ShadowOffsetY="1"
+                                               IsVisible="true"/>
+
+                        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                           IsVisible="{Binding IsLoading}"
+                                           Color="White"
+                                           HeightRequest="24"
+                                           WidthRequest="24"/>
+                    </Grid>
+                </Border>
+
+                <!-- Sign In Button (Secondary Action) -->
+                <Border StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#FFFFFF"
+                        Stroke="#CCCCCC"
+                        StrokeThickness="1"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.8"
+                                               PressedScale="0.97"/>
+                    </Border.Behaviors>
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignInCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="I Have an Account"
+                               FontFamily="PoppinsSemiBold"
+                               FontSize="16"
+                               TextColor="#333333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+
+            <!-- Footer -->
+            <VerticalStackLayout Grid.Row="2"
+                                 Padding="30,20,30,50"
+                                 Spacing="8">
+
+                <Label Text="©2025 Spirit Summoner  ·  Summoner Co., LLC"
+                       FontFamily="PoppinsBlack"
+                       FontSize="11"
+                       TextColor="#40000000"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Loading Overlay -->
+            <Grid Grid.RowSpan="3"
+                  BackgroundColor="#80000000"
+                  IsVisible="{Binding IsLoading}">
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="10">
+                    <ActivityIndicator IsRunning="True"
+                                       Color="White"
+                                       HeightRequest="40"
+                                       WidthRequest="40"/>
+                    <Label Text="Preparing your adventure..."
+                           FontFamily="PoppinsMedium"
+                           FontSize="14"
+                           TextColor="White"/>
+                </VerticalStackLayout>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+    
+
+</ContentPage>

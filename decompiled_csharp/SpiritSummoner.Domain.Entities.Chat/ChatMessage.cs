@@ -1,0 +1,62 @@
+using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
+namespace SpiritSummoner.Domain.Entities.Chat;
+
+public class ChatMessage
+{
+	[field: CompilerGenerated]
+	[field: DebuggerBrowsable(/*Could not decode attribute arguments.*/)]
+	public string Id
+	{
+		[CompilerGenerated]
+		get;
+		[CompilerGenerated]
+		set;
+	} = string.Empty;
+
+
+	[field: CompilerGenerated]
+	[field: DebuggerBrowsable(/*Could not decode attribute arguments.*/)]
+	public string SenderId
+	{
+		[CompilerGenerated]
+		get;
+		[CompilerGenerated]
+		set;
+	} = string.Empty;
+
+
+	[field: CompilerGenerated]
+	[field: DebuggerBrowsable(/*Could not decode attribute arguments.*/)]
+	public string SenderName
+	{
+		[CompilerGenerated]
+		get;
+		[CompilerGenerated]
+		set;
+	} = string.Empty;
+
+
+	[field: CompilerGenerated]
+	[field: DebuggerBrowsable(/*Could not decode attribute arguments.*/)]
+	public string Content
+	{
+		[CompilerGenerated]
+		get;
+		[CompilerGenerated]
+		set;
+	} = string.Empty;
+
+
+	[field: CompilerGenerated]
+	[field: DebuggerBrowsable(/*Could not decode attribute arguments.*/)]
+	public DateTimeOffset CreatedAt
+	{
+		[CompilerGenerated]
+		get;
+		[CompilerGenerated]
+		set;
+	}
+}

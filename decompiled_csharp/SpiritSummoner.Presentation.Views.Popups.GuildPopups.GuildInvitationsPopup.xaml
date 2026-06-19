@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:guildmodels="clr-namespace:SpiritSummoner.Domain.Entities.Guilds"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.GuildPopups.GuildInvitationsPopup"
+               x:DataType="vm:GuildInvitationsPopupViewModel"
+               Size="375,625"
+               Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Border Padding="5"
+            Background="{StaticResource GradientBackground}"
+            StrokeShape="RoundRectangle 8">
+
+        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="10" Padding="15">
+
+            <!-- Header -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="Guild Invitations"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"/>
+
+                <ImageButton Grid.Column="1"
+                            Source="backicon.png"
+                            Command="{Binding CloseCommand}"
+                            WidthRequest="30"
+                            HeightRequest="30"/>
+            </Grid>
+
+            <!-- Content -->
+            <Border Grid.Row="1"
+                    Padding="10"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="Transparent"
+                    Background="{StaticResource GradientBackgroundSpirit}">
+                <Grid>
+                    <!-- Loading indicator -->
+                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                  IsVisible="{Binding IsLoading}"
+                                  Color="black"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"/>
+
+                <!-- Empty state -->
+                <VerticalStackLayout IsVisible="{Binding HasInvitations, Converter={StaticResource InverseBooleanConverter}}"
+                                    Spacing="15"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                    <Label Text="📬"
+                           FontSize="60"
+                           HorizontalOptions="Center"/>
+                    <Label Text="No pending invitations"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <!-- Invitations list -->
+                <ScrollView IsVisible="{Binding HasInvitations}">
+                    <CollectionView ItemsSource="{Binding Invitations}"
+                                   SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="guildmodels:GuildInvitation">
+                                <Border Margin="0,5"
+                                       Padding="15"
+                                       BackgroundColor="White"
+                                       StrokeShape="RoundRectangle 12"
+                                       Stroke="{StaticResource Primary}"
+                                       StrokeThickness="2">
+
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10">
+
+                                        <!-- Guild Name -->
+                                        <Label Grid.Row="0"
+                                              Text="{Binding GuildName}"
+                                              FontSize="Large"
+                                              FontAttributes="Bold"
+                                              TextColor="Black"/>
+
+                                        <!-- Invited by -->
+                                        <Label Grid.Row="1"
+                                              FontSize="Small"
+                                              TextColor="Gray">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Invited by " />
+                                                    <Span Text="{Binding InvitedByPlayerName}"
+                                                          FontAttributes="Bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <!-- Expiry -->
+                                        <Label Grid.Row="2"
+                                              Text="{Binding ExpiryDisplay}"
+                                              FontSize="Small"
+                                              TextColor="Gray"
+                                              FontAttributes="Italic"/>
+
+                                        <!-- Action buttons -->
+                                        <Grid Grid.Row="3"
+                                             ColumnDefinitions="*,*"
+                                             ColumnSpacing="10"
+                                             Margin="0,5,0,0">
+
+                                            <Button Grid.Column="0"
+                                                   Text="Accept"
+                                                   Background="{StaticResource GradientBackground}"
+                                                   TextColor="Black"
+                                                   FontAttributes="Bold"
+                                                   CornerRadius="8"
+                                                   Command="{Binding x:DataType='vm:GuildInvitationsPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildInvitationsPopupViewModel}}, Path=AcceptInvitationCommand}"
+                                                   CommandParameter="{Binding .}"/>
+
+                                            <Button Grid.Column="1"
+                                                   Text="Decline"
+                                                   BackgroundColor="{StaticResource SaveButtonColor}"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   CornerRadius="8"
+                                                   Command="{Binding x:DataType='vm:GuildInvitationsPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildInvitationsPopupViewModel}}, Path=DeclineInvitationCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                </Grid>
+            </Border>
+
+            <!-- Error message -->
+            <Label Grid.Row="2"
+                   Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"
+                   TextColor="Red"
+                   FontSize="Small"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+    </Border>
+</toolkit:Popup>

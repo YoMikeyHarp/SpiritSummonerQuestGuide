@@ -1,0 +1,5 @@
+[+] Found Player class: 0x7605f0c2de98
+[+] Hooked PlayerStateService.GetCurrentPlayer
+[+] Hooked 7 total method(s) - waiting for one to fire
+[+] (open/refresh any screen in-game, or wait for the ~1 min regen tick)
+still not captured after 90s

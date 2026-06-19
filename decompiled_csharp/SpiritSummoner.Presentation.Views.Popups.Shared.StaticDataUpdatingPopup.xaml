@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.Shared.StaticDataUpdatingPopup"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Color="#CC000000">
+
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="12"
+                         BackgroundColor="Black"
+                         Padding="10">
+        <ActivityIndicator IsRunning="True"
+                           Color="White"
+                           Scale="1.5"/>
+        <Label Text="Updating game data..."
+               TextColor="White"
+               FontSize="14"
+               HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+
+</toolkit:Popup>

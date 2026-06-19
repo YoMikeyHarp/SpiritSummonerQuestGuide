@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.Hub.HubBottomSheet"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+             xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels"
+             x:DataType="bottomsheet:HubSheetViewModel"
+             HasBackdrop="True"
+             HasHandle="True"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             CornerRadius="12"
+             BackgroundColor="{OnPlatform Android=Transparent, iOS=Beige}"
+             Padding="{OnPlatform iOS='5,15,5,0'}">
+
+    <the49:BottomSheet.Detents>
+        <the49:FullscreenDetent></the49:FullscreenDetent>
+    </the49:BottomSheet.Detents>
+
+    <the49:BottomSheet.Resources>
+        <Shadow x:Key="ModernCardShadow"
+                Brush="#40000000"
+                Radius="12"
+                Offset="0,4"/>
+
+        <Shadow x:Key="TabShadow"
+                Brush="#30000000"
+                Radius="8"
+                Offset="0,2"/>
+
+        <Shadow x:Key="FloatingShadow"
+                Brush="#50000000"
+                Radius="16"
+                Offset="0,8"/>
+
+        <Shadow x:Key="LabelShadowWhite"
+                Brush="White"
+                Offset="0,2"
+                Radius="3"/>
+
+        <LinearGradientBrush x:Key="GreenGradient"
+                StartPoint="0,0"
+                EndPoint="0,1">
+            <GradientStop Color="#A8CB3F" Offset="0.0"/>
+            <GradientStop Color="#7DB813" Offset="0.5"/>
+            <GradientStop Color="#78B614" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="LevelIconBlue"
+                StartPoint="0,0"
+                EndPoint="0,1">
+            <GradientStop Color="#CEE6FA" Offset="0.0"/>
+            <GradientStop Color="#A0D5F4" Offset="0.2"/>
+            <GradientStop Color="#77B1E7" Offset="0.8"/>
+            <GradientStop Color="#5EA1E2" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="LightGreenGradient"
+                StartPoint="0,0"
+                EndPoint="0,1">
+            <GradientStop Color="#9AE589" Offset="0.0556"/>
+            <GradientStop Color="#9EDA84" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="StarGradient"
+                StartPoint="0,0"
+                EndPoint="0,1">
+            <GradientStop Color="#EDF8EA" Offset="0.0556"/>
+            <GradientStop Color="#EDF8EA1A" Offset="1.0"/>
+        </LinearGradientBrush>
+    </the49:BottomSheet.Resources>
+
+    <Grid VerticalOptions="End" BackgroundColor ="Beige" Padding="{OnPlatform Android='5,15,5,0'}">
+
+        <Border StrokeShape="RoundRectangle 4"
+                BackgroundColor="white"
+                Padding="5"
+                VerticalOptions="{OnPlatform Android=End}">
+
+            <Grid RowDefinitions="{OnPlatform iOS='Auto,30,*',Android='Auto,30,Auto'}"
+                  RowSpacing="10"
+                  BackgroundColor="#FFF9E6"
+                  VerticalOptions="{OnPlatform Android=End}">
+
+                <Border Grid.Row="0"
+                        StrokeShape="RoundRectangle 6"
+                        HeightRequest="170"
+                        Padding="10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="0.2,0">
+                            <GradientStop Color="#FF145A14" Offset="0.1"/>
+                            <GradientStop Color="ForestGreen" Offset="1"/>
+                            <GradientStop Color="#FF145A14" Offset="0.1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Opacity="0.7" Radius="5"/>
+                    </Border.Shadow>
+
+                    <Grid Grid.RowDefinitions="Auto,Auto,*"
+                          RowSpacing="5"
+                          ColumnDefinitions="Auto,*,Auto"
+                          ColumnSpacing="15">
+
+                        <Border StrokeShape="RoundRectangle 10"
+                                Grid.Column="0"
+                                ZIndex="4"
+                                BackgroundColor="White"
+                                Padding="2"
+                                IsVisible="{Binding PlayerInfoModel.HasIcon,Converter={StaticResource InverseBooleanConverter}}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectIconCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Tap to set Icon!" TextColor="Black" FontSize="8"/>
+                        </Border>
+
+                        <Grid Grid.Column="0"
+                              ZIndex="2"
+                              HorizontalOptions="Start"
+                              WidthRequest="62"
+                              HeightRequest="62">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectIconCommand}"/>
+                            </Grid.GestureRecognizers>
+
+                            <Ellipse Fill="{StaticResource LightGreenGradient}"
+                                     Stroke="#588049"
+                                     HorizontalOptions="Start"
+                                     StrokeThickness="1"
+                                     IsVisible="{Binding PlayerInfoModel.HasIcon,Converter={StaticResource InverseBooleanConverter}}">
+                                <Ellipse.Shadow>
+                                    <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.25"/>
+                                </Ellipse.Shadow>
+                            </Ellipse>
+
+                            <Ellipse WidthRequest="52"
+                                     HeightRequest="52"
+                                     Fill="{StaticResource LevelIconBlue}"
+                                     Stroke="#40000000"
+                                     StrokeThickness="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     IsVisible="{Binding PlayerInfoModel.HasIcon,Converter={StaticResource InverseBooleanConverter}}"/>
+
+                            <Image Source="{Binding PlayerInfoModel.Icon}" IsVisible="{Binding PlayerInfoModel.HasIcon}" ZIndex="0"/>
+
+                            <VerticalStackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 TranslationY="1"
+                                                 Spacing="-5"
+                                                 IsVisible="{Binding PlayerInfoModel.HasIcon,Converter={StaticResource InverseBooleanConverter}}">
+                                <outline:OutlinedLabel
+                                    Text="RANK"
+                                    FontSize="15"
+                                    FontFamily="PoppinsSemiBold"
+                                    TextColor="#FFE368"
+                                    StrokeColor="#BA7412"
+                                    StrokeWidth="1.75"
+                                    WidthRequest="100"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    HasShadow="True"
+                                    ShadowOffsetX="0"
+                                    ShadowOffsetY="1"
+                                    ShadowBlur="1"
+                                    ShadowSpread="0"
+                                    ShadowColor="#40000000"/>
+
+                                <outline:OutlinedLabel
+                                    Text="{Binding PlayerInfoModel.PlayerLevel}"
+                                    FontSize="20"
+                                    FontFamily="Bungee"
+                                    TextColor="#C96D1E"
+                                    StrokeColor="#EDF8EA"
+                                    StrokeWidth="4"
+                                    HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding PlayerInfoModel.PlayerName}"
+                                   FontSize="Large"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1"
+                                   FontAttributes="Bold"
+                                   FontFamily="Poppins"
+                                   TextColor="White">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black" Offset="0,1" Radius="3"/>
+                                </Label.Shadow>
+                            </Label>
+                            <Label Text="{Binding PlayerInfoModel.Title}"
+                                   FontSize="Small"
+                                   TextColor="#FF86ED86"
+                                   FontFamily="Poppins">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black" Offset="0,1" Radius="3"/>
+                                </Label.Shadow>
+                            </Label>
+                        </VerticalStackLayout>
+
+                        <Border Grid.Column="2"
+                                VerticalOptions="Start"
+                                HorizontalOptions="End"
+                                StrokeShape="RoundRectangle 10"
+                                BackgroundColor="Orange"
+                                Padding="10,5"
+                                IsVisible="{Binding IsAccountLinked}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SignOutCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="0,2" Opacity="0.7" Radius="5"/>
+                            </Border.Shadow>
+                            <Label Text="Sign Out" TextColor="White" FontFamily="Poppins" FontAttributes="Bold" FontSize="Small"/>
+                        </Border>
+
+                        <Border Grid.Column="2"
+                                VerticalOptions="Start"
+                                HorizontalOptions="End"
+                                StrokeShape="RoundRectangle 10"
+                                Background="{StaticResource RedButtonGradient}"
+                                Padding="10,5"
+                                IsVisible="{Binding IsAccountLinked,Converter={StaticResource InverseBooleanConverter}}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LinkAccountCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Border.Behaviors>
+                                <toolkit:TouchBehavior
+                                    DefaultAnimationDuration="250"
+                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                    PressedOpacity="0.6"
+                                    PressedScale="0.7"/>
+                            </Border.Behaviors>
+                            <Label Text="Link your account!" TextColor="White" FontFamily="Poppins" FontAttributes="Bold" FontSize="Small"/>
+                        </Border>
+
+                        <Label Grid.Row="1"
+                               Text="GUILD"
+                               TextColor="#f8f5be"
+                               FontFamily="Poppins"
+                               FontSize="Small"/>
+
+                        <Border Grid.Row="2"
+                                Grid.ColumnSpan="3"
+                                StrokeShape="RoundRectangle 4"
+                                BackgroundColor="WhiteSmoke"
+                                Padding="5,10,5,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToGuildsCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Grid>
+                                <Border Grid.Row="2"
+                                        Grid.ColumnSpan="3"
+                                        StrokeShape="RoundRectangle 4"
+                                        Background="{StaticResource GoldGradient}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Padding="25,7"
+                                        IsVisible="{Binding HasGuild,Converter={StaticResource InverseBooleanConverter}}">
+                                    <Label Text="Create or Join a new Guild!"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"
+                                           TextColor="Black"
+                                           FontFamily="Poppins"
+                                           FontSize="Small"
+                                           Shadow="{StaticResource LabelShadowWhite}">
+                                    </Label>
+                                </Border>
+
+                                <Grid ColumnDefinitions="30,*,40"
+                                      ColumnSpacing="10"
+                                      IsVisible="{Binding HasGuild}">
+                                    <Image Grid.Column="0" Source="icon_badge.webp" Aspect="AspectFit"/>
+                                    <Grid Grid.Column="1" RowDefinitions="*,*">
+                                        <Label Grid.Row="0" Text="{Binding Guild.Name}" FontFamily="Poppins" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Grid.Row="1" Text="{Binding Guild.Level}" FontFamily="Poppins" FontSize="Micro" FontAttributes="Bold" TextColor="IndianRed" HorizontalOptions="Start"/>
+                                        <Label Grid.Row="1" Text="{Binding Guild.MemberCount,StringFormat='{0} members'}" FontFamily="Poppins" FontSize="Micro" FontAttributes="Bold" TextColor="LimeGreen" HorizontalOptions="End"/>
+                                    </Grid>
+                                    <Border Grid.Column="2" VerticalOptions="Center" BackgroundColor="LimeGreen" StrokeShape="RoundRectangle 14">
+                                        <Label Text="..." HorizontalOptions="Center" TranslationY="-5" TextColor="White" FontFamily="Poppins"/>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1"
+                      Grid.ColumnSpan="3"
+                      ColumnDefinitions="*,*,*"
+                      ColumnSpacing="10"
+                      Padding="10,5,10,0">
+
+                    <Grid Grid.Column="0">
+                        <Image Source="icon_gold.png" HeightRequest="35" TranslationY="-2" HorizontalOptions="Start" ZIndex="2"/>
+                        <Border StrokeShape="RoundRectangle 4" Padding="{ OnPlatform Android= '10,2,2,2', iOS='15,2,2,2'}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="Gold" Offset="0.8"/>
+                                    <GradientStop Color="DarkGoldenrod" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid ColumnDefinitions="25,*">
+                                <Border StrokeShape="RoundRectangle 4" Grid.Column="1" BackgroundColor="White">
+                                    <Label Text="{Binding PlayerInfoModel.Gold}" HorizontalTextAlignment="Center" Margin="20,0,0,0" VerticalOptions="Center" FontAttributes="Bold" FontFamily="Poppins" TextColor="#6A3D00" FontSize="Micro">
+                                        <Label.Shadow>
+                                            <Shadow Brush="White" Offset="1,1" Radius="5"/>
+                                        </Label.Shadow>
+                                    </Label>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Image Source="icon_crystal.png" HeightRequest="35" TranslationY="-2" HorizontalOptions="Start" ZIndex="2"/>
+                        <Border StrokeShape="RoundRectangle 4" Padding="15,2,2,2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="MediumPurple" Offset="0.8"/>
+                                    <GradientStop Color="DeepPink" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid ColumnDefinitions="25,*">
+                                <Border StrokeShape="RoundRectangle 4" Grid.Column="1" BackgroundColor="White">
+                                    <Label Text="{Binding PlayerInfoModel.Gems}" HorizontalTextAlignment="Center" VerticalOptions="Center" FontAttributes="Bold" FontFamily="Poppins" TextColor="#6A3D00" FontSize="Micro">
+                                        <Label.Shadow>
+                                            <Shadow Brush="White" Offset="1,1" Radius="5"/>
+                                        </Label.Shadow>
+                                    </Label>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Image Source="icon_ticket.webp" HeightRequest="35" TranslationY="-2" HorizontalOptions="Start" ZIndex="2"/>
+                        <Border StrokeShape="RoundRectangle 4" Padding="15,2,2,2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="OrangeRed" Offset="0.8"/>
+                                    <GradientStop Color="#FFF37A4E" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid ColumnDefinitions="25,*">
+                                <Border StrokeShape="RoundRectangle 4" Grid.Column="1" BackgroundColor="White">
+                                    <Label Text="0" HorizontalTextAlignment="Center" VerticalOptions="Center" FontAttributes="Bold" FontFamily="Poppins" TextColor="#6A3D00" FontSize="Micro">
+                                        <Label.Shadow>
+                                            <Shadow Brush="White" Offset="1,1" Radius="5"/>
+                                        </Label.Shadow>
+                                    </Label>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="*,0.6*"
+                      ColumnSpacing="25"
+                      Padding="5">
+
+                    <Border Grid.Column="0"
+                            BackgroundColor="#FFF9E6"
+                            StrokeShape="RoundRectangle 12"
+                            StrokeThickness="5"
+                            Shadow="{StaticResource FloatingShadow}"
+                            Padding="12">
+                        <Border.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#8CE46B" Offset="0.0"/>
+                                <GradientStop Color="#4DB647" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Grid RowDefinitions="Auto, *, *" RowSpacing="15">
+                            <Grid Grid.Row="0" ColumnDefinitions="30,*,30" ColumnSpacing="10">
+                                <Image Grid.Column="0" Source="icon_energy.webp"/>
+                                <Label Text="Player Status" TextColor="#225522" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Poppins" FontAttributes="Bold" FontSize="Small" Grid.Column="1" Shadow="{StaticResource LabelShadowWhite}"/>
+                                <Image Grid.Column="2" Source="icon_battlepoint.webp"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1" RowDefinitions="*,*,*">
+                                <Grid Grid.Row="0" ColumnDefinitions="*,*">
+                                    <Label Text="Energy Points" Grid.Column="0" TextColor="#444" FontFamily="Poppins" FontAttributes="Bold" HorizontalOptions="Start" Shadow="{StaticResource LabelShadowWhite}"/>
+                                    <Label Text="{Binding PlayerInfoModel.EpDisplay}" Grid.Column="1" TextColor="#444" HorizontalOptions="End" FontFamily="Poppins" FontAttributes="Bold" Shadow="{StaticResource LabelShadowWhite}"/>
+                                </Grid>
+                                <maui:ProgressBar Grid.Row="1" Progress="{Binding PlayerInfoModel.EpProgress}" GradientColor="#FFD54F" BaseColor="#EDEDED" UseGradient="True" ProgressColor="#FF6F00" RoundCaps="True" HeightRequest="10"/>
+                                <Label Grid.Row="2" TextColor="#777777" FontSize="Small" FontFamily="Poppins" FontAttributes="Bold" HorizontalOptions="Start" Shadow="{StaticResource LabelShadowWhite}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding PlayerInfoModel.EpCooldown}" Value="">
+                                            <Setter Property="Text" Value="Full!"/>
+                                            <Setter Property="HorizontalOptions" Value="End"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                    <Label.Text>
+                                        <Binding Path="PlayerInfoModel.EpCooldown" StringFormat="Next point in {0}"/>
+                                    </Label.Text>
+                                </Label>
+                            </Grid>
+
+                            <Grid Grid.Row="2" RowDefinitions="*,*,*">
+                                <FlexLayout Grid.Row="0" JustifyContent="SpaceBetween">
+                                    <Label Text="Battle Points" TextColor="#444" FontFamily="Poppins" FontAttributes="Bold" Shadow="{StaticResource LabelShadowWhite}"/>
+                                    <Label Text="{Binding PlayerInfoModel.SpDisplay}" TextColor="#444" FontFamily="Poppins" FontAttributes="Bold" Shadow="{StaticResource LabelShadowWhite}"/>
+                                </FlexLayout>
+                                <maui:ProgressBar Grid.Row="1" Progress="{Binding PlayerInfoModel.SpProgress}" GradientColor="#64B5F6" BaseColor="#EDEDED" UseGradient="True" ProgressColor="#1E88E5" RoundCaps="True" HeightRequest="10"/>
+                                <Label Grid.Row="2" TextColor="#777777" FontSize="Small" FontFamily="Poppins" FontAttributes="Bold" HorizontalOptions="Start" Shadow="{StaticResource LabelShadowWhite}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding PlayerInfoModel.SpCooldown}" Value="">
+                                            <Setter Property="Text" Value="Full!"/>
+                                            <Setter Property="HorizontalOptions" Value="End"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                    <Label.Text>
+                                        <Binding Path="PlayerInfoModel.SpCooldown" StringFormat="Next point in {0}"/>
+                                    </Label.Text>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Column="1" RowSpacing="2" RowDefinitions="*,*,*">
+                        <Image Grid.Row="0"
+                               Source="icon_pouch.png"
+                               Scale="1.1"
+                               Aspect="AspectFit"
+                               HeightRequest="65"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                       PressedOpacity="0.6"
+                                                       PressedScale="0.8"
+                                                       TouchGestureCompleted="OnPouchTapped"/>
+                            </Image.Behaviors>
+                        </Image>
+
+                        <Image Grid.Row="1"
+                               Source="icon_spirits.png"
+                               Scale="1.1"
+                               Aspect="AspectFit"
+                               HeightRequest="65"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                       PressedOpacity="0.6"
+                                                       PressedScale="0.8"
+                                                       TouchGestureCompleted="OnSpiritsTapped"/>
+                            </Image.Behaviors>
+                        </Image>
+
+                        <Image Grid.Row="2"
+                               Source="icon_shops.png"
+                               Scale="1.1"
+                               Aspect="AspectFit"
+                               HeightRequest="65"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                       PressedOpacity="0.6"
+                                                       PressedScale="0.8"
+                                                       TouchGestureCompleted="OnShopTapped"/>
+                            </Image.Behaviors>
+                        </Image>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</the49:BottomSheet>

@@ -1,0 +1,4030 @@
+{
+  "basalonTown": [
+    {
+      "Id": "story_basaltown_task001",
+      "Name": "Visit the Summoner Guild",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 2,
+        "Gold": 10,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task002",
+      "Name": "Join the Summoner Guild",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "story_basaltown_task001",
+      "TotalSteps": 3,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 2,
+        "Gold": 12,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task003",
+      "Name": "Training",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_basaltown_task002",
+      "TotalSteps": 5,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 3,
+        "Gold": 12,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [
+        {
+          "Image": "summoner.png",
+          "Text": "Congratulations on leveling up! You can now train your guards to be more powerful! If you navigate from the hub on the home screen you will see the spirit tab. From there you can train your spirits to be what ever you like! Lets see how you train your spirits to their max potential!",
+          "View": true
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task004",
+      "Name": "Assisting in the laboratory",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Collect",
+      "Order": 4,
+      "OrderRequirement": "story_basaltown_task003",
+      "TotalSteps": 5,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 5,
+        "Gold": 15,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [
+        {
+          "Image": "",
+          "Text": "A scientist in the lab gave you this item? Great! You can use it to teach your guards new moves! Some guards require different items depending on their typing so be sure to get the right one from the shop. ",
+          "View": true
+        },
+        {
+          "Image": "",
+          "Text": "Make sure you guard has enough INT to use the higher skilled moves. The higher their INT the higher chance they use the best move for the situation. ",
+          "View": true
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task005",
+      "Name": "Patrol Task",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 5,
+      "OrderRequirement": "story_basaltown_task004",
+      "TotalSteps": 4,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 5,
+        "Gold": 13,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task006",
+      "Name": "Helping Villagers",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "story_basaltown_task005",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 6,
+        "Gold": 30,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task007",
+      "Name": "Listening to residents problems",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 7,
+      "OrderRequirement": "story_basaltown_task005",
+      "TotalSteps": 5,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 10,
+        "Gold": 10,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [
+        {
+          "Image": "summoner.png",
+          "Text": "Look a wild stray! Make sure to train your spirit before you fighting it.",
+          "View": true
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task008",
+      "Name": "Catching a rat ",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "story_basaltown_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 10,
+        "Gold": 50,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "5",
+          "Level": 1,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "HEADBUTT"
+          ]
+        }
+      ],
+      "Paragraphs": [
+        {
+          "Image": "",
+          "Text": "Amazing! Collect more fragments and summon and control spirits you come across. ",
+          "View": true
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task009",
+      "Name": "exploring the mystic house",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 9,
+      "OrderRequirement": "story_basaltown_task007",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 10,
+        "Gold": 10,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task010",
+      "Name": "Ghost!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 10,
+      "OrderRequirement": "story_basaltown_task009",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 25,
+        "Gold": 50,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "74",
+          "Level": 5,
+          "HP": 100,
+          "DropRate": 1,
+          "MoveIDs": [
+            "ILLUSION"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task011",
+      "Name": "Pet the dog?",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 11,
+      "OrderRequirement": "story_basaltown_task010",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 30,
+        "Gold": 55,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "1",
+          "Level": 10,
+          "HP": 100,
+          "DropRate": 0.9,
+          "MoveIDs": [
+            "FURY JAB"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task012",
+      "Name": "Rumor of the Dragons Lair ",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 1,
+      "OrderRequirement": "story_darkshire_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task013",
+      "Name": "Report of dark matter collection",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 2,
+      "OrderRequirement": "story_darkshire_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task014",
+      "Name": "Reward for completed task",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Receive",
+      "Order": 2,
+      "OrderRequirement": "story_spiritsands_task014",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 3000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_basaltown_task015",
+      "Name": "Report of dark matter (2)",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 2,
+      "OrderRequirement": "story_basaltown_task014",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "darkForest": [
+    {
+      "Id": "story_darkforest_task001",
+      "Name": "Exploring the entrance",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 15,
+        "Gold": 30,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task002",
+      "Name": "Catching a spirit with magical skills",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 2,
+      "OrderRequirement": "story_darkforest_task001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 66,
+        "Gold": 200,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "10",
+          "Level": 1,
+          "HP": 100,
+          "DropRate": 1,
+          "MoveIDs": [
+            "STRIKE DOWN",
+            "TIDE SMASH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task003",
+      "Name": "Exploring the forest",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_darkforest_task002",
+      "TotalSteps": 5,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 22,
+        "Gold": 34,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [
+        {
+          "Image": "",
+          "Text": "",
+          "View": false
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task004",
+      "Name": "Trifish found!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 4,
+      "OrderRequirement": "story_darkforest_task003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 69,
+        "Gold": 250,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "10",
+          "Level": 5,
+          "HP": 124,
+          "DropRate": 1,
+          "MoveIDs": [
+            "TIDE SMASH",
+            "STRIKE DOWN"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task005",
+      "Name": "Light up the path",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 5,
+      "OrderRequirement": "story_darkforest_task004",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 21,
+        "Gold": 45,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [
+        {
+          "Image": "",
+          "Text": "A scientist in the lab gave you this item? Great! You can use it to teach your guards new moves! Some guards require different items depending on their typing so be sure to get the right one from the shop. Make sure you guard has enough INT to use the higher skilled moves. The higher their INT the higher chance they use the best move for the situation. ",
+          "View": true
+        }
+      ],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task006",
+      "Name": "Exploring the deep forest",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "story_darkforest_task005",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 22,
+        "Gold": 46,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task007",
+      "Name": "Check the mystic light",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 7,
+      "OrderRequirement": "story_darkforest_task006",
+      "TotalSteps": 10,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 20,
+        "Gold": 48,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task008",
+      "Name": "[Rare] BULBHEAD found!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "story_darkforest_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 70,
+        "Gold": 280,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "23",
+          "Level": 10,
+          "HP": 100,
+          "DropRate": 1,
+          "MoveIDs": [
+            "LUMIN BEAM"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task009",
+      "Name": "[Rare] A stray Koki appears",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 9,
+      "OrderRequirement": "story_darkforest_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 70,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "100",
+          "Level": 15,
+          "HP": 150,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "JOLT SLAM"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task010",
+      "Name": "SNADLE approaches!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 10,
+      "OrderRequirement": "story_darkforest_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 70,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "91",
+          "Level": 12,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "PITTER PATTER",
+            "DUST SCREEN"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task011",
+      "Name": "Check the bushes...",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 11,
+      "OrderRequirement": "story_darkforest_task010",
+      "TotalSteps": 3,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 25,
+        "Gold": 15,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task012",
+      "Name": "BIGMOUTH chomps!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 12,
+      "OrderRequirement": "story_darkforest_task011",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 70,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "93",
+          "Level": 12,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "FOREST BLAST",
+            "CORRODE BLAST"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task013",
+      "Name": "Duel test",
+      "Description": "",
+      "Battle": true,
+      "Energy": 2,
+      "Action": "Duel",
+      "Order": 13,
+      "OrderRequirement": "",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 40,
+      "Rewards": {
+        "Experience": 2000,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "666",
+          "Level": 40,
+          "HP": 100,
+          "DropRate": 0,
+          "MoveIDs": [
+            "THUNDER PIERCER"
+          ]
+        },
+        {
+          "BaseSpiritId": "114",
+          "Level": 40,
+          "HP": 300,
+          "DropRate": 0,
+          "MoveIDs": [
+            "MEGA KICK",
+            "ZAP BOLT"
+          ]
+        },
+        {
+          "BaseSpiritId": "130",
+          "Level": 40,
+          "HP": 305,
+          "DropRate": 0,
+          "MoveIDs": [
+            "BODY SLAM",
+            "IRON SMASH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": "opponent_queenmorwyn.png",
+      "OpponentBackgroundImage": "opponentbackground_queenmorwyn.png",
+      "OpponentName": "Queen Morwyn",
+      "OpponentGuild": "Obsidrak"
+    },
+    {
+      "Id": "story_darkforest_task014",
+      "Name": "Dark mater collection",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Stop",
+      "Order": 2,
+      "OrderRequirement": "story_basaltown_task013",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 280,
+        "Gold": 280,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkforest_task015",
+      "Name": "Expelling guard spirit",
+      "Description": "",
+      "Battle": true,
+      "Energy": 2,
+      "Action": "Fight",
+      "Order": 0,
+      "OrderRequirement": "story_darkforest_task014",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "27",
+          "Level": 20,
+          "HP": 100,
+          "DropRate": 0,
+          "MoveIDs": [
+            "NIGHT PULSE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "spiritSands": [
+    {
+      "Id": "story_spiritsands_task001",
+      "Name": "Prepare water",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 35,
+        "Gold": 12,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task002",
+      "Name": "Exploring the desert",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "story_spiritsands_task001",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 35,
+        "Gold": 15,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task003",
+      "Name": "Helping a lost traveler",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_spiritsands_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 37,
+        "Gold": 16,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task004",
+      "Name": "Big Worm! ",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 4,
+      "OrderRequirement": "story_spiritsands_task002",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 250,
+        "Gold": 400,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "7",
+          "Level": 12,
+          "HP": 220,
+          "DropRate": 1,
+          "MoveIDs": [
+            "MUD SLAM"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task005",
+      "Name": "Search for treasure",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 5,
+      "OrderRequirement": "story_spiritsands_task003",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 35,
+        "Gold": 20,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task006",
+      "Name": "Entering the Pyramid",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "story_spiritsands_task005",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 45,
+        "Gold": 21,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task007",
+      "Name": "Exploring the pyramid",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 7,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 55,
+        "Gold": 22,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task008",
+      "Name": "Investigating the heat source",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 8,
+      "OrderRequirement": "",
+      "TotalSteps": 3,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 68,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task009",
+      "Name": "TRIFISH in the desert",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 9,
+      "OrderRequirement": "story_spiritsands_task008",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 300,
+        "Gold": 300,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "11",
+          "Level": 20,
+          "HP": 220,
+          "DropRate": 0.9,
+          "MoveIDs": [
+            "STRIKE DOWN",
+            "EMBER STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task010",
+      "Name": "Dark matter collection",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Stop",
+      "Order": 10,
+      "OrderRequirement": "story_basaltown_task013",
+      "TotalSteps": 10,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task011",
+      "Name": "expelling guard spirit",
+      "Description": "",
+      "Battle": true,
+      "Energy": 2,
+      "Action": "Fight",
+      "Order": 11,
+      "OrderRequirement": "story_spiritsands_task010",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "27",
+          "Level": 20,
+          "HP": 100,
+          "DropRate": 0,
+          "MoveIDs": [
+            "NIGHT PULSE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task012",
+      "Name": "The dark summoner",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Talk",
+      "Order": 12,
+      "OrderRequirement": "story_spiritsands_task011",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_spiritsands_task013",
+      "Name": "Defeat the Dark Summoner",
+      "Description": "",
+      "Battle": true,
+      "Energy": 3,
+      "Action": "Duel",
+      "Order": 13,
+      "OrderRequirement": "story_spiritsands_task011",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 5000,
+        "Gold": 10000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "100",
+          "Level": 20,
+          "HP": 0,
+          "DropRate": 0,
+          "MoveIDs": [
+            "MEGA KICK",
+            "ZAP BOLT"
+          ]
+        },
+        {
+          "BaseSpiritId": "29",
+          "Level": 20,
+          "HP": 0,
+          "DropRate": 0,
+          "MoveIDs": [
+            "GROWTH STRIKE",
+            "BACK HAND",
+            "GRASS CANNON"
+          ]
+        },
+        {
+          "BaseSpiritId": "27",
+          "Level": 20,
+          "HP": 0,
+          "DropRate": 0,
+          "MoveIDs": [
+            "NIGHT PULSE",
+            "SHADOW SMASH",
+            "PHANTOM HIT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": "darksummoner_top.png",
+      "OpponentBackgroundImage": "opponentbackground_darksummoner.png",
+      "OpponentName": "Dark Summoner",
+      "OpponentGuild": "Obsidrak"
+    },
+    {
+      "Id": "story_spiritsands_task014",
+      "Name": "The Dark Summoner retreats",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Talk",
+      "Order": 14,
+      "OrderRequirement": "story_spiritsands_task013",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 1000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "darkShire": [
+    {
+      "Id": "story_darkshire_task001",
+      "Name": "Break in ",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 100,
+        "Gold": 205,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task002",
+      "Name": "Encounter!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 2,
+      "OrderRequirement": "story_darkshire_task001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 300,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "31",
+          "Level": 25,
+          "HP": 250,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "ILLUSION"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task003",
+      "Name": "Capture the gate",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_darkshire_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 130,
+        "Gold": 200,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task004",
+      "Name": "Securing the gate",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 4,
+      "OrderRequirement": "story_darkshire_task003",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 131,
+        "Gold": 190,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task005",
+      "Name": "Expelling dark mages",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "story_darkshire_task004",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "31",
+          "Level": 28,
+          "HP": 300,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "ILLUSION"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task006",
+      "Name": "Capture the village",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 150,
+        "Gold": 160,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_darkshire_task007",
+      "Name": "Defeat the mage leader",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 7,
+      "OrderRequirement": "story_darkshire_task006",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 550,
+        "Gold": 550,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "31",
+          "Level": 30,
+          "HP": 325,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "ILLUSION"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "kingsHeartForest": [
+    {
+      "Id": "story_kingsheartsforest_task001",
+      "Name": "Camp Preparations",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 250,
+        "Gold": 21,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task002",
+      "Name": "Collect King forest wood",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "story_kingsheartsforest_task001",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 260,
+        "Gold": 20,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task003",
+      "Name": "Crafting artifact",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_kingsheartsforest_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 330,
+        "Gold": 16,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task004",
+      "Name": "Activate artifact",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 4,
+      "OrderRequirement": "story_kingsheartsforest_task003",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 300,
+        "Gold": 18,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task005",
+      "Name": "Plant attack",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "story_kingsheartsforest_task004",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 300,
+        "Gold": 78,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "35",
+          "Level": 10,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "GROWTH STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task006",
+      "Name": "Exploring the hidden path",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "story_kingsheartsforest_task005",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 350,
+        "Gold": 15,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task007",
+      "Name": "Group!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "FIght",
+      "Order": 7,
+      "OrderRequirement": "story_kingsheartsforest_task006",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 350,
+        "Gold": 80,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "36",
+          "Level": 15,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "GROWTH STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task008",
+      "Name": "Breakthrough",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "story_kingsheartsforest_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 310,
+        "Gold": 110,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "36",
+          "Level": 25,
+          "HP": 100,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "GROWTH STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task009",
+      "Name": "Entering the high ground",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 9,
+      "OrderRequirement": "story_kingsheartsforest_task008",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 300,
+        "Gold": 17,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task010",
+      "Name": "Minions",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 10,
+      "OrderRequirement": "story_kingsheartsforest_task009",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 320,
+        "Gold": 25,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "103",
+          "Level": 25,
+          "HP": 100,
+          "DropRate": 0.75,
+          "MoveIDs": [
+            "FURY JAB",
+            "HEAD BUTT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_kingsheartsforest_task011",
+      "Name": "Leader",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 11,
+      "OrderRequirement": "story_kingsheartsforest_task010",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 40,
+      "Rewards": {
+        "Experience": 350,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "114",
+          "Level": 30,
+          "HP": 130,
+          "DropRate": 0.7,
+          "MoveIDs": [
+            "HEADBUTT",
+            "JOLT SLAM",
+            "MEGA KICK",
+            "ZAP BOLT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "theGreatLand": [
+    {
+      "Id": "story_greatland_task001",
+      "Name": "Traveling to the Great Land",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 400,
+        "Gold": 66,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task002",
+      "Name": "Helping a Traveler ",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "story_greatland_task001",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 400,
+        "Gold": 67,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task003",
+      "Name": "Escort the traveler",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "story_greatland_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 410,
+        "Gold": 68,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task004",
+      "Name": "Enter the hidden lair",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 4,
+      "OrderRequirement": "story_greatland_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 420,
+        "Gold": 69,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task005",
+      "Name": "Protect the traveler",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "story_greatland_task003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 68,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "20",
+          "Level": 28,
+          "HP": 200,
+          "DropRate": 0.75,
+          "MoveIDs": [
+            "EMBER STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task006",
+      "Name": "Accepting reward from traveler",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Accept",
+      "Order": 6,
+      "OrderRequirement": "story_greatland_task005",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 400,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task007",
+      "Name": "Clearing the path",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 0,
+      "OrderRequirement": "",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "20",
+          "Level": 30,
+          "HP": 331,
+          "DropRate": 0.75,
+          "MoveIDs": [
+            "EMBER STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task008",
+      "Name": "Opening the hidden treasure",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 8,
+      "OrderRequirement": "story_greatland_task007",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 440,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "story_greatland_task009",
+      "Name": "Big Bird?",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "story_greatland_task008",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 540,
+        "Gold": 220,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "260",
+          "Level": 30,
+          "HP": 0,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "STRIKE DOWN ",
+            "BODY SLAM",
+            "GALE FURY"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "skyTower": [
+    {
+      "Id": "skytower_task001",
+      "Name": "Mineral Collection",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Collect",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 680,
+        "Gold": 120,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task002",
+      "Name": "Crafting key for entrance",
+      "Description": "",
+      "Battle": false,
+      "Energy": 2,
+      "Action": "Craft",
+      "Order": 2,
+      "OrderRequirement": "skytower_task001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 650,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task003",
+      "Name": "Entering the Sky Tower",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Enter",
+      "Order": 3,
+      "OrderRequirement": "skytower_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 660,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task004",
+      "Name": "Battle door guard",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 4,
+      "OrderRequirement": "skytower_task003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 640,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "45",
+          "Level": 40,
+          "HP": 0,
+          "DropRate": 0,
+          "MoveIDs": [
+            "BACK HAND",
+            "TOXIC CLAW"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task005",
+      "Name": "Sky Tower F/1",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 5,
+      "OrderRequirement": "skytower_task004",
+      "TotalSteps": 10,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 660,
+        "Gold": 140,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task006",
+      "Name": "Sky Tower F/2",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "skytower_task005",
+      "TotalSteps": 10,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 680,
+        "Gold": 160,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task007",
+      "Name": "Guard",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 7,
+      "OrderRequirement": "skytower_task006",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 700,
+        "Gold": 230,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "45",
+          "Level": 40,
+          "HP": 0,
+          "DropRate": 0,
+          "MoveIDs": [
+            "BACK HAND",
+            "TOXIC CLAW"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task008",
+      "Name": "Sky Tower F/3",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 8,
+      "OrderRequirement": "skytower_task007",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 630,
+        "Gold": 260,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task009",
+      "Name": "Sky Tower F/4",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 9,
+      "OrderRequirement": "skytower_task008",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 650,
+        "Gold": 280,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task010",
+      "Name": "Sky Tower F/5",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "",
+      "Order": 10,
+      "OrderRequirement": "skytower_task009",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 650,
+        "Gold": 280,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "skytower_task011",
+      "Name": "The Four Chairs (1/4) (WIP)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 11,
+      "OrderRequirement": "skytower_task010",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "theDragonsLair": [
+    {
+      "Id": "DragonsLair_task001",
+      "Name": "Zone of fire",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 800,
+        "Gold": 80,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task002",
+      "Name": "Fire brood approaches",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 2,
+      "OrderRequirement": "DragonsLair_task001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "243",
+          "Level": 40,
+          "HP": 100,
+          "DropRate": 0.4,
+          "MoveIDs": [
+            "DRAGON CLAW",
+            "BLAZING CLAW",
+            "MAGMA SLAM"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task003",
+      "Name": "Zone of water",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "DragonsLair_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 860,
+        "Gold": 120,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task004",
+      "Name": "Water brood approaches",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 4,
+      "OrderRequirement": "DragonsLair_task003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "246",
+          "Level": 40,
+          "HP": 100,
+          "DropRate": 0.4,
+          "MoveIDs": [
+            "DRAGON CLAW",
+            "WATER SPIN",
+            "LIGHTING CRUSH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task005",
+      "Name": "Zone of wind",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 5,
+      "OrderRequirement": "DragonsLair_task004",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 880,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task006",
+      "Name": "Wind brood approaches",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 6,
+      "OrderRequirement": "DragonsLair_task005",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "249",
+          "Level": 40,
+          "HP": 100,
+          "DropRate": 0.4,
+          "MoveIDs": [
+            "DRAGON CLAW",
+            "TORNADO CLAW",
+            "HOLY STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task007",
+      "Name": "Zone of ground",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 7,
+      "OrderRequirement": "DragonsLair_task006",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 900,
+        "Gold": 130,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "DragonsLair_task008",
+      "Name": "Ground brood approaches ",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "DragonsLair_task007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "24",
+          "Level": 40,
+          "HP": 0,
+          "DropRate": 0.4,
+          "MoveIDs": [
+            "DRAGON CLAW",
+            "SANDSTORM EDGE",
+            "EARTH SPLIT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "wallOfGaia": [
+    {
+      "Id": "wallofgaia_task_001",
+      "Name": "Entering the valley of Gaia",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 700,
+        "Gold": 250,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_002",
+      "Name": "Exploring the dino base",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 700,
+        "Gold": 260,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_003",
+      "Name": "Defend yourself!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 3,
+      "OrderRequirement": "wallofgaia_task_002",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 900,
+        "Gold": 220,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "129",
+          "Level": 35,
+          "HP": 0,
+          "DropRate": 0.7,
+          "MoveIDs": [
+            "BACK HAND",
+            "BODY SLAM",
+            "FURY JAB"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_004",
+      "Name": "Treasure!",
+      "Description": "",
+      "Battle": false,
+      "Energy": 2,
+      "Action": "Collect",
+      "Order": 4,
+      "OrderRequirement": "wallofgaia_task_003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 780,
+        "Gold": 1000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_005",
+      "Name": "Revenge  of the dark mage",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "wallofgaia_task_003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 770,
+        "Gold": 500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "33",
+          "Level": 40,
+          "HP": 0,
+          "DropRate": 0.7,
+          "MoveIDs": [
+            "ILLUSION",
+            "VOID BLAST",
+            "LIGHTNING CRUSH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_006",
+      "Name": "Up on the mountain",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 6,
+      "OrderRequirement": "wallofgaia_task_003",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 780,
+        "Gold": 203,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_007",
+      "Name": "CHIKI",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 7,
+      "OrderRequirement": "wallofgaia_task_006",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "26",
+          "Level": 40,
+          "HP": 0,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "STRIKE DOWN",
+            "BODY SLAM",
+            "GALE FURY",
+            "BREEZE JAB"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_008",
+      "Name": "Into the dark village",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "wallofgaia_task_005",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "wallofgaia_task_009",
+      "Name": "Keeper of the village",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 9,
+      "OrderRequirement": "wallofgaia_task_008",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "38",
+          "Level": 45,
+          "HP": 0,
+          "DropRate": 0.8,
+          "MoveIDs": [
+            "NEURO TOXIN"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "drXlaboratory": [
+    {
+      "Id": "drxlab_task001",
+      "Name": "Breaking in the entrance",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 980,
+        "Gold": 610,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task002",
+      "Name": "Entrance Guard",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 2,
+      "OrderRequirement": "drxlab_task001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "27",
+          "Level": 42,
+          "HP": 400,
+          "DropRate": 0.65,
+          "MoveIDs": [
+            "NIGHT PULSE",
+            "SHADOW SMASH",
+            "PHANTOM HIT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task003",
+      "Name": "Exploring the ground floor",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "drxlab_task002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task004",
+      "Name": "Door Guard (1/2)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 4,
+      "OrderRequirement": "drxlab_task003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "220",
+          "Level": 45,
+          "HP": 0,
+          "DropRate": 0.65,
+          "MoveIDs": [
+            "EMBER STRIKE",
+            "INFERNAL BASH",
+            "MAGAMA SLAM"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task005",
+      "Name": "Door Guard (2/2)",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 5,
+      "OrderRequirement": "drxlab_task004",
+      "TotalSteps": 0,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task006",
+      "Name": "Exploring the upper floor",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 6,
+      "OrderRequirement": "drxlab_task005",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task007",
+      "Name": "Transformed TRIFISH",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 7,
+      "OrderRequirement": "drxlab_task006",
+      "TotalSteps": 0,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task008",
+      "Name": "More CrabFish",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 8,
+      "OrderRequirement": "drxlab_task007",
+      "TotalSteps": 0,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task009",
+      "Name": "Disarm Trap",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 9,
+      "OrderRequirement": "drxlab_task008",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task010",
+      "Name": "Shades Attack (1)",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 10,
+      "OrderRequirement": "drxlab_task009",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task011",
+      "Name": "search for the secret tunnel",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 11,
+      "OrderRequirement": "drxlab_task010",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task012",
+      "Name": "Enter the secret tunnel",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 12,
+      "OrderRequirement": "drxlab_task011",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "drxlab_task013",
+      "Name": "Robot Guard",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 13,
+      "OrderRequirement": "drxlab_task012",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "theVertex": [],
+  "theBeastPlains": [
+    {
+      "Id": "story_beastplains_task001",
+      "Name": "",
+      "Description": "",
+      "Battle": false,
+      "Energy": 0,
+      "Action": "",
+      "Order": 0,
+      "OrderRequirement": "",
+      "TotalSteps": 0,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "ChallangeFights": [
+    {
+      "Id": "beta_battles_001",
+      "Name": "Champions Challenge! ",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 13,
+        "Gold": 28,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_002",
+      "Name": "Apprentice Challenge (1/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 2,
+      "OrderRequirement": "beta_battles_001",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 16,
+        "Gold": 11,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "29",
+          "Level": 15,
+          "HP": 240,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "BACKHAND",
+            "THORN JAB"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_003",
+      "Name": "Apprentice Challenge (2/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 3,
+      "OrderRequirement": "beta_battles_002",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 13,
+        "Gold": 21,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "66",
+          "Level": 15,
+          "HP": 240,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "WATER SPIN"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_004",
+      "Name": "Apprentice Challenge (3/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 4,
+      "OrderRequirement": "beta_battles_003",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 17,
+        "Gold": 53,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "110",
+          "Level": 15,
+          "HP": 205,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "MUD SLAM",
+            "SPARK RAY",
+            "DUST SMASH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_005",
+      "Name": "Apprentice Challenge (4/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "beta_battles_004",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 22,
+        "Gold": 50,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "109",
+          "Level": 15,
+          "HP": 250,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "TIDE SMASH",
+            "TOXIC SURGE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_006",
+      "Name": "Apprentice Challenge (5/5) ",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 6,
+      "OrderRequirement": "beta_battles_005",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 350,
+        "Gold": 1000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "100",
+          "Level": 25,
+          "HP": 340,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "JOLT SLAM",
+            "STRIKE DOWN",
+            "ZAP BOLT"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_007",
+      "Name": "New Challenge Awaits",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 7,
+      "OrderRequirement": "beta_battles_006",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 25,
+        "Gold": 88,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_008",
+      "Name": "Disciples Challenge (1/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 8,
+      "OrderRequirement": "beta_battles_007",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 18,
+        "Gold": 90,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "86",
+          "Level": 30,
+          "HP": 500,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "SLICE",
+            "X SLICE",
+            "1000 SLICES"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_009",
+      "Name": "Disciples Challenge (2/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "FIght",
+      "Order": 9,
+      "OrderRequirement": "beta_battles_008",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 22,
+        "Gold": 100,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "89",
+          "Level": 30,
+          "HP": 500,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "SLICE",
+            "DARK RUSH",
+            "SHADOW SMASH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_010",
+      "Name": "Disciples Challenge (3/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 10,
+      "OrderRequirement": "beta_battles_009",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 30,
+        "Gold": 2250,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "93",
+          "Level": 30,
+          "HP": 500,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "FOREST BLAST",
+            "CORRODE BLASE",
+            "SUN EDGE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_011",
+      "Name": "Disciples Challenge (4/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 11,
+      "OrderRequirement": "beta_battles_010",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 22,
+        "Gold": 150,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "45",
+          "Level": 30,
+          "HP": 500,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "BACK HAND",
+            "TOXIC CLAW",
+            "MEGA KICK",
+            "POISON JAB"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_012",
+      "Name": "Disciples Challenge (5/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 12,
+      "OrderRequirement": "beta_battles_011",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 25,
+        "Gold": 3500,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "114",
+          "Level": 50,
+          "HP": 100,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "AQUA SMASH",
+            "WATER SPIN"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_013",
+      "Name": "A New Challenge Approaches",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Hear",
+      "Order": 13,
+      "OrderRequirement": "beta_battles_012",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 30,
+        "Gold": 250,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_014",
+      "Name": "Adepts Challenge (1/5)",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 14,
+      "OrderRequirement": "beta_battles_013",
+      "TotalSteps": 1,
+      "IsRepeatable": false,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 50,
+        "Gold": 4000,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "99",
+          "Level": 60,
+          "HP": 120,
+          "DropRate": 0.25,
+          "MoveIDs": [
+            "STRIKE DOWN",
+            "AQUA SMASH",
+            "BOULDER BASH",
+            "CRUSH CLAW",
+            "AQUA SLASH"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "beta_battles_015",
+      "Name": "Adepts Challenge (2/5)",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 15,
+      "OrderRequirement": "beta_battles_014",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 0,
+        "Gold": 0,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "DeepDungeon": [
+    {
+      "Id": "deepdungeon_001",
+      "Name": "Ruins Uncovered",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 1,
+      "OrderRequirement": "",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 400,
+        "Gold": 200,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "deepdungeon_002",
+      "Name": "Something feels eerie",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 2,
+      "OrderRequirement": "deepdungeon_001",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 450,
+        "Gold": 220,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "deepdungeon_003",
+      "Name": "Exploring the Outskirts",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 3,
+      "OrderRequirement": "deepdungeon_002",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 450,
+        "Gold": 220,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "deepdungeon_004",
+      "Name": "A dark entrance ",
+      "Description": "",
+      "Battle": false,
+      "Energy": 1,
+      "Action": "Explore",
+      "Order": 4,
+      "OrderRequirement": "deepdungeon_003",
+      "TotalSteps": 10,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 500,
+        "Gold": 150,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "deepdungeon_005",
+      "Name": "Attack Attack!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 5,
+      "OrderRequirement": "",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 600,
+        "Gold": 150,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "89",
+          "Level": 40,
+          "HP": 100,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "SLICE",
+            "DARK RUSH",
+            "SHADOW SMASH",
+            "X SLICE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    },
+    {
+      "Id": "deepdungeon_006",
+      "Name": "Battle off living armor!",
+      "Description": "",
+      "Battle": true,
+      "Energy": 1,
+      "Action": "Fight",
+      "Order": 6,
+      "OrderRequirement": "deepdungeon_005",
+      "TotalSteps": 1,
+      "IsRepeatable": true,
+      "LevelRequirement": 1,
+      "Rewards": {
+        "Experience": 550,
+        "Gold": 300,
+        "Reputation": 0,
+        "Items": []
+      },
+      "QuestOpponents": [
+        {
+          "BaseSpiritId": "22",
+          "Level": 30,
+          "HP": 100,
+          "DropRate": 0.5,
+          "MoveIDs": [
+            "BODY SLAM",
+            "EMBER STRIKE"
+          ]
+        }
+      ],
+      "Paragraphs": [],
+      "OpponentImage": null,
+      "OpponentBackgroundImage": null,
+      "OpponentName": null,
+      "OpponentGuild": null
+    }
+  ],
+  "theGauntlet": []
+}

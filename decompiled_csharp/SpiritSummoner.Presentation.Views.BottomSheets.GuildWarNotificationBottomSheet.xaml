@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.GuildWarNotificationBottomSheet"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheets"
+             x:DataType="vm:GuildWarNotificationViewModel"
+             HasBackdrop="True"
+             HasHandle="True"
+             CornerRadius="16"
+             BackgroundColor="{OnPlatform Android=Transparent, iOS=#FFF9E6}"
+             Padding="{OnPlatform iOS='5,15,5,0'}">
+
+    <the49:BottomSheet.Detents>
+        <the49:ContentDetent />
+    </the49:BottomSheet.Detents>
+
+    <Grid VerticalOptions="End"
+          BackgroundColor="#FFF9E6"
+          Padding="{OnPlatform Android='5,20,5,20', iOS='5,5,5,0'}">
+
+        <Border StrokeShape="RoundRectangle 12"
+                BackgroundColor="#FFF9E6"
+                Padding="16">
+
+            <VerticalStackLayout Spacing="16">
+
+                <!-- Header: icon + title -->
+                <Grid ColumnDefinitions="44,*"
+                      ColumnSpacing="12"
+                      VerticalOptions="Center">
+
+                    <Border Grid.Column="0"
+                            StrokeShape="RoundRectangle 10"
+                            BackgroundColor="#4A2060"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Label Text="⚔"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <Label Grid.Column="1"
+                           Text="{Binding Title}"
+                           FontFamily="Poppins"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           TextColor="#1A1A2E"
+                           VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- Body text -->
+                <Label Text="{Binding Body}"
+                       FontFamily="Poppins"
+                       FontSize="Small"
+                       TextColor="#444444"
+                       LineBreakMode="WordWrap"/>
+
+                <!-- Result badge (won/lost/draw) -->
+                <Border IsVisible="{Binding HasResult}"
+                        StrokeShape="RoundRectangle 8"
+                        HorizontalOptions="Start"
+                        Padding="12,6">
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding ResultText}"
+                                     Value="Victory">
+                            <Setter Property="BackgroundColor" Value="#2E7D32"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding ResultText}"
+                                     Value="Defeat">
+                            <Setter Property="BackgroundColor" Value="#C62828"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding ResultText}"
+                                     Value="Draw">
+                            <Setter Property="BackgroundColor" Value="#E65100"/>
+                        </DataTrigger>
+                    </Border.Triggers>
+                    <Label Text="{Binding ResultText}"
+                           TextColor="White"
+                           FontFamily="Poppins"
+                           FontAttributes="Bold"
+                           FontSize="Small"/>
+                </Border>
+
+                <!-- Rewards panel (only shown for GuildWarEnded) -->
+                <Border IsVisible="{Binding HasRewards}"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="#FFFBF0"
+                        Stroke="#F0C040"
+                        StrokeThickness="1.5"
+                        Padding="12">
+
+                    <Grid RowDefinitions="Auto,Auto"
+                          RowSpacing="10">
+
+                        <Label Grid.Row="0"
+                               Text="Your Rewards"
+                               FontFamily="Poppins"
+                               FontAttributes="Bold"
+                               FontSize="Small"
+                               TextColor="#7B4A00"/>
+
+                        <Grid Grid.Row="1"
+                              ColumnDefinitions="*,*"
+                              ColumnSpacing="12">
+
+                            <!-- Coins earned -->
+                            <Border Grid.Column="0"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#FFF3E0"
+                                    Padding="10,8">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="Guild Coins"
+                                           FontFamily="Poppins"
+                                           FontSize="Micro"
+                                           TextColor="#9E6600"/>
+                                    <Label Text="{Binding CoinsEarned}"
+                                           FontFamily="Poppins"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           TextColor="#7B4A00"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- Trophies gained -->
+                            <Border Grid.Column="1"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#FFF3E0"
+                                    Padding="10,8">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="Trophies"
+                                           FontFamily="Poppins"
+                                           FontSize="Micro"
+                                           TextColor="#9E6600"/>
+                                    <Label Text="{Binding TrophiesGained, StringFormat='+{0}'}"
+                                           FontFamily="Poppins"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           TextColor="#7B4A00"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                        </Grid>
+
+                        <!-- MVP title badge -->
+                        <Border Grid.Row="1"
+                                IsVisible="{Binding HasMvpTitle}"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="#4A2060"
+                                HorizontalOptions="Center"
+                                Margin="0,4,0,0"
+                                Padding="14,6">
+                            <Label Text="{Binding MvpTitle}"
+                                   TextColor="White"
+                                   FontFamily="Poppins"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"/>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <!-- Buttons -->
+                <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="12"
+                      Margin="0,4,0,0">
+
+                    <!-- Dismiss -->
+                    <Border Grid.Column="0"
+                            StrokeShape="RoundRectangle 10"
+                            BackgroundColor="#E0E0E0"
+                            Padding="0,12">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DismissCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior
+                                DefaultAnimationDuration="200"
+                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                PressedOpacity="0.7"
+                                PressedScale="0.95"/>
+                        </Border.Behaviors>
+                        <Label Text="Dismiss"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="Poppins"
+                               FontAttributes="Bold"
+                               FontSize="Small"
+                               TextColor="#555555"/>
+                    </Border>
+
+                    <!-- View Guild Wars -->
+                    <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="0,12">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#6A1B9A" Offset="0.0"/>
+                                <GradientStop Color="#4A148C" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToGuildWarsCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior
+                                DefaultAnimationDuration="200"
+                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                PressedOpacity="0.7"
+                                PressedScale="0.95"/>
+                        </Border.Behaviors>
+                        <Label Text="View Guild Wars"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="Poppins"
+                               FontAttributes="Bold"
+                               FontSize="Small"
+                               TextColor="White"/>
+                    </Border>
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+
+</the49:BottomSheet>

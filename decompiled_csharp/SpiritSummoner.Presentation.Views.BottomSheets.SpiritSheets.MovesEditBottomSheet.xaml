@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels"
+                   xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+                   xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.MovesEditBottomSheet"
+                   x:DataType="bottomsheet:MovesEditViewModel"
+                   Dismissed="BottomSheet_Dismissed"
+                   BackgroundColor="Transparent"
+                   HasBackdrop="True" HasHandle="True"
+                   IsCancelable="{Binding HasUnsavedChanges,Converter={StaticResource InverseBooleanConverter}}"
+                   CornerRadius="8">
+                   
+    <the49:BottomSheet.Resources>
+        <cnv:MoveTypeImageConverter x:Key="MoveTypeImageConverter"/>
+        <cnv:HasActiveMovesConverter x:Key="HasActiveMovesConverter"/>
+    </the49:BottomSheet.Resources>
+    
+    <Border Stroke="Transparent"
+            Background="{StaticResource TanGradient}"
+            StrokeShape="RoundRectangle 8"
+            Padding="7"
+            VerticalOptions="End"
+            HeightRequest="550">
+
+        <Grid RowDefinitions="Auto, *"
+              RowSpacing="5">
+
+            <outline:OutlinedLabel Grid.Row="0"
+                                   Text="Edit Skills"
+                                   FontFamily="PoppinsBold"
+                                   FontSize="20"
+                                   TextColor="#2E4A0F"
+                                   HasShadow="True"
+                                   ShadowColor="#29000040"
+                                   ShadowBlur="2"
+                                   ShadowOffsetY="2"/>
+
+            <Border Grid.Row="1"
+                    BackgroundColor="#EDF8EA"
+                    Stroke="#32000040"
+                    StrokeThickness="1">
+                
+                <Grid RowDefinitions="Auto, 407"
+                      Padding="7">
+                    
+                    <!-- Info text -->
+                    <VerticalStackLayout Grid.Row="0" Padding="0,10" HorizontalOptions="Center">
+
+                        <Label Text="Select up to 4 skills for your spirit to use in battle."
+                               TextColor="Black"
+                               FontFamily="PoppinsMedium"
+                               FontSize="15"/>
+
+                        <Label Text="Skills can be unlocked using items."
+                               TextColor="Black"
+                               FontFamily="PoppinsBold"
+                               FontSize="15"/>
+
+                    </VerticalStackLayout>
+
+                    <Grid Grid.Row="1"
+                          ColumnDefinitions="*,*"
+                          ColumnSpacing="7">
+                        
+                        <Border Grid.Column="0"
+                                BackgroundColor="#2E4A0F"
+                                Stroke="#40000000"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="7">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Opacity="0.7"
+                                        Radius="1"/>
+                            </Border.Shadow>
+
+                            <!-- Moves Full List (Left Column - All learnable, excluding active) -->
+                            <CollectionView ItemsSource="{Binding AllLearnableMoves}">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical"
+                                                       ItemSpacing="7"/>
+                                </CollectionView.ItemsLayout>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:MoveEditableState">
+
+                                        <Grid>
+                                            <Border Grid.Column="0"
+                                                StrokeShape="RoundRectangle 8"
+                                                Stroke="{Binding Stroke}"
+                                                HeightRequest="50">
+                                            <Border.Behaviors>
+                                                <toolkit:TouchBehavior
+                                                    DefaultAnimationDuration="250"
+                                                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                    PressedOpacity="0.6"
+                                                    ShouldMakeChildrenInputTransparent="false"
+                                                    PressedScale="0.7"/>
+                                            </Border.Behaviors>
+                                            <!-- Tap entire border to toggle to active (if unlocked) -->
+                                           <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding x:DataType='bottomsheet:MovesEditViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:MovesEditViewModel}}, Path=TapMoveCommand}"
+                                                                          CommandParameter="{Binding MoveId}"/>
+                                            </Border.GestureRecognizers>
+
+                                            <Grid ColumnDefinitions="2*,*">
+                                                <Image Source="{Binding Type,Converter={StaticResource BackgroundImageConverter}}"
+                                                       Grid.ColumnSpan="2"
+                                                       Aspect="AspectFill"/>
+
+                                                <Image Grid.Column="0"
+                                                       Source="{Binding Type,Converter={StaticResource NameToImageConverter}}"
+                                                       HorizontalOptions="Start"
+                                                       HeightRequest="75"
+                                                       TranslationX="-15"/>
+
+                                                <!-- Dim overlay if locked -->
+                                                <BoxView Grid.ColumnSpan="2"
+                                                         HorizontalOptions="Fill"
+                                                         VerticalOptions="Fill"
+                                                         Color="Black"
+                                                         Opacity="{OnPlatform iOS=0.3,Android=0.3}"
+                                                         ZIndex="4"
+                                                         IsVisible="false"/>
+
+                                                <outline:OutlinedLabel Grid.Column="0"
+                                                                       Text="{Binding MoveId}"
+                                                                       TextColor="#EDF8EA"
+                                                                       FontFamily="PoppinsBold"
+                                                                       FontSize="14"
+                                                                       HorizontalOptions="Center"
+                                                                       VerticalOptions="Center"
+                                                                       ZIndex="3"
+                                                                       StrokeColor="#000000"
+                                                                       StrokeWidth="2"
+                                                                       HasShadow="True"
+                                                                       ShadowColor="#000000"
+                                                                       ShadowOffsetY="1"/>
+
+                                                <outline:OutlinedLabel Grid.Column="1"
+                                                                       Text="{Binding Power}"
+                                                                       TextColor="#EDF8EA"
+                                                                       FontFamily="PoppinsExtraBold"
+                                                                       FontSize="14"
+                                                                       HorizontalOptions="Center"
+                                                                       VerticalOptions="Center"
+                                                                       ZIndex="3"
+                                                                       StrokeColor="#000000"
+                                                                       StrokeWidth="2"
+                                                                       HasShadow="True"
+                                                                       ShadowColor="#000000"
+                                                                       ShadowOffsetY="1"/>
+
+                                                <Image Grid.Column="1"
+                                                       Source="{Binding MoveType,Converter={StaticResource MoveTypeImageConverter}}"
+                                                       HorizontalOptions="End"
+                                                       HeightRequest="75"
+                                                       TranslationX="15">
+                                                </Image>
+
+                                                <!-- Unlock button overlay (only if locked) -->
+                                                <Border Grid.ColumnSpan="2"
+                                                        StrokeShape="RoundRectangle 8"
+                                                        Stroke="#40000000"
+                                                        Background="{StaticResource SpiritsButton}"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="Center"
+                                                        IsVisible="{Binding IsUnlocked,Converter={StaticResource InverseBooleanConverter}}"
+                                                        Padding="20,10"
+                                                        ZIndex="5">
+                                                    <Border.Behaviors>
+                                                        <toolkit:TouchBehavior
+                                                            DefaultAnimationDuration="250"
+                                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                            PressedOpacity="0.6"
+                                                            PressedScale="0.7"/>
+                                                    </Border.Behaviors>
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding x:DataType='bottomsheet:MovesEditViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:MovesEditViewModel}}, Path=UnlockMoveCommand}"
+                                                                              CommandParameter="{Binding MoveId}"/>
+                                                    </Border.GestureRecognizers>
+
+                                                    <outline:OutlinedLabel Text="Unlock"
+                                                                           TextColor="#EDF8EA"
+                                                                           HorizontalOptions="Center"
+                                                                           FontFamily="PoppinsSemiBold"
+                                                                           FontSize="14"
+                                                                           StrokeColor="#40000000"
+                                                                           StrokeWidth="2"
+                                                                           HasShadow="True"
+                                                                           ShadowColor="black"
+                                                                           ShadowBlur="1"
+                                                                           ShadowOffsetY="1"/>
+                                                </Border>
+
+                                            </Grid>
+
+                                        </Border>
+
+                                        </Grid>
+
+                                        
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+
+
+
+                        </Border>
+
+                        <Grid Grid.Column="1"
+                              RowDefinitions="300,Auto"
+                              RowSpacing="10">
+
+
+                            <Border Grid.Row="0"
+                                    Background="{StaticResource QuestProgressGradient}"
+                                    Stroke="#40000000"
+                                    StrokeShape="RoundRectangle 8">
+                                <Border.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,1"
+                                            Opacity="0.7"
+                                            Radius="1"/>
+                                </Border.Shadow>
+
+                                <Grid RowDefinitions="Auto,*"
+                                      Padding="5,10,5,0"
+                                      RowSpacing="10">
+
+                                    <Border StrokeShape="RoundRectangle 8"
+                                            Grid.Row="0"
+                                            HeightRequest="40"
+                                            IsEnabled="{Binding ActiveMoves, 
+                                           Converter={StaticResource HasActiveMovesConverter}}">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                 EndPoint="0,1">
+                                                <GradientStop Color="#FFB816"
+                                                              Offset="0.0"/>
+                                                <GradientStop Color="#FFAE00"
+                                                              Offset="0.5"/>
+                                                <GradientStop Color="#FFAE00"
+                                                              Offset="0.75"/>
+                                                <GradientStop Color="#FFB816"
+                                                              Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.Behaviors>
+                                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                   DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                   PressedOpacity="0.6"
+                                                                   PressedScale="0.7"/>
+                                        </Border.Behaviors>
+                                        <Border.Shadow>
+                                            <Shadow Brush="Black"
+                                                    Offset="0,1"
+                                                    Opacity="0.5"
+                                                    Radius="1"/>
+                                        </Border.Shadow>
+
+                                        <Grid>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                    Command="{Binding x:DataType='bottomsheet:MovesEditViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:MovesEditViewModel}}, Path=ClearAllMovesCommand}"/>
+                                            </Grid.GestureRecognizers>
+
+                                            <outline:OutlinedLabel Text="Clear List"
+                                                                   TextColor="#EDF8EA"
+                                                                   FontFamily="PoppinsSemiBold"
+                                                                   FontSize="14"
+                                                                   HorizontalOptions="Center"
+                                                                   VerticalOptions="Center"
+                                                                   StrokeColor="#53000040"
+                                                                   StrokeWidth="2"
+                                                                   HasShadow="True"
+                                                                   ShadowColor="#53000040"
+                                                                   ShadowBlur="2"
+                                                                   ShadowOffsetY="1"/>
+                                        </Grid>
+                                        
+                                    </Border>
+
+                                    <!-- Moves Active List (Right Column - Tap to remove from active) -->
+                                    <CollectionView Grid.Row="1" ItemsSource="{Binding ActiveMoves}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical"
+                                                               ItemSpacing="5"/>
+                                        </CollectionView.ItemsLayout>
+
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate x:DataType="models:MoveEditableState">
+
+                                                <Border Grid.Column="0"
+                                                        StrokeShape="RoundRectangle 8"
+                                                        Stroke="{Binding Stroke}"
+                                                        HeightRequest="50">
+                                                    <Border.Shadow>
+                                                        <Shadow Brush="Black"
+                                                                Offset="0,1"
+                                                                Opacity="0.7"
+                                                                Radius="1"/>
+                                                    </Border.Shadow>
+
+                                                    <!-- Tap entire border to toggle back to inactive -->
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding x:DataType='bottomsheet:MovesEditViewModel', Source={RelativeSource AncestorType={x:Type bottomsheet:MovesEditViewModel}}, Path=TapMoveCommand}"
+                                                                              CommandParameter="{Binding MoveId}"/>
+                                                    </Border.GestureRecognizers>
+
+                                                    <Grid ColumnDefinitions="2*,*">
+
+                                                        <Image Source="{Binding Type,Converter={StaticResource BackgroundImageConverter}}"
+                                                               Grid.ColumnSpan="2"
+                                                               Aspect="AspectFill"/>
+
+                                                        <Image Grid.Column="0"
+                                                               Source="{Binding Type,Converter={StaticResource NameToImageConverter}}"
+                                                               HorizontalOptions="Start"
+                                                               HeightRequest="75"
+                                                               TranslationX="-15"/>
+
+                                                        <outline:OutlinedLabel Grid.Column="0"
+                                                                               Text="{Binding MoveId}"
+                                                                               TextColor="#EDF8EA"
+                                                                               FontFamily="PoppinsBold"
+                                                                               FontSize="14"
+                                                                               HorizontalOptions="Center"
+                                                                               VerticalOptions="Center"
+                                                                               ZIndex="3"
+                                                                               StrokeColor="#000000"
+                                                                               StrokeWidth="2"
+                                                                               HasShadow="True"
+                                                                               ShadowColor="#000000"
+                                                                               ShadowOffsetY="1"/>
+
+                                                        <outline:OutlinedLabel Grid.Column="1"
+                                                                               Text="{Binding Power}"
+                                                                               TextColor="#EDF8EA"
+                                                                               FontFamily="PoppinsExtraBold"
+                                                                               FontSize="14"
+                                                                               HorizontalOptions="Center"
+                                                                               VerticalOptions="Center"
+                                                                               ZIndex="3"
+                                                                               StrokeColor="#000000"
+                                                                               StrokeWidth="2"
+                                                                               HasShadow="True"
+                                                                               ShadowColor="#000000"
+                                                                               ShadowOffsetY="1"/>
+
+                                                        <Image Grid.Column="1"
+                                                               Source="{Binding MoveType,Converter={StaticResource MoveTypeImageConverter}}"
+                                                               HorizontalOptions="End"
+                                                               HeightRequest="75"
+                                                               TranslationX="15">
+                                                        </Image>
+
+                                                    </Grid>
+
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+
+                                </Grid>
+
+                                
+                            </Border>
+
+                            <!-- Control Bar -->
+                            <Grid Grid.Row="1"
+                                  RowDefinitions="*,*"
+                                  RowSpacing="20"
+                                  Padding="0,0">
+
+                                <Border Grid.Row="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="0.2"
+                                        HeightRequest="40"
+                                        Stroke="Black"
+                                        Padding="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0.5,0"
+                                                             EndPoint="0.5,1">
+                                            <GradientStop Color="#EB6756"
+                                                          Offset="0"/>
+                                            <GradientStop Color="#E53F37"
+                                                          Offset="0.25"/>
+                                            <GradientStop Color="#E53F37"
+                                                          Offset="0.5"/>
+                                            <GradientStop Color="#EB6756"
+                                                          Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                               PressedOpacity="0.6"
+                                                               TouchGestureCompleted="OnCancelTapped"
+                                                               PressedScale="0.7"/>
+                                    </Border.Behaviors>
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,1"
+                                                Opacity="0.7"
+                                                Radius="1"/>
+                                    </Border.Shadow>
+                                    <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                           Text="Cancel"
+                                                           HorizontalOptions="Center"
+                                                           FontFamily="PoppinsSemiBold"
+                                                           FontSize="14"
+                                                           StrokeColor="Black"
+                                                           StrokeWidth="1.5"
+                                                           HasShadow="True"
+                                                           ShadowColor="black"
+                                                           ShadowBlur="1"
+                                                           ShadowOffsetY="1"/>
+
+                                </Border>
+
+                                <Border Grid.Row="1"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="0.2"
+                                        Stroke="#40000000"
+                                        HeightRequest="40"
+                                        Padding="5"
+                                        IsEnabled="{Binding HasUnsavedChanges}"
+                                        Opacity="{Binding HasUnsavedChanges, 
+                                         Converter={StaticResource BoolToOpacityConverter}}">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0.5,0"
+                                                             EndPoint="0.5,1">
+                                            <GradientStop Color="#9AE589"
+                                                          Offset="0"/>
+                                            <GradientStop Color="#64D855"
+                                                          Offset="0.25"/>
+                                            <GradientStop Color="#64D855"
+                                                          Offset="0.5"/>
+                                            <GradientStop Color="#9AE589"
+                                                          Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                               PressedOpacity="0.6"
+                                                               TouchGestureCompleted="OnConfirmTapped"
+                                                               PressedScale="0.7"/>
+                                    </Border.Behaviors>
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,1"
+                                                Opacity="0.7"
+                                                Radius="1"/>
+                                    </Border.Shadow>
+
+                                    <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                           HorizontalOptions="Center"
+                                                           FontFamily="PoppinsSemiBold"
+                                                           FontSize="14"
+                                                           StrokeColor="Black"
+                                                           StrokeWidth="1.5"
+                                                           HasShadow="True"
+                                                           ShadowColor="black"
+                                                           ShadowBlur="1"
+                                                           ShadowOffsetY="1">
+                                        <outline:OutlinedLabel.Text>
+                                            <Binding Path="HasUnsavedChanges">
+                                                <Binding.Converter>
+                                                    <toolkit:BoolToObjectConverter TrueObject="Save Changes"
+                                                                                   FalseObject="No Changes"/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </outline:OutlinedLabel.Text>
+                                    </outline:OutlinedLabel>
+
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</the49:BottomSheet>

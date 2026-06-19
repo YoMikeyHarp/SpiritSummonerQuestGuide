@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Battle.Controls.BattleRewardsView"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Battles"
+             x:DataType="vm:BattleRewardsViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12,10" Spacing="14">
+
+            <!-- Loading indicator -->
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               Color="White"
+                               HeightRequest="32"/>
+
+            <!-- DAILY BATTLE CHEST -->
+            <Border StrokeShape="RoundRectangle 8"
+                    Stroke="#44FFFFFF"
+                    StrokeThickness="0.5"
+                    BackgroundColor="#22FFFFFF"
+                    Padding="12,10">
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Header row -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Daily Battle Chest"
+                                   TextColor="White"
+                                   FontFamily="Poppins"
+                                   FontAttributes="Bold"
+                                   FontSize="13"/>
+                            <Label TextColor="#BBFFFFFF"
+                                   FontFamily="Poppins"
+                                   FontSize="11">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding BattlesCompleted}"/>
+                                        <Span Text=" / "/>
+                                        <Span Text="{Binding ChestFillTarget}"/>
+                                        <Span Text=" battles"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+
+                        <!-- Chest icon -->
+                        <Image Grid.Column="1"
+                               Source="icon_daily_gifts.png"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               Aspect="AspectFit"/>
+                    </Grid>
+
+                    <!-- Fill bar -->
+                    <ProgressBar Progress="{Binding ChestFillProgress}"
+                                 ProgressColor="#FFE368"/>
+
+                    <!-- Rewards preview -->
+                    <HorizontalStackLayout Spacing="12">
+                        <HorizontalStackLayout Spacing="4">
+                            <Image Source="icon_crystal.png" HeightRequest="16" WidthRequest="16" Aspect="AspectFit"/>
+                            <Label Text="+200 Crystals" TextColor="#FFE368" FontFamily="Poppins" FontSize="11"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="4">
+                            <Image Source="icon_experience.png" HeightRequest="16" WidthRequest="16" Aspect="AspectFit"/>
+                            <Label Text="+2 Energy" TextColor="#7EC8E3" FontFamily="Poppins" FontSize="11"/>
+                        </HorizontalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Claim button -->
+                    <Border StrokeShape="RoundRectangle 6"
+                            Stroke="Transparent"
+                            HeightRequest="38"
+                            IsVisible="{Binding IsChestClaimable}">
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior
+                                DefaultAnimationDuration="200"
+                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                PressedOpacity="0.6"
+                                PressedScale="0.95"/>
+                        </Border.Behaviors>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClaimChestCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="#FFD700" Offset="0"/>
+                                <GradientStop Color="#F08000" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="CLAIM"
+                               TextColor="Black"
+                               FontFamily="Poppins"
+                               FontAttributes="Bold"
+                               FontSize="13"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </Border>
+
+                    <!-- Already claimed label -->
+                    <Label Text="✓ Claimed today"
+                           TextColor="#88FFFFFF"
+                           FontFamily="Poppins"
+                           FontSize="11"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding IsChestClaimed}"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- WAR CONTRIBUTION (visible only during war)  -->
+            <Border StrokeShape="RoundRectangle 8"
+                    Stroke="#44FFFFFF"
+                    StrokeThickness="0.5"
+                    BackgroundColor="#22FFFFFF"
+                    Padding="12,10"
+                    IsVisible="{Binding IsWarActive}">
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="War Contribution"
+                           TextColor="White"
+                           FontFamily="Poppins"
+                           FontAttributes="Bold"
+                           FontSize="13"/>
+
+                    <!-- Stats grid -->
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" RowSpacing="6" ColumnSpacing="8">
+
+                        <!-- Attacks -->
+                        <Border Grid.Row="0" Grid.Column="0"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#33FFFFFF"
+                                Stroke="Transparent"
+                                Padding="8,6">
+                            <VerticalStackLayout>
+                                <Label Text="Attacks"
+                                       TextColor="#AAFFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="10"/>
+                                <Label Text="{Binding AttackCount}"
+                                       TextColor="White"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Raids -->
+                        <Border Grid.Row="0" Grid.Column="1"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#33FFFFFF"
+                                Stroke="Transparent"
+                                Padding="8,6">
+                            <VerticalStackLayout>
+                                <Label Text="Raids"
+                                       TextColor="#AAFFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="10"/>
+                                <Label Text="{Binding RaidCount}"
+                                       TextColor="White"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Crystals Stolen -->
+                        <Border Grid.Row="1" Grid.Column="0"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#33FFFFFF"
+                                Stroke="Transparent"
+                                Padding="8,6">
+                            <VerticalStackLayout>
+                                <Label Text="Crystals"
+                                       TextColor="#AAFFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="10"/>
+                                <Label Text="{Binding TotalCrystals}"
+                                       TextColor="#A0DFFF"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Est. Guild Coins -->
+                        <Border Grid.Row="1" Grid.Column="1"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#33FFFFFF"
+                                Stroke="Transparent"
+                                Padding="8,6">
+                            <VerticalStackLayout>
+                                <Label Text="Est. Coins"
+                                       TextColor="#AAFFFFFF"
+                                       FontFamily="Poppins"
+                                       FontSize="10"/>
+                                <Label Text="{Binding EstimatedGuildCoins}"
+                                       TextColor="#FFE368"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </Grid>
+
+                    <Label TextColor="#88FFFFFF"
+                           FontFamily="Poppins"
+                           FontSize="10"
+                           HorizontalTextAlignment="Center"
+                           Text="Estimated coins distributed at season end"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- No war placeholder -->
+            <Label Text="Join a war to see your contribution here"
+                   TextColor="#66FFFFFF"
+                   FontFamily="Poppins"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsWarActive, Converter={toolkit:InvertedBoolConverter}}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentView>

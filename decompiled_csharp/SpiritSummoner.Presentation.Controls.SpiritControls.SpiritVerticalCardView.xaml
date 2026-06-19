@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Controls.SpiritControls.SpiritVerticalCardView"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Spirits"
+             xmlns:bottomsheet="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:DataType="vm:SpiritCardViewModel">
+
+    <Grid>
+
+        <Border Padding="0"
+                StrokeShape="RoundRectangle 0"
+                BackgroundColor="White"
+                Stroke="LightGray"
+                StrokeThickness="2"
+                ZIndex="1">
+
+            <Grid IsVisible="{Binding HasSpirit}"
+                    x:Name="SpiritCard">
+                <!-- Background Image -->
+                <Image Source="{Binding Model.Type1,Converter={StaticResource BackgroundImageConverter}}"
+                       Aspect="AspectFill"
+                       Opacity="0.8">
+                </Image>
+                <!-- Spirit Content -->
+                <Grid RowDefinitions="*,Auto">
+
+                    <!-- Spirit Image -->
+                    <Image  Grid.Row="0"
+                            Aspect="AspectFill"
+                            Source="{Binding Model.Image}"
+                            Grid.RowSpan="2">
+                    </Image>
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+    
+</ContentView>

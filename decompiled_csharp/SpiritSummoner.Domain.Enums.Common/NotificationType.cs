@@ -1,0 +1,38 @@
+namespace SpiritSummoner.Domain.Enums.Common;
+
+public enum NotificationType
+{
+	GuildInvitation,
+	GuildInvitationAccepted,
+	GuildInvitationDeclined,
+	GuildJoinRequest,
+	GuildJoined,
+	GuildLeft,
+	GuildKicked,
+	GuildPromoted,
+	GuildDemoted,
+	GuildDisbanded,
+	GuildDisbandCancled,
+	GuildWarStarted,
+	GuildWarAttacked,
+	GuildWarVictory,
+	GuildWarDefeat,
+	GuildWarEnrollmentReminder,
+	GuildWarMatchFound,
+	GuildWarRegistrationClosing,
+	GuildWarDefenderManagement,
+	GuildWarDefenderExpiring,
+	GuildWarEnded,
+	FriendRequest,
+	FriendRequestAccepted,
+	FriendRequestDeclined,
+	TradeRequest,
+	TradeAccepted,
+	TradeCompleted,
+	DirectMessage,
+	GuildMessage,
+	BattleChallengeReceived,
+	BattleCompleted,
+	RewardAvailable,
+	AchievementUnlocked
+}

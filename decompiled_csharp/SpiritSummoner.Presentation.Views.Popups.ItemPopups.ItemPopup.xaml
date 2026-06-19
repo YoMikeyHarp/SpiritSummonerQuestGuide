@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.ItemPopups.ItemPopup"
+               x:DataType="vm:ItemPopupViewModel"
+               Size="320,400"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <!-- Main Container -->
+    <Border StrokeShape="RoundRectangle 20"
+            StrokeThickness="0"
+            Padding="0">
+
+        <Border.Background>
+            <RadialGradientBrush Center="0.5,0.5"
+                                 Radius="0.6">
+                <GradientStop Color="#D1EAFB"
+                              Offset="0"/>
+                <GradientStop Color="#66ABE7"
+                              Offset="1"/>
+            </RadialGradientBrush>
+        </Border.Background>
+
+        <Border.Shadow>
+            <Shadow Brush="#80000000"
+                    Offset="0,10"
+                    Opacity="0.8"
+                    Radius="20"/>
+        </Border.Shadow>
+
+        <Grid RowDefinitions="Auto,*,Auto,Auto"
+              RowSpacing="10"
+              Padding="15">
+
+            <!-- Header Section -->
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="*,Auto"
+                  VerticalOptions="Start">
+
+                <Label Text="{Binding CurrentItem.Name}"
+                       Grid.ColumnSpan="2"
+                       FontSize="24"
+                       FontFamily="PoppinsSemiBold"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       Shadow="{StaticResource LabelBlackShadow}"/>
+
+                <Button Grid.Column="1"
+                        Text="X"
+                        Command="{Binding CancelCommand}"
+                        TextColor="white"
+                        FontSize="Small"
+                        FontFamily="PoppinsSemiBold"
+                        FontAttributes="Bold"
+                        BackgroundColor="red"
+                        WidthRequest="35"
+                        HeightRequest="25"
+                        Padding="0"
+                        CornerRadius="10">
+                    <Button.Shadow>
+                        <Shadow Brush="white"
+                                Opacity="0.3"
+                                Radius="3"
+                                Offset="0,2"/>
+                    </Button.Shadow>
+                </Button>
+            </Grid>
+
+            <!-- Item Showcase -->
+            <Border Grid.Row="1"
+                    StrokeShape="RoundRectangle 16"
+                    BackgroundColor="#30FFFFFF"
+                    Padding="15">
+
+                <Grid>
+
+                    <Image Source="{Binding CurrentItem.Icon}"
+                           Aspect="AspectFit"
+                           HeightRequest="160"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Image.Shadow>
+                            <Shadow Brush="#40000000"
+                                    Radius="10"
+                                    Offset="0,5"/>
+                        </Image.Shadow>
+                    </Image>
+
+                    <!-- Item Type Badge -->
+                    <Border HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="8,4"
+                            Margin="10">
+
+                        <Border.Background>
+                            <RadialGradientBrush Center="0.5,0.5"
+                                                 Radius="0.6">
+                                <GradientStop Color="#D1EAFB"
+                                              Offset="0"/>
+                                <GradientStop Color="#66ABE7"
+                                              Offset="1"/>
+                            </RadialGradientBrush>
+                        </Border.Background>
+
+                        <Label Text="{Binding CurrentItem.Type}"
+                               TextColor="black"
+                               FontFamily="PoppinsSemiBold"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               TextTransform="Uppercase"
+                               Shadow="{StaticResource LabelWhiteShadow}"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Description Card -->
+            <Border Grid.Row="2"
+                   StrokeShape="RoundRectangle 12"
+                   Stroke="#40FFFFFF"
+                   BackgroundColor="#30FFFFFF"
+                   Padding="15">
+
+                <Label Text="{Binding CurrentItem.Description}"
+                       FontSize="Medium"
+                       FontFamily="PoppinsSemiBold"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       LineBreakMode="WordWrap"
+                       MaxLines="3"
+                       LineHeight="1.2">
+                    <Label.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,1"
+                                Radius="3"/>
+                    </Label.Shadow>
+                        
+                </Label>
+            </Border>
+
+            <!-- Buy Button -->
+            <Button Grid.Row="3"
+                    Command="{Binding ConfirmPurchaseCommand}"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontFamily="PoppinsSemiBold"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    IsVisible="{Binding IsCrafting,Converter={StaticResource InverseBooleanConverter}}"
+                    BackgroundColor="#32D74B"
+                    Shadow="{StaticResource GoldenShadow}"
+                    Text="{Binding CurrentItem.Cost, StringFormat='{0} G'}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding CurrentItem.CurrencyType}"
+                                 Value="crystal">
+                            <Setter Property="Text"
+                                    Value="{Binding CurrentItem.Cost, StringFormat='{0} Crystals'}"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <Button Grid.Row="3"
+                    Command="{Binding ConfirmPurchaseCommand}"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontFamily="PoppinsSemiBold"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    IsVisible="{Binding IsCrafting}"
+                    BackgroundColor="#32D74B"
+                    Shadow="{StaticResource GoldenShadow}"
+                    Text="{Binding CurrentItem.Name,StringFormat='Craft a {0}!'}">
+            </Button>
+        </Grid>
+    </Border>
+</toolkit:Popup>

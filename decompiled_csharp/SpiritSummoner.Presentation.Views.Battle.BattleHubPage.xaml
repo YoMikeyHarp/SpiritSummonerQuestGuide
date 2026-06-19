@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Battle.BattleHubPage"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Battles"
+             xmlns:shared="clr-namespace:SpiritSummoner.Presentation.Views.Shared"
+             xmlns:squadcontrols="clr-namespace:SpiritSummoner.Presentation.Controls.SquadControls"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+             xmlns:battlecontrols="clr-namespace:SpiritSummoner.Presentation.Views.Battle.Controls"
+             x:DataType="vm:BattleHubViewModel"
+             xmlns:shell="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             shell:Shell.NavBarIsVisible="False">
+
+    
+
+     <!-- Main Content-->
+    <Grid RowDefinitions="Auto, *"
+              Padding="7,0,7,5"
+              RowSpacing="15">
+
+        <!-- Loading Overlay -->
+        <Grid IsVisible="{Binding IsLoading}"
+              Grid.RowSpan="2"
+              BackgroundColor="#80000000"
+              ZIndex="100">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Spacing="16">
+                <ActivityIndicator IsRunning="True"
+                                   Color="White"
+                                   WidthRequest="50"
+                                   HeightRequest="50"/>
+                <Label Text="Loading battle data..."
+                       TextColor="White"
+                       FontFamily="Poppins"
+                       FontSize="16"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <squadcontrols:SpiritSquadCardView Grid.Row="0"
+                                                    BindingContext="{Binding ActiveSquad}"
+                                                    HeightRequest="130"/>
+
+        <Grid Grid.Row="1" RowDefinitions="*,0.47*,85" Padding="5,0,5,5" RowSpacing="10">
+
+            <BoxView Color="#4D000000"
+                     Opacity="0.6"
+                     Grid.Row="0"
+                     Grid.RowSpan="1"
+                     IsVisible="{Binding CurrentPlayer.IsAccountLinked,Converter={StaticResource InverseBooleanConverter}}"
+                     ZIndex="1"/>
+            
+            <Label Grid.Row="0" 
+                   ZIndex="2"
+                   Text="Link your account to compete in the Leaderboards!"
+                   FontSize="24"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   TextColor="#EDF8EA"
+                   IsVisible="{Binding CurrentPlayer.IsAccountLinked,Converter={StaticResource InverseBooleanConverter}}"
+                   FontFamily="PoppinsBold"/>
+
+            <!-- Leaderboard Card -->
+            <Border Grid.Row="0"
+                    BackgroundColor="#D9D9D9"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="#40000000"
+                    StrokeThickness="1">
+                <Border.Shadow>
+                    <Shadow Brush="#000000"
+                            Offset="0,2"
+                            Opacity="0.25"
+                            Radius="2"/>
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,*,Auto">
+
+                    <!-- Header -->
+                    <Border Grid.Row="0"
+                            StrokeShape="RoundRectangle 8,8,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#F4D592" Offset="0.0"/>
+                                <GradientStop Color="#FDA821" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Grid ColumnDefinitions="*,Auto,Auto" Padding="10">
+
+                            <outline:OutlinedLabel Grid.Column="0"
+                                                   Text="LEADERBOARD"
+                                                   FontFamily="Bungee"
+                                                   FontSize="20"
+                                                   TextColor="#D27C1E"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Start"
+                                                   StrokeColor="#EDF8EA"
+                                                   StrokeWidth="2"
+                                                   HasShadow="True"
+                                                   ShadowColor="#40000000"
+                                                   ShadowBlur="1"
+                                                   ShadowOffsetY="1"/>
+
+                            <Label Grid.Column="1"
+                                   Text="{Binding LeaderboardCountdownText}"
+                                   FontFamily="Poppins"
+                                   FontSize="9"
+                                   TextColor="#8B6914"
+                                   VerticalOptions="Center"
+                                   Margin="0,0,8,0"/>
+
+                            <Label Grid.Column="2"
+                                   Text="See All"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="10"
+                                   TextColor="#000000"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Main Content with Divider -->
+                    <Grid Grid.Row="1" ColumnDefinitions="*,1,1.1*" Padding="5,6">
+
+                        <!-- Left Side - Top 3 Players -->
+                        <CollectionView ItemsSource="{Binding TopPlayers}"
+                                VerticalScrollBarVisibility="Never"
+                                Grid.Column="0"
+                                IsVisible="true">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                   ItemSpacing="6"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:LeaderboardPlayerModel">
+                                    <Grid>
+                                        <!-- Player -->
+                                        <Grid   Grid.Row="0" Padding="2"
+                                                ColumnDefinitions="50,*"
+                                                ColumnSpacing="8">
+                                            <!-- Avatar with Rank Badge -->
+                                            <Grid Grid.Column="0">
+                                                <Ellipse Fill="#90E480"
+                                                         Stroke="#80000000"
+                                                         StrokeThickness="2"
+                                                         WidthRequest="50"
+                                                         HeightRequest="50"/>
+
+                                                <Grid WidthRequest="24"
+                                                      HeightRequest="24"
+                                                      VerticalOptions="End"
+                                                      HorizontalOptions="Start">
+                                                    <Ellipse Fill="#1524FF"
+                                                             Stroke="#40000000"
+                                                             StrokeThickness="2"/>
+                                                    <Label Text="{Binding Rank}"
+                                                           FontFamily="Bungee"
+                                                           FontSize="12"
+                                                           TranslationY="-3"
+                                                           TextColor="#EDF8EA"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center">
+                                                        <Label.Shadow>
+                                                            <Shadow Brush="#000000"
+                                                                    Offset="0,0.75"
+                                                                    Radius="0.75"/>
+                                                        </Label.Shadow>
+                                                    </Label>
+                                                </Grid>
+                                            </Grid>
+
+                                            <!-- Player Info -->
+                                            <VerticalStackLayout Grid.Column="1"
+                                                                 Spacing="2">
+                                                <Label Text="{Binding PlayerName}"
+                                                       FontFamily="PoppinsSemiBold"
+                                                       FontSize="10"
+                                                       TextColor="#000000"/>
+                                                <Grid ColumnDefinitions="Auto,*"
+                                                      Padding="0,0,5,0"
+                                                      ColumnSpacing="10">
+
+                                                    <Label Text="{Binding PlayerLevel,StringFormat='Level {0}'}"
+                                                           FontFamily="Poppins"
+                                                           FontSize="10"
+                                                           TextColor="#80000000"/>
+
+                                                    <Border Grid.Column="1"
+                                                            BackgroundColor="Transparent"
+                                                            StrokeShape="RoundRectangle 2"
+                                                            Stroke="#131618"
+                                                            StrokeThickness="0.5"
+                                                            Padding="8,0"
+                                                            HeightRequest="12">
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0,0"
+                                                                                 EndPoint="1,0">
+                                                                <GradientStop Color="#5B6068"
+                                                                              Offset="0.0"/>
+                                                                <GradientStop Color="#32353B"
+                                                                              Offset="0.5"/>
+                                                                <GradientStop Color="#5B6068"
+                                                                              Offset="1.0"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Label Text="{Binding Title}"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               FontSize="8"
+                                                               TextColor="#EDF8EA"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center">
+                                                            <Label.Shadow>
+                                                                <Shadow Brush="#000000"
+                                                                        Offset="0,1"
+                                                                        Radius="0.75"/>
+                                                            </Label.Shadow>
+                                                        </Label>
+                                                    </Border>
+
+                                                </Grid>
+
+                                                <outline:OutlinedLabel Grid.Column="1"
+                                                                       Text="{Binding Score}"
+                                                                       FontFamily="PoppinsSemiBold"
+                                                                       FontSize="12"
+                                                                       TextColor="#FFE368"
+                                                                       VerticalOptions="Start"
+                                                                       HorizontalOptions="Start"
+                                                                       TranslationY="2"
+                                                                       StrokeColor="#BA7412"
+                                                                       StrokeWidth="1.5"
+                                                                       HasShadow="True"
+                                                                       ShadowBlur="2"
+                                                                       ShadowColor="#40000000"
+                                                                       ShadowOffsetY="2"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Vertical Divider -->
+                        <BoxView Grid.Column="1"
+                                 WidthRequest="1"
+                                 Color="#00000033"/>
+
+                        <CollectionView ItemsSource="{Binding NearbyPlayers}"
+                                        VerticalScrollBarVisibility="Never"
+                                        Grid.Column="2" 
+                                        IsVisible="true">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                   ItemSpacing="6"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:LeaderboardPlayerModel">
+                                    <Grid RowDefinitions="Auto, *, 1" RowSpacing="6">
+
+                                        <!-- Headers -->
+                                        <Grid Grid.Row="0"
+                                                ColumnDefinitions="Auto,*,Auto"
+                                                ColumnSpacing="8"
+                                                Padding="5,0">
+                                            <Label Grid.Column="0"
+                                                   Text="Rank"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="10"
+                                                   TextColor="#40000000"
+                                                   HorizontalOptions="Center"/>
+                                            <Label Grid.Column="1"
+                                                   Text="Name"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="10"
+                                                   TextColor="#40000000"/>
+                                            <Label Grid.Column="2"
+                                                   Text="Score"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="10"
+                                                   TextColor="#40000000"/>
+                                        </Grid>
+                                        <!-- Player -->
+                                        <Grid   Grid.Row="1"
+                                                ColumnDefinitions="31,*,36"
+                                                ColumnSpacing="8"
+                                                RowDefinitions="16,16"
+                                                RowSpacing="0">
+                                            <Label Grid.Column="0"
+                                                    Grid.RowSpan="2"
+                                                   Text="{Binding Rank}"
+                                                   FontFamily="Bungee"
+                                                   FontSize="12"
+                                                   TextColor="#EDF8EA"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center">
+                                                <Label.Shadow>
+                                                    <Shadow Brush="#000000"
+                                                            Offset="1,1"
+                                                            Radius="0.75"/>
+                                                </Label.Shadow>
+                                            </Label>
+                                            <Label Grid.Column="1"
+                                                    Grid.Row="0"
+                                                   Text="{Binding PlayerName}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="10"
+                                                   TextColor="#000000"/>
+                                            <Grid ColumnDefinitions="Auto,*"
+                                                    Grid.Column="1"
+                                                    Grid.Row="1"
+                                                    ColumnSpacing="4">
+                                                <Label Text="{Binding PlayerLevel,StringFormat='Level {0}'}"
+                                                       Grid.Column="0"
+                                                       FontFamily="Poppins"
+                                                       FontSize="10"
+                                                       TextColor="#80000000"/>
+                                                <Border Grid.Column="1"
+                                                        HorizontalOptions="Fill"
+                                                        BackgroundColor="Transparent"
+                                                        StrokeShape="RoundRectangle 2"
+                                                        Stroke="#3C1E7E"
+                                                        StrokeThickness="0.5"
+                                                        Padding="0"
+                                                        HeightRequest="12">
+                                                    <Border.Background>
+                                                        <LinearGradientBrush StartPoint="0,0"
+                                                                EndPoint="1,0">
+                                                            <GradientStop Color="#DBADFF"
+                                                                    Offset="0.0"/>
+                                                            <GradientStop Color="#7C47E1"
+                                                                    Offset="0.5"/>
+                                                            <GradientStop Color="#DBADFF"
+                                                                    Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Border.Background>
+                                                    <Label Text="{Binding Title}"
+                                                           HorizontalOptions="Center"
+                                                           FontFamily="PoppinsSemiBold"
+                                                           FontSize="8"
+                                                           TextColor="#EDF8EA"
+                                                           VerticalOptions="Center">
+                                                        <Label.Shadow>
+                                                            <Shadow Brush="#000000"
+                                                                    Offset="0,1"
+                                                                    Radius="0.75"/>
+                                                        </Label.Shadow>
+                                                    </Label>
+                                                </Border>
+                                            </Grid>
+                                            <outline:OutlinedLabel Grid.Column="2"
+                                                                   Grid.RowSpan="2"
+                                                                   Text="{Binding Score}"
+                                                                   FontFamily="PoppinsSemiBold"
+                                                                   FontSize="12"
+                                                                   TextColor="#FFE368"
+                                                                   VerticalOptions="Center"
+                                                                   HorizontalOptions="Center"
+                                                                   TranslationY="2"
+                                                                   StrokeColor="#BA7412"
+                                                                   HasShadow="True"
+                                                                   StrokeWidth="1.5"
+                                                                   ShadowBlur="2"
+                                                                   ShadowColor="#40000000"
+                                                                   ShadowOffsetY="2"/>
+                                        </Grid>
+
+                                        <BoxView Grid.Row="2" 
+                                                HeightRequest="1"
+                                                Color="#33000000"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <!-- Bottom Stats Bar -->
+                    <Border Grid.Row="2"
+                            StrokeShape="RoundRectangle 0,0,8,8">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#A8CB3F" Offset="0.0"/>
+                                <GradientStop Color="#7DB813" Offset="0.62"/>
+                                <GradientStop Color="#78B614" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Grid ColumnDefinitions="32,42,42,42,*" ColumnSpacing="2" Padding="8,5">
+                            <!-- Badge Icon -->
+                            <Image Grid.Column="0"
+                                   Source="badge_silver"
+                                   WidthRequest="32"
+                                   HeightRequest="32"
+                                   VerticalOptions="Center"/>
+
+                            <!-- WINS -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="0" VerticalOptions="Center">
+
+                                <Label Text="WINS"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="8"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#80000000" Offset="0,0.25" Radius="0.25"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                                
+                                <outline:OutlinedLabel Text="{Binding CurrentPlayerStats.Wins, StringFormat='{0}',FallbackValue=0}"
+                                                       FontFamily="PoppinsBold"
+                                                       FontSize="14"
+                                                       TextColor="#027242"
+                                                       HorizontalOptions="Center"
+                                                       StrokeColor="#EDF8EA"
+                                                       StrokeWidth="0.5"
+                                                       HasShadow="True"
+                                                       ShadowColor="#40000000"
+                                                       ShadowBlur="1"
+                                                       ShadowOffsetY="1"/>
+                            </VerticalStackLayout>
+
+                            <!-- LOSSES -->
+                            <VerticalStackLayout Grid.Column="2" Spacing="0" VerticalOptions="Center">
+                                <Label Text="LOSSES"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="8"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#80000000" Offset="0,0.25" Radius="0.25"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                                <outline:OutlinedLabel Text="{Binding CurrentPlayerStats.Losses, StringFormat='{0}',FallbackValue=0}"
+                                                       FontFamily="PoppinsBold"
+                                                       FontSize="14"
+                                                       TextColor="#721502"
+                                                       HorizontalOptions="Center"
+                                                       StrokeColor="#EDF8EA"
+                                                       StrokeWidth="0.5"
+                                                       HasShadow="True"
+                                                       ShadowColor="#40000000"
+                                                       ShadowBlur="1"
+                                                       ShadowOffsetY="1"/>
+                            </VerticalStackLayout>
+
+                            <!-- RATE -->
+                            <VerticalStackLayout Grid.Column="3" Spacing="0" VerticalOptions="Center">
+                                <Label Text="RATE"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="8"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#80000000" Offset="0,0.25" Radius="0.25"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                                <outline:OutlinedLabel Text="{Binding CurrentPlayerStats.WinRate, StringFormat='{0:F0}',FallbackValue=0%}"
+                                                       FontFamily="PoppinsBold"
+                                                       FontSize="14"
+                                                       TextColor="#5437E5"
+                                                       HorizontalOptions="Center"
+                                                       StrokeColor="#EDF8EA"
+                                                       StrokeWidth="0.5"
+                                                       HasShadow="True"
+                                                       ShadowBlur="1"
+                                                       ShadowOffsetY="1"
+                                                       ShadowColor="#40000000"/>
+                            </VerticalStackLayout>
+
+                            <!-- PlayerEntry -->
+                            <Grid Grid.Column="4"
+                                  ColumnDefinitions="31,*,36"
+                                  ColumnSpacing="8"
+                                  RowDefinitions="16,16"
+                                  RowSpacing="0">
+                                <Label Grid.Column="0"
+                                       Grid.RowSpan="2"
+                                       Text="{Binding CurrentPlayerStats.Rank,FallbackValue=N/A}"
+                                       FontFamily="Bungee"
+                                       FontSize="12"
+                                       TextColor="#EDF8EA"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#000000"
+                                                Offset="0,1"
+                                                Radius="0.75"/>
+                                    </Label.Shadow>
+                                </Label>
+                                <Label Grid.Column="1"
+                                       Grid.Row="0"
+                                       Text="{Binding CurrentPlayer.Playername}"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#000000"/>
+                                <Grid ColumnDefinitions="Auto,*"
+                                      Grid.Column="1"
+                                      Grid.Row="1"
+                                      ColumnSpacing="4">
+                                    <Label Text="{Binding CurrentPlayer.PlayerLevel,StringFormat='Level {0}'}"
+                                           Grid.Column="0"
+                                           FontFamily="Poppins"
+                                           FontSize="10"
+                                           TextColor="#80000000"/>
+                                    <Border Grid.Column="1"
+                                            HorizontalOptions="Fill"
+                                            BackgroundColor="Transparent"
+                                            StrokeShape="RoundRectangle 2"
+                                            Stroke="#3C1E7E"
+                                            StrokeThickness="0.5"
+                                            Padding="0"
+                                            HeightRequest="12">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                 EndPoint="1,0">
+                                                <GradientStop Color="#FFF36B"
+                                                              Offset="0.0"/>
+                                                <GradientStop Color="#E59900"
+                                                              Offset="0.5"/>
+                                                <GradientStop Color="#FFF36B"
+                                                              Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Label Text="{Binding CurrentPlayerStats.Title}"
+                                               HorizontalOptions="Center"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="8"
+                                               TextColor="#EDF8EA"
+                                               VerticalOptions="Center">
+                                            <Label.Shadow>
+                                                <Shadow Brush="#000000"
+                                                        Offset="0,1"
+                                                        Radius="0.75"/>
+                                            </Label.Shadow>
+                                        </Label>
+                                    </Border>
+                                </Grid>
+                                <Label Grid.Column="2"
+                                       Grid.RowSpan="2"
+                                       Text="{Binding CurrentPlayer.BattleStats.Score}"
+                                       FontFamily="Poppins"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="#FFE368"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="#BA7412"
+                                                Offset="0,1"
+                                                Radius="0.75"/>
+                                    </Label.Shadow>
+                                </Label>
+                            </Grid>
+
+
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1"
+                  Padding="10">
+                <Border StrokeShape="RoundRectangle 4"
+                        Stroke="SlateGray"
+                        StrokeThickness="0.7"
+                        x:Name="MainBorder">
+                    <Grid RowDefinitions="30,*">
+
+                        <Grid Grid.Row="0" ColumnDefinitions="*,*,*">
+
+                            <Border Stroke="Transparent"
+                                    StrokeThickness="0.5"
+                                    Grid.Column="0"
+                                    x:Name="TasksBorder">
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="250"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        PressedScale="0.7"
+                                        TouchGestureCompleted="TASKS_TouchCompleted"/>
+                                </Border.Behaviors>
+
+                                <Label Text="TASKS"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontFamily="Poppins"
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,0"
+                                                Radius="3"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                            </Border>
+
+                            <Border Stroke="SlateGray"
+                                    StrokeThickness="0.5"
+                                    Grid.Column="1"
+                                    x:Name="RewardsBorder">
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="250"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        PressedScale="0.7"
+                                        TouchGestureCompleted="REWARDS_TouchCompleted"/>
+                                </Border.Behaviors>
+
+                                <Label Text="REWARDS"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontFamily="Poppins"
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,0"
+                                                Radius="3"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                            </Border>
+
+                            <Border Stroke="SlateGray"
+                                    StrokeThickness="0.5"
+                                    Grid.Column="2"
+                                    x:Name="PerksBorder">
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="250"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        PressedScale="0.7"
+                                        TouchGestureCompleted="PERKS_TouchCompleted"/>
+                                </Border.Behaviors>
+
+                                <Label Text="PERKS"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontFamily="Poppins"
+                                       FontSize="Small"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,0"
+                                                Radius="3"/>
+                                    </Label.Shadow>
+                                </Label>
+
+                            </Border>
+                        </Grid>
+
+                        <!-- Tab content area (Grid.Row="1") -->
+                        <Grid Grid.Row="1"
+                              IsVisible="{Binding IsTasksTabActive}">
+                            <battlecontrols:BattleTasksView
+                            BindingContext="{Binding TasksViewModel}"/>
+                        </Grid>
+                        
+                        <Grid Grid.Row="1"
+                              IsVisible="{Binding IsRewardsTabActive}">
+                            <battlecontrols:BattleRewardsView
+                            BindingContext="{Binding RewardsViewModel}"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1"
+                              IsVisible="{Binding IsPerksTabActive}">
+                            <battlecontrols:GuildPerksView
+                            BindingContext="{Binding PerksViewModel}"/>
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+            </Grid>
+
+                
+
+                <Grid Grid.Row="2" RowSpacing="15">
+                        
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+                    <Grid Grid.Column="0">
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                               PressedOpacity="0.6"
+                               PressedScale="0.7"/>
+                        </Grid.Behaviors>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToGuildCommand}"/>
+                        </Grid.GestureRecognizers>
+
+                        <Image Source="icon_guilds.png"
+           Aspect="AspectFit"
+           HorizontalOptions="Center"
+           VerticalOptions="End" 
+           HeightRequest="90" />
+                    </Grid>
+
+
+                    <Grid Grid.Column="1">
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                               PressedOpacity="0.6"
+                               PressedScale="0.7"/>
+                        </Grid.Behaviors>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToBattlesCommand}"/>
+                        </Grid.GestureRecognizers>
+
+                        <Image Source="icon_battle.png"
+           Aspect="AspectFit"
+           HorizontalOptions="Center"
+           VerticalOptions="Start"
+           TranslationY="-15"
+           HeightRequest="105" />
+
+                    </Grid>
+
+                </Grid>
+
+                    
+
+                    
+                </Grid>
+
+
+            </Grid>
+            
+        </Grid>
+
+</ContentView>
+

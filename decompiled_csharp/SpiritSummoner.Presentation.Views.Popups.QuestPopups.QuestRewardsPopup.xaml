@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Popups.QuestPopups.QuestRewardsPopup"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+             x:DataType="vm:QuestRewardsPopupViewModel"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             Closed="Popup_Closed" Color="Transparent" 
+             Size="381, 260"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+       
+
+              <Border StrokeShape="RoundRectangle 8"
+                      Padding="10"
+                      Background="{Binding OutComeBackGround}"
+                      Stroke="{Binding StrokeColor}"
+                      StrokeThickness="7">
+                      <Border.Shadow>
+                            <Shadow Brush="{Binding ShadowColor}"
+                                   Offset="1,0"
+                                   Radius="5"/>
+                      </Border.Shadow>
+                     <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapToExitCommand}"/>
+                     </Border.GestureRecognizers>
+                     <Grid Padding="5" RowDefinitions="Auto, Auto, Auto, *" RowSpacing="15">
+                            
+                            <Image Source="circles_overlap.png"
+                                   Aspect="AspectFit"
+                                   Grid.RowSpan="4"/>
+                            
+                            <outline:OutlinedLabel Text="{Binding CompletedText}"
+                                            Grid.Row="0"
+                                            HorizontalOptions="Center"
+                                            FontFamily="PoppinsSemiBold"
+                                            TextColor="#EDF8EA"
+                                            FontSize="36"
+                                            StrokeColor="DimGray"
+                                            StrokeWidth="2"
+                                            HasShadow="True"
+                                            ShadowBlur="4"
+                                            ShadowOffsetY="2"
+                                            ShadowColor="DarkSlateGray"/>
+
+                            <Label Text="{Binding CompletedText2}"
+                                   Grid.Row="1"
+                                   FontFamily="PoppinsSemiBold"
+                                   TextColor="#000000"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+
+                            <Image Source="{Binding ItemImage}"
+                                          Grid.Row="2"
+                                          HeightRequest="80"
+                                          WidthRequest="100"
+                                          IsVisible="{Binding IsItem}"
+                                          Aspect="AspectFit"/>
+
+                            <Grid ColumnDefinitions="*,*,Auto"                                   
+                                   Grid.Row="2"
+                                   HeightRequest="45"
+                                   IsVisible="{Binding IsItem,Converter={StaticResource InverseBooleanConverter}}"
+                                          ColumnSpacing="2"
+                                          Padding="0">
+
+                                   <Border Grid.Column="0"
+                                           StrokeShape="RoundRectangle 8"
+                                           Stroke="#F5CC37"
+                                           BackgroundColor="#EDF8EA"
+                                           StrokeThickness="2"
+                                           Padding="5">
+                                          <Grid ColumnDefinitions="Auto, *" ColumnSpacing="5">
+                                                 <Image Source="icon_gold_reward.png"
+                                                        Grid.Column="0"
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="30"
+                                                        VerticalOptions="Center"/>
+                                                 <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="-5">
+                                                        <Label Text="GOLD"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               TextColor="DimGray"
+                                                               FontSize="10"
+                                                               VerticalOptions="Center"/>
+                                                        <Label Text="{Binding EarnedGold}"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               TextColor="#000000"
+                                                               FontSize="16"
+                                                               VerticalOptions="Center"/>
+                                                 </VerticalStackLayout>
+                                                        
+                                                 
+                                          </Grid>
+                                   </Border>
+
+                                   <Border Grid.Column="1"
+                                           StrokeShape="RoundRectangle 8"
+                                           Stroke="#FF4499D5"
+                                           BackgroundColor="White"
+                                           StrokeThickness="2"
+                                           Padding="5">
+
+                                   <Grid ColumnDefinitions="Auto, *"
+                                                 ColumnSpacing="5">
+                                          <Image Source="icon_experience.avif"
+                                                 Grid.Column="0"
+                                                 Aspect="AspectFit"
+                                                 HeightRequest="30"
+                                                 VerticalOptions="Center"/>
+                                          <VerticalStackLayout Grid.Column="1"
+                                                        HorizontalOptions="Start"
+                                                        Spacing="-5">
+                                                 <Label Text="EXPERIENCE"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        TextColor="DimGray"
+                                                        FontSize="10"
+                                                        VerticalOptions="Center"/>
+                                                 <Label Text="{Binding EarnedEXP}"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        HorizontalOptions="Start"
+                                                        TextColor="#000000"
+                                                        FontSize="16"
+                                                        VerticalOptions="Center"/>
+                                          </VerticalStackLayout>
+
+
+                                   </Grid>
+                            </Border>
+
+                                   <Border Grid.Column="2"
+                                           StrokeShape="RoundRectangle 8"
+                                           Stroke="Gray"
+                                           BackgroundColor="White"
+                                           StrokeThickness="2"
+                                           IsVisible="{Binding ThirdItemText,Converter={StaticResource StringToBoolConverter}}"
+                                           Padding="5">
+                                   <Grid ColumnDefinitions="Auto, *"
+                                         ColumnSpacing="5">
+                                          <Image Source="{Binding ThirdItemImage}"
+                                                 Grid.Column="0"
+                                                 Aspect="AspectFit"
+                                                 HeightRequest="30"
+                                                 VerticalOptions="Center"/>
+                                          <VerticalStackLayout Grid.Column="1"
+                                                               HorizontalOptions="Start"
+                                                               Spacing="-5">
+                                                 <Label Text="{Binding ThirdItemText}"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        TextColor="DimGray"
+                                                        FontSize="10"
+                                                        VerticalOptions="Center"/>
+                                                 <Label Text="{Binding EarnedShards}"
+                                                        FontFamily="PoppinsSemiBold"
+                                                        HorizontalOptions="Start"
+                                                        TextColor="#000000"
+                                                        FontSize="16"
+                                                        VerticalOptions="Center"/>
+                                          </VerticalStackLayout>
+
+
+                                   </Grid>
+                            </Border>
+
+
+                            </Grid>
+
+                            
+                            <VerticalStackLayout Grid.Row="3"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2">
+
+                                   <Label Text="View Battle Log"
+                                          HorizontalOptions="Center"
+                                          FontFamily="PoppinsSemiBold"
+                                          FontSize="13"
+                                          TextColor="{Binding TextColor}"
+                                          Opacity="0.85"
+                                          TextDecorations="Underline"
+                                          IsVisible="{Binding IsBattleLogAvailable}">
+                                          <Label.GestureRecognizers>
+                                                 <TapGestureRecognizer Command="{Binding ViewBattleLogCommand}"/>
+                                          </Label.GestureRecognizers>
+                                   </Label>
+
+                                   <outline:OutlinedLabel Text="Tap to Continue"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Opacity="0.7"
+                                            TextColor="{Binding TextColor}"
+                                            FontFamily="PoppinsBold"
+                                            FontSize="24"
+                                            StrokeColor="#EDF8EA"
+                                            StrokeWidth="2"
+                                            HasShadow="True"
+                                            ShadowOffsetX="0"
+                                            ShadowOffsetY="2"
+                                            ShadowBlur="2"
+                                            ShadowColor="#40000000"/>
+                            </VerticalStackLayout>
+
+                            <Grid ColumnDefinitions="*, Auto" Grid.Row="1" IsVisible="False">
+
+                                   <Image Source="{Binding ItemImage}"
+                                          Grid.Column="1"
+                                          HeightRequest="50"
+                                          WidthRequest="100"
+                                          IsVisible="{Binding IsItem}"
+                                          Aspect="AspectFit"/>
+
+                                   <Label Text="{Binding ItemName,StringFormat='You have got a {0}!'}"
+                                          Grid.Column="0"
+                                          FontFamily="Poppins"
+                                          IsVisible="{Binding IsItem}"
+                                          TextColor="Black"
+                                          FontSize="Large"/>
+                            </Grid>
+
+                            <Button IsVisible="False"
+                                    Text="Go To Collection"
+                                    Command="{Binding ToCollectionCommand}"
+                                    BackgroundColor="#7CCB59">
+
+                            </Button>
+
+                     </Grid>
+              </Border>
+
+
+
+       
+    
+
+</toolkit:Popup>

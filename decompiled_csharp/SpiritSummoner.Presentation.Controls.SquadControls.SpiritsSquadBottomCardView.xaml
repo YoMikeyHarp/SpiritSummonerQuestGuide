@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Controls.SquadControls.SpiritsSquadBottomCardView"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:SpiritSummoner.Presentation.Controls.SpiritControls"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Squads"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:DataType="vm:SpiritSquadViewModel">
+
+        <ContentView.Resources>
+            <cnv:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        </ContentView.Resources>
+
+    <Grid>
+        <Border Grid.Row="1"
+                Background="{StaticResource TanGradient}"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="2"
+                Stroke="#C4BC96"
+                Padding="2">
+            <Grid ColumnDefinitions="*, *, *">
+                <Border Grid.Column="0"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot1.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid BindingContext="{Binding Slot1}">
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.8"
+                                            TouchGestureCompleted="TouchBehavior_TouchGestureCompleted"
+                                            LongPressDuration="1000"
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted"/>
+                        </Grid.Behaviors>
+                        <Image Source="icon_nospiritset.webp"
+                                Aspect="AspectFit"
+                                Margin="15"
+                                Opacity="0.4"
+                                IsVisible="{Binding Slot1.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <controls:SpiritVerticalCardView IsVisible="{Binding Slot1.HasSpirit}"/>
+                        
+                    </Grid>
+                </Border>
+
+
+                <Border Grid.Column="1"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot2.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid BindingContext="{Binding Slot2}">
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.8"
+                                            TouchGestureCompleted="TouchBehavior_TouchGestureCompleted"
+                                            LongPressDuration="1000"
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted"/>
+                        </Grid.Behaviors>
+                        <Image Source="icon_nospiritset.webp"
+                               Aspect="AspectFit"
+                               Margin="15"
+                               Opacity="0.4"
+                               IsVisible="{Binding Slot2.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <controls:SpiritVerticalCardView IsVisible="{Binding Slot2.HasSpirit}"/>
+                        
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Margin="3"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        IsEnabled="{Binding Slot3.HasSpirit,FallbackValue=false}"
+                        BackgroundColor="#1A000000">
+                    <Grid BindingContext="{Binding Slot3}">
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.8"
+                                            TouchGestureCompleted="TouchBehavior_TouchGestureCompleted"
+                                            LongPressDuration="1000"
+                                            LongPressCompleted="TouchBehavior_LongPressCompleted"/>
+                        </Grid.Behaviors>
+                        <Image Source="icon_nospiritset.webp"
+                               Aspect="AspectFit"
+                               Margin="15"
+                               Opacity="0.4"
+                               IsVisible="{Binding Slot3.HasSpirit, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <controls:SpiritVerticalCardView IsVisible="{Binding Slot3.HasSpirit}"/>
+                        
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentView>

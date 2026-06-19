@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Chat"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SpiritSummoner.Presentation.Views.Chats.GuildChatThreadView"
+             x:DataType="vm:GuildChatThreadViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#121212">
+
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="SendButtonGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#5B9CF5" Offset="0.0"/>
+            <GradientStop Color="#4F88FA" Offset="0.25"/>
+            <GradientStop Color="#4F88FA" Offset="0.75"/>
+            <GradientStop Color="#5B9CF5" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="HeaderGradient"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+            <GradientStop Color="#9AE589" Offset="0.0"/>
+            <GradientStop Color="#64D855" Offset="0.25"/>
+            <GradientStop Color="#64D855" Offset="0.75"/>
+            <GradientStop Color="#9AE589" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          RowSpacing="0">
+
+        <!-- ===== HEADER ===== -->
+        <Border Grid.Row="0"
+                Background="{StaticResource HeaderGradient}"
+                StrokeThickness="0"
+                Stroke="Transparent"
+                HeightRequest="90"
+                Padding="12,0">
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Offset="0,2"
+                        Opacity="0.25"
+                        Radius="2"/>
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="40,*"
+                  ColumnSpacing="12"
+                  VerticalOptions="End"
+                  Padding="0,0,0,12">
+
+                <!-- Back Button -->
+                <Border Grid.Column="0"
+                        BackgroundColor="#40000000"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="0"
+                        WidthRequest="36"
+                        HeightRequest="36"
+                        VerticalOptions="Center"
+                        Padding="0">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="200"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.7"
+                                               PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="&lt;"
+                           FontFamily="Bungee"
+                           FontSize="18"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <!-- Thread Subject -->
+                <outline:OutlinedLabel Grid.Column="1"
+                                       Text="{Binding ThreadSubject}"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="20"
+                                       TextColor="#EDF8EA"
+                                       StrokeColor="#000000"
+                                       StrokeWidth="1.5"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"
+                                       HasShadow="True"
+                                       ShadowColor="#40000000"
+                                       ShadowBlur="2"
+                                       ShadowOffsetY="2"/>
+            </Grid>
+        </Border>
+
+        <!-- ===== LOADING (initial) ===== -->
+        <ActivityIndicator Grid.Row="1"
+                          IsRunning="{Binding IsLoading}"
+                          IsVisible="{Binding IsLoading}"
+                          Color="#64D855"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          ZIndex="1"/>
+
+        <!-- ===== MESSAGES LIST ===== -->
+        <RefreshView Grid.Row="1"
+                     Command="{Binding LoadOlderMessagesCommand}"
+                     IsRefreshing="{Binding IsLoadingOlderMessages}"
+                     RefreshColor="#64D855">
+        <CollectionView x:Name="MessagesCollectionView"
+                        ItemsSource="{Binding Messages}"
+                        SelectionMode="None"
+                        VerticalScrollBarVisibility="Default"
+                        ItemsUpdatingScrollMode="KeepLastItemInView"
+                        Margin="12,8,12,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="6"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ChatMessageModel">
+                    <Grid ColumnDefinitions="*"
+                          Padding="0,2">
+
+                        <!-- Other Player Message (Left-aligned) -->
+                        <VerticalStackLayout HorizontalOptions="Start"
+                                             MaximumWidthRequest="280"
+                                             IsVisible="{Binding IsCurrentPlayer, Converter={StaticResource InverseBooleanConverter}}">
+                            <Label Text="{Binding SenderName}"
+                                   FontFamily="PoppinsSemiBold"
+                                   FontSize="10"
+                                   TextColor="#9AE589"
+                                   Margin="8,0,0,2"/>
+                            <Border BackgroundColor="#2A2A2A"
+                                    StrokeShape="RoundRectangle 12,12,12,4"
+                                    StrokeThickness="0"
+                                    Padding="12,8">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding Content}"
+                                           FontFamily="Poppins"
+                                           FontSize="14"
+                                           TextColor="White"
+                                           LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding TimeDisplay}"
+                                           FontFamily="Poppins"
+                                           FontSize="9"
+                                           TextColor="White"
+                                           Opacity="0.4"
+                                           HorizontalOptions="End"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Current Player Message (Right-aligned) -->
+                        <VerticalStackLayout HorizontalOptions="End"
+                                             MaximumWidthRequest="280"
+                                             IsVisible="{Binding IsCurrentPlayer}">
+                            <Border BackgroundColor="#3A6B2E"
+                                    StrokeShape="RoundRectangle 12,12,4,12"
+                                    StrokeThickness="0"
+                                    Padding="12,8">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding Content}"
+                                           FontFamily="Poppins"
+                                           FontSize="14"
+                                           TextColor="White"
+                                           LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding TimeDisplay}"
+                                           FontFamily="Poppins"
+                                           FontSize="9"
+                                           TextColor="White"
+                                           Opacity="0.4"
+                                           HorizontalOptions="End"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Spacing="8"
+                                     Padding="40"
+                                     IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}">
+                    <Label Text="No messages yet"
+                           FontFamily="Poppins"
+                           FontSize="14"
+                           TextColor="White"
+                           Opacity="0.5"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Start the conversation!"
+                           FontFamily="Poppins"
+                           FontSize="12"
+                           TextColor="White"
+                           Opacity="0.3"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+        </RefreshView>
+
+        <!-- ===== MESSAGE INPUT BAR ===== -->
+        <Border Grid.Row="2"
+                BackgroundColor="#1A1A1A"
+                StrokeShape="RoundRectangle 0"
+                StrokeThickness="0"
+                Padding="12,8">
+            <Grid ColumnDefinitions="*,Auto"
+                  ColumnSpacing="8">
+
+                <Border Grid.Column="0"
+                        BackgroundColor="#2A2A2A"
+                        StrokeShape="RoundRectangle 16"
+                        Stroke="#40FFFFFF"
+                        StrokeThickness="0.5"
+                        Padding="4,0">
+                    <Entry Text="{Binding MessageText}"
+                           Placeholder="Type a message..."
+                           PlaceholderColor="#80FFFFFF"
+                           TextColor="White"
+                           FontFamily="Poppins"
+                           FontSize="14"
+                           BackgroundColor="Transparent"
+                           ReturnType="Send"
+                           ReturnCommand="{Binding SendMessageCommand}"/>
+                </Border>
+
+                <Border Grid.Column="1"
+                        Background="{StaticResource SendButtonGradient}"
+                        StrokeShape="RoundRectangle 16"
+                        Stroke="#40000000"
+                        StrokeThickness="1"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Padding="0">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="200"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.7"
+                                               PressedScale="0.85"/>
+                    </Border.Behaviors>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendMessageCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text=">"
+                           FontFamily="Bungee"
+                           FontSize="18"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

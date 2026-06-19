@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheets"
+             x:DataType="vm:RegisterTermsSheetViewModel"
+             x:Class="SpiritSummoner.Presentation.Views.BottomSheets.RegisterTermsSheet"
+             IsCancelable="false"
+             BackgroundColor="Transparent"
+             HasBackdrop="True"
+             HasHandle="True"
+             CornerRadius="4">
+
+    <the49:BottomSheet.Resources>
+        <LinearGradientBrush x:Key="GreyGradient"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#CBCBCB"
+                          Offset="0.0"/>
+            <GradientStop Color="#B6B6B6"
+                          Offset="0.5"/>
+            <GradientStop Color="#B6B6B6"
+                          Offset="0.75"/>
+            <GradientStop Color="#CBCBCB"
+                          Offset="1.0"/>
+        </LinearGradientBrush>
+    </the49:BottomSheet.Resources>
+
+    <Border Stroke="Transparent"
+            BackgroundColor="#EDF8EA"
+            StrokeShape="RoundRectangle 8"
+            VerticalOptions="End"
+            HeightRequest="550">
+
+        <Grid RowSpacing="50"
+              RowDefinitions="Auto, *"
+              Padding="30">
+
+            <VerticalStackLayout Grid.Row="0" Spacing="10">
+                <outline:OutlinedLabel Text="Create Account"
+                                       TextColor="#027242"
+                                       HorizontalOptions="Start"
+                                       FontFamily="PoppinsBold"
+                                       FontSize="32"
+                                       HasShadow="True"
+                                       ShadowColor="#40000000"
+                                       ShadowBlur="1"
+                                       ShadowOffsetY="1"/>
+
+                <Label Text="You must agree to our terms, agreements, and conduct code to create a Spirit Summoner account."
+                       TextColor="#000000"
+                       FontFamily="PoppinsMedium"
+                       FontSize="14"/>
+
+            </VerticalStackLayout>
+
+            <Grid RowDefinitions="*,*" Grid.Row="1">
+                
+                <VerticalStackLayout Grid.Row="0" Spacing="50">
+
+                    <Grid ColumnDefinitions="Auto,*"
+                        ColumnSpacing="20"
+                        Grid.Row="0">
+                        <Grid Grid.Column="0">
+                            <Border StrokeShape="RoundRectangle 4"
+                                    HeightRequest="20"
+                                    BackgroundColor="Transparent"
+                                    WidthRequest="20"
+                                    Stroke="Gray"
+                                    StrokeThickness="1"
+                                    IsVisible="true">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ToggleTermsCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Border.Triggers>
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding TermsAccepted}"
+                                                 Value="true">
+                                            <Setter Property="BackgroundColor"
+                                                    Value="#34C759"/>
+                                    </DataTrigger>
+                                </Border.Triggers>
+
+                                <Image Source="mingcute_check_fill.png"
+                                             IsVisible="{Binding TermsAccepted}"
+                                             Background="Transparent"/>
+                            </Border>
+                        </Grid>
+
+                        <Label TextColor="#00000080" LineBreakMode="WordWrap"
+                            FontSize="15" Grid.Column="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="I have read and agree to Spirit Summoners's "
+                                        FontFamily="PoppinsMedium"
+                                        TextColor="#8C5E5E5E"/>
+                                    <Span Text="Terms of Service"
+                                        TextDecorations="Underline"
+                                        FontFamily="PoppinsBold"
+                                        TextColor="#8C000000"/>
+                                    <Span Text=" and "
+                                        FontFamily="PoppinsMedium"
+                                        TextColor="#8C5E5E5E"/>
+                                    <Span Text="Privacy Agreement"
+                                        TextDecorations="Underline"
+                                        FontFamily="PoppinsBold"
+                                        TextColor="#8C000000"/>
+                                    <Span Text="."
+                                        FontFamily="PoppinsMedium"
+                                        TextColor="#8C5E5E5E"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                        ColumnSpacing="20">
+                        <Border StrokeShape="RoundRectangle 4"
+                                Grid.Column="0"
+                                HeightRequest="20"
+                                BackgroundColor="Transparent"
+                                WidthRequest="20"
+                                Stroke="Gray"
+                                StrokeThickness="1"
+                                IsVisible="true">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ToggleConductCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border"
+                                             Binding="{Binding ConductAccepted}"
+                                             Value="true">
+                                    <Setter Property="BackgroundColor"
+                                            Value="#34C759"/>
+                                </DataTrigger>
+                            </Border.Triggers>
+
+                            <Image Source="mingcute_check_fill.png"
+                                   IsVisible="{Binding ConductAccepted}"
+                                   Background="Transparent"/>
+                        </Border>
+
+                        <Label TextColor="#00000080"
+                            FontSize="15"
+                            Grid.Column="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="I have read and agree to Spirit Summoners's "
+                                        FontFamily="PoppinsMedium"
+                                        TextColor="#8C5E5E5E"/>
+                                    <Span Text="Code of Conduct"
+                                        TextDecorations="Underline"
+                                        FontFamily="PoppinsBold"
+                                        TextColor="#8C000000"/>
+                                    <Span Text="."
+                                        FontFamily="PoppinsMedium"
+                                        TextColor="#8C5E5E5E"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+
+                </VerticalStackLayout>
+
+                <Border StrokeShape="RoundRectangle 8"
+                        StrokeThickness="0.2"
+                        Stroke="Black"
+                        Padding="5"
+                        Background="{StaticResource GradientTasks}"
+                        IsEnabled="{Binding CanConfirm}"
+                        Grid.Row="1"
+                        HeightRequest="48"
+                        VerticalOptions="Center">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.6"
+                                               TouchGestureCompleted="TouchBehavior_TouchGestureCompleted"
+                                               PressedScale="0.7"/>
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,1"
+                                Opacity="0.7"
+                                Radius="1"/>
+                    </Border.Shadow>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding CanConfirm}"
+                                     Value="false">
+                            <Setter Property="Background"
+                                    Value="{StaticResource GreyGradient}"/>
+                        </DataTrigger>
+                    </Border.Triggers>
+
+                    <Grid>
+                        <!-- Confirm Text -->
+                        <outline:OutlinedLabel Text="Confirm"
+                                               TextColor="#EDF8EA"
+                                               HorizontalOptions="Center"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="14"
+                                               StrokeColor="#40000000"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowColor="black"
+                                               ShadowBlur="1"
+                                               ShadowOffsetY="1">
+                        </outline:OutlinedLabel>
+                    </Grid>
+                </Border>
+
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+    
+    
+</the49:BottomSheet>

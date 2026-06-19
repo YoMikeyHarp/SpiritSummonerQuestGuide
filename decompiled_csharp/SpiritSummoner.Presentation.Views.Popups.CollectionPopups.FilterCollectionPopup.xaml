@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Popups"
+               xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+               x:Class="SpiritSummoner.Presentation.Views.Popups.CollectionPopups.FilterCollectionPopup"
+               x:DataType="vm:FilterCollectionPopupViewModel"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <toolkit:Popup.Resources>
+        <cnv:StringContainsConverter x:Key="StringContainsConverter"/>
+        <cnv:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <cnv:CollectionCountConverter x:Key="CollectionCountConverter"/>
+    </toolkit:Popup.Resources>
+    <!-- Main Container -->
+    <Border StrokeShape="RoundRectangle 20"
+            Stroke="White"
+            StrokeThickness="2"
+            Padding="0">
+
+        <Border.Background>
+            <RadialGradientBrush Center="0.5,0.5"
+                                 Radius="0.6">
+                <GradientStop Color="#D1EAFB"
+                              Offset="0"/>
+                <GradientStop Color="#66ABE7"
+                              Offset="1"/>
+            </RadialGradientBrush>
+        </Border.Background>
+
+        <Border.Shadow>
+            <Shadow Brush="#80000000"
+                    Offset="0,10"
+                    Opacity="0.8"
+                    Radius="20"/>
+        </Border.Shadow>
+
+        <Grid RowDefinitions="Auto,*,Auto"
+                Padding="15,10">
+
+            <!-- Header with Back Button and Title -->
+            <Grid Grid.Row="0"
+                    ColumnDefinitions="Auto,*,Auto"
+                    Margin="0,5,0,15">
+
+                <!-- Back Button -->
+                <ImageButton Grid.Column="0"
+                        Source="{mi:FontAwesomeSolid Icon=ArrowLeft, IconColor=Black}"
+                        BackgroundColor="Transparent"
+                        BorderWidth="0"
+                        IsVisible="{Binding IsBaseFilters, Converter={StaticResource InverseBooleanConverter}}"
+                        Command="{Binding ToBaseFilterCommand}"
+                        WidthRequest="40"
+                        HeightRequest="40"/>
+
+                <!-- Title -->
+                <Label Grid.Column="1"
+                       FontSize="Large"
+                       FontFamily="PoppinsSemiBold"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black">
+                    <Label.Text>
+                        <Binding Path="IsBaseFilters">
+                            <Binding.Converter>
+                                <toolkit:BoolToObjectConverter TrueObject="FILTER"
+                                        FalseObject="SELECT FILTERS"/>
+                            </Binding.Converter>
+                        </Binding>
+                    </Label.Text>
+                </Label>
+
+                <!-- Close Button -->
+                <ImageButton Grid.Column="2"
+                        Source="{mi:FontAwesomeSolid Icon=Xmark, IconColor=Black}"
+                        BackgroundColor="Transparent"
+                        BorderWidth="0"
+                        Command="{Binding ClosePopupCommand}"
+                        WidthRequest="40"
+                        HeightRequest="40"/>
+            </Grid>
+
+            <!-- Filter Options -->
+            <ScrollView Grid.Row="1"
+                    VerticalOptions="Fill">
+                <CollectionView ItemsSource="{Binding CurrentFilters}"
+                                SelectionMode="None"
+                                VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:FilterRecord">
+                            <Border StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#FF5C82A9"
+                                    Margin="0,4"
+                                    Padding="10">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:FilterCollectionPopupViewModel', Source={RelativeSource AncestorType={x:Type vm:FilterCollectionPopupViewModel}}, Path=ToggleFilterCommand}"
+                                                          CommandParameter="{Binding .}"/>
+                                </Border.GestureRecognizers>
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="200"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.7"
+                                        PressedScale="0.95"/>
+                                </Border.Behaviors>
+
+                                <Grid ColumnDefinitions="Auto,*,Auto"
+                                        ColumnSpacing="15">
+
+                                    <!-- Check Icon Container -->
+                                    <Border Grid.Column="0"
+                                            StrokeThickness="2"
+                                            Stroke="White"
+                                            BackgroundColor="{Binding IsChecked, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#4CAF50,Transparent'}"
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            StrokeShape="RoundRectangle 4"
+                                            VerticalOptions="Center">
+                                        <Image Source="{mi:FontAwesomeSolid Icon=Check,IconColor=White}"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               IsVisible="{Binding IsChecked}"/>
+                                    </Border>
+
+                                    <!-- Filter Name -->
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           VerticalOptions="Center"/>
+
+                                    <!-- Arrow Icon for Sub-filters -->
+                                    <Image Grid.Column="2"
+                                           Source="{mi:FontAwesomeSolid Icon=ChevronRight, IconColor=White}"
+                                           HeightRequest="20"
+                                           VerticalOptions="Center"
+                                           IsVisible="{Binding Name, Converter={StaticResource StringContainsConverter}, ConverterParameter='Type,Category'}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+
+            <!-- Action Buttons -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  Margin="0,15,0,5">
+
+                <!-- Clear Button -->
+                <Button Grid.Column="0"
+                        Text="CLEAR"
+                        BackgroundColor="#E74C3C"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontFamily="PoppinsSemiBold"
+                        CornerRadius="8"
+                        HeightRequest="45"
+                        Command="{Binding ClearFiltersCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2"
+                                Radius="4"
+                                Opacity="0.3"/>
+                    </Button.Shadow>
+                </Button>
+
+                <!-- Apply Button -->
+                <Button Grid.Column="1"
+                        Text="APPLY"
+                        BackgroundColor="#27AE60"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontFamily="PoppinsSemiBold"
+                        CornerRadius="8"
+                        HeightRequest="45"
+                        Command="{Binding ApplyFiltersCommand}"
+                        IsVisible="{Binding IsBaseFilters, Converter={StaticResource InverseBooleanConverter}}">
+                    <Button.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2"
+                                Radius="4"
+                                Opacity="0.3"/>
+                    </Button.Shadow>
+                </Button>
+
+                <!-- Auto-apply indicator for main filters -->
+                <Label Grid.Column="1"
+                       Text="Auto-applying..."
+                       FontSize="Small"
+                       FontAttributes="Italic"
+                       TextColor="#2C3E50"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       IsVisible="{Binding IsBaseFilters}"/>
+            </Grid>
+
+            <!-- Filter Summary (when in sub-filter view) -->
+            <Border Grid.Row="2"
+                    IsVisible="{Binding IsBaseFilters, Converter={StaticResource InverseBooleanConverter}}"
+                    BackgroundColor="#34495E"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0,10,0,0">
+                <Label FontSize="Small"
+                       TextColor="White"
+                       FontFamily="PoppinsSemiBold"
+                       HorizontalOptions="Center">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}Selected: {0} types, {1} categories">
+                            <Binding Path="TypeFilters"
+                                     Converter="{StaticResource CollectionCountConverter}"
+                                     ConverterParameter="IsChecked"/>
+                            <Binding Path="CategoryFilters"
+                                     Converter="{StaticResource CollectionCountConverter}"
+                                     ConverterParameter="IsChecked"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+            </Border>
+        </Grid>
+    </Border>
+</toolkit:Popup>

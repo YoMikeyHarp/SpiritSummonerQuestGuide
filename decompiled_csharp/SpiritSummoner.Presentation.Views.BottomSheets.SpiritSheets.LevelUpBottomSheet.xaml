@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:cnv="clr-namespace:SpiritSummoner.Presentation.Converters"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   HasBackdrop="True"
+                   IsCancelable="False"
+                   BackgroundColor="Transparent"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.LevelUpBottomSheet"
+                   x:DataType="vm:LevelUpSheetViewModel">
+
+       
+    <the49:BottomSheet.Detents>
+        <the49:MediumDetent></the49:MediumDetent>
+    </the49:BottomSheet.Detents>
+    <the49:BottomSheet.Resources>
+              <cnv:LevelUpMessageConverter x:Key="LevelUpMessageConverter"/>
+       </the49:BottomSheet.Resources>
+    <Grid VerticalOptions="{OnPlatform Android=End}">
+              <Border Stroke="Transparent"
+                      Background="{StaticResource TanGradient}"
+                      StrokeShape="RoundRectangle 8"
+                      Padding="7"
+                      VerticalOptions="End"
+                      HeightRequest="450">
+                     <Grid RowDefinitions="Auto, *"
+                           RowSpacing="5">
+
+                            <outline:OutlinedLabel Grid.Row="0"
+                                                   Text="Train"
+                                                   FontFamily="PoppinsBold"
+                                                   FontSize="20"
+                                                   TextColor="#2E4A0F"
+                                                   HasShadow="True"
+                                                   ShadowColor="#29000040"
+                                                   ShadowBlur="2"
+                                                   ShadowOffsetY="2"/>
+
+                            <Border Grid.Row="1"
+                                    BackgroundColor="#EDF8EA"
+                                    Stroke="#32000040"
+                                    StrokeThickness="1">
+
+                                   <Grid RowDefinitions="Auto, *, Auto, Auto, Auto"
+                                          Padding="10,0">
+
+                                          <!-- Info text -->
+                                          <Label Grid.Row="0"
+                                                 HorizontalOptions="Center"
+                                                 Padding="0,10">
+                                                 <Label.FormattedText>
+                                                        <FormattedString>
+                                                               <Span Text="Use gold to level up your spirit! "
+                                                                      TextColor="#80000000"
+                                                                      FontFamily="PoppinsMedium"
+                                                                      FontSize="15"/>
+
+                                                               <Span Text="Leveling up gives the spirit more base HP and 10 skill points to allocate."
+                                                                      TextColor="#80000000"
+                                                                      FontFamily="PoppinsBold"
+                                                                      FontSize="15"/>
+                                                        </FormattedString>
+                                                 </Label.FormattedText>
+                                          </Label>
+
+                                          <Grid Grid.Row="1"
+                                                ColumnDefinitions="150, *, 150">
+
+                                                 <!-- Current Level Box -->
+                                                 <Border Grid.Column="0"
+                                                        Stroke="#40000000"
+                                                        StrokeThickness="1"
+                                                        StrokeShape="RoundRectangle 8"
+                                                        BackgroundColor="#2E4A0F"
+                                                        Padding="5">
+
+                                                        <Border Grid.Column="0"
+                                                                StrokeThickness="0"
+                                                                StrokeShape="RoundRectangle 4"
+                                                                Background="{StaticResource TanGradient}"
+                                                                Padding="5">
+
+                                                               <Grid RowDefinitions="*,30">
+                                                                      <Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" ColumnSpacing="5">
+                                                                             <outline:OutlinedLabel Text="LVL"
+                                                                                                    Grid.Column="0"
+                                                                                                    FontFamily="PoppinsBold"
+                                                                                                    FontSize="20"
+                                                                                                    TextColor="#FFFFFF"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="3"
+                                                                                                    HasShadow="True"
+                                                                                                    ShadowColor="#000000"
+                                                                                                    ShadowBlur="2"
+                                                                                                    ShadowOffsetY="2"/>
+
+                                                                             <outline:OutlinedLabel Text="{Binding CurrentLevel}"
+                                                                                                    Grid.Column="1"
+                                                                                                    FontFamily="Bungee"
+                                                                                                    FontSize="41"
+                                                                                                    TextColor="#FFFFFF"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="3"
+                                                                                                    HasShadow="True"
+                                                                                                    ShadowColor="#000000"
+                                                                                                    ShadowBlur="2"
+                                                                                                    ShadowOffsetY="2"
+                                                                                                    TranslationY="-7"/>
+                                                                      </Grid>
+
+                                                                      <Border Grid.Row="1"
+                                                                              Stroke="#40000000"
+                                                                              StrokeThickness="1"
+                                                                              StrokeShape="RoundRectangle 100"
+                                                                              BackgroundColor="#83CF63"
+                                                                              HeightRequest="24"
+                                                                              Padding="3">
+
+                                                                             <outline:OutlinedLabel Text="{Binding CurrentHP}"
+                                                                                                    FontFamily="PoppinsExtraBold"
+                                                                                                    FontSize="14"
+                                                                                                    TextColor="#EDF8EA"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="1"/>
+                                                                      </Border>
+                                                               </Grid>
+                                                        </Border>
+
+                                                 </Border>
+
+                                                 <!-- Level Up Arrow -->
+                                                 <Image Source="icon_right_double.png"
+                                                        Grid.Column="1"
+                                                        WidthRequest="80"
+                                                        HeightRequest="80"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="Center"/>
+
+                                                 <!-- Next Level Box -->
+                                                 <Border Grid.Column="2"
+                                                         Stroke="#40000000"
+                                                         StrokeThickness="1"
+                                                         StrokeShape="RoundRectangle 8"
+                                                         BackgroundColor="#2E4A0F"
+                                                         Padding="5">
+
+                                                        <Border Grid.Column="0"
+                                                                StrokeThickness="0"
+                                                                StrokeShape="RoundRectangle 4"
+                                                                Background="{StaticResource TanGradient}"
+                                                                Padding="5">
+
+                                                               <Grid RowDefinitions="*,30">
+                                                                      <Grid Grid.Row="0"
+                                                                                    ColumnDefinitions="Auto,Auto"
+                                                                                    ColumnSpacing="5">
+                                                                             <outline:OutlinedLabel Text="LVL"
+                                                                                                    Grid.Column="0"
+                                                                                                    FontFamily="PoppinsBold"
+                                                                                                    FontSize="20"
+                                                                                                    TextColor="#FFFFFF"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="3"
+                                                                                                    HasShadow="True"
+                                                                                                    ShadowColor="#000000"
+                                                                                                    ShadowBlur="2"
+                                                                                                    ShadowOffsetY="2"/>
+
+                                                                             <outline:OutlinedLabel Text="{Binding PreviewLevel}"
+                                                                                                    Grid.Column="1"
+                                                                                                    FontFamily="Bungee"
+                                                                                                    FontSize="41"
+                                                                                                    TextColor="#FFFFFF"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="3"
+                                                                                                    HasShadow="True"
+                                                                                                    ShadowColor="#000000"
+                                                                                                    ShadowBlur="2"
+                                                                                                    ShadowOffsetY="2"
+                                                                                                    TranslationY="-7"/>
+                                                                      </Grid>
+
+                                                                      <Border Grid.Row="1"
+                                                                              Stroke="#40000000"
+                                                                              StrokeThickness="1"
+                                                                              StrokeShape="RoundRectangle 100"
+                                                                              BackgroundColor="#83CF63"
+                                                                              HeightRequest="24"
+                                                                              Padding="3">
+
+                                                                             <outline:OutlinedLabel Text="{Binding PreviewHP}"
+                                                                                                    FontFamily="PoppinsExtraBold"
+                                                                                                    FontSize="14"
+                                                                                                    TextColor="#EDF8EA"
+                                                                                                    StrokeColor="#000000"
+                                                                                                    StrokeWidth="1"/>
+                                                                      </Border>
+                                                               </Grid>
+                                                        </Border>
+
+                                                 </Border>
+
+                                          </Grid>
+                                          
+                                          <!-- Level Cap Warning -->
+                                          <Label Grid.Row="2"
+                                                 Text="Raise your player level to continue!"
+                                                 FontFamily="PoppinsMedium"
+                                                 FontSize="12"
+                                                 TextColor="#C0442C"
+                                                 HorizontalOptions="Center"
+                                                 IsVisible="{Binding IsAtLevelCap}"
+                                                 Padding="0,4,0,0"/>
+
+                                          <!-- Cost and Available Gold -->
+                                          <Grid  Grid.Row="3"
+                                                 ColumnDefinitions="*,*"
+                                                 Padding="20">
+
+                                                 <outline:OutlinedLabel
+                                                        Grid.Column="0"
+                                                        Text="{Binding RequiredGold, StringFormat='Cost: ${0}'}"
+                                                        FontFamily="PoppinsBold"
+                                                        FontSize="20"
+                                                        HorizontalOptions="Start"
+                                                        HasShadow="False"
+                                                        HasInnerShadow="False"
+                                                        UseGradient="True"
+                                                        GradientAngle="60">
+                                                        <outline:OutlinedLabel.GradientStops>
+                                                               <outline:GradientStopOutline Color="#EB6756"
+                                                                                            Offset="0.0"/>
+                                                               <outline:GradientStopOutline Color="#E53F37"
+                                                                                            Offset="0.25"/>
+                                                               <outline:GradientStopOutline Color="#E53F37"
+                                                                                            Offset="0.75"/>
+                                                               <outline:GradientStopOutline Color="#EB6756"
+                                                                                            Offset="1.0"/>
+                                                        </outline:OutlinedLabel.GradientStops>
+                                                 </outline:OutlinedLabel>
+
+                                                 <outline:OutlinedLabel
+                                                        Grid.Column="1"
+                                                        Text="{Binding CurrentGold, StringFormat='Available: ${0}'}"
+                                                        FontFamily="PoppinsBold"
+                                                        FontSize="20"
+                                                        TextColor="#00E700">
+                                                        <outline:OutlinedLabel.Triggers>
+                                                               <DataTrigger TargetType="outline:OutlinedLabel"
+                                                                            Binding="{Binding CanAfford}"
+                                                                            Value="False">
+                                                                      <Setter Property="TextColor" Value="#FF4444"/>
+                                                               </DataTrigger>
+                                                        </outline:OutlinedLabel.Triggers>
+                                                 </outline:OutlinedLabel>
+                                          </Grid>
+
+                                          <Grid Grid.Row="4"
+                                                ColumnDefinitions="*,*"
+                                                ColumnSpacing="10"
+                                                RowDefinitions="*,*"
+                                                RowSpacing="10"
+                                                Padding="15,5,15,20">
+
+                                                 <!-- Train Button -->
+                                                 <Border Grid.ColumnSpan="2"
+                                                         StrokeShape="RoundRectangle 8"
+                                                         StrokeThickness="0.2"
+                                                         Stroke="Black"
+                                                         Background="{StaticResource GradientRewards}"
+                                                         Padding="15">
+                                                        <Border.Triggers>
+                                                               <DataTrigger TargetType="Border"
+                                                                            Binding="{Binding CanLevelUp}"
+                                                                            Value="False">
+                                                                      <Setter Property="Opacity" Value="0.4"/>
+                                                               </DataTrigger>
+                                                        </Border.Triggers>
+                                                        <Border.Behaviors>
+                                                               <toolkit:TouchBehavior DefaultAnimationDuration="150"
+                                                                                      LongPressDuration="900"
+                                                                                      LongPressCompleted="TouchBehavior_LongPressCompleted"
+                                                                                      CurrentTouchStateChanged="TouchBehavior_TouchStateChanged"
+                                                                                      PressedOpacity="0.6"
+                                                                                      TouchGestureCompleted="OnTrainTapped"
+                                                                                      PressedScale="0.9"/>
+                                                        </Border.Behaviors>
+                                                        <Border.Shadow>
+                                                               <Shadow Brush="Black"
+                                                                       Offset="0,1"
+                                                                       Opacity="0.7"
+                                                                       Radius="1"/>
+                                                        </Border.Shadow>
+                                                        <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                               Text="Train!"
+                                                                               HorizontalOptions="Center"
+                                                                               FontFamily="PoppinsSemiBold"
+                                                                               FontSize="14"
+                                                                               StrokeColor="#40000000"
+                                                                               StrokeWidth="2"
+                                                                               HasShadow="True"
+                                                                               ShadowColor="#4D000000"
+                                                                               ShadowBlur="1"
+                                                                               ShadowOffsetY="1">
+                                                        </outline:OutlinedLabel>
+                                                 </Border>
+
+                                                 <!-- Cancel Button -->
+                                                 <Border Grid.Column="0"
+                                                         Grid.Row="1"
+                                                         StrokeShape="RoundRectangle 8"
+                                                         StrokeThickness="0.2"
+                                                         Stroke="Black"
+                                                         Padding="15">
+                                                        <Border.Background>
+                                                               <LinearGradientBrush StartPoint="0.5,0"
+                                                                                    EndPoint="0.5,1">
+                                                                      <GradientStop Color="#EB6756"
+                                                                                    Offset="0"/>
+                                                                      <GradientStop Color="#E53F37"
+                                                                                    Offset="0.25"/>
+                                                                      <GradientStop Color="#E53F37"
+                                                                                    Offset="0.5"/>
+                                                                      <GradientStop Color="#EB6756"
+                                                                                    Offset="1"/>
+                                                               </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Border.Behaviors>
+                                                               <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                                      DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                                      PressedOpacity="0.6"
+                                                                                      PressedScale="0.7"
+                                                                                      TouchGestureCompleted="OnCancelTapped"/>
+                                                        </Border.Behaviors>
+                                                        <Border.Shadow>
+                                                               <Shadow Brush="Black"
+                                                                       Offset="0,1"
+                                                                       Opacity="0.7"
+                                                                       Radius="1"/>
+                                                        </Border.Shadow>
+                                                        <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                               Text="Cancel"
+                                                                               HorizontalOptions="Center"
+                                                                               FontFamily="PoppinsSemiBold"
+                                                                               FontSize="14"
+                                                                               StrokeColor="#40000000"
+                                                                               StrokeWidth="2"
+                                                                               HasShadow="True"
+                                                                               ShadowColor="#4D000000"
+                                                                               ShadowBlur="1"
+                                                                               ShadowOffsetY="1"/>
+                                                 </Border> 
+
+                                                 <!-- Cancel Button -->
+                                                 <Border Grid.Column="0"
+                                                         Grid.Row="1"
+                                                         StrokeShape="RoundRectangle 8"
+                                                         StrokeThickness="0.2"
+                                                         Stroke="Black"
+                                                         Padding="15">
+                                                        <Border.Background>
+                                                               <LinearGradientBrush StartPoint="0.5,0"
+                                                                                    EndPoint="0.5,1">
+                                                                      <GradientStop Color="#EB6756"
+                                                                                    Offset="0"/>
+                                                                      <GradientStop Color="#E53F37"
+                                                                                    Offset="0.25"/>
+                                                                      <GradientStop Color="#E53F37"
+                                                                                    Offset="0.5"/>
+                                                                      <GradientStop Color="#EB6756"
+                                                                                    Offset="1"/>
+                                                               </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Border.Behaviors>
+                                                               <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                                      DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                                      PressedOpacity="0.6"
+                                                                                      PressedScale="0.7"
+                                                                                      TouchGestureCompleted="OnCancelTapped"/>
+                                                        </Border.Behaviors>
+                                                        <Border.Shadow>
+                                                               <Shadow Brush="Black"
+                                                                       Offset="0,1"
+                                                                       Opacity="0.7"
+                                                                       Radius="1"/>
+                                                        </Border.Shadow>
+                                                        <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                               Text="Cancel"
+                                                                               HorizontalOptions="Center"
+                                                                               FontFamily="PoppinsSemiBold"
+                                                                               FontSize="14"
+                                                                               StrokeColor="#40000000"
+                                                                               StrokeWidth="2"
+                                                                               HasShadow="True"
+                                                                               ShadowColor="#4D000000"
+                                                                               ShadowBlur="1"
+                                                                               ShadowOffsetY="1"/>
+                                                 </Border>
+                                                 
+                                                 <!-- Confirm Button -->
+                                                 <Border Grid.Column="1"
+                                                        Grid.Row="1"
+                                                        StrokeShape="RoundRectangle 8"
+                                                        StrokeThickness="0.2"
+                                                        Stroke="Black"
+                                                        Padding="5"
+                                                        Opacity="{Binding CanConfirm, Converter={StaticResource BoolToOpacityConverter}}">
+                                                        <Border.Background>
+                                                               <LinearGradientBrush StartPoint="0.5,0"
+                                                                                    EndPoint="0.5,1">
+                                                                             <GradientStop Color="#9AE589"
+                                                                                           Offset="0"/>
+                                                                             <GradientStop Color="#64D855"
+                                                                                           Offset="0.25"/>
+                                                                             <GradientStop Color="#64D855"
+                                                                                           Offset="0.5"/>
+                                                                             <GradientStop Color="#9AE589"
+                                                                                           Offset="1"/>
+                                                               </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Border.Behaviors>
+                                                               <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                                           DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                                           PressedOpacity="0.6"
+                                                                                           PressedScale="0.7"
+                                                                                           TouchGestureCompleted="OnConfirmTapped"/>
+                                                        </Border.Behaviors>
+                                                        <Border.Shadow>
+                                                               <Shadow Brush="Black"
+                                                                             Offset="0,1"
+                                                                             Opacity="0.7"
+                                                                             Radius="1"/>
+                                                        </Border.Shadow>
+
+                                                        <Grid>
+                                                               <!-- Processing Indicator -->
+                                                               <ActivityIndicator IsRunning="{Binding IsProcessing}"
+                                                                                    IsVisible="{Binding IsProcessing}"
+                                                                                    Color="White"
+                                                                                    WidthRequest="20"
+                                                                                    HeightRequest="20"/>
+
+                                                               <!-- Confirm Text -->
+                                                               <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                                           HorizontalOptions="Center"
+                                                                                           FontFamily="PoppinsSemiBold"
+                                                                                           FontSize="12"
+                                                                                           StrokeColor="#40000000"
+                                                                                           StrokeWidth="2"
+                                                                                           HasShadow="True"
+                                                                                           ShadowColor="black"
+                                                                                           ShadowBlur="1"
+                                                                                           ShadowOffsetY="1">
+                                                                             <outline:OutlinedLabel.Text>
+                                                                                    <Binding Path="HasUnsavedChanges">
+                                                                                           <Binding.Converter>
+                                                                                                  <toolkit:BoolToObjectConverter TrueObject="Save Changes"
+                                                                                                                              FalseObject="No Changes"/>
+                                                                                           </Binding.Converter>
+                                                                                    </Binding>
+                                                                             </outline:OutlinedLabel.Text>
+                                                               </outline:OutlinedLabel>
+                                                        </Grid>
+                                                 </Border>
+                                          </Grid>
+                                   </Grid>
+                            </Border>
+                     </Grid>
+              </Border>
+       </Grid>
+       
+    
+</the49:BottomSheet>

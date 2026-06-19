@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Guilds"
+             xmlns:guildmodels="clr-namespace:SpiritSummoner.Domain.Entities.Guilds"
+             xmlns:converters="clr-namespace:SpiritSummoner.Presentation.Converters"
+             x:Class="SpiritSummoner.Presentation.Views.Guilds.GuildMembersPage"
+             x:DataType="vm:GuildMembersViewModel">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Equality to Color Converter -->
+            <converters:EqualityToColorConverter x:Key="EqualityToColorConverter"/>
+
+            <!-- Role to Color Converter -->
+            <converters:RoleToColorConverter x:Key="RoleToColorConverter"/>
+
+            <!-- Role to Icon Converter -->
+            <converters:RoleToIconConverter x:Key="RoleToIconConverter"/>
+
+            <!-- Null to Bool Converter -->
+            <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+
+            <!-- Underscrore converter -->
+            <converters:UnderscoreToSpaceConverter x:Key="UnderscoreToSpaceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*"
+          Background="{StaticResource GradientBackground}">
+
+        <!-- Header Section -->
+        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto,Auto" Grid.Row="0" Padding="20,20,20,15" ColumnSpacing="10">
+
+            <!-- Title -->
+            <Label Text="MEMBERS"
+                   Grid.Row="0" Grid.Column="0"
+                   FontFamily="PoppinsExtraBold"
+                   FontSize="26"
+                   TextColor="White"
+                   Shadow="{StaticResource LabelBlackShadow}"/>
+
+            <Label Text="{Binding MemberCountText}"
+                   Grid.Row="1" Grid.Column="0"
+                   FontFamily="PoppinsSemiBold"
+                   FontSize="12"
+                   TextColor="#FFFFFFCC"
+                   Margin="0,-5,0,0"/>
+                   
+
+            <!-- Invite Button (visible only to Officers/Leaders) -->
+            <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                    Padding="12,8"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="2"
+                    IsVisible="{Binding CanInvitePlayers}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenInvitePlayerCommand}" CommandParameter="send"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="+" FontSize="20" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Invite" FontSize="14" TextColor="White" VerticalOptions="Center" FontFamily="PoppinsSemiBold"/>
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Join requests Button (visible only to Officers/Leaders) -->
+            <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                    Padding="12,8"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="2"
+                    IsVisible="{Binding CanInvitePlayers}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenInvitePlayerCommand}" CommandParameter="requests"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="+" FontSize="20" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Join requests" FontSize="14" TextColor="White" VerticalOptions="Center" FontFamily="PoppinsSemiBold"/>
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Search Bar -->
+            <Border Grid.Row="2" Grid.ColumnSpan="3" Margin="0,15,0,0"
+                    Padding="12,0,12,0"
+                    StrokeShape="RoundRectangle 16"
+                    Stroke="#FFFFFF80"
+                    StrokeThickness="2"
+                    BackgroundColor="White"
+                    Shadow="{StaticResource ImageShadow}">
+                <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="48">
+                    <Label Grid.Column="0" Text="🔍" FontSize="20" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry Grid.Column="1"
+                           Text="{Binding SearchText}"
+                           Placeholder="Search members..."
+                           FontFamily="PoppinsSemiBold"
+                           TextColor="#1F2937"
+                           PlaceholderColor="#9CA3AF"
+                           VerticalOptions="Center"/>
+                    <Border Grid.Column="2"
+                            IsVisible="{Binding SearchText, Converter={StaticResource StringToBoolConverter}}"
+                            Padding="8"
+                            StrokeShape="RoundRectangle 8">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClearSearchCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="✕" FontSize="18" TextColor="#9CA3AF" VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Sort Options -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Padding="20,0,20,100">
+            <Grid Grid.Row="0" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,0,0,12">
+                <Border Grid.Column="0" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='contribution:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='contribution:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="contribution"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Contribution"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <Border Grid.Column="1" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='trophies:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='trophies:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="reputation"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Reputation"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <Border Grid.Column="2" Padding="12,8" StrokeShape="RoundRectangle 12">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='level:#FFFFFF4D,#FFFFFF1A'}"/>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="{Binding SortBy, Converter={StaticResource EqualityToColorConverter}, ConverterParameter='level:#FFFFFF,#FFFFFF33'}"/>
+                    </Border.Stroke>
+                    <Border.StrokeThickness>2</Border.StrokeThickness>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeSortByCommand}" CommandParameter="level"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="Level"
+                           FontFamily="PoppinsExtraBold"
+                           FontSize="10"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Members List -->
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Members}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="guildmodels:GuildMember">
+                        <Border Padding="16" Margin="0,0,0,8"
+                                StrokeShape="RoundRectangle 16"
+                                Stroke="Transparent"
+                                BackgroundColor="White"
+                                Shadow="{StaticResource ImageShadow}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding x:DataType='vm:GuildMembersViewModel', Source={RelativeSource AncestorType={x:Type vm:GuildMembersViewModel}}, Path=SelectMemberCommand}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                <!-- Avatar with Online Status -->
+                                <Grid Grid.Column="0">
+                                    <Border WidthRequest="56" HeightRequest="56"
+                                            StrokeShape="RoundRectangle 12"
+                                            Stroke="White"
+                                            StrokeThickness="2"
+                                            Shadow="{StaticResource ImageShadow}">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#A78BFA" Offset="0.0"/>
+                                                <GradientStop Color="#8B5CF6" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid>
+                                            <Label Text="👤" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding HasIcon,Converter={StaticResource InverseBooleanConverter}}"/>
+                                            <Image Source="{Binding PlayerIcon}" IsVisible="{Binding HasIcon}" ZIndex="2"/>
+                                        </Grid>
+                                    </Border>
+
+                                    <!-- Online Indicator -->
+                                    <Border IsVisible="{Binding IsOnline}"
+                                            WidthRequest="16" HeightRequest="16"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="#10B981"
+                                            Stroke="White"
+                                            StrokeThickness="2"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="End"
+                                            Margin="0,0,-2,-2"/>
+                                </Grid>
+
+                                <!-- Member Info -->
+                                <Grid Grid.Column="1" RowDefinitions="Auto,Auto" RowSpacing="4">
+                                    <!-- Name and Role -->
+                                    <HorizontalStackLayout Grid.Row="0" Spacing="8">
+                                        <Label Text="{Binding PlayerName}"
+                                               FontFamily="PoppinsExtraBold"
+                                               FontSize="14"
+                                               TextColor="#1F2937"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- Role Badge -->
+                                        <Border Padding="6,2" StrokeShape="RoundRectangle 6">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="{Binding Role, Converter={StaticResource RoleToColorConverter}}"/>
+                                            </Border.Background>
+                                            <HorizontalStackLayout Spacing="3">
+                                                <Label FontSize="9" VerticalOptions="Center">
+                                                    <Label.Text>
+                                                        <MultiBinding Converter="{StaticResource RoleToIconConverter}">
+                                                            <Binding Path="Role"/>
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
+                                                <Label Text="{Binding Role,Converter={StaticResource UnderscoreToSpaceConverter}}"
+                                                       FontFamily="PoppinsExtraBold"
+                                                       FontSize="Micro"
+                                                       TextColor="Black"
+                                                       Shadow="{StaticResource LabelWhiteShadow}"
+                                                       VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Stats -->
+                                    <HorizontalStackLayout Grid.Row="1" Spacing="12">
+                                        <Label FontFamily="PoppinsSemiBold" FontSize="11" TextColor="#6B7280">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Lvl " TextColor="#6B7280"/>
+                                                    <Span Text="{Binding Level}" TextColor="#6B7280"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Image Source="icon_reputation.png" HeightRequest="11"/>
+                                            <Label Text="{Binding Trophies}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="11"
+                                                   TextColor="#6B7280"/>
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="⭐" FontSize="11"/>
+                                            <Label Text="{Binding Contribution}"
+                                                   FontFamily="PoppinsSemiBold"
+                                                   FontSize="11"
+                                                   TextColor="#6B7280"/>
+                                        </HorizontalStackLayout>
+                                    </HorizontalStackLayout>
+                                </Grid>
+
+                                <!-- Chevron -->
+                                <Label Grid.Column="2" Text="›" FontSize="24" TextColor="#D1D5DB" VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Member Detail Modal -->
+        <Border Grid.RowSpan="2"
+                IsVisible="{Binding SelectedMember, Converter={StaticResource NullToBoolConverter}}"
+                BackgroundColor="#80000000">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseDetailsCommand}"/>
+            </Border.GestureRecognizers>
+
+            <Border Padding="24"
+                    StrokeShape="RoundRectangle 24"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="340"
+                    Shadow="{StaticResource ImageShadow}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer/>
+                </Border.GestureRecognizers>
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="16">
+                    <!-- Header -->
+                    <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Member Details"
+                               FontFamily="PoppinsExtraBold"
+                               FontSize="20"
+                               TextColor="#1F2937"/>
+                        <Border Grid.Column="1" Padding="8" StrokeShape="RoundRectangle 8">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseDetailsCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="✕" FontSize="20" TextColor="#9CA3AF"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Member Avatar and Name -->
+                    <VerticalStackLayout Grid.Row="1" Spacing="12">
+                        <Border WidthRequest="96" HeightRequest="96"
+                                StrokeShape="RoundRectangle 20"
+                                Stroke="#E5E7EB"
+                                StrokeThickness="4"
+                                HorizontalOptions="Center"
+                                Shadow="{StaticResource ImageShadow}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#A78BFA" Offset="0.0"/>
+                                    <GradientStop Color="#8B5CF6" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid>
+                                <Label Text="👤" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Source="{Binding SelectedMember.PlayerIcon}" IsVisible="{Binding SelectedMember.HasIcon}" ZIndex="2"/>
+                            </Grid>
+                            
+                        </Border>
+
+                        <Label Text="{Binding SelectedMember.PlayerName}"
+                               FontFamily="PoppinsExtraBold"
+                               FontSize="18"
+                               TextColor="#1F2937"
+                               HorizontalOptions="Center"/>
+
+                        <!-- Role Badge -->
+                        <Border Padding="10,4" StrokeShape="RoundRectangle 8" HorizontalOptions="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{Binding SelectedMember.Role, Converter={StaticResource RoleToColorConverter}}"/>
+                            </Border.Background>
+                            <Label Text="{Binding SelectedMember.Role}"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="11"
+                                   TextColor="Black"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Stats Grid -->
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <!-- Level -->
+                        <Border Grid.Row="0" Grid.Column="0"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#DBEAFE">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedMember.Level}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="24"
+                                       TextColor="#2563EB"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Level"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#1E40AF"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Trophies -->
+                        <Border Grid.Row="0" Grid.Column="1"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#FEF3C7">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedMember.Trophies}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="24"
+                                       TextColor="#D97706"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Trophies"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#92400E"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Contribution -->
+                        <Border Grid.Row="1" Grid.ColumnSpan="2"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="#F3E8FF">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding SelectedMember.Contribution}"
+                                       FontFamily="PoppinsExtraBold"
+                                       FontSize="24"
+                                       TextColor="#9333EA"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Weekly Contribution"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="10"
+                                       TextColor="#6B21A8"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- Actions -->
+                    <VerticalStackLayout Grid.Row="3" Spacing="8"
+                                         IsVisible="{Binding CanPromoteMembers}">
+
+                        <!-- Promote Button -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}"
+                                IsVisible="{Binding SelectedMember.IsLeader,Converter={StaticResource InverseBooleanConverter}}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#8B5CF6" Offset="0.0"/>
+                                    <GradientStop Color="#7C3AED" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PromoteMemberCommand}"
+                                                      CommandParameter="{Binding SelectedMember}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Promote Member"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                        <!-- Demote Button -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}" 
+                            IsVisible="{Binding SelectedMember.IsLeader,Converter={StaticResource InverseBooleanConverter}}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#8B5CF6" Offset="0.0"/>
+                                    <GradientStop Color="#7C3AED" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DemoteMemberCommand}"
+                                                      CommandParameter="{Binding SelectedMember}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Demote Member"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                        <!-- Kick Button -->
+                        <Border Padding="16,12" StrokeShape="RoundRectangle 12" Shadow="{StaticResource ImageShadow}"
+                                IsVisible="{Binding SelectedMember.IsLeader,Converter={StaticResource InverseBooleanConverter}}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#EF4444" Offset="0.0"/>
+                                    <GradientStop Color="#DC2626" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding KickMemberCommand}"
+                                                      CommandParameter="{Binding SelectedMember}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="Remove from Guild"
+                                   FontFamily="PoppinsExtraBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Border>
+
+        <Border Grid.RowSpan="4"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Background="{StaticResource GradientPerks}"
+                Stroke="Black"
+                StrokeShape="Ellipse"
+                HeightRequest="60"
+                Scale="0.8"
+                Padding="5">
+            <ImageButton Grid.RowSpan="4"
+                         Source="icon_back.png"
+                         Command="{Binding GoBackCommand}"/>
+
+        </Border>
+
+    </Grid>
+
+</ContentPage>

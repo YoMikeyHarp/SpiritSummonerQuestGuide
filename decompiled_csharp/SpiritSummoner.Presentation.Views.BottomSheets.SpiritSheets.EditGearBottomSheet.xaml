@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+                   xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                   xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.BottomSheet"
+                   xmlns:models="clr-namespace:SpiritSummoner.Presentation.Models"
+                   xmlns:flex="http://schemas.microsoft.com/dotnet/2021/maui/flex"
+                   xmlns:converters="clr-namespace:SpiritSummoner.Presentation.Converters"
+                   xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+                   xmlns:controls="clr-namespace:SpiritSummoner.Presentation.Controls.SpiritControls"
+                   xmlns:controlsvm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Spirits"
+                   x:Class="SpiritSummoner.Presentation.Views.BottomSheets.SpiritSheets.EditGearBottomSheet"
+                   x:DataType="vm:EditGearSheetViewModel"
+                    HasBackdrop="True" HasHandle="True"
+                   Background="transparent" 
+                   CornerRadius="24">
+
+    <Border Stroke="Brown"
+            StrokeThickness=".4"
+            BackgroundColor="#f8f5be"
+            StrokeShape="RoundRectangle 16"
+            Padding="10,5" 
+            VerticalOptions="End"> 
+
+        <Grid RowDefinitions="Auto,*">
+
+            <Label Grid.Row="0"
+                   HorizontalOptions="Center"
+                   Text="Edit Gear"
+                   FontFamily="Poppins"
+                   TextColor="Black"
+                   FontAttributes="Bold">
+                <Label.Shadow>
+                    <Shadow Brush="White"
+                            Offset="0,0"
+                            Radius="3"/>
+                </Label.Shadow>
+            </Label>
+
+            <Border Grid.Row="1"
+                    StrokeShape="RoundRectangle 4"
+                    BackgroundColor="White" x:Name="divider"
+                    Padding="15,15,15,10">
+
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+                        RowSpacing="15"
+                        Padding="5">
+
+                    <Label Grid.Row="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Select gear to power up/change abilities of the spirit. "
+                                      TextColor="Black"
+                                      FontFamily="{OnPlatform iOS=Poppins}"/>
+                                    <Span Text="This deletes the current gear if confirmed."
+                                          FontAttributes="{OnPlatform iOS=Bold}"
+							              FontFamily="{OnPlatform iOS=Poppins}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <!-- Currently Equipped Gear -->
+                    <Border Grid.Row="1"
+                            IsVisible="{Binding HasItem}"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="#A0744C"
+                            StrokeThickness="1"
+                            BackgroundColor="#FFF8E7"
+                            Padding="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              ColumnSpacing="10">
+
+                            <Border Grid.Column="0"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="White"
+                                    WidthRequest="50"
+                                    HeightRequest="50">
+                                <Image Source="icon_gear.webp"
+                                       Aspect="AspectFill"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2">
+                                <Label Text="{Binding CurrentGear.Name}"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="#76B041"/>
+                                <Label Text="{Binding CurrentGear.Description}"
+                                       FontFamily="Poppins"
+                                       FontSize="11"
+                                       TextColor="Gray"
+                                       LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+
+                            <Border Grid.Column="2"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#E53F37"
+                                    Padding="10,6"
+                                    VerticalOptions="Center">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UnequipItemCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="Unequip"
+                                       FontFamily="PoppinsSemiBold"
+                                       FontSize="12"
+                                       TextColor="White"/>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2"
+                            BackgroundColor="#2F4F2F"
+                            HeightRequest="350">
+
+                        <Grid Grid.Row="1"
+                              Padding="10">
+
+                            <CollectionView Grid.Row="2"
+                                            ItemsSource="{Binding AvailableItems}"
+                                            SelectionMode="Single"
+                                            SelectedItem="{Binding SelectedItem}"
+                                            VerticalScrollBarVisibility="Never">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical"
+                                                       ItemSpacing="0"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:ItemModel">
+                                        <Border StrokeShape="RoundRectangle 12"
+                                                Background="#f8f5be"
+                                                Stroke="{Binding IsSelected, Converter={converters:BoolToColorConverter}, ConverterParameter='#DDFF0000,Transparent'}"
+                                                StrokeThickness="2.5"
+                                                Padding="10">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding x:DataType='vm:EditGearSheetViewModel',Source={RelativeSource AncestorType={x:Type vm:EditGearSheetViewModel}}, Path=SetItemCommand}"
+                                                                      CommandParameter="{Binding .}"/>
+                                            </Border.GestureRecognizers>
+
+                                            <Grid ColumnDefinitions="100,*">
+                                                <Border Grid.Column="0"
+                                                        StrokeShape="RoundRectangle 2"
+                                                        BackgroundColor="White">
+                                                    <Grid>
+                                                        <Image Source="icon_gear.webp"
+                                                               Aspect="AspectFill"
+                                                               HeightRequest="90"/>
+                                                        <Grid BackgroundColor="Orange"
+                                                                HorizontalOptions="End"
+                                                                VerticalOptions="End"
+                                                                Padding="5,2">
+                                                            <Label Text="{Binding Quantity,StringFormat='x{0}'}"
+                                                                   TextColor="White"
+                                                                   FontFamily="Poppins"
+                                                                   FontSize="Medium">
+                                                                <Label.Shadow>
+                                                                    <Shadow Brush="Black"
+                                                                            Offset="0,1"
+                                                                            Radius="3"/>
+                                                                </Label.Shadow>
+                                                                    
+                                                            </Label>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Border>
+
+                                                <Grid     Grid.Column="1"
+                                                          RowDefinitions="Auto, Auto"
+                                                          RowSpacing="5">
+                                                    <Label Grid.Row="0"
+                                                            Padding="5,5,0,5"
+                                                           Text="{Binding Name}"
+                                                           TextColor="#76B041"
+                                                           FontFamily="Popins"
+                                                           LineBreakMode="NoWrap"
+                                                           FontAttributes="Bold"
+                                                           FontSize="18">
+                                                        <Label.Shadow>
+                                                            <Shadow Brush="White"
+                                                                    Offset="0,1"
+                                                                    Radius="3"/>
+                                                        </Label.Shadow>
+                                                    </Label>
+                                                    <Label Grid.Row="1"
+                                                           Padding="5,0,0,5"
+                                                           Text="{Binding Description}"
+                                                           TextColor="LightSlateGray"
+                                                           FontFamily="Poppins"
+                                                           LineBreakMode="WordWrap"
+                                                           FontAttributes="Bold"
+                                                           FontSize="Small">
+                                                        <Label.Shadow>
+                                                            <Shadow Brush="White"
+                                                                    Offset="0,1"
+                                                                    Radius="3"/>
+                                                        </Label.Shadow>
+                                                    </Label>
+
+                                                </Grid>
+
+                                            </Grid>
+
+                                        </Border>
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+
+                                <!-- Empty State -->
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="16"
+                                             Padding="40">
+                            <Border StrokeShape="RoundRectangle 40"
+                                    BackgroundColor="#20FFFFFF"
+                                    WidthRequest="80"
+                                    HeightRequest="80"
+                                    HorizontalOptions="Center">
+                                <Label Text="📦"
+                                       FontSize="40"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="No gears available"
+                                   FontFamily="Poppins"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,2"
+                                            Radius="4"/>
+                                </Label.Shadow>
+                            </Label>
+                            <Label Text="Visit the shop to purchase gear"
+                                   FontFamily="Poppins"
+                                   FontSize="14"
+                                   TextColor="#C0FFFFFF"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Margin="0,0,0,10">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,1"
+                                            Radius="2"/>
+                                </Label.Shadow>
+                            </Label>
+                            <Border BackgroundColor="#FF9800"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="15,10"
+                                    HorizontalOptions="Center">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToShopCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="Go to Shop"
+                                       FontFamily="Poppins"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="White">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black"
+                                                Offset="0,1"
+                                                Radius="2"/>
+                                    </Label.Shadow>
+                                </Label>
+                            </Border>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+                            </CollectionView>
+
+                        </Grid>
+
+                    </Border>
+
+                    
+
+                    <!-- Action Buttons -->
+            <Grid Grid.Row="3"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="15"
+                  HeightRequest="45"
+                  Padding="20,0">
+
+                <!-- Cancel Button -->
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 10"
+                        StrokeThickness="0.2"
+                        Stroke="Black"
+                        Padding="5">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0"
+                                                                     EndPoint="0.5,1">
+                                                        <GradientStop Color="#EB6756"
+                                                                      Offset="0"/>
+                                                        <GradientStop Color="#E53F37"
+                                                                      Offset="0.25"/>
+                                                        <GradientStop Color="#E53F37"
+                                                                      Offset="0.5"/>
+                                                        <GradientStop Color="#EB6756"
+                                                                      Offset="1"/>
+                            </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.6"
+                                               TouchGestureCompleted="OnCancelTapped"
+                                               PressedScale="0.95"/>
+                    </Border.Behaviors>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2"
+                                Opacity="0.6"
+                                Radius="3"/>
+                    </Border.Shadow>
+                     <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                               Text="Cancel"
+                                                               HorizontalOptions="Center"
+                                                               FontFamily="PoppinsSemiBold"
+                                                               FontSize="14"
+                                                               StrokeColor="#40000000"
+                                                               StrokeWidth="2"
+                                                               HasShadow="True"
+                                                               ShadowColor="black"
+                                                               ShadowBlur="1"
+                                                               ShadowOffsetY="1"/>
+                </Border>
+
+                <!-- Confirm Button -->
+                                <Border Grid.Column="1"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="0.2"
+                                        Stroke="Black"
+                                        Padding="5">
+                                        <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0"
+                                                                     EndPoint="0.5,1">
+                                                        <GradientStop Color="#9AE589"
+                                                                      Offset="0"/>
+                                                        <GradientStop Color="#64D855"
+                                                                      Offset="0.25"/>
+                                                        <GradientStop Color="#64D855"
+                                                                      Offset="0.5"/>
+                                                        <GradientStop Color="#9AE589"
+                                                                      Offset="1"/>
+                                                </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.Behaviors>
+                                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                                                       DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                                                       PressedOpacity="0.6"
+                                                                       PressedScale="0.7"
+                                                                       TouchGestureCompleted="OnConfirmTapped"/>
+                                        </Border.Behaviors>
+                                        <Border.Shadow>
+                                                <Shadow Brush="Black"
+                                                        Offset="0,1"
+                                                        Opacity="0.7"
+                                                        Radius="1"/>
+                                        </Border.Shadow>
+
+                                        <Grid>
+                                                <!-- Processing Indicator -->
+                                                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                                                   IsVisible="{Binding IsLoading}"
+                                                                   Color="White"
+                                                                   WidthRequest="20"
+                                                                   HeightRequest="20"/>
+
+                                                <!-- Confirm Text -->
+                                                <outline:OutlinedLabel TextColor="#EDF8EA"
+                                                                       HorizontalOptions="Center"
+                                                                       FontFamily="PoppinsSemiBold"
+                                                                       FontSize="14"
+                                                                       StrokeColor="#40000000"
+                                                                       StrokeWidth="2"
+                                                                       HasShadow="True"
+                                                                       ShadowColor="black"
+                                                                       ShadowBlur="1"
+                                                                       ShadowOffsetY="1">
+                                                        <outline:OutlinedLabel.Text>
+                                                                <Binding Path="HasUnsavedChanges">
+                                                                        <Binding.Converter>
+                                                                                <toolkit:BoolToObjectConverter TrueObject="Save Changes"
+                                                                                                               FalseObject="No Changes"/>
+                                                                        </Binding.Converter>
+                                                                </Binding>
+                                                        </outline:OutlinedLabel.Text>
+                                                </outline:OutlinedLabel>
+                                        </Grid>
+                                </Border>
+            </Grid>
+
+
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    </Border>
+
+
+</the49:BottomSheet>
+
+

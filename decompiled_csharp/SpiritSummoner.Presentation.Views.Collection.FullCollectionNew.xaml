@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritSummoner.Presentation.Views.Collection.FullCollectionNew"
+             xmlns:squadcontrols="clr-namespace:SpiritSummoner.Presentation.Controls.SquadControls"
+             xmlns:spiritcontrols="clr-namespace:SpiritSummoner.Presentation.Controls.SpiritControls"
+             xmlns:spiritvm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Spirits"
+             xmlns:vm="clr-namespace:SpiritSummoner.Presentation.ViewModels.Collections"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             x:DataType="vm:CollectionHubViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared"
+             xmlns:progressbar="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+             Background="{StaticResource GradientBackground}">
+
+    <Grid RowDefinitions="125,*,105">
+
+        <Image Source="dots_offset_8px.png"
+               Scale="1.2"
+               Grid.RowSpan="3"/>
+
+        <squadcontrols:SpiritSquadCardView Grid.Row="0"
+                Padding="5,0"
+                BindingContext="{Binding ActiveSquad}"/>
+        
+        <Grid Grid.Row="1"
+              Padding="5"
+              RowDefinitions="Auto,Auto, *"
+              RowSpacing="10">
+
+            <Grid Grid.Row="0"
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10"
+                Padding="10">
+
+                <!-- Index -->
+                <Grid Grid.Column="0">
+                    <Grid.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.9"
+                                               PressedScale="0.9"/>
+                    </Grid.Behaviors>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOrderSearchCommand}"/>
+                    </Grid.GestureRecognizers>
+
+                    <Border Grid.Column="0"
+                        HeightRequest="40"
+                        StrokeShape="RoundRectangle 8">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0"
+                                             EndPoint="0.5,1">
+                            <GradientStop Color="#EB6756"
+                                          Offset="0.0"/>
+                            <GradientStop Color="#E53F37"
+                                          Offset="0.25"/>
+                            <GradientStop Color="#E53F37"
+                                          Offset="0.75"/>
+                            <GradientStop Color="#EB6756"
+                                          Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2"
+                                Radius="1"/>
+                    </Border.Shadow>
+
+                    <outline:OutlinedLabel Text="Index"
+                                           FontFamily="PoppinsSemiBold"
+                                           TextColor="#EDF8EA"
+                                           FontSize="14"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           StrokeColor="Black"
+                                           StrokeWidth="1"
+                                           HasShadow="True"
+                                           ShadowColor="Black"
+                                           ShadowBlur="1"
+                                           ShadowOffsetY="1"/>
+                </Border>
+                </Grid>
+
+                <!-- Squads -->
+                <Grid Grid.Column="1">
+                    <Grid.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.9"
+                                               PressedScale="0.9"/>
+                    </Grid.Behaviors>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SavedSquadsCommand}"/>
+                    </Grid.GestureRecognizers>
+
+                    <Border StrokeShape="RoundRectangle 8"
+                        Grid.Column="1"
+                        HeightRequest="40">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="0,1">
+                            <GradientStop Color="#FFB816"
+                                          Offset="0.0"/>
+                            <GradientStop Color="#FFAE00"
+                                          Offset="0.5"/>
+                            <GradientStop Color="#FFAE00"
+                                          Offset="0.75"/>
+                            <GradientStop Color="#FFB816"
+                                          Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2"
+                                    Radius="1"/>
+                        </Border.Shadow>
+
+                        <Grid>
+                        <outline:OutlinedLabel Text="Squads"
+                                               TextColor="#EDF8EA"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="14"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               StrokeColor="#53000040"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowColor="#53000040"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="1"/>
+                    </Grid>
+
+                </Border>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.Behaviors>
+                        <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                               DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                               PressedOpacity="0.9"
+                                               PressedScale="0.9"/>
+                    </Grid.Behaviors>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOrderSearchCommand}"/>
+                    </Grid.GestureRecognizers>
+
+                    <!-- Search -->
+                <Border StrokeShape="RoundRectangle 8"
+                        Grid.Column="2"
+                        HeightRequest="40">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="0,1">
+                            <GradientStop Color="#CBCBCB"
+                                          Offset="0.0"/>
+                            <GradientStop Color="#B6B6B6"
+                                          Offset="0.5"/>
+                            <GradientStop Color="#B6B6B6"
+                                          Offset="0.75"/>
+                            <GradientStop Color="#CBCBCB"
+                                          Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2"
+                                    Radius="1"/>
+                        </Border.Shadow>
+
+
+                        <Grid>
+                        <outline:OutlinedLabel Text="Search"
+                                               TextColor="#EDF8EA"
+                                               FontFamily="PoppinsSemiBold"
+                                               FontSize="14"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               StrokeColor="#53000040"
+                                               StrokeWidth="2"
+                                               HasShadow="True"
+                                               ShadowColor="#53000040"
+                                               ShadowBlur="2"
+                                               ShadowOffsetY="1"/>
+                    </Grid>
+
+                </Border>
+                </Grid>
+
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  RowDefinitions="Auto,Auto"
+                  RowSpacing="10">
+                <Grid Grid.Row="0"
+                      IsVisible="{Binding IsOrderBySearch}">
+
+                    <!-- Sort Options -->
+                    <StackLayout   Grid.Row="3"
+                                   Spacing="10"
+                                   Orientation="Horizontal">
+
+                        <Button Grid.Column="0"
+                                FontSize="12"
+                                FontFamily="Poppins"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Background="{StaticResource GreenButtonGradient}"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Level">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Level ↑"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp,Converter={StaticResource InverseBooleanConverter}}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Level ↓"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByLevelActive}"
+                                             Value="True">
+                                    <Setter Property="TextColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderWidth"
+                                            Value="2"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByLevelActive}"
+                                             Value="False">
+                                    <Setter Property="TextColor"
+                                            Value="#FFFFFFB3"/>
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="1"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                CornerRadius="10"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                Background="{StaticResource GreenButtonGradient}"
+                                CommandParameter="Recent">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Recent ↑"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp,Converter={StaticResource InverseBooleanConverter}}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Recent ↓"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByRecentActive}"
+                                             Value="True">
+                                    <Setter Property="TextColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderWidth"
+                                            Value="2"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByRecentActive}"
+                                             Value="False">
+                                    <Setter Property="TextColor"
+                                            Value="#FFFFFFB3"/>
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                Background="{StaticResource GreenButtonGradient}"
+                                CornerRadius="10"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Type">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Type ↑"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp,Converter={StaticResource InverseBooleanConverter}}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Type ↓"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByTypeActive}"
+                                             Value="True">
+                                    <Setter Property="TextColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderWidth"
+                                            Value="2"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByTypeActive}"
+                                             Value="False">
+                                    <Setter Property="TextColor"
+                                            Value="#FFFFFFB3"/>
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Text="Index"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                Background="{StaticResource GreenButtonGradient}"
+                                CornerRadius="10"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Index">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Index ↑"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp,Converter={StaticResource InverseBooleanConverter}}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Index ↓"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByIndexActive}"
+                                             Value="True">
+                                    <Setter Property="TextColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderWidth"
+                                            Value="2"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByIndexActive}"
+                                             Value="False">
+                                    <Setter Property="TextColor"
+                                            Value="#FFFFFFB3"/>
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Text="Name"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontFamily="Poppins"
+                                Background="{StaticResource GreenButtonGradient}"
+                                CornerRadius="10"
+                                Command="{Binding ChangeSortTypeCommand}"
+                                CommandParameter="Name">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Name ↑"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsUp,Converter={StaticResource InverseBooleanConverter}}"
+                                             Value="True">
+                                    <Setter Property="Text"
+                                            Value="Name ↓"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByNameActive}"
+                                             Value="True">
+                                    <Setter Property="TextColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderColor"
+                                            Value="White"/>
+                                    <Setter Property="BorderWidth"
+                                            Value="2"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button"
+                                             Binding="{Binding IsOrderByNameActive}"
+                                             Value="False">
+                                    <Setter Property="TextColor"
+                                            Value="#FFFFFFB3"/>
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,Auto"
+                      IsVisible="{Binding IsOrderBySearch}">
+
+                    <!-- Search Section -->
+                    <Border Grid.Row="1"
+                            StrokeShape="RoundRectangle 8"
+                            Stroke="#FFF9F9F9"
+                            StrokeThickness="1"
+                            BackgroundColor="#33FFFFFF"
+                            Padding="5">
+
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              ColumnSpacing="10">
+                            <!-- Search Icon -->
+                            <Image Source="{mi:FontAwesomeSolid Icon=MagnifyingGlass, IconColor=#FF525252}"
+                                   Grid.Column="0"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   VerticalOptions="Center"/>
+
+                            <!-- Search Entry -->
+                            <Entry Grid.Column="1"
+                                   Text="{Binding SearchText}"
+                                   Placeholder="Search by name, type, or category..."
+                                   PlaceholderColor="#FF525252"
+                                   TextColor="Black"
+                                   BackgroundColor="Transparent"
+                                   FontFamily="PoppinsBold"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+
+                            <!-- Clear Search Button -->
+                            <ImageButton Grid.Column="2"
+                                         Source="{mi:FontAwesomeSolid Icon=Xmark,IconColor=White}"
+                                         BackgroundColor="Transparent"
+                                         BorderWidth="0"
+                                         WidthRequest="30"
+                                         HeightRequest="30"
+                                         Command="{Binding ClearSearchCommand}"
+                                         IsVisible="{Binding SearchText, Converter={StaticResource StringToBoolConverter}}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            VerticalOptions="End"
+                            HorizontalOptions="Center"
+                            Background="{StaticResource GradientPerks}"
+                            Stroke="Black"
+                            StrokeShape="RoundRectangle 24"
+                            Scale="0.8"
+                            Padding="7">
+                        <ImageButton
+                            Source="icon_filter.png"
+                            HeightRequest="0"
+                            x:Name="FilterIcon"
+                            Command="{Binding ShowFilterPopupCommand}"
+                            CommandParameter="{x:Reference FilterIcon}"/>
+
+                    </Border>
+
+                </Grid>
+            </Grid>
+
+
+
+            <!-- Spirit List -->
+            <CollectionView Grid.Row="2"
+                            ItemsSource="{Binding AllSpirits}"
+                            ItemSizingStrategy="MeasureFirstItem"
+                            IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"
+                            Scrolled="CollectionView_Scrolled">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2"
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="spiritvm:SpiritCardViewModel">
+                        <Border StrokeShape="RoundRectangle 6">
+                            <spiritcontrols:SpiritVerticalCardCollectionView
+                                HeightRequest="280"
+                                    WidthRequest="200">
+                                <spiritcontrols:SpiritVerticalCardCollectionView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding x:DataType='vm:CollectionHubViewModel', Source={RelativeSource AncestorType={x:Type vm:CollectionHubViewModel}}, Path=NavigateToSpiritDetailsCommand}"
+                                                          CommandParameter="{Binding Model.PlayerSpiritId}"/>
+
+                                </spiritcontrols:SpiritVerticalCardCollectionView.GestureRecognizers>
+                            </spiritcontrols:SpiritVerticalCardCollectionView>
+                        </Border>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+
+        <Border Grid.Row="3"
+                Stroke="Gray"
+                StrokeThickness="2">
+            <Grid>
+
+                <outline:BlendModeImage
+                    Source="infobarbackground.png"
+                    BlendMode="Multiply"
+                    OpacityValue="1"
+                    BlendBackground="{StaticResource GreenGradient}"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="4"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+
+                <Grid Padding="10"
+                      Grid.Row="3"
+                      ColumnDefinitions="75,*,75"
+                      ColumnSpacing="20">
+
+                    <!-- Back Button -->
+                    <ImageButton Grid.Column="0"
+                                 Source="icon_back_outlined.png"
+                                 HeightRequest="75"
+                                 Command="{Binding GoBackCommand}">
+                        <ImageButton.Shadow>
+                            <Shadow Brush="White"
+                                    Offset="1,0"
+                                    Radius="4"/>
+                        </ImageButton.Shadow>
+                    </ImageButton>
+
+                    <!-- Portal Icon -->
+                    <Grid Grid.Column="2"
+                          RowDefinitions="Auto,Auto"
+                          HorizontalOptions="End"
+                          VerticalOptions="Center"
+                          ZIndex="2"
+                          Padding="10">
+                          <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToPortalCommand}"/>
+                          </Grid.GestureRecognizers>
+                        
+                        <Image Source="icon_portal.png"
+                               HeightRequest="60"
+                               WidthRequest="60"
+                               Aspect="AspectFit"/>
+                        
+                        <outline:OutlinedLabel Text="Portal"
+                                           Grid.Row="1" 
+                                           FontFamily="PoppinsSemiBold"
+                                           FontSize="14"
+                                           TextColor="#EDF8EA"
+                                           StrokeColor="#2E4A0F"
+                                           StrokeWidth="2"
+                                           HasShadow="True"
+                                           ShadowColor="#40000000"
+                                           ShadowBlur="1"
+                                           ShadowOffsetY="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="End"/>
+                    </Grid>
+
+                    <!-- Partnerspirit -->
+                    <Image Source="{Binding PartnerSpiritImage}"
+                             Grid.Column="1"
+                             HeightRequest="105"
+                             WidthRequest="222"
+                            Aspect="AspectFill">
+                            <Image.Behaviors>
+                                <toolkit:TouchBehavior DefaultAnimationDuration="250"
+                                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                            PressedOpacity="0.7"
+                                            PressedScale="0.8"
+                                            LongPressDuration="600"
+                                            TouchGestureCompleted="Partner_TouchGestureCompleted"/>
+                            </Image.Behaviors>
+                    </Image>
+
+                    <outline:OutlinedLabel Grid.Column="1"
+                                           Text="{Binding PartnerSpiritNickname}"
+                                           FontFamily="PoppinsBold"
+                                           FontSize="12"
+                                           TextColor="#FFE368"
+                                           StrokeColor="#BA7412"
+                                           StrokeWidth="2"
+                                           VerticalOptions="End"
+                                           HorizontalOptions="Center"
+                                           TranslationX="60"
+                                           HasShadow="False"/>
+                    
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

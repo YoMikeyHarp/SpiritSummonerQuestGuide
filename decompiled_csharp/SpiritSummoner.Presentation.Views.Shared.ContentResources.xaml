@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="SpiritSummoner.Presentation.Views.Shared.ContentResources"
+                    xmlns:outline="clr-namespace:SpiritSummoner.Presentation.ViewModels.Shared">
+                    
+        <Style x:Key="BungeeHeader"
+               TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="PoppinsSemiBold"/>
+                <Setter Property="FontSize"
+                        Value="28"/>
+                <Setter Property="TextColor"
+                        Value="White"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+        </Style>
+
+        <Style x:Key="GradientButton"
+               TargetType="Button">
+                <Setter Property="Background">
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="1,1">
+                                <GradientStop Color="#FCECA0"
+                                              Offset="0"/>
+                                <GradientStop Color="#FFDD78"
+                                              Offset="0.5"/>
+                                <GradientStop Color="#F99602"
+                                              Offset="1"/>
+                        </LinearGradientBrush>
+                </Setter>
+                <Setter Property="CornerRadius"
+                        Value="100"/>
+        </Style>
+
+        <LinearGradientBrush x:Key="VictoryPopupGradient"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#78CB55"
+                              Offset="0"/>
+                <GradientStop Color="#9EDA84"
+                              Offset="0.5"/>
+                <GradientStop Color="#67C441"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DefeatPopupGradient"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#CB5560"
+                              Offset="0"/>
+                <GradientStop Color="#DA848D"
+                              Offset="0.5"/>
+                <GradientStop Color="#CB5560"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="QuestProgressGradient"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#FED571"
+                              Offset="0"/>
+                <GradientStop Color="#FEF093"
+                              Offset="0.2548"/>
+                <GradientStop Color="#FEF89D"
+                              Offset="0.5"/>
+                <GradientStop Color="#FEF093"
+                              Offset="0.75"/>
+                <GradientStop Color="#FED571"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientTasks"
+                              StartPoint="0.5,1"
+                                             EndPoint="0.5,0">
+                                <GradientStop Color="#9AE589"
+                                              Offset="0"/>
+                                <GradientStop Color="#64D855"
+                                              Offset="0.25"/>
+                                <GradientStop Color="#64D855"
+                                              Offset="0.75"/>
+                                <GradientStop Color="#9AE589"
+                                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush  x:Key="GradientRewards"
+                                 StartPoint="0.5,1"
+                                             EndPoint="0.5,0">
+                                <GradientStop Color="#FFB816"
+                                              Offset="0"/>
+                                <GradientStop Color="#FFAE00"
+                                              Offset="0.25"/>
+                                <GradientStop Color="#FFAE00"
+                                              Offset="0.75"/>
+                                <GradientStop Color="#FFB816"
+                                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientPerks"
+                             StartPoint="0.5,1"
+                                        EndPoint="0.5,0">
+                                <GradientStop Color="#EB6756"
+                                                Offset="0"/>
+                                <GradientStop Color="#E53F37"
+                                                Offset="1"/>
+                                <GradientStop Color="#E53F37"
+                                                Offset="0"/>
+                                <GradientStop Color="#EB6756"
+                                                Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientLossSummary"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+                <GradientStop Color="#CB5560"
+                              Offset="0"/>
+                <GradientStop Color="#DA848D"
+                              Offset="0.5"/>
+                <GradientStop Color="#CB5560"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientWinSummary"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+                <GradientStop Color="#78CB55"
+                              Offset="0"/>
+                <GradientStop Color="#9EDA84"
+                              Offset="0.5"/>
+                <GradientStop Color="#67C441"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientSelectedSpirit"
+                        StartPoint="0,0"
+                        EndPoint="1,1">
+                <GradientStop Color="#FFF9C4"
+                                Offset="0"/>
+                <GradientStop Color="#FFCA28"
+                                Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GreenGradient"
+                        StartPoint="0,0"
+                        EndPoint="0,1">
+                <GradientStop Color="#A8CB3F"
+                                Offset="0.0"/>
+                <GradientStop Color="#7DB813"
+                                Offset="0.5"/>
+                <GradientStop Color="#78B614"
+                                Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SpiritsForegroundButton"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+                <GradientStop Color="#FED571"
+                              Offset="0.0"/>
+                <GradientStop Color="#FEF093"
+                              Offset="0.2548"/>
+                <GradientStop Color="#FEF89D"
+                              Offset="0.5"/>
+                <GradientStop Color="#FEF093"
+                              Offset="0.75"/>
+                <GradientStop Color="#FED571"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SpiritsButton"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+                <GradientStop Color="#FFB816"
+                              Offset="0.0"/>
+                <GradientStop Color="#FFAE00"
+                              Offset="0.25"/>
+                <GradientStop Color="#FFAE00"
+                              Offset="0.75"/>
+                <GradientStop Color="#FFB816"
+                              Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientNewQuest"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#F9F5C0"
+                              Offset="0"/>
+                <GradientStop Color="#F6F1A6"
+                              Offset="0.5048"/>
+                <GradientStop Color="#D9D491"
+                              Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientTaskActionExplore"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+                <GradientStop Color="#FFB816"
+                              Offset="0"/>
+                <GradientStop Color="#FFAE00"
+                              Offset="0.25"/>
+                <GradientStop Color="#FFAE00"
+                              Offset="0.75"/>
+                <GradientStop Color="#FFB816"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TanGradient"
+                        StartPoint="0,0"
+                        EndPoint="0,1">
+                <GradientStop Color="#F9F5C0"
+                                Offset="0.0"/>
+                <GradientStop Color="#F6F1A6"
+                                Offset="0.5048"/>
+                <GradientStop Color="#D9D491"
+                                Offset="1.0"/>
+        </LinearGradientBrush>
+
+
+        <LinearGradientBrush x:Key="GradientTaskActionFight"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+                <GradientStop Color="#EB6756"
+                              Offset="0"/>
+                <GradientStop Color="#E53F37"
+                              Offset="0.25"/>
+                <GradientStop Color="#E53F37"
+                              Offset="0.75"/>
+                <GradientStop Color="#EB6756"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientTaskActionCollect"
+                             StartPoint="0.5,1"
+                             EndPoint="0.5,0">
+                <GradientStop Color="#9AE589"
+                              Offset="0"/>
+                <GradientStop Color="#64D855"
+                              Offset="0.25"/>
+                <GradientStop Color="#64D855"
+                              Offset="0.75"/>
+                <GradientStop Color="#9AE589"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+
+        <Style TargetType="Label"
+                        x:Key="AreaLabel">
+                <Setter Property="FontFamily"
+                                Value="PoppinsSemiBold"/>
+                <Setter Property="FontAttributes"
+                                Value="Bold"/>
+                <Setter Property="TextColor"
+                                Value="White"/>
+                <Setter Property="FontSize"
+                                Value="24"/>
+                <Setter Property="HorizontalOptions"
+                                Value="Start"/>
+                <Setter Property="VerticalOptions"
+                                Value="End"/>
+                <Setter Property="Margin"
+                                Value="16"/>
+                <Setter Property="Shadow">
+                        <Setter.Value>
+                                <Shadow Brush="Black"
+                                                Offset="1,1"
+                                                Radius="2"/>
+                        </Setter.Value>
+                </Setter>
+        </Style>
+
+        <Color x:Key="DeepPurple900">#1A0D2E</Color>
+        <LinearGradientBrush x:Key="GoldGradient"
+                        StartPoint="0,0"
+                        EndPoint="0,1">
+                <GradientStop Color="#FFD700"
+                                Offset="0.1"/>
+                <GradientStop Color="#B8860B"
+                                Offset="0.9"/>
+        </LinearGradientBrush>
+
+        <Color x:Key="SaveButtonColor">#832828</Color>
+
+
+        <!--Main Background Gradient-->
+        <LinearGradientBrush x:Key="GradientBackground"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#78CB55"
+                              Offset="0"/>
+                <GradientStop Color="#9EDA84"
+                              Offset="0.5"/>
+                <GradientStop Color="#67C441"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <!--Spirit Background Gradient-->
+        <LinearGradientBrush x:Key="GradientBackgroundSpirit"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#8EE0F0"
+                              Offset="0"/>
+                <GradientStop Color="#A1E5F3"
+                              Offset="0.25"/>
+                <GradientStop Color="#AEE9F5"
+                              Offset="0.4952"/>
+                <GradientStop Color="#8EE0F0"
+                              Offset="0.75"/>
+                <GradientStop Color="#85DDEE"
+                              Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GradientBackgroundSpiritSimple"
+                             StartPoint="1,0"
+                             EndPoint="0,1">
+                <GradientStop Color="#8DE0F0"
+                              Offset="0"/>
+                <GradientStop Color="#8DE0F0"
+                              Offset="0.2"/>
+                <GradientStop Color="#85DDEE"
+                              Offset="0.9"/>
+        </LinearGradientBrush>
+
+        <!-- Radial Gradient for Button Background -->
+        <RadialGradientBrush x:Key="ButtonBackgroundGradient"
+                             Center="0.5,0.2"
+                             Radius="0.5">
+                <GradientStop Color="#FCECA0"
+                              Offset="0"/>
+                <GradientStop Color="#FFDD78"
+                              Offset="0.5"/>
+                <GradientStop Color="#F99602"
+                              Offset="1"/>
+        </RadialGradientBrush>
+
+        <!-- Linear Gradient for Button Border -->
+        <LinearGradientBrush x:Key="ButtonBorderGradient"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#DD9362"
+                              Offset="0"/>
+                <GradientStop Color="#C7570C"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Linear Gradient for Icon -->
+        <LinearGradientBrush x:Key="IconGradient"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+                <GradientStop Color="#DD9362"
+                              Offset="0"/>
+                <GradientStop Color="#C7570C"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="AppBarGradient"
+                             StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+                <GradientStop Color="#ABDA2A"
+                              Offset="0"/>
+                <GradientStop Color="#ABDA2A"
+                              Offset="0.5"/>
+                <GradientStop Color="#91BE16"
+                              Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GreyGradient"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+                <GradientStop Color="#CBCBCB"
+                              Offset="0.0"/>
+                <GradientStop Color="#B6B6B6"
+                              Offset="0.5"/>
+                <GradientStop Color="#B6B6B6"
+                              Offset="0.75"/>
+                <GradientStop Color="#CBCBCB"
+                              Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <Shadow x:Key="LabelBlackShadow"
+                Brush="Black"
+                Offset="0,1"
+                Radius="3">
+        </Shadow>
+
+        <Shadow x:Key="LabelWhiteShadow"
+                Brush="White"
+                Offset="1,1"
+                Radius="5">
+        </Shadow>
+
+        <Shadow x:Key="LabelRedShadow"
+                Offset="1,-1"
+                Brush="#C8570C"
+                Opacity="0.8"
+                Radius="5">
+        </Shadow>
+
+        <Shadow x:Key="GoldenShadow"
+                Offset="1,-1"
+                Brush="DarkGoldenrod"
+                Opacity="0.7">
+
+        </Shadow>
+
+        <Shadow x:Key="ImageShadow"
+                Offset="1,-1"
+                Brush="White"
+                Opacity="1"
+                Radius="0.5">
+        </Shadow>
+
+        <Shadow x:Key="HPbarShadow"
+                Brush="#4027AE60"
+                Offset="2,2"
+                Radius="3">
+        </Shadow>
+
+        <!-- Spirit Card New - Red Button Gradient (for Sell) -->
+        <LinearGradientBrush x:Key="RedButtonGradient" StartPoint="0,1" EndPoint="0,0">
+                <GradientStop Color="#EB6756" Offset="0.0"/>
+                <GradientStop Color="#E53F37" Offset="0.25"/>
+                <GradientStop Color="#E53F37" Offset="0.75"/>
+                <GradientStop Color="#EB6756" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Spirit Card New - Green Button Gradient (for Favorite) -->
+        <LinearGradientBrush x:Key="GreenButtonGradient" StartPoint="0,1" EndPoint="0,0">
+                <GradientStop Color="#9AE589" Offset="0.0"/>
+                <GradientStop Color="#64D855" Offset="0.25"/>
+                <GradientStop Color="#64D855" Offset="0.75"/>
+                <GradientStop Color="#9AE589" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Spirit Card New - Level Badge Green Ring -->
+        <LinearGradientBrush x:Key="LevelBadgeGreenGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#9AE589" Offset="0.05"/>
+                <GradientStop Color="#9CDF86" Offset="0.53"/>
+                <GradientStop Color="#9EDA84" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Spirit Card New - Level Badge Blue Inner -->
+        <LinearGradientBrush x:Key="LevelBadgeBlueGradient" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#CEE6FA" Offset="0.0"/>
+                <GradientStop Color="#A0D5F4" Offset="0.2"/>
+                <GradientStop Color="#77B1E7" Offset="0.8"/>
+                <GradientStop Color="#5EA1E2" Offset="1.0"/>
+        </LinearGradientBrush>
+
+</ResourceDictionary>
