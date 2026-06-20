@@ -1,0 +1,518 @@
+{
+  "5": [
+    {
+      "area": "Basalon Town",
+      "task": "Catching a rat",
+      "level": 1,
+      "energy": 1,
+      "xp": 10,
+      "gold": 50
+    }
+  ],
+  "74": [
+    {
+      "area": "Basalon Town",
+      "task": "Ghost!",
+      "level": 5,
+      "energy": 1,
+      "xp": 25,
+      "gold": 50
+    }
+  ],
+  "1": [
+    {
+      "area": "Basalon Town",
+      "task": "Pet the dog?",
+      "level": 10,
+      "energy": 1,
+      "xp": 30,
+      "gold": 55
+    }
+  ],
+  "10": [
+    {
+      "area": "Dark Forest",
+      "task": "Catching a spirit with magical skills",
+      "level": 1,
+      "energy": 1,
+      "xp": 66,
+      "gold": 200
+    },
+    {
+      "area": "Dark Forest",
+      "task": "Trifish found!",
+      "level": 5,
+      "energy": 1,
+      "xp": 69,
+      "gold": 250
+    }
+  ],
+  "23": [
+    {
+      "area": "Dark Forest",
+      "task": "[Rare] BULBHEAD found!",
+      "level": 10,
+      "energy": 1,
+      "xp": 70,
+      "gold": 280
+    }
+  ],
+  "100": [
+    {
+      "area": "Dark Forest",
+      "task": "[Rare] A stray Koki appears",
+      "level": 15,
+      "energy": 1,
+      "xp": 70,
+      "gold": 100
+    },
+    {
+      "area": "Spirit Sands",
+      "task": "Defeat the Dark Summoner",
+      "level": 20,
+      "energy": 3,
+      "xp": 5000,
+      "gold": 10000
+    },
+    {
+      "area": "Champion's Challenge",
+      "task": "Apprentice Challenge (5/5)",
+      "level": 25,
+      "energy": 1,
+      "xp": 350,
+      "gold": 1000
+    }
+  ],
+  "91": [
+    {
+      "area": "Dark Forest",
+      "task": "SNADLE approaches!",
+      "level": 12,
+      "energy": 1,
+      "xp": 70,
+      "gold": 100
+    }
+  ],
+  "93": [
+    {
+      "area": "Dark Forest",
+      "task": "BIGMOUTH chomps!",
+      "level": 12,
+      "energy": 1,
+      "xp": 70,
+      "gold": 100
+    },
+    {
+      "area": "Champion's Challenge",
+      "task": "Disciples Challenge (3/5)",
+      "level": 30,
+      "energy": 1,
+      "xp": 30,
+      "gold": 2250
+    }
+  ],
+  "666": [
+    {
+      "area": "Dark Forest",
+      "task": "Duel test",
+      "level": 40,
+      "energy": 2,
+      "xp": 2000,
+      "gold": 100
+    }
+  ],
+  "114": [
+    {
+      "area": "Dark Forest",
+      "task": "Duel test",
+      "level": 40,
+      "energy": 2,
+      "xp": 2000,
+      "gold": 100
+    },
+    {
+      "area": "King's Heart Forest",
+      "task": "Leader",
+      "level": 30,
+      "energy": 1,
+      "xp": 350,
+      "gold": 130
+    },
+    {
+      "area": "Champion's Challenge",
+      "task": "Disciples Challenge (5/5)",
+      "level": 50,
+      "energy": 1,
+      "xp": 25,
+      "gold": 3500
+    }
+  ],
+  "130": [
+    {
+      "area": "Dark Forest",
+      "task": "Duel test",
+      "level": 40,
+      "energy": 2,
+      "xp": 2000,
+      "gold": 100
+    }
+  ],
+  "27": [
+    {
+      "area": "Dark Forest",
+      "task": "Expelling guard spirit",
+      "level": 20,
+      "energy": 2,
+      "xp": 500,
+      "gold": 500
+    },
+    {
+      "area": "Spirit Sands",
+      "task": "expelling guard spirit",
+      "level": 20,
+      "energy": 2,
+      "xp": 500,
+      "gold": 500
+    },
+    {
+      "area": "Spirit Sands",
+      "task": "Defeat the Dark Summoner",
+      "level": 20,
+      "energy": 3,
+      "xp": 5000,
+      "gold": 10000
+    },
+    {
+      "area": "Dr. X's Laboratory",
+      "task": "Entrance Guard",
+      "level": 42,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "7": [
+    {
+      "area": "Spirit Sands",
+      "task": "Big Worm!",
+      "level": 12,
+      "energy": 1,
+      "xp": 250,
+      "gold": 400
+    }
+  ],
+  "11": [
+    {
+      "area": "Spirit Sands",
+      "task": "TRIFISH in the desert",
+      "level": 20,
+      "energy": 1,
+      "xp": 300,
+      "gold": 300
+    }
+  ],
+  "29": [
+    {
+      "area": "Spirit Sands",
+      "task": "Defeat the Dark Summoner",
+      "level": 20,
+      "energy": 3,
+      "xp": 5000,
+      "gold": 10000
+    },
+    {
+      "area": "Champion's Challenge",
+      "task": "Apprentice Challenge (1/5)",
+      "level": 15,
+      "energy": 1,
+      "xp": 16,
+      "gold": 11
+    }
+  ],
+  "31": [
+    {
+      "area": "Dark Shire",
+      "task": "Encounter!",
+      "level": 25,
+      "energy": 1,
+      "xp": 300,
+      "gold": 500
+    },
+    {
+      "area": "Dark Shire",
+      "task": "Expelling dark mages",
+      "level": 28,
+      "energy": 1,
+      "xp": 500,
+      "gold": 500
+    },
+    {
+      "area": "Dark Shire",
+      "task": "Defeat the mage leader",
+      "level": 30,
+      "energy": 1,
+      "xp": 550,
+      "gold": 550
+    }
+  ],
+  "35": [
+    {
+      "area": "King's Heart Forest",
+      "task": "Plant attack",
+      "level": 10,
+      "energy": 1,
+      "xp": 300,
+      "gold": 78
+    }
+  ],
+  "36": [
+    {
+      "area": "King's Heart Forest",
+      "task": "Group!",
+      "level": 15,
+      "energy": 1,
+      "xp": 350,
+      "gold": 80
+    },
+    {
+      "area": "King's Heart Forest",
+      "task": "Breakthrough",
+      "level": 25,
+      "energy": 1,
+      "xp": 310,
+      "gold": 110
+    }
+  ],
+  "103": [
+    {
+      "area": "King's Heart Forest",
+      "task": "Minions",
+      "level": 25,
+      "energy": 1,
+      "xp": 320,
+      "gold": 25
+    }
+  ],
+  "20": [
+    {
+      "area": "The Great Land",
+      "task": "Protect the traveler",
+      "level": 28,
+      "energy": 1,
+      "xp": 500,
+      "gold": 68
+    },
+    {
+      "area": "The Great Land",
+      "task": "Clearing the path",
+      "level": 30,
+      "energy": 1,
+      "xp": 500,
+      "gold": 130
+    }
+  ],
+  "260": [
+    {
+      "area": "The Great Land",
+      "task": "Big Bird?",
+      "level": 30,
+      "energy": 1,
+      "xp": 540,
+      "gold": 220
+    }
+  ],
+  "45": [
+    {
+      "area": "Sky Tower",
+      "task": "Battle door guard",
+      "level": 40,
+      "energy": 1,
+      "xp": 640,
+      "gold": 130
+    },
+    {
+      "area": "Sky Tower",
+      "task": "Guard",
+      "level": 40,
+      "energy": 1,
+      "xp": 700,
+      "gold": 230
+    },
+    {
+      "area": "Champion's Challenge",
+      "task": "Disciples Challenge (4/5)",
+      "level": 30,
+      "energy": 1,
+      "xp": 22,
+      "gold": 150
+    }
+  ],
+  "243": [
+    {
+      "area": "The Dragon's Lair",
+      "task": "Fire brood approaches",
+      "level": 40,
+      "energy": 1,
+      "xp": 0,
+      "gold": 100
+    }
+  ],
+  "246": [
+    {
+      "area": "The Dragon's Lair",
+      "task": "Water brood approaches",
+      "level": 40,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "249": [
+    {
+      "area": "The Dragon's Lair",
+      "task": "Wind brood approaches",
+      "level": 40,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "24": [
+    {
+      "area": "The Dragon's Lair",
+      "task": "Ground brood approaches",
+      "level": 40,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "129": [
+    {
+      "area": "Wall of Gaia",
+      "task": "Defend yourself!",
+      "level": 35,
+      "energy": 1,
+      "xp": 900,
+      "gold": 220
+    }
+  ],
+  "33": [
+    {
+      "area": "Wall of Gaia",
+      "task": "Revenge  of the dark mage",
+      "level": 40,
+      "energy": 1,
+      "xp": 770,
+      "gold": 500
+    }
+  ],
+  "26": [
+    {
+      "area": "Wall of Gaia",
+      "task": "CHIKI",
+      "level": 40,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "38": [
+    {
+      "area": "Wall of Gaia",
+      "task": "Keeper of the village",
+      "level": 45,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "220": [
+    {
+      "area": "Dr. X's Laboratory",
+      "task": "Door Guard (1/2)",
+      "level": 45,
+      "energy": 1,
+      "xp": 0,
+      "gold": 0
+    }
+  ],
+  "66": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Apprentice Challenge (2/5)",
+      "level": 15,
+      "energy": 1,
+      "xp": 13,
+      "gold": 21
+    }
+  ],
+  "110": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Apprentice Challenge (3/5)",
+      "level": 15,
+      "energy": 1,
+      "xp": 17,
+      "gold": 53
+    }
+  ],
+  "109": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Apprentice Challenge (4/5)",
+      "level": 15,
+      "energy": 1,
+      "xp": 22,
+      "gold": 50
+    }
+  ],
+  "86": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Disciples Challenge (1/5)",
+      "level": 30,
+      "energy": 1,
+      "xp": 18,
+      "gold": 90
+    }
+  ],
+  "89": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Disciples Challenge (2/5)",
+      "level": 30,
+      "energy": 1,
+      "xp": 22,
+      "gold": 100
+    },
+    {
+      "area": "Deep Dungeon",
+      "task": "Attack Attack!",
+      "level": 40,
+      "energy": 1,
+      "xp": 600,
+      "gold": 150
+    }
+  ],
+  "99": [
+    {
+      "area": "Champion's Challenge",
+      "task": "Adepts Challenge (1/5)",
+      "level": 60,
+      "energy": 1,
+      "xp": 50,
+      "gold": 4000
+    }
+  ],
+  "22": [
+    {
+      "area": "Deep Dungeon",
+      "task": "Battle off living armor!",
+      "level": 30,
+      "energy": 1,
+      "xp": 550,
+      "gold": 300
+    }
+  ]
+}
