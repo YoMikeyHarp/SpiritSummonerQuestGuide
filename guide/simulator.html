@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirit Summoner — Stat Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090d;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --gold: #f2c86b;
+    --purple: #c9a9f5;
+    --text: #ebe4f5;
+    --muted: #8a7fa8;
+    --border: rgba(242,200,107,0.15);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 14px; }
+
+  header { padding: 2rem 2rem 1.25rem; border-bottom: 1px solid var(--border); }
+  header h1 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin: 0; }
+  header p { color: var(--muted); margin: 0.4rem 0 0; font-size: 13px; }
+  header a { color: var(--purple); text-decoration: none; font-size: 12px; }
+  header a:hover { text-decoration: underline; }
+  .site-nav { display: flex; gap: 1rem; margin-top: 0.75rem; }
+
+  main { max-width: 980px; margin: 0 auto; padding: 1.75rem 1.5rem 4rem; display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem; align-items: start; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+  main.single-spirit { grid-template-columns: 1fr; max-width: 520px; }
+  main.single-spirit #leftPanel { display: none; }
+  .switch-spirit-link { display: inline-block; font-size: 12px; color: var(--purple); text-decoration: none; margin-bottom: 1rem; }
+  .switch-spirit-link:hover { text-decoration: underline; }
+
+  .panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .panel-title { font-family: 'Cinzel', serif; color: var(--gold); font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.9rem; }
+
+  /* SPIRIT PICKER */
+  #spiritSearch { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 13px; padding: 8px 10px; border-radius: 6px; outline: none; margin-bottom: 0.75rem; }
+  #spiritSearch:focus { border-color: var(--gold); }
+  .spirit-list { max-height: 340px; overflow-y: auto; display: flex; flex-direction: column; gap: 3px; }
+  .spirit-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; }
+  .spirit-item:hover { background: var(--bg3); }
+  .spirit-item.selected { background: rgba(242,200,107,0.12); border-color: var(--border); }
+  .spirit-item img { width: 28px; height: 28px; object-fit: contain; image-rendering: pixelated; }
+  .spirit-item span { font-size: 12px; font-weight: 600; }
+  .spirit-item .sid { color: var(--muted); font-size: 10px; width: 28px; }
+
+  .selected-card { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .selected-card img { width: 56px; height: 56px; object-fit: contain; image-rendering: pixelated; }
+  .selected-card .name { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.05rem; }
+  .selected-card .types { display: flex; gap: 4px; margin-top: 4px; }
+  .type-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
+  .type-Neutral { background: rgba(200,200,200,0.18); color: #d6d6d6; }
+  .type-Fire { background: rgba(255,90,40,0.2); color: #ff7a4d; }
+  .type-Water { background: rgba(40,120,255,0.2); color: #6aa9ff; }
+  .type-Grass { background: rgba(60,180,80,0.2); color: #5fd476; }
+  .type-Electric { background: rgba(255,220,0,0.2); color: #f0de4a; }
+  .type-Dark { background: rgba(120,60,170,0.22); color: #b07ee8; }
+  .type-Poison { background: rgba(170,40,170,0.2); color: #e070e0; }
+  .type-Ground { background: rgba(160,120,60,0.22); color: #cf9f5e; }
+  .type-Light { background: rgba(255,255,180,0.18); color: #fcfca0; }
+  .type-Wind { background: rgba(100,220,255,0.18); color: #8fe9ff; }
+  .type-Metal { background: rgba(150,150,180,0.18); color: #c2c2da; }
+
+  /* EDIT STATS CARD (in-game replica) */
+  .edit-stats-card {
+    background: linear-gradient(165deg, #232e44, #161d2c); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 1.1rem 1.2rem 1.3rem; position: relative; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  }
+  .es-watermark {
+    position: absolute; top: 38px; left: 50%; transform: translateX(-50%); width: 170px; height: 170px;
+    object-fit: contain; opacity: 0.06; filter: grayscale(1) brightness(3); pointer-events: none; z-index: 0;
+  }
+  .es-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .es-title { font-family: 'Cinzel', serif; color: white; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; }
+  .es-reset-btn {
+    background: linear-gradient(160deg, #ffc15c, #e8902a); border: none; color: #2a1a02; font-weight: 700;
+    font-size: 11px; padding: 7px 16px; border-radius: 18px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .es-reset-btn:hover { filter: brightness(1.08); }
+
+  .es-info-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+  .es-level-group { display: flex; align-items: center; gap: 8px; }
+  .es-level-label { color: #7fd1e0; font-size: 12px; font-weight: 700; }
+  .es-level-input {
+    width: 50px; background: rgba(255,255,255,0.08); border: 1px solid rgba(127,209,224,0.4); color: white;
+    font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 700; padding: 3px 6px; border-radius: 6px; outline: none;
+  }
+  .es-avail-col { text-align: right; }
+  .es-avail-label { color: #7fd1e0; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .es-avail-val { color: #c6ff3a; font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+  .es-avail-val.negative { color: #e0707a; }
+
+  .es-hp-row { color: white; font-size: 13px; font-weight: 700; margin-bottom: 1.1rem; position: relative; z-index: 1; }
+  .es-hp-row .val { font-size: 16px; margin-left: 6px; }
+
+  .es-sub { font-size: 11px; color: rgba(255,255,255,0.45); text-align: center; margin-bottom: 1rem; position: relative; z-index: 1; }
+
+  .es-row { display: grid; grid-template-columns: auto auto 1fr auto auto; align-items: center; gap: 5px; padding: 9px 0; position: relative; z-index: 1; }
+  .es-row:not(:last-of-type) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .es-btn {
+    width: 28px; height: 28px; border-radius: 50%; background: #1c2438; border: 1.5px solid #caa14d;
+    color: #f2c200; font-size: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .es-btn:hover:not(:disabled) { background: #2a3650; }
+  .es-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+  .es-mid { text-align: center; }
+  .es-stat-name { color: white; font-weight: 700; font-size: 12px; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 4px; }
+  .es-stat-name .star { color: #f2c200; font-size: 11px; }
+  .es-stat-value { color: #cfd8e3; font-size: 13px; font-weight: 700; margin-top: 1px; }
+  .es-stat-value .arrow { color: #7fd1e0; margin: 0 5px; font-size: 11px; }
+  .es-stat-value .changed { color: #c6ff3a; }
+  .es-stat-desc { color: rgba(255,255,255,0.38); font-size: 10px; margin-top: 1px; }
+
+  .es-confirm-row { display: flex; justify-content: center; margin-top: 1.2rem; position: relative; z-index: 1; }
+  .es-confirm-btn {
+    background: linear-gradient(160deg, #82e36b, #46b53a); border: none; color: #0c2b0a; font-weight: 800;
+    font-size: 13px; padding: 10px 30px; border-radius: 22px; cursor: pointer; letter-spacing: 0.03em; text-transform: uppercase;
+  }
+  .es-confirm-btn:disabled { background: #33405a; color: rgba(255,255,255,0.3); cursor: not-allowed; }
+  .es-confirm-btn:not(:disabled):hover { filter: brightness(1.07); }
+
+  .empty-state { color: var(--muted); font-size: 13px; padding: 3rem 1rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Stat Simulator</h1>
+  <p>Pick a spirit, set a level, allocate training points — exact in-game formula.</p>
+  <div class="site-nav">
+    <a href="index.html">← Story Guide</a>
+    <a href="spiritdex.html">Spiritdex →</a>
+  </div>
+</header>
+
+<main id="mainGrid">
+  <div class="panel" id="leftPanel">
+    <div class="panel-title">Choose Spirit</div>
+    <input id="spiritSearch" type="text" placeholder="Search by name...">
+    <div class="spirit-list" id="spiritList"></div>
+  </div>
+
+  <div id="rightCol">
+    <div class="empty-state">Select a spirit to begin.</div>
+  </div>
+</main>
+
+<script>
+const DATA = [{"id": 1, "name": "Dogi", "type1": "Neutral", "type2": "", "sprite": "1.png", "baseHp": 80, "baseAtk": 12, "baseDef": 8, "baseSatk": 3, "baseSdef": 6, "baseSpd": 11, "baseInt": 10, "bonusAtk": 1.1, "bonusDef": 1.05, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 2, "name": "Sr. Dogi", "type1": "Neutral", "type2": "", "sprite": "2.png", "baseHp": 83, "baseAtk": 44, "baseDef": 39, "baseSatk": 6, "baseSdef": 18, "baseSpd": 36, "baseInt": 26, "bonusAtk": 1.05, "bonusDef": 1.2, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 3, "name": "Armored Dogi", "type1": "Neutral", "type2": "", "sprite": "3.png", "baseHp": 85, "baseAtk": 49, "baseDef": 55, "baseSatk": 22, "baseSdef": 20, "baseSpd": 34, "baseInt": 26, "bonusAtk": 1.2, "bonusDef": 1.2, "bonusSatk": 1.1, "bonusSdef": 1.2, "bonusSpd": 1.1, "bonusInt": 1.1}, {"id": 5, "name": "Miki", "type1": "Neutral", "type2": "Poison", "sprite": "5.png", "baseHp": 62, "baseAtk": 8, "baseDef": 7, "baseSatk": 8, "baseSdef": 5, "baseSpd": 6, "baseInt": 15, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.1, "bonusInt": 1}, {"id": 6, "name": "Mikia", "type1": "Neutral", "type2": "Poison", "sprite": "6.png", "baseHp": 65, "baseAtk": 29, "baseDef": 18, "baseSatk": 36, "baseSdef": 26, "baseSpd": 55, "baseInt": 15, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.15, "bonusInt": 1}, {"id": 7, "name": "Bigiworm", "type1": "Ground", "type2": "Poison", "sprite": "7.png", "baseHp": 137, "baseAtk": 18, "baseDef": 14, "baseSatk": 19, "baseSdef": 19, "baseSpd": 7, "baseInt": 8, "bonusAtk": 1, "bonusDef": 1.1, "bonusSatk": 1, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1}, {"id": 8, "name": "Bigisanda", "type1": "Ground", "type2": "Poison", "sprite": "8.png", "baseHp": 143, "baseAtk": 33, "baseDef": 43, "baseSatk": 21, "baseSdef": 43, "baseSpd": 9, "baseInt": 8, "bonusAtk": 1.05, "bonusDef": 1.2, "bonusSatk": 1, "bonusSdef": 1.15, "bonusSpd": 1, "bonusInt": 1}, {"id": 10, "name": "Trifish (B)", "type1": "Water", "type2": "", "sprite": "10.png", "baseHp": 111, "baseAtk": 5, "baseDef": 8, "baseSatk": 25, "baseSdef": 13, "baseSpd": 11, "baseInt": 10, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1}, {"id": 11, "name": "Trifish (R)", "type1": "Fire", "type2": "", "sprite": "11.png", "baseHp": 128, "baseAtk": 5, "baseDef": 15, "baseSatk": 28, "baseSdef": 15, "baseSpd": 12, "baseInt": 9, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 20, "name": "Foorse (O)", "type1": "Fire", "type2": "", "sprite": "20.png", "baseHp": 140, "baseAtk": 5, "baseDef": 10, "baseSatk": 38, "baseSdef": 24, "baseSpd": 20, "baseInt": 15, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1}, {"id": 22, "name": "Armor", "type1": "Neutral", "type2": "", "sprite": "22.png", "baseHp": 130, "baseAtk": 17, "baseDef": 17, "baseSatk": 17, "baseSdef": 17, "baseSpd": 1, "baseInt": 1, "bonusAtk": 1.05, "bonusDef": 1.1, "bonusSatk": 1.05, "bonusSdef": 1.05, "bonusSpd": 1.05, "bonusInt": 1.05}, {"id": 23, "name": "Bulbhead", "type1": "Light", "type2": "", "sprite": "23.png", "baseHp": 109, "baseAtk": 3, "baseDef": 8, "baseSatk": 17, "baseSdef": 8, "baseSpd": 8, "baseInt": 6, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1.1, "bonusInt": 1}, {"id": 24, "name": "Traruz", "type1": "Ground", "type2": "", "sprite": "24.png", "baseHp": 163, "baseAtk": 42, "baseDef": 50, "baseSatk": 19, "baseSdef": 23, "baseSpd": 25, "baseInt": 22, "bonusAtk": 1.1, "bonusDef": 1.2, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 26, "name": "Chiki", "type1": "Wind", "type2": "Neutral", "sprite": "26.png", "baseHp": 147, "baseAtk": 42, "baseDef": 28, "baseSatk": 22, "baseSdef": 30, "baseSpd": 42, "baseInt": 39, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.2, "bonusInt": 1.1}, {"id": 27, "name": "Dark Masko", "type1": "Dark", "type2": "", "sprite": "27.png", "baseHp": 111, "baseAtk": 1, "baseDef": 12, "baseSatk": 16, "baseSdef": 8, "baseSpd": 2, "baseInt": 11, "bonusAtk": 1.05, "bonusDef": 1.2, "bonusSatk": 1, "bonusSdef": 1.1, "bonusSpd": 1, "bonusInt": 1}, {"id": 29, "name": "Borgle", "type1": "Grass", "type2": "Neutral", "sprite": "29.png", "baseHp": 140, "baseAtk": 20, "baseDef": 13, "baseSatk": 3, "baseSdef": 16, "baseSpd": 11, "baseInt": 10, "bonusAtk": 1.1, "bonusDef": 1.05, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.05, "bonusInt": 1}, {"id": 31, "name": "Magiman", "type1": "Dark", "type2": "", "sprite": "31.png", "baseHp": 127, "baseAtk": 5, "baseDef": 22, "baseSatk": 42, "baseSdef": 25, "baseSpd": 15, "baseInt": 30, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.15, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1.05}, {"id": 33, "name": "Magiman (G)", "type1": "Dark", "type2": "", "sprite": "33.png", "baseHp": 100, "baseAtk": 5, "baseDef": 12, "baseSatk": 40, "baseSdef": 10, "baseSpd": 9, "baseInt": 20, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.15, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 35, "name": "Pa", "type1": "Grass", "type2": "", "sprite": "35.png", "baseHp": 100, "baseAtk": 5, "baseDef": 16, "baseSatk": 20, "baseSdef": 12, "baseSpd": 28, "baseInt": 12, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1.05, "bonusInt": 1}, {"id": 36, "name": "Pas", "type1": "Grass", "type2": "", "sprite": "36.png", "baseHp": 132, "baseAtk": 5, "baseDef": 18, "baseSatk": 21, "baseSdef": 12, "baseSpd": 24, "baseInt": 16, "bonusAtk": 1, "bonusDef": 1.05, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1.05, "bonusInt": 1}, {"id": 38, "name": "Wooman", "type1": "Poison", "type2": "", "sprite": "38.png", "baseHp": 100, "baseAtk": 5, "baseDef": 35, "baseSatk": 34, "baseSdef": 26, "baseSpd": 25, "baseInt": 12, "bonusAtk": 1, "bonusDef": 1.1, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 44, "name": "Armored Mikkia", "type1": "Neutral", "type2": "", "sprite": "44.png", "baseHp": 100, "baseAtk": 29, "baseDef": 39, "baseSatk": 36, "baseSdef": 35, "baseSpd": 46, "baseInt": 15, "bonusAtk": 1.15, "bonusDef": 1.05, "bonusSatk": 1, "bonusSdef": 1.05, "bonusSpd": 1.15, "bonusInt": 1}, {"id": 45, "name": "Mikki (P)", "type1": "Poison", "type2": "", "sprite": "45.png", "baseHp": 197, "baseAtk": 30, "baseDef": 22, "baseSatk": 25, "baseSdef": 20, "baseSpd": 32, "baseInt": 10, "bonusAtk": 1.05, "bonusDef": 1, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1.15, "bonusInt": 1}, {"id": 66, "name": "Duckle", "type1": "Water", "type2": "Neutral", "sprite": "66.png", "baseHp": 140, "baseAtk": 22, "baseDef": 15, "baseSatk": 5, "baseSdef": 12, "baseSpd": 25, "baseInt": 10, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.1, "bonusInt": 1}, {"id": 67, "name": "Duck", "type1": "Water", "type2": "Neutral", "sprite": "67.png", "baseHp": 147, "baseAtk": 60, "baseDef": 45, "baseSatk": 20, "baseSdef": 35, "baseSpd": 50, "baseInt": 25, "bonusAtk": 1.3, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.2, "bonusInt": 1.1}, {"id": 74, "name": "Waaga", "type1": "Dark", "type2": "Light", "sprite": "74.png", "baseHp": 70, "baseAtk": 2, "baseDef": 25, "baseSatk": 25, "baseSdef": 18, "baseSpd": 7, "baseInt": 13, "bonusAtk": 1, "bonusDef": 1.1, "bonusSatk": 1.05, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1}, {"id": 86, "name": "Shin", "type1": "Neutral", "type2": "", "sprite": "86.png", "baseHp": 140, "baseAtk": 50, "baseDef": 18, "baseSatk": 42, "baseSdef": 15, "baseSpd": 42, "baseInt": 22, "bonusAtk": 1.2, "bonusDef": 1, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1.1, "bonusInt": 1}, {"id": 87, "name": "Blade Master (A)", "type1": "Neutral", "type2": "", "sprite": "87.png", "baseHp": 147, "baseAtk": 60, "baseDef": 28, "baseSatk": 52, "baseSdef": 25, "baseSpd": 52, "baseInt": 22, "bonusAtk": 1.2, "bonusDef": 1.05, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1.2, "bonusInt": 1}, {"id": 89, "name": "Exiled", "type1": "Dark", "type2": "", "sprite": "89.png", "baseHp": 100, "baseAtk": 53, "baseDef": 42, "baseSatk": 62, "baseSdef": 42, "baseSpd": 32, "baseInt": 45, "bonusAtk": 1.1, "bonusDef": 1.1, "bonusSatk": 1.1, "bonusSdef": 1.15, "bonusSpd": 1, "bonusInt": 1.05}, {"id": 91, "name": "Snadle", "type1": "Water", "type2": "Ground", "sprite": "91.png", "baseHp": 131, "baseAtk": 5, "baseDef": 40, "baseSatk": 25, "baseSdef": 28, "baseSpd": 20, "baseInt": 15, "bonusAtk": 1, "bonusDef": 1.1, "bonusSatk": 1.1, "bonusSdef": 1.1, "bonusSpd": 1, "bonusInt": 1}, {"id": 93, "name": "Bigmouth", "type1": "Grass", "type2": "Poison", "sprite": "93.png", "baseHp": 124, "baseAtk": 5, "baseDef": 15, "baseSatk": 32, "baseSdef": 16, "baseSpd": 35, "baseInt": 50, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1.1, "bonusInt": 1.1}, {"id": 99, "name": "Mooman", "type1": "Neutral", "type2": "Water", "sprite": "99.png", "baseHp": 160, "baseAtk": 60, "baseDef": 80, "baseSatk": 25, "baseSdef": 82, "baseSpd": 30, "baseInt": 30, "bonusAtk": 1.2, "bonusDef": 1.2, "bonusSatk": 1.05, "bonusSdef": 1.1, "bonusSpd": 1, "bonusInt": 1}, {"id": 100, "name": "Koki", "type1": "Electric", "type2": "", "sprite": "100.png", "baseHp": 124, "baseAtk": 25, "baseDef": 18, "baseSatk": 5, "baseSdef": 25, "baseSpd": 20, "baseInt": 10, "bonusAtk": 1.2, "bonusDef": 1, "bonusSatk": 1, "bonusSdef": 1.1, "bonusSpd": 1.15, "bonusInt": 1.1}, {"id": 103, "name": "Dogia", "type1": "Neutral", "type2": "", "sprite": "103.png", "baseHp": 100, "baseAtk": 34, "baseDef": 22, "baseSatk": 29, "baseSdef": 13, "baseSpd": 21, "baseInt": 20, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 109, "name": "Paley", "type1": "Water", "type2": "", "sprite": "109.png", "baseHp": 100, "baseAtk": 25, "baseDef": 25, "baseSatk": 5, "baseSdef": 15, "baseSpd": 5, "baseInt": 5, "bonusAtk": 1.1, "bonusDef": 1.15, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 110, "name": "Angi", "type1": "Light", "type2": "Ground", "sprite": "110.png", "baseHp": 100, "baseAtk": 4, "baseDef": 16, "baseSatk": 28, "baseSdef": 0, "baseSpd": 5, "baseInt": 10, "bonusAtk": 1, "bonusDef": 1.05, "bonusSatk": 1.15, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1.05}, {"id": 114, "name": "Steelha", "type1": "Neutral", "type2": "", "sprite": "114.png", "baseHp": 100, "baseAtk": 48, "baseDef": 32, "baseSatk": 35, "baseSdef": 20, "baseSpd": 35, "baseInt": 17, "bonusAtk": 1.05, "bonusDef": 1.1, "bonusSatk": 1, "bonusSdef": 1, "bonusSpd": 1.05, "bonusInt": 1}, {"id": 129, "name": "Rexli", "type1": "Neutral", "type2": "", "sprite": "129.png", "baseHp": 159, "baseAtk": 57, "baseDef": 32, "baseSatk": 31, "baseSdef": 18, "baseSpd": 35, "baseInt": 12, "bonusAtk": 1.1, "bonusDef": 1, "bonusSatk": 0.5, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 130, "name": "Rexa", "type1": "Neutral", "type2": "", "sprite": "130.png", "baseHp": 168, "baseAtk": 82, "baseDef": 57, "baseSatk": 5, "baseSdef": 35, "baseSpd": 36, "baseInt": 9, "bonusAtk": 1.25, "bonusDef": 1.1, "bonusSatk": 1, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1}, {"id": 220, "name": "BOMBAMAN", "type1": "Dark", "type2": "", "sprite": "220.png", "baseHp": 0, "baseAtk": 5, "baseDef": 72, "baseSatk": 32, "baseSdef": 58, "baseSpd": 28, "baseInt": 22, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.15, "bonusSdef": 1.1, "bonusSpd": 0, "bonusInt": 0}, {"id": 241, "name": "Traruza", "type1": "Ground", "type2": "", "sprite": "241.png", "baseHp": 170, "baseAtk": 42, "baseDef": 55, "baseSatk": 19, "baseSdef": 29, "baseSpd": 25, "baseInt": 19, "bonusAtk": 1.1, "bonusDef": 1.2, "bonusSatk": 1, "bonusSdef": 1.2, "bonusSpd": 1, "bonusInt": 1}, {"id": 242, "name": "St. Traruza", "type1": "Ground", "type2": "", "sprite": "242.png", "baseHp": 174, "baseAtk": 62, "baseDef": 85, "baseSatk": 39, "baseSdef": 42, "baseSpd": 32, "baseInt": 28, "bonusAtk": 1.1, "bonusDef": 1.2, "bonusSatk": 1.1, "bonusSdef": 1.2, "bonusSpd": 1, "bonusInt": 1}, {"id": 243, "name": "Iferasz", "type1": "Fire", "type2": "", "sprite": "243.png", "baseHp": 149, "baseAtk": 45, "baseDef": 35, "baseSatk": 35, "baseSdef": 28, "baseSpd": 30, "baseInt": 25, "bonusAtk": 1.1, "bonusDef": 1.1, "bonusSatk": 1.1, "bonusSdef": 1, "bonusSpd": 1, "bonusInt": 1}, {"id": 246, "name": "Akigosa", "type1": "Water", "type2": "", "sprite": "246.png", "baseHp": 140, "baseAtk": 5, "baseDef": 22, "baseSatk": 48, "baseSdef": 33, "baseSpd": 37, "baseInt": 34, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1.1, "bonusSpd": 1, "bonusInt": 1.1}, {"id": 249, "name": "Skiinaza", "type1": "Wind", "type2": "", "sprite": "249.png", "baseHp": 100, "baseAtk": 5, "baseDef": 32, "baseSatk": 42, "baseSdef": 35, "baseSpd": 38, "baseInt": 35, "bonusAtk": 1, "bonusDef": 1, "bonusSatk": 1.1, "bonusSdef": 1.05, "bonusSpd": 1.15, "bonusInt": 1}, {"id": 260, "name": "Chiki (P)", "type1": "Wind", "type2": "", "sprite": "260.png", "baseHp": 100, "baseAtk": 24, "baseDef": 25, "baseSatk": 42, "baseSdef": 20, "baseSpd": 42, "baseInt": 36, "bonusAtk": 1, "bonusDef": 1.05, "bonusSatk": 1.05, "bonusSdef": 1, "bonusSpd": 1.15, "bonusInt": 1}, {"id": 300, "name": "Magi Wizard", "type1": "Dark", "type2": "", "sprite": "300.png", "baseHp": 100, "baseAtk": 5, "baseDef": 22, "baseSatk": 107, "baseSdef": 50, "baseSpd": 32, "baseInt": 99, "bonusAtk": 1, "bonusDef": 1.05, "bonusSatk": 1.25, "bonusSdef": 1.05, "bonusSpd": 1, "bonusInt": 1.2}, {"id": 666, "name": "Angel of War", "type1": "Light", "type2": "Dark", "sprite": "666.png", "baseHp": 200, "baseAtk": 72, "baseDef": 56, "baseSatk": 91, "baseSdef": 62, "baseSpd": 39, "baseInt": 50, "bonusAtk": 1.2, "bonusDef": 1.1, "bonusSatk": 1.2, "bonusSdef": 1.1, "bonusSpd": 1.1, "bonusInt": 1.1}];
+
+const STAT_DESCRIPTIONS = {
+  Atk: 'Physical attack power', Def: 'Physical defense power', Satk: 'Magical attack power',
+  Sdef: 'Magical defense power', Spd: 'Attack order priority', Int: 'Intelligence'
+};
+
+let current = null;
+let level = 1;
+let singleSpiritMode = false;
+let committed = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+let pending = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+
+function maxPoints(lvl) {
+  return Math.max(0, (lvl - 1) * 10);
+}
+
+function calcHP(baseHp, lvl) {
+  const hp = baseHp <= 0 ? 100 : baseHp;
+  return Math.round(hp * Math.pow(1.045, lvl - 1));
+}
+
+function calcStat(base, pts, bonus) {
+  return Math.trunc((base + pts) * bonus);
+}
+
+function renderSpiritList(filter) {
+  const q = (filter || '').toLowerCase();
+  const list = document.getElementById('spiritList');
+  const filtered = DATA.filter(d => d.name.toLowerCase().includes(q));
+  list.innerHTML = filtered.map(d => `
+    <div class="spirit-item ${current && current.id === d.id ? 'selected' : ''}" data-id="${d.id}">
+      <span class="sid">#${d.id}</span>
+      <img src="sprites_all/${d.sprite}" alt="${d.name}" loading="lazy">
+      <span>${d.name}</span>
+    </div>
+  `).join('');
+  list.querySelectorAll('.spirit-item').forEach(el => {
+    el.addEventListener('click', () => selectSpirit(parseInt(el.dataset.id)));
+  });
+}
+
+function selectSpirit(id) {
+  current = DATA.find(d => d.id === id);
+  committed = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+  pending = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+  renderSpiritList(document.getElementById('spiritSearch').value);
+  renderRight();
+}
+
+function resetPoints() {
+  committed = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+  pending = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+  renderRight();
+}
+
+function confirmPoints() {
+  Object.keys(committed).forEach(k => { committed[k] += pending[k]; pending[k] = 0; });
+  renderRight();
+}
+
+function adjustPoint(key, delta) {
+  const cap = maxPoints(level);
+  const totalNow = Object.keys(committed).reduce((sum, k) => sum + committed[k] + pending[k], 0);
+  const thisStatNow = committed[key] + pending[key];
+
+  if (delta > 0) {
+    const room = cap - totalNow;
+    delta = Math.min(delta, room);
+  } else {
+    delta = Math.max(delta, -thisStatNow);
+  }
+  pending[key] += delta;
+  renderRight();
+}
+
+function renderRight() {
+  const rightCol = document.getElementById('rightCol');
+  if (!current) {
+    rightCol.innerHTML = '<div class="empty-state">Select a spirit to begin.</div>';
+    return;
+  }
+  const cap = maxPoints(level);
+  const totalCommitted = Object.values(committed).reduce((a, b) => a + b, 0);
+  const totalPending = Object.values(pending).reduce((a, b) => a + b, 0);
+  const availablePoints = cap - totalCommitted - totalPending;
+  const hasPendingChanges = totalPending !== 0;
+
+  const statDefs = [
+    ['ATK', 'Atk', current.baseAtk, current.bonusAtk],
+    ['DEF', 'Def', current.baseDef, current.bonusDef],
+    ['MGK', 'Satk', current.baseSatk, current.bonusSatk],
+    ['MDF', 'Sdef', current.baseSdef, current.bonusSdef],
+    ['SPD', 'Spd', current.baseSpd, current.bonusSpd],
+    ['INT', 'Int', current.baseInt, current.bonusInt],
+  ];
+
+  const hp = calcHP(current.baseHp, level);
+
+  const statRows = statDefs.map(([label, key, base, bonus]) => {
+    const curVal = calcStat(base, committed[key], bonus);
+    const newVal = calcStat(base, committed[key] + pending[key], bonus);
+    const changed = newVal !== curVal;
+    const canMinus1 = (committed[key] + pending[key]) > 0;
+    const canMinus10 = (committed[key] + pending[key]) > 0;
+    const canPlus = availablePoints > 0;
+    const starred = bonus > 1;
+    return `
+    <div class="es-row">
+      <button class="es-btn" data-key="${key}" data-delta="-10" ${!canMinus10 ? 'disabled' : ''}>-10</button>
+      <button class="es-btn" data-key="${key}" data-delta="-1" ${!canMinus1 ? 'disabled' : ''}>-1</button>
+      <div class="es-mid">
+        <div class="es-stat-name">${label}${starred ? ' <span class="star">★</span>' : ''}</div>
+        <div class="es-stat-value">${curVal}<span class="arrow">&#9656;</span><span class="${changed ? 'changed' : ''}">${newVal}</span></div>
+        <div class="es-stat-desc">${STAT_DESCRIPTIONS[key]}</div>
+      </div>
+      <button class="es-btn" data-key="${key}" data-delta="1" ${!canPlus ? 'disabled' : ''}>+1</button>
+      <button class="es-btn" data-key="${key}" data-delta="10" ${!canPlus ? 'disabled' : ''}>+10</button>
+    </div>`;
+  }).join('');
+
+  rightCol.innerHTML = `
+    ${singleSpiritMode ? `<a class="switch-spirit-link" href="spirit.html?id=${current.id}" id="switchSpiritLink">← Back to ${current.name}</a>` : ''}
+    <div class="panel" style="margin-bottom:1rem;">
+      <div class="selected-card">
+        <img src="sprites_all/${current.sprite}" alt="${current.name}">
+        <div>
+          <div class="name">${current.name}</div>
+          <div class="types">
+            ${current.type1 ? `<span class="type-tag type-${current.type1}">${current.type1}</span>` : ''}
+            ${current.type2 ? `<span class="type-tag type-${current.type2}">${current.type2}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-stats-card">
+      <img class="es-watermark" src="sprites_all/${current.sprite}" alt="">
+      <div class="es-header">
+        <span class="es-title">Edit Stats</span>
+        <button class="es-reset-btn" id="resetBtn">Reset Points</button>
+      </div>
+
+      <div class="es-info-row">
+        <div class="es-level-group">
+          <span class="es-level-label">Level</span>
+          <input type="number" id="levelInput" class="es-level-input" min="1" max="99" value="${level}">
+        </div>
+        <div class="es-avail-col">
+          <div class="es-avail-label">Available Points</div>
+          <div class="es-avail-val ${availablePoints < 0 ? 'negative' : ''}">${availablePoints}</div>
+        </div>
+      </div>
+
+      <div class="es-hp-row">HP <span class="val">${hp}</span></div>
+
+      <div class="es-sub">Assign points below to strengthen your spirit. Points are applied immediately upon confirming.</div>
+
+      ${statRows}
+
+      <div class="es-confirm-row">
+        <button class="es-confirm-btn" id="confirmBtn" ${!hasPendingChanges ? 'disabled' : ''}>Confirm Changes</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('levelInput').addEventListener('input', e => {
+    level = Math.max(1, Math.min(99, parseInt(e.target.value) || 1));
+    pending = { Atk: 0, Def: 0, Satk: 0, Sdef: 0, Spd: 0, Int: 0 };
+    const newCap = maxPoints(level);
+    let totalC = Object.values(committed).reduce((a, b) => a + b, 0);
+    if (totalC > newCap) {
+      const keys = Object.keys(committed);
+      let i = 0;
+      while (totalC > newCap) {
+        const k = keys[i % keys.length];
+        if (committed[k] > 0) { committed[k]--; totalC--; }
+        i++;
+      }
+    }
+    renderRight();
+  });
+  document.getElementById('resetBtn').addEventListener('click', resetPoints);
+  document.getElementById('confirmBtn').addEventListener('click', confirmPoints);
+  rightCol.querySelectorAll('.es-btn').forEach(btn => {
+    btn.addEventListener('click', () => adjustPoint(btn.dataset.key, parseInt(btn.dataset.delta)));
+  });
+}
+
+document.getElementById('spiritSearch').addEventListener('input', e => renderSpiritList(e.target.value));
+renderSpiritList('');
+
+const deepLinkId = parseInt(new URLSearchParams(window.location.search).get('id'));
+if (!isNaN(deepLinkId) && DATA.some(d => d.id === deepLinkId)) {
+  singleSpiritMode = true;
+  document.getElementById('mainGrid').classList.add('single-spirit');
+  selectSpirit(deepLinkId);
+}
+</script>
+</body>
+</html>
